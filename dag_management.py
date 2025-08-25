@@ -7,12 +7,19 @@ Integrates with EPOCH5 provenance tracking and agent management
 
 import json
 import hashlib
-import networkx as nx
 from pathlib import Path
 from datetime import datetime
 from typing import Dict, List, Optional, Any, Set, Tuple
 from enum import Enum
 import random
+
+# Optional NetworkX import for advanced graph validation
+try:
+    import networkx as nx
+    HAS_NETWORKX = True
+except ImportError:
+    HAS_NETWORKX = False
+    print("Warning: NetworkX not available. Using basic DAG validation.")
 
 class TaskStatus(Enum):
     PENDING = "pending"
@@ -86,20 +93,69 @@ class DAGManager:
     
     def validate_dag(self, tasks: List[Dict[str, Any]]) -> bool:
         """Validate that task dependencies form a valid DAG (no cycles)"""
-        # Create a networkx graph
-        G = nx.DiGraph()
+        if HAS_NETWORKX:
+            # Use NetworkX for comprehensive validation
+            G = nx.DiGraph()
+            
+            # Add nodes
+            for task in tasks:
+                G.add_node(task["task_id"])
+            
+            # Add edges for dependencies
+            for task in tasks:
+                for dep in task["dependencies"]:
+                    G.add_edge(dep, task["task_id"])
+            
+            # Check for cycles
+            return nx.is_directed_acyclic_graph(G)
+        else:
+            # Basic validation without NetworkX
+            return self.basic_dag_validation(tasks)
+    
+    def basic_dag_validation(self, tasks: List[Dict[str, Any]]) -> bool:
+        """Basic DAG validation without NetworkX"""
+        task_ids = {task["task_id"] for task in tasks}
         
-        # Add nodes
-        for task in tasks:
-            G.add_node(task["task_id"])
-        
-        # Add edges for dependencies
+        # Check that all dependencies exist
         for task in tasks:
             for dep in task["dependencies"]:
-                G.add_edge(dep, task["task_id"])
+                if dep not in task_ids:
+                    return False
+        
+        # Simple cycle detection using DFS
+        visited = set()
+        rec_stack = set()
+        
+        def has_cycle(task_id, adjacency):
+            visited.add(task_id)
+            rec_stack.add(task_id)
+            
+            for neighbor in adjacency.get(task_id, []):
+                if neighbor not in visited:
+                    if has_cycle(neighbor, adjacency):
+                        return True
+                elif neighbor in rec_stack:
+                    return True
+            
+            rec_stack.remove(task_id)
+            return False
+        
+        # Build adjacency list
+        adjacency = {}
+        for task in tasks:
+            adjacency[task["task_id"]] = []
+            for dep in task["dependencies"]:
+                if dep not in adjacency:
+                    adjacency[dep] = []
+                adjacency[dep].append(task["task_id"])
         
         # Check for cycles
-        return nx.is_directed_acyclic_graph(G)
+        for task_id in task_ids:
+            if task_id not in visited:
+                if has_cycle(task_id, adjacency):
+                    return False
+        
+        return True
     
     def generate_mesh_nodes(self, tasks: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Generate mesh connectivity for fault tolerance"""
