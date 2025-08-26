@@ -11,7 +11,7 @@ import hashlib
 import zipfile
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any, Tuple
 import base64
 import struct
@@ -116,7 +116,7 @@ class CapsuleManager:
     
     def timestamp(self) -> str:
         """Generate ISO timestamp consistent with EPOCH5"""
-        return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     
     def sha256(self, data: str) -> str:
         """Generate SHA256 hash consistent with EPOCH5"""

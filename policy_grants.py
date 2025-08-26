@@ -7,7 +7,7 @@ Integrates with EPOCH5 logging and agent management for secure operations
 import json
 import hashlib
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Any, Set
 from enum import Enum
 
@@ -29,7 +29,7 @@ class PolicyManager:
         
     def timestamp(self) -> str:
         """Generate ISO timestamp consistent with EPOCH5"""
-        return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     
     def sha256(self, data: str) -> str:
         """Generate SHA256 hash consistent with EPOCH5"""
@@ -77,7 +77,7 @@ class PolicyManager:
         """Create a new grant for resource access"""
         if expires_at is None:
             # Default 24 hour expiration
-            expires_at = (datetime.utcnow() + timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
+            expires_at = (datetime.now(timezone.utc) + timedelta(hours=24)).strftime("%Y-%m-%dT%H:%M:%SZ")
         
         grant = {
             "grant_id": grant_id,
@@ -200,7 +200,7 @@ class PolicyManager:
             return False
         
         # Check if grant has expired
-        if datetime.utcnow() > datetime.fromisoformat(grant["expires_at"].replace('Z', '+00:00')):
+        if datetime.now(timezone.utc) > datetime.fromisoformat(grant["expires_at"].replace('Z', '+00:00')):
             grant["active"] = False
             self.save_grants(grants)
             return False
@@ -244,7 +244,7 @@ class PolicyManager:
     def get_valid_grants(self, did: str) -> List[Dict[str, Any]]:
         """Get all valid grants for a specific DID"""
         grants = self.load_grants()
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc)
         
         valid_grants = []
         for grant in grants["grants"].values():

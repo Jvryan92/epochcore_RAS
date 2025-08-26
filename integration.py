@@ -9,7 +9,7 @@ import json
 import argparse
 import sys
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any
 
 # Import all EPOCH5 components
@@ -53,7 +53,7 @@ class EPOCH5Integration:
     
     def timestamp(self) -> str:
         """Generate ISO timestamp"""
-        return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     
     def log_integration_event(self, event: str, data: Dict[str, Any]):
         """Log integration events"""
