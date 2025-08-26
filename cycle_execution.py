@@ -14,6 +14,13 @@ from typing import Dict, List, Optional, Any, Tuple
 from enum import Enum
 import random
 
+# Import the ceiling manager for dynamic ceiling support
+try:
+    from ceiling_manager import CeilingManager, ServiceTier, CeilingType
+    CEILING_MANAGER_AVAILABLE = True
+except ImportError:
+    CEILING_MANAGER_AVAILABLE = False
+
 class CycleStatus(Enum):
     PLANNED = "planned"
     EXECUTING = "executing"
@@ -36,6 +43,12 @@ class CycleExecutor:
         self.sla_metrics_file = self.cycles_dir / "sla_metrics.json"
         self.consensus_log = self.cycles_dir / "pbft_consensus.log"
         
+        # Initialize ceiling manager for dynamic ceiling support
+        if CEILING_MANAGER_AVAILABLE:
+            self.ceiling_manager = CeilingManager(base_dir)
+        else:
+            self.ceiling_manager = None
+        
     def timestamp(self) -> str:
         """Generate ISO timestamp consistent with EPOCH5"""
         return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -45,15 +58,48 @@ class CycleExecutor:
         return hashlib.sha256(data.encode('utf-8')).hexdigest()
     
     def create_cycle(self, cycle_id: str, budget: float, max_latency: float,
-                    task_assignments: List[Dict[str, Any]], sla_requirements: Dict[str, Any] = None) -> Dict[str, Any]:
-        """Create a new execution cycle"""
+                    task_assignments: List[Dict[str, Any]], sla_requirements: Dict[str, Any] = None,
+                    service_tier: str = "freemium", ceiling_config_id: str = None) -> Dict[str, Any]:
+        """Create a new execution cycle with dynamic ceiling support"""
+        
+        # Apply dynamic ceiling adjustments if ceiling manager is available
+        effective_budget = budget
+        effective_max_latency = max_latency
+        
+        if self.ceiling_manager and ceiling_config_id:
+            try:
+                tier = ServiceTier(service_tier)
+                effective_budget = self.ceiling_manager.get_effective_ceiling(
+                    ceiling_config_id, CeilingType.BUDGET)
+                effective_max_latency = self.ceiling_manager.get_effective_ceiling(
+                    ceiling_config_id, CeilingType.LATENCY)
+                
+                # Log ceiling application
+                self.log_execution(cycle_id, "DYNAMIC_CEILING_APPLIED", {
+                    "original_budget": budget,
+                    "effective_budget": effective_budget,
+                    "original_max_latency": max_latency,
+                    "effective_max_latency": effective_max_latency,
+                    "service_tier": service_tier,
+                    "ceiling_config_id": ceiling_config_id
+                })
+            except Exception as e:
+                self.log_execution(cycle_id, "CEILING_APPLICATION_ERROR", {"error": str(e)})
+                # Fall back to original values
+                effective_budget = budget
+                effective_max_latency = max_latency
+        
         cycle = {
             "cycle_id": cycle_id,
-            "budget": budget,
+            "budget": effective_budget,
+            "original_budget": budget,  # Keep track of original for analysis
             "spent_budget": 0.0,
-            "max_latency": max_latency,
+            "max_latency": effective_max_latency,
+            "original_max_latency": max_latency,  # Keep track of original for analysis
             "actual_latency": 0.0,
             "task_assignments": task_assignments,
+            "service_tier": service_tier,
+            "ceiling_config_id": ceiling_config_id,
             "sla_requirements": sla_requirements or {
                 "min_success_rate": 0.95,
                 "max_failure_rate": 0.05,
@@ -247,6 +293,27 @@ class CycleExecutor:
         
         # Save SLA metrics
         self.save_sla_metrics(sla_status)
+        
+        # Update ceiling configuration if available
+        if self.ceiling_manager and cycle.get("ceiling_config_id"):
+            try:
+                performance_metrics = {
+                    "success_rate": metrics["success_rate"],
+                    "actual_latency": cycle["actual_latency"],
+                    "spent_budget": cycle["spent_budget"],
+                    "sla_compliant": sla_status["compliant"]
+                }
+                
+                self.ceiling_manager.adjust_ceiling_for_performance(
+                    cycle["ceiling_config_id"], performance_metrics)
+                    
+                # Generate upgrade recommendations
+                upgrade_rec = self.ceiling_manager.get_upgrade_recommendations(
+                    cycle["ceiling_config_id"])
+                sla_status["upgrade_recommendation"] = upgrade_rec
+                
+            except Exception as e:
+                sla_status["ceiling_update_error"] = str(e)
         
         return sla_status
     

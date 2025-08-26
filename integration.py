@@ -20,6 +20,13 @@ from cycle_execution import CycleExecutor
 from capsule_metadata import CapsuleManager
 from meta_capsule import MetaCapsuleCreator
 
+# Import ceiling manager for enhanced ceiling features
+try:
+    from ceiling_manager import CeilingManager, ServiceTier, CeilingType
+    CEILING_MANAGER_AVAILABLE = True
+except ImportError:
+    CEILING_MANAGER_AVAILABLE = False
+
 class EPOCH5Integration:
     """Main integration class for EPOCH5 system"""
     
@@ -34,6 +41,12 @@ class EPOCH5Integration:
         self.cycle_executor = CycleExecutor(str(base_dir))
         self.capsule_manager = CapsuleManager(str(base_dir))
         self.meta_capsule_creator = MetaCapsuleCreator(str(base_dir))
+        
+        # Initialize ceiling manager if available
+        if CEILING_MANAGER_AVAILABLE:
+            self.ceiling_manager = CeilingManager(str(base_dir))
+        else:
+            self.ceiling_manager = None
         
         # Integration log
         self.integration_log = self.base_dir / "integration.log"
@@ -168,12 +181,34 @@ class EPOCH5Integration:
                 {"task_id": "demo_task_3", "agent_did": agents[2], "estimated_cost": 8.0}
             ]
             
-            demo_cycle = self.cycle_executor.create_cycle(
-                "demo_cycle",
-                budget=100.0,
-                max_latency=60.0,
-                task_assignments=task_assignments
-            )
+            # Create sample cycle with enhanced ceiling features
+            if self.ceiling_manager:
+                # Create ceiling configuration for demo
+                ceiling_config = self.ceiling_manager.create_ceiling_configuration(
+                    "demo_config", ServiceTier.PROFESSIONAL)
+                self.ceiling_manager.add_configuration(ceiling_config)
+                
+                demo_cycle = self.cycle_executor.create_cycle(
+                    "demo_cycle",
+                    budget=100.0,
+                    max_latency=60.0,
+                    task_assignments=task_assignments,
+                    service_tier="professional",
+                    ceiling_config_id="demo_config"
+                )
+                
+                setup_results["components"]["ceiling_config"] = {
+                    "created": 1,
+                    "config_id": "demo_config",
+                    "service_tier": "professional"
+                }
+            else:
+                demo_cycle = self.cycle_executor.create_cycle(
+                    "demo_cycle",
+                    budget=100.0,
+                    max_latency=60.0,
+                    task_assignments=task_assignments
+                )
             self.cycle_executor.save_cycle(demo_cycle)
             
             setup_results["components"]["cycles"] = {
@@ -326,6 +361,30 @@ class EPOCH5Integration:
             "total": len(meta_capsules)
         }
         
+        # Ceiling status (if available)
+        if self.ceiling_manager:
+            ceilings_data = self.ceiling_manager.load_ceilings()
+            configs = ceilings_data.get("configurations", {})
+            
+            # Calculate average performance score
+            performance_scores = [config.get("performance_score", 1.0) 
+                                for config in configs.values()]
+            avg_performance = sum(performance_scores) / len(performance_scores) if performance_scores else 1.0
+            
+            # Count configurations by tier
+            tier_counts = {}
+            for config in configs.values():
+                tier = config.get("service_tier", "unknown")
+                tier_counts[tier] = tier_counts.get(tier, 0) + 1
+            
+            status["components"]["ceilings"] = {
+                "total_configurations": len(configs),
+                "average_performance_score": round(avg_performance, 2),
+                "tier_distribution": tier_counts,
+                "dynamic_adjustments_active": sum(1 for config in configs.values() 
+                                                if config.get("dynamic_adjustments"))
+            }
+        
         return status
     
     def validate_system_integrity(self) -> Dict[str, Any]:
@@ -413,6 +472,27 @@ def main():
     policy_subparsers = policy_parser.add_subparsers(dest="policy_command")
     policy_subparsers.add_parser("list", help="List policies")
     
+    # Ceiling management commands (if available)
+    if CEILING_MANAGER_AVAILABLE:
+        ceiling_parser = subparsers.add_parser("ceilings", help="Ceiling management commands")
+        ceiling_subparsers = ceiling_parser.add_subparsers(dest="ceiling_command")
+        
+        # Create ceiling config
+        create_ceiling_parser = ceiling_subparsers.add_parser("create", help="Create ceiling configuration")
+        create_ceiling_parser.add_argument("config_id", help="Configuration ID")
+        create_ceiling_parser.add_argument("--tier", choices=["freemium", "professional", "enterprise"], 
+                                         default="freemium", help="Service tier")
+        
+        # List ceiling configs
+        ceiling_subparsers.add_parser("list", help="List ceiling configurations")
+        
+        # Get upgrade recommendations
+        upgrade_parser = ceiling_subparsers.add_parser("upgrade-rec", help="Get upgrade recommendations")
+        upgrade_parser.add_argument("config_id", help="Configuration ID")
+        
+        # Show service tiers
+        ceiling_subparsers.add_parser("tiers", help="Show service tier information")
+    
     # One-liner commands for quick operations
     oneliner_parser = subparsers.add_parser("oneliner", help="Execute one-liner commands")
     oneliner_parser.add_argument("operation", choices=[
@@ -495,6 +575,55 @@ def main():
             print(f"Active Policies ({len(policies)}):")
             for policy in policies:
                 print(f"  {policy['policy_id']}: {policy['type']} (enforced: {policy['enforced_count']})")
+    
+    elif args.command == "ceilings" and CEILING_MANAGER_AVAILABLE:
+        if args.ceiling_command == "create":
+            service_tier = ServiceTier(args.tier)
+            config = integration.ceiling_manager.create_ceiling_configuration(args.config_id, service_tier)
+            integration.ceiling_manager.add_configuration(config)
+            print(f"✓ Created ceiling configuration '{args.config_id}' for {service_tier.value} tier")
+            print(f"  Base ceilings: {config['base_ceilings']}")
+        
+        elif args.ceiling_command == "list":
+            ceilings_data = integration.ceiling_manager.load_ceilings()
+            configs = ceilings_data.get("configurations", {})
+            print(f"Ceiling Configurations ({len(configs)}):")
+            for config_id, config in configs.items():
+                print(f"  {config_id}: {config['service_tier']} (score: {config.get('performance_score', 1.0):.2f})")
+                if config.get('dynamic_adjustments'):
+                    print(f"    Dynamic adjustments: {config['dynamic_adjustments']}")
+        
+        elif args.ceiling_command == "upgrade-rec":
+            recommendations = integration.ceiling_manager.get_upgrade_recommendations(args.config_id)
+            
+            if "error" in recommendations:
+                print(f"✗ Error: {recommendations['error']}")
+            else:
+                print(f"Upgrade Recommendations for '{args.config_id}':")
+                print(f"  Current tier: {recommendations['current_tier']}")
+                print(f"  Performance score: {recommendations['performance_score']:.2f}")
+                
+                if recommendations['should_upgrade']:
+                    print(f"  ✓ RECOMMENDED: Upgrade to {recommendations['recommended_tier']}")
+                    print(f"  Estimated ROI: {recommendations['estimated_roi']}x")
+                    print(f"  Urgency: {recommendations['urgency']}")
+                    print(f"  Benefits:")
+                    for benefit in recommendations['benefits']:
+                        print(f"    - {benefit}")
+                else:
+                    print(f"  No upgrade recommended at this time")
+        
+        elif args.ceiling_command == "tiers":
+            tiers_data = integration.ceiling_manager.load_service_tiers()
+            tiers = tiers_data.get("tiers", {})
+            print("Available Service Tiers:")
+            for tier_name, tier_config in tiers.items():
+                print(f"  {tier_config['name']} (${tier_config['monthly_cost']}/month):")
+                print(f"    Features: {', '.join(tier_config['features'])}")
+                print(f"    Budget ceiling: {tier_config['ceilings']['budget']}")
+                print(f"    Latency ceiling: {tier_config['ceilings']['latency']}s")
+                print(f"    Rate limit: {tier_config['ceilings']['rate_limit']} req/hr")
+                print("")
     
     elif args.command == "oneliner":
         # Execute one-liner operations
