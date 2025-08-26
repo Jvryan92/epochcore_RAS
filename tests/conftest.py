@@ -1,6 +1,7 @@
 """
 Test fixtures and utilities for EPOCH5 tests
 """
+
 import pytest
 import tempfile
 import shutil
@@ -24,7 +25,7 @@ def sample_agent_data():
         "skills": ["data_analysis", "encryption"],
         "reliability_score": 0.95,
         "trust_score": 0.87,
-        "status": "active"
+        "status": "active",
     }
 
 
@@ -35,7 +36,7 @@ def sample_policy_data():
         "policy_id": "test_policy_001",
         "type": "budget_limit",
         "conditions": {"max_budget": 1000},
-        "enforcement_level": "strict"
+        "enforcement_level": "strict",
     }
 
 
@@ -48,6 +49,6 @@ def sample_capsule_data():
         "metadata": {
             "created_at": "2024-01-01T00:00:00Z",
             "content_type": "text/plain",
-            "size": 20
-        }
+            "size": 20,
+        },
     }
