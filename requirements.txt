@@ -1,0 +1,7 @@
+# Core dependencies for icon generation
+cairosvg>=2.5.2
+
+# Development dependencies (for linting and testing)
+pytest>=7.0.0
+flake8>=5.0.0
+black>=22.0.0

@@ -1,0 +1,169 @@
+name: Pull Request Management
+
+on:
+  pull_request:
+    types: [opened, edited, ready_for_review, review_requested]
+  pull_request_review:
+    types: [submitted]
+
+jobs:
+  auto-assign-reviewers:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened' || github.event.action == 'ready_for_review'
+    steps:
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v44
+      with:
+        files: |
+          scripts/**
+          assets/**
+          .github/**
+          tests/**
+
+    - name: Auto-assign reviewers based on files
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const changedFiles = '${{ steps.changed-files.outputs.all_changed_files }}';
+          const pr = context.payload.pull_request;
+          
+          // Skip if it's a draft PR
+          if (pr.draft) {
+            console.log('PR is draft, skipping auto-assignment');
+            return;
+          }
+          
+          let reviewers = new Set();
+          
+          // Define reviewer assignment rules based on file paths
+          const reviewRules = {
+            'scripts/': ['Jvryan92'],
+            'assets/': ['Jvryan92'],
+            '.github/workflows/': ['Jvryan92'],
+            'tests/': ['Jvryan92'],
+            'README.md': ['Jvryan92'],
+            'requirements.txt': ['Jvryan92']
+          };
+          
+          // Check which files were changed and assign reviewers
+          for (const file of changedFiles.split(' ')) {
+            for (const [pattern, users] of Object.entries(reviewRules)) {
+              if (file.includes(pattern)) {
+                users.forEach(user => {
+                  if (user !== pr.user.login) {  // Don't assign PR author as reviewer
+                    reviewers.add(user);
+                  }
+                });
+              }
+            }
+          }
+          
+          // Request reviews if we have reviewers
+          if (reviewers.size > 0) {
+            await github.rest.pulls.requestReviewers({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: pr.number,
+              reviewers: Array.from(reviewers)
+            });
+            
+            console.log(`Assigned reviewers: ${Array.from(reviewers).join(', ')}`);
+          }
+
+  notify-ready-for-review:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'ready_for_review'
+    steps:
+    - name: Notify team when PR is ready
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const pr = context.payload.pull_request;
+          
+          await github.rest.issues.createComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: pr.number,
+            body: `🔄 **Pull Request Ready for Review**\n\n@Jvryan92 This PR is now ready for review!\n\n**Summary:**\n- ${pr.changed_files} files changed\n- ${pr.additions} additions, ${pr.deletions} deletions\n\n**Changed Files:**\n${pr.changed_files > 0 ? 'Please review the changes in the Files tab.' : 'No files changed.'}`
+          });
+
+  pr-size-labeling:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened' || github.event.action == 'edited'
+    steps:
+    - name: Label PR by size
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const pr = context.payload.pull_request;
+          const additions = pr.additions;
+          const deletions = pr.deletions;
+          const totalChanges = additions + deletions;
+          
+          let sizeLabel = '';
+          
+          if (totalChanges < 10) {
+            sizeLabel = 'size/XS';
+          } else if (totalChanges < 30) {
+            sizeLabel = 'size/S';
+          } else if (totalChanges < 100) {
+            sizeLabel = 'size/M';
+          } else if (totalChanges < 500) {
+            sizeLabel = 'size/L';
+          } else {
+            sizeLabel = 'size/XL';
+          }
+          
+          // Remove existing size labels
+          const labels = await github.rest.issues.listLabelsOnIssue({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: pr.number
+          });
+          
+          const sizeLabels = labels.data.filter(label => label.name.startsWith('size/'));
+          for (const label of sizeLabels) {
+            await github.rest.issues.removeLabel({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              name: label.name
+            });
+          }
+          
+          // Add new size label
+          await github.rest.issues.addLabels({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            issue_number: pr.number,
+            labels: [sizeLabel]
+          });
+
+  check-pr-title:
+    runs-on: ubuntu-latest
+    if: github.event.action == 'opened' || github.event.action == 'edited'
+    steps:
+    - name: Check PR title format
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const pr = context.payload.pull_request;
+          const title = pr.title;
+          
+          // Define good title patterns
+          const goodPatterns = [
+            /^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+/,  // Conventional commits
+            /^(Add|Fix|Update|Remove|Improve) .+/,  // Action-based titles
+          ];
+          
+          const isGoodTitle = goodPatterns.some(pattern => pattern.test(title));
+          
+          if (!isGoodTitle) {
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: pr.number,
+              body: `📝 **PR Title Suggestion**\n\nConsider using a more descriptive title following conventional commit format:\n\n- \`feat: add new feature\`\n- \`fix: resolve issue with...\`\n- \`docs: update documentation\`\n- \`refactor: improve code structure\`\n\nCurrent title: "${title}"`
+            });
+          }
