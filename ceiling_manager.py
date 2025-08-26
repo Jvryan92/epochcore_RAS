@@ -10,7 +10,7 @@ import hashlib
 import time
 import statistics
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, List, Optional, Any, Tuple
 from enum import Enum
 
@@ -43,7 +43,7 @@ class CeilingManager:
     
     def timestamp(self) -> str:
         """Generate ISO timestamp consistent with EPOCH5"""
-        return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     
     def sha256(self, data: str) -> str:
         """Generate SHA256 hash consistent with EPOCH5"""

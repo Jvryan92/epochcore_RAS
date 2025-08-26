@@ -9,7 +9,7 @@ Integrates with all EPOCH5 systems for comprehensive state capture
 import json
 import hashlib
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any
 import zipfile
 import glob
@@ -49,7 +49,7 @@ class MetaCapsuleCreator:
     
     def timestamp(self) -> str:
         """Generate ISO timestamp consistent with EPOCH5"""
-        return datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+        return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
     
     def sha256(self, data: str) -> str:
         """Generate SHA256 hash consistent with EPOCH5"""
