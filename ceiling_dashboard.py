@@ -18,101 +18,109 @@ import threading
 try:
     from ceiling_manager import CeilingManager, ServiceTier, CeilingType
     from integration import EPOCH5Integration
+
     CEILING_AVAILABLE = True
 except ImportError:
     CEILING_AVAILABLE = False
+
 
 class CeilingDashboardHandler(BaseHTTPRequestHandler):
     def __init__(self, *args, ceiling_manager=None, integration=None, **kwargs):
         self.ceiling_manager = ceiling_manager
         self.integration = integration
         super().__init__(*args, **kwargs)
-    
+
     def do_GET(self):
         """Handle GET requests for dashboard endpoints"""
         parsed_path = urlparse(self.path)
         path = parsed_path.path
-        
-        if path == '/' or path == '/dashboard':
+
+        if path == "/" or path == "/dashboard":
             self.serve_dashboard()
-        elif path == '/api/status':
+        elif path == "/api/status":
             self.serve_api_status()
-        elif path == '/api/ceilings':
+        elif path == "/api/ceilings":
             self.serve_api_ceilings()
-        elif path == '/api/performance':
+        elif path == "/api/performance":
             self.serve_api_performance()
         else:
             self.send_error(404, "Endpoint not found")
-    
+
     def serve_dashboard(self):
         """Serve the main dashboard HTML"""
         html = self.generate_dashboard_html()
         self.send_response(200)
-        self.send_header('Content-type', 'text/html')
+        self.send_header("Content-type", "text/html")
         self.end_headers()
         self.wfile.write(html.encode())
-    
+
     def serve_api_status(self):
         """Serve system status API"""
         if not self.integration:
             self.send_json_response({"error": "Integration not available"})
             return
-        
+
         status = self.integration.get_system_status()
         self.send_json_response(status)
-    
+
     def serve_api_ceilings(self):
         """Serve ceiling configurations API"""
         if not self.ceiling_manager:
             self.send_json_response({"error": "Ceiling manager not available"})
             return
-        
+
         ceilings_data = self.ceiling_manager.load_ceilings()
         service_tiers = self.ceiling_manager.load_service_tiers()
-        
+
         response = {
             "configurations": ceilings_data.get("configurations", {}),
             "service_tiers": service_tiers.get("tiers", {}),
-            "last_updated": ceilings_data.get("last_updated", "")
+            "last_updated": ceilings_data.get("last_updated", ""),
         }
         self.send_json_response(response)
-    
+
     def serve_api_performance(self):
         """Serve performance history API"""
         if not self.ceiling_manager:
             self.send_json_response({"error": "Ceiling manager not available"})
             return
-        
+
         # Load performance history from ceiling events log
         performance_data = []
         events_log = self.ceiling_manager.ceiling_events_log
-        
+
         if events_log.exists():
             try:
-                with open(events_log, 'r') as f:
+                with open(events_log, "r") as f:
                     for line in f:
                         if line.strip():
                             event = json.loads(line)
                             if event.get("event_type") == "DYNAMIC_ADJUSTMENT":
-                                performance_data.append({
-                                    "timestamp": event["timestamp"],
-                                    "config_id": event["data"]["config_id"],
-                                    "performance_score": event["data"]["performance_score"],
-                                    "adjustments": event["data"]["adjustments"]
-                                })
+                                performance_data.append(
+                                    {
+                                        "timestamp": event["timestamp"],
+                                        "config_id": event["data"]["config_id"],
+                                        "performance_score": event["data"][
+                                            "performance_score"
+                                        ],
+                                        "adjustments": event["data"]["adjustments"],
+                                    }
+                                )
             except Exception as e:
-                performance_data = [{"error": f"Failed to load performance data: {str(e)}"}]
-        
+                performance_data = [
+                    {"error": f"Failed to load performance data: {str(e)}"}
+                ]
+
         self.send_json_response(performance_data[-50:])  # Return last 50 entries
-    
+
     def send_json_response(self, data: Dict[str, Any]):
         """Send JSON response"""
         self.send_response(200)
-        self.send_header('Content-type', 'application/json')
-        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header("Content-type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
         self.end_headers()
         self.wfile.write(json.dumps(data, indent=2).encode())
-    
+
     def generate_dashboard_html(self):
         """Generate the dashboard HTML"""
         return """<!DOCTYPE html>
@@ -498,56 +506,66 @@ class CeilingDashboardHandler(BaseHTTPRequestHandler):
 </body>
 </html>"""
 
+
 class CeilingDashboard:
     def __init__(self, base_dir: str = "./archive/EPOCH5", port: int = 8080):
         self.base_dir = base_dir
         self.port = port
         self.ceiling_manager = None
         self.integration = None
-        
+
         if CEILING_AVAILABLE:
             self.ceiling_manager = CeilingManager(base_dir)
             self.integration = EPOCH5Integration(base_dir)
-    
+
     def start_server(self):
         """Start the dashboard web server"""
+
         def handler(*args, **kwargs):
             return CeilingDashboardHandler(
-                *args, 
+                *args,
                 ceiling_manager=self.ceiling_manager,
                 integration=self.integration,
-                **kwargs
+                **kwargs,
             )
-        
-        httpd = HTTPServer(('localhost', self.port), handler)
+
+        httpd = HTTPServer(("localhost", self.port), handler)
         print(f"🌐 EPOCH5 Ceiling Dashboard starting on http://localhost:{self.port}")
         print(f"📊 Real-time ceiling monitoring and analytics available")
         print(f"💰 Service tier revenue optimization dashboard")
         print("Press Ctrl+C to stop the server")
-        
+
         try:
             httpd.serve_forever()
         except KeyboardInterrupt:
             print("\n🛑 Dashboard server stopped")
             httpd.server_close()
 
+
 def main():
     """CLI interface for ceiling dashboard"""
     import argparse
-    
+
     parser = argparse.ArgumentParser(description="EPOCH5 Ceiling Dashboard")
-    parser.add_argument("--port", type=int, default=8080, help="Port to run the dashboard on")
-    parser.add_argument("--base-dir", default="./archive/EPOCH5", help="Base directory for EPOCH5 data")
-    
+    parser.add_argument(
+        "--port", type=int, default=8080, help="Port to run the dashboard on"
+    )
+    parser.add_argument(
+        "--base-dir", default="./archive/EPOCH5", help="Base directory for EPOCH5 data"
+    )
+
     args = parser.parse_args()
-    
+
     if not CEILING_AVAILABLE:
         print("❌ Ceiling management system not available")
-        print("   Run 'python3 integration.py setup-demo' first to initialize the system")
+        print(
+            "   Run 'python3 integration.py setup-demo' first to initialize the system"
+        )
         return
-    
+
     dashboard = CeilingDashboard(args.base_dir, args.port)
     dashboard.start_server()
+
 
 if __name__ == "__main__":
     main()
