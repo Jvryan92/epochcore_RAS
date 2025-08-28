@@ -1,0 +1,363 @@
+name: Autonomous Continuous Improvement
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+    inputs:
+      force_health_check:
+        description: 'Force complete health check'
+        required: false
+        default: 'false'
+        type: boolean
+      enable_improvements:
+        description: 'Enable automatic improvements'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  autonomous-improvement:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      actions: read
+      security-events: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        cache: 'pip'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install -r requirements-dev.txt
+
+    - name: Configure autonomous system
+      run: |
+        python scripts/autonomous_improvement/cli.py configure \
+          --enable \
+          --safe-mode \
+          --max-tasks 2 \
+          --health-interval 3600 \
+          --improvement-interval 7200
+
+    - name: Run repository health check
+      id: health_check
+      run: |
+        echo "Running autonomous health check..."
+        python scripts/autonomous_improvement/cli.py health --format json > health_report.json
+        
+        # Extract health score for later use
+        health_score=$(python -c "import json; data=json.load(open('health_report.json')); print(data.get('repository', {}).get('score', 0.5))" 2>/dev/null || echo "0.5")
+        echo "health_score=$health_score" >> $GITHUB_OUTPUT
+        
+        # Upload health report as artifact
+        echo "Health check completed with score: $health_score"
+
+    - name: Run autonomous improvements
+      if: ${{ github.event.inputs.enable_improvements != 'false' }}
+      id: improvements
+      run: |
+        echo "Running autonomous improvements..."
+        python scripts/autonomous_improvement/cli.py run > improvement_results.json
+        
+        # Extract results
+        improvements_made=$(python -c "import json; data=json.load(open('improvement_results.json')); print(data.get('tasks_processed', 0))" 2>/dev/null || echo "0")
+        echo "improvements_made=$improvements_made" >> $GITHUB_OUTPUT
+        
+        echo "Improvements completed: $improvements_made tasks processed"
+
+    - name: Generate comprehensive report
+      run: |
+        cat << 'EOF' > autonomous_report.md
+        # Autonomous Improvement Report
+        
+        **Generated:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+        **Workflow:** ${{ github.workflow }}
+        **Run:** ${{ github.run_number }}
+        
+        ## Health Summary
+        
+        - **Health Score:** ${{ steps.health_check.outputs.health_score }}
+        - **Improvements Made:** ${{ steps.improvements.outputs.improvements_made }}
+        - **Repository:** ${{ github.repository }}
+        - **Branch:** ${{ github.ref_name }}
+        
+        ## Health Details
+        
+        ```json
+        $(cat health_report.json 2>/dev/null || echo '{"error": "Health report not generated"}')
+        ```
+        
+        ## Improvement Results
+        
+        ```json
+        $(cat improvement_results.json 2>/dev/null || echo '{"error": "No improvements run"}')
+        ```
+        
+        ## Recommendations
+        
+        $(python scripts/autonomous_improvement/cli.py health 2>/dev/null | grep -A 20 "=== Repository Health Summary ===" || echo "No specific recommendations at this time.")
+        
+        ---
+        
+        *This report was generated automatically by the Autonomous Continuous Improvement System.*
+        EOF
+
+    - name: Commit improvements if any were made
+      if: ${{ steps.improvements.outputs.improvements_made > 0 }}
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "Autonomous Improvement Bot"
+        
+        # Add any changes made by the autonomous system
+        git add .
+        
+        # Check if there are changes to commit
+        if ! git diff --cached --quiet; then
+          git commit -m "🤖 Autonomous improvements: ${{ steps.improvements.outputs.improvements_made }} tasks completed
+          
+          - Health score: ${{ steps.health_check.outputs.health_score }}
+          - Automated by: ${{ github.workflow }}
+          - Run: ${{ github.run_number }}
+          
+          [skip ci]" || echo "No changes to commit"
+          
+          # Push changes
+          git push || echo "Failed to push changes"
+        else
+          echo "No changes detected to commit"
+        fi
+
+    - name: Create issue for critical health problems
+      if: ${{ steps.health_check.outputs.health_score < 0.6 }}
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const healthScore = parseFloat('${{ steps.health_check.outputs.health_score }}');
+          const issueTitle = `🚨 Repository Health Alert - Score: ${(healthScore * 100).toFixed(1)}%`;
+          
+          const issueBody = `
+          ## Repository Health Alert
+          
+          The autonomous improvement system has detected concerning health metrics for this repository.
+          
+          **Health Score:** ${(healthScore * 100).toFixed(1)}%  
+          **Threshold:** 60%
+          **Status:** 🔴 Critical
+          
+          ### Automated Analysis
+          
+          The repository health has fallen below acceptable thresholds. This may indicate:
+          
+          - Security vulnerabilities requiring immediate attention
+          - Build or test failures
+          - Code quality degradation
+          - Dependency issues
+          - Documentation gaps
+          
+          ### Next Steps
+          
+          1. Review the detailed health report in the workflow run
+          2. Address critical and high-priority issues first
+          3. Monitor subsequent autonomous improvement runs
+          4. Consider manual intervention if automated fixes are insufficient
+          
+          ### Health Report Details
+          
+          View the complete health analysis in: 
+          - Workflow Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          - Branch: \`${{ github.ref_name }}\`
+          - Commit: \`${{ github.sha }}\`
+          
+          ---
+          
+          **Auto-generated by:** Autonomous Continuous Improvement System  
+          **Workflow:** ${{ github.workflow }}  
+          **Run:** ${{ github.run_number }}
+          `;
+          
+          // Check if similar issue already exists
+          const { data: existingIssues } = await github.rest.issues.listForRepo({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            state: 'open',
+            labels: 'autonomous-health,critical'
+          });
+          
+          const hasExistingHealthIssue = existingIssues.some(issue => 
+            issue.title.includes('Repository Health Alert')
+          );
+          
+          if (!hasExistingHealthIssue) {
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: issueTitle,
+              body: issueBody,
+              labels: ['autonomous-health', 'critical', 'needs-attention']
+            });
+            
+            console.log('Created health alert issue');
+          } else {
+            console.log('Health alert issue already exists, skipping creation');
+          }
+
+    - name: Update PR with improvement summary
+      if: ${{ github.event_name == 'pull_request' && steps.improvements.outputs.improvements_made > 0 }}
+      uses: actions/github-script@v7
+      with:
+        script: |
+          const improvementsMade = parseInt('${{ steps.improvements.outputs.improvements_made }}');
+          const healthScore = parseFloat('${{ steps.health_check.outputs.health_score }}');
+          
+          const comment = `
+          ## 🤖 Autonomous Improvement Summary
+          
+          The autonomous improvement system has analyzed this PR and made the following updates:
+          
+          **Improvements Applied:** ${improvementsMade}  
+          **Health Score:** ${(healthScore * 100).toFixed(1)}%  
+          **Status:** ${healthScore > 0.8 ? '✅ Good' : healthScore > 0.6 ? '⚠️ Needs Attention' : '🔴 Critical'}
+          
+          ### What was improved?
+          
+          The system automatically addressed issues in the following areas:
+          - Code quality and linting
+          - Security vulnerabilities  
+          - Test coverage gaps
+          - Documentation updates
+          - Dependency management
+          - Workflow optimizations
+          
+          ### Review Notes
+          
+          Please review the automated changes to ensure they meet your requirements. The autonomous system follows safety-first principles and includes rollback capabilities for all changes.
+          
+          ---
+          
+          *Generated by: Autonomous Continuous Improvement System*
+          `;
+          
+          await github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });
+
+    - name: Upload reports as artifacts
+      uses: actions/upload-artifact@v3
+      if: always()
+      with:
+        name: autonomous-improvement-reports
+        path: |
+          health_report.json
+          improvement_results.json
+          autonomous_report.md
+          .autonomous/reports/
+        retention-days: 30
+
+    - name: Upload health report to GitHub Pages
+      if: ${{ github.ref == 'refs/heads/main' }}
+      run: |
+        # Create pages directory structure
+        mkdir -p .github/pages/autonomous
+        
+        # Copy latest reports
+        cp health_report.json .github/pages/autonomous/latest_health.json
+        cp improvement_results.json .github/pages/autonomous/latest_improvements.json
+        cp autonomous_report.md .github/pages/autonomous/latest_report.md
+        
+        # Create index page
+        cat << 'EOF' > .github/pages/autonomous/index.html
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Repository Health Dashboard</title>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <style>
+                body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; margin: 2rem; }
+                .header { background: #f6f8fa; padding: 1rem; border-radius: 6px; margin-bottom: 2rem; }
+                .metric { background: white; border: 1px solid #d1d9e0; padding: 1rem; margin: 1rem 0; border-radius: 6px; }
+                .score { font-size: 2rem; font-weight: bold; }
+                .good { color: #28a745; }
+                .warning { color: #ffc107; }
+                .critical { color: #dc3545; }
+                pre { background: #f6f8fa; padding: 1rem; border-radius: 6px; overflow: auto; }
+            </style>
+        </head>
+        <body>
+            <div class="header">
+                <h1>🤖 Repository Health Dashboard</h1>
+                <p>Autonomous Continuous Improvement System</p>
+            </div>
+            
+            <div class="metric">
+                <h3>Current Health Score</h3>
+                <div id="healthScore" class="score">Loading...</div>
+            </div>
+            
+            <div class="metric">
+                <h3>Latest Reports</h3>
+                <ul>
+                    <li><a href="latest_health.json">Health Report (JSON)</a></li>
+                    <li><a href="latest_improvements.json">Improvements Report (JSON)</a></li>
+                    <li><a href="latest_report.md">Summary Report (Markdown)</a></li>
+                </ul>
+            </div>
+            
+            <script>
+                fetch('latest_health.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        const score = data.repository?.score || 0.5;
+                        const scoreEl = document.getElementById('healthScore');
+                        scoreEl.textContent = (score * 100).toFixed(1) + '%';
+                        
+                        if (score > 0.8) scoreEl.className = 'score good';
+                        else if (score > 0.6) scoreEl.className = 'score warning';
+                        else scoreEl.className = 'score critical';
+                    })
+                    .catch(() => {
+                        document.getElementById('healthScore').textContent = 'Error loading data';
+                    });
+            </script>
+        </body>
+        </html>
+        EOF
+
+    - name: Summary
+      run: |
+        echo "## Autonomous Improvement Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "- **Health Score:** ${{ steps.health_check.outputs.health_score }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Improvements Made:** ${{ steps.improvements.outputs.improvements_made }}" >> $GITHUB_STEP_SUMMARY
+        echo "- **Status:** $([ "${{ steps.health_check.outputs.health_score }}" > "0.8" ] && echo "✅ Good" || ([ "${{ steps.health_check.outputs.health_score }}" > "0.6" ] && echo "⚠️ Needs Attention" || echo "🔴 Critical"))" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### Reports Available" >> $GITHUB_STEP_SUMMARY  
+        echo "- Health analysis and improvement results available in workflow artifacts" >> $GITHUB_STEP_SUMMARY
+        echo "- Detailed logs available in workflow run output" >> $GITHUB_STEP_SUMMARY
+        
+        if [ "${{ steps.improvements.outputs.improvements_made }}" -gt "0" ]; then
+          echo "- **Automated changes committed to repository**" >> $GITHUB_STEP_SUMMARY
+        fi

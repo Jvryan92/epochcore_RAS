@@ -1,0 +1,53 @@
+confidence_threshold: 0.8
+enabled: true
+excluded_categories: []
+health_check_interval: 3600
+improvement_interval: 7200
+max_concurrent_tasks: 3
+metrics_retention_days: 30
+notification_webhook: null
+priority_hours:
+  critical:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  high:
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+rollback_enabled: true
+safe_mode: true
