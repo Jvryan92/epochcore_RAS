@@ -31,7 +31,9 @@ FINISH_COLORS = {
 
 
 def pick_master(size_px: int) -> Path:
-    return MASTERS / ("strategy_icon_micro.svg" if size_px <= 32 else "strategy_icon_standard.svg")
+    return MASTERS / (
+        "strategy_icon_micro.svg" if size_px <= 32 else "strategy_icon_standard.svg"
+    )
 
 
 def bake_svg(master_svg: str, mode: str, finish: str) -> str:
@@ -47,7 +49,12 @@ def maybe_export_png(svg_bytes: bytes, out_png: Path, size_px: int):
         import cairosvg
 
         out_png.parent.mkdir(parents=True, exist_ok=True)
-        cairosvg.svg2png(bytestring=svg_bytes, write_to=str(out_png), output_width=size_px, output_height=size_px)
+        cairosvg.svg2png(
+            bytestring=svg_bytes,
+            write_to=str(out_png),
+            output_width=size_px,
+            output_height=size_px,
+        )
         return True
     except Exception:
         return False
@@ -84,13 +91,17 @@ def main():
         svg_path = folder / (Path(filename).stem + ".svg")
         svg_path.write_text(baked_svg, encoding="utf-8")
 
-        png_ok = maybe_export_png(baked_svg.encode("utf-8"), folder / Path(filename).name, size)
+        png_ok = maybe_export_png(
+            baked_svg.encode("utf-8"), folder / Path(filename).name, size
+        )
         if png_ok:
             png_count += 1
 
         generated += 1
 
-    print(f"[done] Generated {generated} SVG variants. PNG exports: {png_count} (requires cairosvg).")
+    print(
+        f"[done] Generated {generated} SVG variants. PNG exports: {png_count} (requires cairosvg)."
+    )
 
 
 if __name__ == "__main__":
