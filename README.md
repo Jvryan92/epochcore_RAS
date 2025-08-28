@@ -223,8 +223,25 @@ pytest --cov=. --cov-report=html
 - **Contributing**: [CONTRIBUTING.md](CONTRIBUTING.md)
 - **API Documentation**: Generated with Sphinx
 - **Issue Tracking**: GitHub Issues with templates
-- **Security Reports**: Contact jryan2k19@gmail.com
+- **Security Reports**: Contact jryan2k19@gmail.## EpochCore Ledger Quickstart
 
+```bash
+# clone & enter
+git clone https://github.com/EpochCore5/epoch5-template.git
+cd epoch5-template
+
+# bootstrap (creates ~/epoch_ledger, alias 🧙🦿🤖, phone audit cron)
+bash scripts/setup_unified.sh
+
+# run Alpha Ceiling (optional overrides)
+🧙🦿🤖                 # default
+🧙🦿🤖 250 "first run"  # AMT=250 NOTE="first run"
+
+# artifacts
+#   ~/epoch_ledger/ledger_main.jsonl  -> append-only JSONL audit log
+#   ~/epoch_ledger/seals/*.sha        -> SHA-256 seals per run
+#   ~/epoch_ledger/logs/*.log         -> phone audit scrolls (nightly)
+#   ~/epoch_ledger/capsules/*.json    -> GBTEpoch seed capsule
 ## License
 
 All rights reserved. This software is proprietary and confidential.
