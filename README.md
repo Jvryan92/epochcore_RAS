@@ -2,7 +2,7 @@
 
 A comprehensive icon generation system for the StrategyDECK brand, featuring automated CI/CD workflows and asset management.
 
-## � Installation
+## 🛠️ Installation
 
 ```bash
 # Clone the repository
@@ -170,3 +170,4 @@ The automated workflows will handle:
 ## 📄 License
 
 This project is part of the StrategyDECK brand assets.
+

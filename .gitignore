@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 *.so
+*.pyo
+*.pyd
 .Python
 build/
 develop-eggs/
@@ -28,7 +30,11 @@ share/python-wheels/
 htmlcov/
 .tox/
 .cache
-.pytest_cache
+
+# Virtual environments
+venv/
+env/
+ENV/
 
 # IDE
 .vscode/
@@ -57,11 +63,13 @@ README_old.md
 # Uncomment if you don't want to commit generated assets
 # assets/icons/
 
-# AI Agent reports (generated content)
+# Reports and logs
 reports/
-
-# AI Agent logs
 logs/
+archive/
 
-# Zip files (extracted to proper locations)
+# Archives and temporary files
 *.zip
+*.tar
+*.gz
+*.rar

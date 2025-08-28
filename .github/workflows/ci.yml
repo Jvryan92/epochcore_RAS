@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: StrategyDECK CI/CD
 
 on:
   push:
@@ -15,12 +15,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -56,3 +54,48 @@ jobs:
         name: generated-icons-python-${{ matrix.python-version }}
         path: assets/icons/
         retention-days: 7
+=======
+        
+    - name: Run type checks
+      run: |
+        mypy .
+        
+    - name: Run security scan
+      run: |
+        safety check
+        bandit -r .
+        
+    - name: Run tests
+      run: |
+        pytest --cov=. --cov-report=xml
+        
+    - name: Upload coverage
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: true
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+        
+    - name: Build package
+      run: |
+        pip install build
+        python -m build
+        
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: dist
+        path: dist/
+>>>>>>> epoch5/main

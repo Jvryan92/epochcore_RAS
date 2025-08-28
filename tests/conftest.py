@@ -3,6 +3,8 @@
 import os
 import pytest
 import sys
+import shutil
+import tempfile
 from pathlib import Path
 from typing import Generator
 
@@ -18,11 +20,11 @@ def repo_root() -> Path:
 
 
 @pytest.fixture
-def temp_dir(tmp_path) -> Generator[Path, None, None]:
+def temp_dir() -> Generator[str, None, None]:
     """Create a temporary directory for tests."""
-    temp_dir = tmp_path / "test_workdir"
-    temp_dir.mkdir()
+    temp_dir = tempfile.mkdtemp()
     yield temp_dir
+    shutil.rmtree(temp_dir, ignore_errors=True)
 
 
 @pytest.fixture
@@ -42,4 +44,5 @@ def test_config() -> dict:
                 "colors": ["flat-orange", "burnt-orange", "copper-foil"]
             }
         }
+    }
     }
