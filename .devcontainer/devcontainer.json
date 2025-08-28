@@ -1,5 +1,5 @@
 {
-	"name": "StrategyDECK Development",
+	"name": "EpochCore RAS Development",
 	"image": "mcr.microsoft.com/devcontainers/python:1-3.11",
 	"features": {
 		"ghcr.io/devcontainers/features/git:1": {},
@@ -24,7 +24,7 @@
 				"python.formatting.provider": "black",
 				"editor.formatOnSave": true,
 				"editor.codeActionsOnSave": {
-					"source.organizeImports": true
+					"source.organizeImports": "explicit"
 				}
 			}
 		}

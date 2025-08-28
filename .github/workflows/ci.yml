@@ -1,4 +1,4 @@
-name: StrategyDECK CI/CD
+name: EpochCore RAS CI/CD
 
 on:
   push:
