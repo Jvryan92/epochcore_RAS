@@ -60,4 +60,3 @@ opentelemetry-sdk>=1.18.0
 pre-commit>=3.0.0
 python-dotenv>=1.0.0  # Environment management
 rich>=13.4.0  # Enhanced terminal output
->>>>>>> epoch5/main
