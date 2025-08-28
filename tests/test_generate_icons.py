@@ -50,7 +50,14 @@ class TestIconGeneration:
 
     def test_finish_colors_defined(self):
         """Test that all finish colors are properly defined."""
-        expected_finishes = ["flat-orange", "matte-carbon", "satin-black", "burnt-orange", "copper-foil", "embossed-paper"]
+        expected_finishes = [
+            "flat-orange",
+            "matte-carbon",
+            "satin-black",
+            "burnt-orange",
+            "copper-foil",
+            "embossed-paper",
+        ]
 
         for finish in expected_finishes:
             assert finish in FINISH_COLORS
@@ -58,7 +65,16 @@ class TestIconGeneration:
 
     def test_tokens_defined(self):
         """Test that all color tokens are properly defined."""
-        required_tokens = ["paper", "slate_950", "brand_orange", "ink", "copper", "burnt_orange", "matte", "embossed"]
+        required_tokens = [
+            "paper",
+            "slate_950",
+            "brand_orange",
+            "ink",
+            "copper",
+            "burnt_orange",
+            "matte",
+            "embossed",
+        ]
 
         for token in required_tokens:
             assert token in TOKENS
