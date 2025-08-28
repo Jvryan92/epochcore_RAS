@@ -5,6 +5,7 @@ A comprehensive icon generation system for the StrategyDECK brand, featuring aut
 ## 🚀 Features
 
 - **Icon Generation**: Automated SVG/PNG icon generation with multiple variants
+- **AI Agent System**: Dedicated agents for project automation and optimization
 - **CI/CD Pipeline**: Automated testing, building, and deployment
 - **Issue Management**: Auto-labeling and assignment based on keywords
 - **PR Management**: Automated reviewer assignment and notifications
@@ -26,7 +27,30 @@ pip install -r requirements.txt
 
 # Generate all icon variants
 python scripts/generate_icons.py
+
+# Run AI agents for project automation
+python scripts/run_agents.py
 ```
+
+### AI Agent System
+
+The StrategyDECK AI Agent System provides intelligent automation:
+
+```bash
+# Run all agents
+python scripts/run_agents.py
+
+# Run specific agent
+python scripts/run_agents.py --agent project_monitor
+
+# List available agents
+python scripts/run_agents.py --list
+```
+
+Available agents:
+- **project_monitor**: Tracks project status and generates reports
+- **asset_manager**: Automates icon generation and asset management
+- **workflow_optimizer**: Analyzes and optimizes GitHub Actions workflows
 
 ## 🤖 GitHub Actions Workflows
 
@@ -78,11 +102,16 @@ StrategyDECK/
 │   ├── masters/            # Master SVG files
 │   └── icons/              # Generated variants
 ├── scripts/
-│   └── generate_icons.py   # Main generation script
+│   ├── ai_agent/           # AI agent system
+│   ├── generate_icons.py   # Main generation script
+│   └── run_agents.py       # AI agent runner
 ├── tests/
-│   └── test_generate_icons.py
+│   ├── test_generate_icons.py
+│   └── test_ai_agent.py
 ├── docs/
-│   └── api/                # Auto-generated docs
+│   ├── api/                # Auto-generated docs
+│   └── AI_AGENT.md         # AI agent documentation
+├── reports/                # Generated agent reports
 ├── strategy_icon_variant_matrix.csv
 └── requirements.txt
 ```
@@ -103,6 +132,7 @@ black --check scripts/ tests/
 - [API Documentation](docs/api/generate_icons.md)
 - [Usage Examples](docs/api/examples.md)
 - [Workflow Configuration](.github/workflows/)
+- [AI Agent System](docs/AI_AGENT.md)
 
 ## 🤝 Contributing
 

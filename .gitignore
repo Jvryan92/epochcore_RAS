@@ -57,5 +57,11 @@ README_old.md
 # Uncomment if you don't want to commit generated assets
 # assets/icons/
 
+# AI Agent reports (generated content)
+reports/
+
+# AI Agent logs
+logs/
+
 # Zip files (extracted to proper locations)
 *.zip
