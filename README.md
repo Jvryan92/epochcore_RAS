@@ -2,7 +2,26 @@
 
 A comprehensive icon generation system for the StrategyDECK brand, featuring automated CI/CD workflows and asset management.
 
-## 🚀 Features
+## � Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/StategyDECK.git
+cd StategyDECK
+
+# Create and activate virtual environment
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+pip install -r requirements-dev.txt  # For development
+
+# Run tests
+pytest
+```
+
+## �🚀 Features
 
 - **Icon Generation**: Automated SVG/PNG icon generation with multiple variants
 - **AI Agent System**: Dedicated agents for project automation and optimization

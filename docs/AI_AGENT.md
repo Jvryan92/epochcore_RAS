@@ -55,7 +55,39 @@ python scripts/run_agents.py --list
 python scripts/run_agents.py --config custom.json
 ```
 
+
 ## 🔧 Agent Details
+
+### StrategyAgent
+
+**Purpose**: Automates strategic tasks and decision-making for the project. Serves as a foundation for further agent-based extensions.
+
+**Features**:
+- Automates strategic tasks and processes within StrategyDECK
+- Enhances efficiency and intelligent decision-making
+- Robust error handling and logging
+- Extensible for future agent types
+
+**Setup:**
+1. Implemented in `scripts/ai_agent/agents/strategy_agent.py`.
+2. Integrated via `scripts/run_agents.py`.
+3. Configuration managed in `scripts/ai_agent/config/default.json`.
+
+**Usage:**
+- Run all agents (including StrategyAgent):
+  ```bash
+  python scripts/run_agents.py
+  ```
+- Run only StrategyAgent:
+  ```bash
+  python scripts/run_agents.py --agent strategy_agent
+  ```
+
+**Extending:**
+- Designed for scalability. Add new agents using the same pattern.
+
+**Error Handling & Logging:**
+- All errors are logged using the project's logging system (`core/logger.py`).
 
 ### Project Monitor Agent
 

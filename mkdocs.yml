@@ -1,0 +1,43 @@
+site_name: StrategyDECK Documentation
+site_description: Documentation for the StrategyDECK brand asset management tool
+site_author: StrategyDECK Team
+
+repo_url: https://github.com/yourusername/StategyDECK
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    primary: orange
+    accent: deep-orange
+  features:
+    - navigation.tabs
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: installation.md
+    - Basic Usage: usage.md
+  - User Guide:
+    - Configuration: configuration.md
+    - Asset Management: asset-management.md
+    - Workflows: workflows.md
+  - API Reference:
+    - Core API: api/core.md
+    - Agents: api/agents.md
+    - Utils: api/utils.md
+  - Contributing:
+    - Guidelines: contributing.md
+    - Development Setup: development.md
+  - Release Notes: changelog.md

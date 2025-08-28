@@ -4,16 +4,12 @@
 import sys
 import argparse
 from pathlib import Path
-
 # Add the parent directory to the path so we can import the agent modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from ai_agent.core.agent_manager import AgentManager
-from ai_agent.agents import (
-    ProjectMonitorAgent,
-    AssetManagerAgent,
-    WorkflowOptimizerAgent,
-)
+from ai_agent.agents.asset_manager import AssetManagerAgent
+from ai_agent.agents.ledger_agent import LedgerAgent
 
 
 def main():
@@ -29,24 +25,22 @@ Examples:
   python run_agents.py --config custom.json    # Use custom config
         """,
     )
-
-    parser.add_argument(
-        "--agent", type=str, help="Run a specific agent by name"
-    )
-
-    parser.add_argument(
-        "--list", action="store_true", help="List all available agents"
-    )
-
-    parser.add_argument(
-        "--config",
-        type=str,
-        default="config/default.json",
-        help="Configuration file path (default: config/default.json)",
-    )
-
     parser.add_argument(
         "--verbose", action="store_true", help="Enable verbose logging"
+    )
+    parser.add_argument(
+        "--agent",
+        help="Run a specific agent by name"
+    )
+    parser.add_argument(
+        "--list",
+        action="store_true",
+        help="List available agents"
+    )
+    parser.add_argument(
+        "--config",
+        default="ai_agent/config/default.json",
+        help="Path to custom config file"
     )
 
     args = parser.parse_args()
@@ -61,14 +55,11 @@ Examples:
 
     # Register available agents
     agents = [
-        ProjectMonitorAgent(
-            manager.config.get("agents", {}).get("project_monitor", {})
-        ),
         AssetManagerAgent(
             manager.config.get("agents", {}).get("asset_manager", {})
         ),
-        WorkflowOptimizerAgent(
-            manager.config.get("agents", {}).get("workflow_optimizer", {})
+        LedgerAgent(
+            manager.config.get("agents", {}).get("ledger", {})
         ),
     ]
 

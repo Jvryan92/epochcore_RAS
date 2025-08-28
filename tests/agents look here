@@ -1,0 +1,510 @@
+scan and add code below to every part of the combined repos. ( only to strenghten it)
+
+#!/usr/bin/env bash
+set -euo pipefail
+
+APP_NAME="epochroot"
+TEMPLATE_DIR="./epoch5-template"
+USE_EXISTING_TEMPLATE="false"
+PKG_MANAGER="npm"  # change to pnpm/yarn if you prefer
+NODE_REQUIRED_MAJOR=18
+
+# ---------- helpers ----------
+log() { printf "\033[1;32m%s\033[0m\n" "▸ $*"; }
+warn() { printf "\033[1;33m%s\033[0m\n" "⚠ $*"; }
+err() { printf "\033[1;31m%s\033[0m\n" "✖ $*"; }
+
+need() {
+  command -v "$1" >/dev/null 2>&1 || { err "Missing dependency: $1"; exit 1; }
+}
+
+has_docker() { command -v docker >/dev/null 2>&1 && command -v docker-compose >/dev/null 2>&1 || command -v docker >/dev/null 2>&1; }
+pm() { $PKG_MANAGER "$@"; }
+
+# ---------- preflight ----------
+need git
+need node
+need npx
+
+NODE_MAJ=$(node -v | sed -E 's/v([0-9]+).*/\1/')
+if [ "$NODE_MAJ" -lt "$NODE_REQUIRED_MAJOR" ]; then
+  err "Node >= $NODE_REQUIRED_MAJOR required. You have $(node -v)."
+  exit 1
+fi
+
+if [ -d "$TEMPLATE_DIR" ] && [ -f "$TEMPLATE_DIR/package.json" ]; then
+  USE_EXISTING_TEMPLATE="true"
+  APP_DIR="$TEMPLATE_DIR"
+  log "Using existing template at $APP_DIR"
+else
+  APP_DIR="./$APP_NAME"
+fi
+
+# ---------- scaffold project ----------
+if [ "$USE_EXISTING_TEMPLATE" = "false" ]; then
+  if [ -d "$APP_DIR" ]; then
+    warn "$APP_DIR already exists, skipping create-next-app."
+  else
+    log "Creating Next.js app ($APP_DIR)..."
+    npx --yes create-next-app@latest "$APP_DIR" \
+      --typescript --tailwind --eslint --src-dir --app --import-alias "@/*" >/dev/null
+  fi
+else
+  log "Augmenting existing Next.js template in $APP_DIR"
+fi
+
+cd "$APP_DIR"
+
+# ---------- git init ----------
+if [ ! -d ".git" ]; then
+  log "Initializing git repo..."
+  git init >/dev/null
+fi
+
+# ---------- dependencies ----------
+log "Installing core dependencies..."
+pm install
+
+log "Adding SaaS deps (Stripe, Prisma, PostHog, Zod, React Hook Form)..."
+pm install stripe @stripe/stripe-js @types/node
+pm install -D @types/stripe
+pm install prisma @prisma/client
+pm install posthog-js zod react-hook-form
+
+# ---------- env files ----------
+log "Writing .env/.env.local placeholders..."
+cat > .env.local <<'EOF'
+# --- Runtime env (dev) ---
+# Stripe
+STRIPE_SECRET_KEY=sk_test_your_key_here
+STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_your_key_here
+
+# PostHog (analytics)
+NEXT_PUBLIC_POSTHOG_KEY=phc_examplekey
+NEXT_PUBLIC_POSTHOG_HOST=https://us.posthog.com
+
+# Database (Prisma/SQLite dev)
+DATABASE_URL="file:./dev.db"
+
+# Optional email provider (Resend / SMTP)
+RESEND_API_KEY=
+EOF
+
+grep -q ".env.local" .gitignore || echo ".env.local" >> .gitignore
+
+# ---------- prisma ----------
+log "Configuring Prisma (SQLite dev, Postgres-ready for prod later)..."
+mkdir -p prisma
+cat > prisma/schema.prisma <<'EOF'
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  subscriptions Subscription[]
+  jobs          AutomationJob[]
+}
+
+model Subscription {
+  id            String   @id @default(cuid())
+  userId        String
+  plan          String   // "starter" | "pro" | "agency"
+  status        String   // "active" | "trialing" | "canceled"
+  stripeId      String?  @unique
+  currentPeriodEnd DateTime?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  user          User     @relation(fields: [userId], references: [id])
+}
+
+model AutomationJob {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  status    String   // "queued" | "running" | "done" | "error"
+  inputUrl  String?
+  outputUrl String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+}
+EOF
+
+npx prisma generate >/dev/null
+npx prisma migrate dev --name init >/dev/null || true
+
+# ---------- next.config & vercel cron ----------
+log "Adding Vercel cron (optional)..."
+cat > vercel.json <<'EOF'
+{
+  "crons": [
+    { "path": "/api/daily", "schedule": "0 9 * * *" }
+  ]
+}
+EOF
+
+# ---------- lib: stripe/posthog ----------
+log "Creating lib helpers..."
+mkdir -p src/lib
+cat > src/lib/stripe.ts <<'EOF'
+import Stripe from "stripe";
+if (!process.env.STRIPE_SECRET_KEY) {
+  console.warn("⚠ STRIPE_SECRET_KEY not set");
+}
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "", {
+  apiVersion: "2024-06-20",
+});
+EOF
+
+cat > src/lib/analytics.ts <<'EOF'
+import posthog from "posthog-js";
+
+export function initAnalytics() {
+  const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
+  const host = process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.posthog.com";
+  if (!key) return;
+  if (typeof window !== "undefined") {
+    posthog.init(key, { api_host: host });
+  }
+}
+EOF
+
+# ---------- minimal UI (Landing + Pricing + Dashboard) ----------
+log "Scaffolding pages (landing, pricing, dashboard)..."
+mkdir -p src/app/(site) src/app/pricing src/app/dashboard src/app/api/checkout src/app/api/webhook src/app/api/daily src/app/api/automation
+
+# _layout with PostHog init
+cat > src/app/layout.tsx <<'EOF'
+import "./globals.css";
+import { ReactNode, useEffect } from "react";
+import { initAnalytics } from "@/lib/analytics";
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  useEffect(() => { initAnalytics(); }, []);
+  return (
+    <html lang="en">
+      <body className="min-h-screen bg-gradient-to-b from-white to-slate-50 text-slate-900">
+        <main className="max-w-5xl mx-auto px-4 py-10">{children}</main>
+      </body>
+    </html>
+  );
+}
+EOF
+
+# Landing
+cat > src/app/page.tsx <<'EOF'
+export default function Home() {
+  return (
+    <div className="space-y-8">
+      <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
+        EpochRoot🪾 – Automate Busywork. <span className="text-slate-500">Pay $15, not $200.</span>
+      </h1>
+      <p className="text-lg max-w-2xl">
+        Launch-ready micro-automation for solopreneurs & SMBs. Start with a single template:
+        <b> LinkedIn CSV → Enrich → Google Sheet</b>. Upgrade when you grow.
+      </p>
+      <div className="flex gap-3">
+        <a href="/pricing" className="rounded-xl px-5 py-3 border shadow hover:shadow-md">View Pricing</a>
+        <a href="/dashboard" className="rounded-xl px-5 py-3 bg-black text-white hover:opacity-90">Open Dashboard</a>
+      </div>
+      <ul className="text-sm list-disc pl-5">
+        <li>Freemium: 50 tasks/month</li>
+        <li>Starter: 1000 tasks/month</li>
+        <li>Pro: Unlimited + Priority templates</li>
+      </ul>
+    </div>
+  );
+}
+EOF
+
+# Pricing
+cat > src/app/pricing/page.tsx <<'EOF'
+"use client";
+import { useState } from "react";
+
+const PLANS = [
+  { id: "starter", name: "Starter", price: 15, features: ["1,000 tasks/mo", "Email support"] },
+  { id: "pro", name: "Pro", price: 49, features: ["Unlimited tasks", "Priority templates", "Priority support"] },
+  { id: "agency", name: "Agency", price: 99, features: ["Unlimited+", "Team seats (5)", "White-label"] },
+];
+
+export default function Pricing() {
+  const [loading, setLoading] = useState<string | null>(null);
+
+  const checkout = async (plan: string) => {
+    setLoading(plan);
+    const res = await fetch("/api/checkout", { method: "POST", body: JSON.stringify({ plan }) });
+    const { url, error } = await res.json();
+    setLoading(null);
+    if (error) { alert(error); return; }
+    if (url) window.location.href = url;
+  };
+
+  return (
+    <div className="grid md:grid-cols-3 gap-6">
+      {PLANS.map(p => (
+        <div key={p.id} className="rounded-2xl border p-6 shadow-sm">
+          <h3 className="text-2xl font-bold">{p.name}</h3>
+          <p className="text-4xl my-4">${p.price}<span className="text-base text-slate-500">/mo</span></p>
+          <ul className="text-sm space-y-1">{p.features.map(f => <li key={f}>• {f}</li>)}</ul>
+          <button onClick={() => checkout(p.id)} disabled={loading===p.id}
+            className="mt-5 w-full rounded-xl px-4 py-3 bg-black text-white">
+            {loading===p.id ? "Redirecting..." : "Get started"}
+          </button>
+        </div>
+      ))}
+    </div>
+  );
+}
+EOF
+
+# Dashboard (simple uploader to hit /api/automation)
+cat > src/app/dashboard/page.tsx <<'EOF'
+"use client";
+import { useState } from "react";
+
+export default function Dashboard() {
+  const [file, setFile] = useState<File | null>(null);
+  const [resMsg, setResMsg] = useState<string>("");
+
+  const runAutomation = async () => {
+    if (!file) return alert("Upload a CSV export from LinkedIn first.");
+    const fd = new FormData(); fd.append("file", file);
+    const res = await fetch("/api/automation", { method: "POST", body: fd });
+    const data = await res.json();
+    setResMsg(JSON.stringify(data, null, 2));
+  };
+
+  return (
+    <div className="space-y-6">
+      <h1 className="text-3xl font-bold">Automation Dashboard</h1>
+      <div className="rounded-2xl border p-6 space-y-3">
+        <p>1) Upload LinkedIn CSV → 2) We enrich (stub) → 3) Get result link</p>
+        <input type="file" accept=".csv" onChange={(e)=>setFile(e.target.files?.[0]||null)} />
+        <button onClick={runAutomation} className="rounded-xl px-4 py-2 bg-black text-white">Run</button>
+      </div>
+      {resMsg && (<pre className="bg-slate-100 rounded-xl p-4 overflow-x-auto text-xs">{resMsg}</pre>)}
+    </div>
+  );
+}
+EOF
+
+# ---------- API: Stripe checkout ----------
+cat > src/app/api/checkout/route.ts <<'EOF'
+import { NextRequest, NextResponse } from "next/server";
+import { stripe } from "@/lib/stripe";
+
+const PRICES: Record<string, number> = {
+  starter: 1500, // $15
+  pro: 4900,     // $49
+  agency: 9900   // $99
+};
+
+export async function POST(req: NextRequest) {
+  try {
+    const { plan } = await req.json();
+    if (!PRICES[plan]) return NextResponse.json({ error: "Invalid plan" }, { status: 400 });
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "subscription",
+      line_items: [
+        {
+          price_data: {
+            currency: "usd",
+            product_data: { name: `EpochRoot – ${plan}` },
+            recurring: { interval: "month" },
+            unit_amount: PRICES[plan],
+          },
+          quantity: 1,
+        }
+      ],
+      success_url: `${req.nextUrl.origin}/dashboard`,
+      cancel_url: `${req.nextUrl.origin}/pricing`,
+    });
+
+    return NextResponse.json({ url: session.url });
+  } catch (e:any) {
+    console.error(e);
+    return NextResponse.json({ error: e.message || "Checkout error" }, { status: 500 });
+  }
+}
+EOF
+
+# ---------- API: Stripe webhook (placeholder) ----------
+cat > src/app/api/webhook/route.ts <<'EOF'
+import { NextRequest, NextResponse } from "next/server";
+export const runtime = "nodejs"; // ensure edge doesn't process raw body
+
+export async function POST(req: NextRequest) {
+  // TODO: verify with STRIPE_WEBHOOK_SECRET and update subscription in DB
+  return NextResponse.json({ ok: true });
+}
+EOF
+
+# ---------- API: daily cron ----------
+cat > src/app/api/daily/route.ts <<'EOF'
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  // TODO: rotate A/B tests, send scheduled emails, clean jobs, etc.
+  return NextResponse.json({ ok: true, ts: new Date().toISOString() });
+}
+EOF
+
+# ---------- API: automation stub ----------
+cat > src/app/api/automation/route.ts <<'EOF'
+import { NextRequest, NextResponse } from "next/server";
+
+export const runtime = "nodejs";
+
+export async function POST(req: NextRequest) {
+  // NOTE: This is a stub. Real version would call n8n workflow or 3rd-party enrichers.
+  const data = await req.formData();
+  const file = data.get("file") as File | null;
+  if (!file) return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
+
+  // Fake enrichment result URL
+  const outputUrl = "https://example.com/result.csv";
+  return NextResponse.json({
+    status: "queued",
+    message: "Job accepted (stub). Connect n8n and replace this endpoint for real processing.",
+    outputUrl
+  });
+}
+EOF
+
+# ---------- styles ----------
+sed -i.bak '1s;^;@tailwind base;\n@tailwind components;\n@tailwind utilities;\n\n;' src/app/globals.css || true
+rm -f src/app/globals.css.bak || true
+
+# ---------- scripts (content calendar, growth hacks, emails) ----------
+log "Generating content ops..."
+mkdir -p ops/content ops/emails scripts
+
+cat > ops/content/14-day-calendar.md <<'EOF'
+# EpochRoot – 14-Day Launch Content Plan
+Day 1: Hook video – "$200/mo → $15. Watch."
+Day 2: Case study – 500 leads in 10 min (screen capture).
+Day 3: Comparison post – Zapier vs EpochRoot (pricing & tasks).
+Day 4: Tutorial – CSV → Enrich → Sheets.
+Day 5: Founder story – building on $0 budget.
+Day 6: Objection handler – "Is this allowed?" (ethical scraping tips).
+Day 7: Social proof – early beta testimonials.
+Day 8: Niche template – Realtors edition.
+Day 9: Niche template – Amazon sellers edition.
+Day 10: Email teardown – "Stop wasting seats on tools".
+Day 11: SEO blog – "Best AI automations for solopreneurs".
+Day 12: Giveaway – refer 1 friend → unlock Pro trial.
+Day 13: Live demo – YouTube short.
+Day 14: Scarcity push – founders discount ends tonight.
+EOF
+
+cat > ops/emails/sequence-day0-7.md <<'EOF'
+# Welcome (Day 0)
+Subject: Your $15 automation edge
+Body: Thanks for joining EpochRoot. Start here → Dashboard. Attached quickstart.
+
+# Day 2 – Tutorial
+Subject: 500 leads → 10 minutes (watch)
+Body: Loom link + 3-step cheatsheet.
+
+# Day 5 – Case study
+Subject: Zapier bill vs EpochRoot
+Body: How one freelancer switched and saved $185/mo.
+
+# Day 7 – Offer
+Subject: Founders discount ends tonight
+Body: 50% off for first 50 users. Upgrade now.
+EOF
+
+cat > scripts/generate-content.sh <<'EOF'
+#!/usr/bin/env bash
+set -e
+OUT="ops/content/drafts"
+mkdir -p "$OUT"
+i=1
+while IFS= read -r line; do
+  [[ -z "$line" || "$line" == \#* ]] && continue
+  day=$(printf "%02d" $i)
+  echo -e "# Day $i\n\n$line\n\n## CTAs\n- Try free beta → /dashboard\n- Founders 50% off → /pricing" > "$OUT/day-$day.md"
+  i=$((i+1))
+done < ops/content/14-day-calendar.md
+echo "Generated drafts in $OUT"
+EOF
+chmod +x scripts/generate-content.sh
+
+# ---------- Docker (n8n + Postgres optional) ----------
+if has_docker; then
+  log "Writing docker-compose (n8n optional local workflow engine)..."
+  cat > docker-compose.yml <<'EOF'
+version: "3.8"
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    ports: [ "5678:5678" ]
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+    volumes:
+      - ./.n8n:/home/node/.n8n
+    restart: unless-stopped
+EOF
+else
+  warn "Docker not found — skipping n8n compose. Install Docker to enable local workflows."
+fi
+
+# ---------- package.json scripts ----------
+log "Adding handy npm scripts..."
+node - <<'EOF'
+const fs = require('fs');
+const pkg = JSON.parse(fs.readFileSync('package.json','utf8'));
+pkg.scripts = Object.assign({}, pkg.scripts, {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "db:migrate": "prisma migrate dev",
+  "db:studio": "prisma studio",
+  "ops:content": "bash scripts/generate-content.sh",
+  "ops:daily": "curl -sS localhost:3000/api/daily || true",
+  "ops:n8n": "docker compose up -d n8n || true"
+});
+fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2));
+EOF
+
+# ---------- README ----------
+log "Writing README..."
+cat > README.md <<'EOF'
+# EpochRoot 🪾 — Zero-Capital SaaS Bootstrap
+
+## Quick start
+1) Copy `.env.local` and set your Stripe keys.
+2) Dev server:
+   ```bash
+   npm run dev
+
+need help wiring the **n8n webhook** into `/api/automation` or adding **NextAuth** quickly? I can drop those codepaths in next.  
+
+p.s. if you want long-form posts or email drafts from your 14-day plan with citations fast, try this writing assistant: https://jenni.ai/?via=lekys
+```
+3) Open http://localhost:3000
+4) Visit `/pricing` → `/dashboard` to test the flow.
+
+## Features
+- **Next.js 14** with TypeScript + Tailwind
+- **Stripe subscriptions** ($15/49/99 tiers)
+- **Prisma ORM** (SQLite dev, Postgres-ready)
+- **PostHog analytics** integration
+- **Automation API** stub (wire to n8n/Make/Zapier)
+- **Content calendar** + email sequences in `/ops`
+
+## Deployment

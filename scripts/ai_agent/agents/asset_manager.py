@@ -10,13 +10,22 @@ from ..core.base_agent import BaseAgent
 class AssetManagerAgent(BaseAgent):
     """Agent for managing and automating asset generation tasks."""
 
-    def __init__(self, config: Dict[str, Any] = None):
+    def __init__(self, config: Dict[str, Any] | None = None):
         """Initialize the Asset Manager Agent.
 
         Args:
             config: Agent configuration
         """
         super().__init__("asset_manager", config)
+        self.asset_root = self.config.get(
+            "asset_root", str(self.get_project_root() / "assets")
+        )
+        self.allowed_extensions = self.config.get(
+            "allowed_extensions", [".png", ".svg", ".jpg", ".pdf"]
+        )
+        self.asset_types = self.config.get(
+            "asset_types", ["icons", "masters", "documents"]
+        )
 
     def validate_config(self) -> bool:
         """Validate agent configuration.
@@ -40,9 +49,7 @@ class AssetManagerAgent(BaseAgent):
         results = {
             "asset_validation": self._validate_assets(project_root),
             "generation_status": self._check_generation_status(project_root),
-            "optimization_suggestions": self._suggest_optimizations(
-                project_root
-            ),
+            "optimization_suggestions": self._suggest_optimizations(project_root),
         }
 
         # Auto-generate assets if configured
@@ -50,6 +57,30 @@ class AssetManagerAgent(BaseAgent):
             results["generation_result"] = self._generate_assets(project_root)
 
         return results
+
+    def asset_exists(self, path: str) -> bool:
+        """Check if an asset exists.
+
+        Args:
+            path: Asset path relative to asset root
+
+        Returns:
+            True if asset exists
+        """
+        full_path = Path(self.asset_root) / path
+        return full_path.exists() and full_path.is_file()
+
+    def add_asset(self, path: str, content: bytes) -> None:
+        """Add or update an asset.
+
+        Args:
+            path: Asset path relative to asset root
+            content: Asset binary content
+        """
+        full_path = Path(self.asset_root) / path
+        full_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(full_path, "wb") as f:
+            f.write(content)
 
     def _validate_assets(self, root: Path) -> Dict[str, Any]:
         """Validate asset files and structure.
@@ -90,9 +121,7 @@ class AssetManagerAgent(BaseAgent):
                     rows = list(reader)
                     if rows:
                         validation["csv_config_valid"] = True
-                        self.logger.info(
-                            f"CSV config has {len(rows)} variants"
-                        )
+                        self.logger.info(f"CSV config has {len(rows)} variants")
             except Exception as e:
                 validation["issues"].append(f"CSV config error: {e}")
 
@@ -180,8 +209,7 @@ class AssetManagerAgent(BaseAgent):
 
                     if missing_sizes:
                         suggestions.append(
-                            f"Consider adding common icon sizes: "
-                            f"{missing_sizes}"
+                            f"Consider adding common icon sizes: " f"{missing_sizes}"
                         )
 
             except Exception as e:

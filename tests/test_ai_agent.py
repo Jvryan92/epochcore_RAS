@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-"""Tests for the StrategyDECK AI Agent System."""
+#!/usr/bin/env        """Tests for the StrategyDECK AI Agent System."""
 
 import pytest
 import tempfile
@@ -10,6 +9,87 @@ import sys
 
 # Add the scripts directory to the path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+
+import sys
+from pathlib import Path
+
+# Add scripts directory to path
+sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+
+from ai_agent import (
+    StrategyAgent,
+    TaskType,
+    AgentManager,
+    BaseAgent,
+    ProjectMonitorAgent,
+    AssetManagerAgent,
+    WorkflowOptimizerAgent
+)
+
+class TestStrategyAgent:
+    """Test cases for StrategyAgent."""
+    
+    def test_initialization(self):
+        """Test StrategyAgent initialization."""
+        agent = StrategyAgent()
+        assert agent.name == "strategy_agent"
+        assert isinstance(agent.pattern_registry, dict)
+        assert len(agent.pattern_registry) == 3  # fractal, adaptive, quantumon3
+"""Tests for the StrategyDECK AI Agent System."""
+
+import pytest
+import tempfile
+import json
+from pathlib import Path
+from unittest.mock import Mock, patch
+import sys
+
+class TestStrategyAgent:
+    """Test cases for StrategyAgent."""
+    
+    def test_initialization(self):
+        """Test StrategyAgent initialization."""
+        agent = StrategyAgent()
+        assert agent.name == "strategy_agent"
+        assert isinstance(agent.pattern_registry, dict)
+        assert len(agent.pattern_registry) == 3  # fractal, adaptive, quantum
+        
+    def test_bulk_task_creation(self):
+        """Test creating bulk tasks."""
+        agent = StrategyAgent()
+        bulk_task = agent.create_bulk_task("test_bulk", bulk_factor=10)
+        
+        assert bulk_task.name == "test_bulk_bulk_10x"
+        assert bulk_task.task_type == TaskType.COMPOUND
+        assert bulk_task.metadata["bulk_factor"] == 10
+        assert len(bulk_task.patterns) == 1
+        
+    def test_bulk_task_execution(self):
+        """Test executing bulk tasks with quantum pattern."""
+        agent = StrategyAgent()
+        bulk_task = agent.create_bulk_task("test_bulk", bulk_factor=5, pattern_type="quantum")
+        results = agent.execute_task(bulk_task)
+        
+        # Verify we got multiple outputs
+        assert isinstance(results, dict)
+        assert results["status"] == "compound_processed"
+        
+        # Check meta result contains generated tasks
+        meta_result = results["meta_result"]
+        assert meta_result["status"] == "meta_processed"
+        assert meta_result["generated_tasks"] > 0
+        
+    def test_bulk_task_state_tracking(self):
+        """Test state tracking for bulk tasks."""
+        agent = StrategyAgent()
+        bulk_task = agent.create_bulk_task("test_state", bulk_factor=3)
+        agent.execute_task(bulk_task)
+        
+        # Verify state history was tracked
+        assert len(agent.state_history[bulk_task.id]) > 0
+        state = agent.state_history[bulk_task.id][0]
+        assert state["type"] == TaskType.COMPOUND.value
+        assert state["patterns_available"] == 1
 
 from ai_agent.core.agent_manager import AgentManager
 from ai_agent.core.base_agent import BaseAgent
