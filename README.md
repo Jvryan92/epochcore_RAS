@@ -62,6 +62,44 @@ pytest
 pytest --cov=. --cov-report=html
 ```
 
+---
+
+## StrategyDECK AI Agent
+
+### Purpose
+- Automates strategic tasks and processes within the project.
+- Enhances efficiency and intelligent decision-making.
+- Serves as a foundation for further agent-based extensions.
+
+### Setup
+1. Ensure dependencies are installed:
+   ```bash
+   pip install -r requirements.txt
+   ```
+2. Import and initialize the agent in your code:
+   ```python
+   from strategydeck_agent import StrategyDeckAgent
+
+   agent = StrategyDeckAgent()
+   def sample_task():
+       # Your strategic logic here
+       return "Task completed!"
+
+   result = agent.execute_task(sample_task)
+   print(result)
+   ```
+
+### Extensibility & Multi-Agent Support
+- The agent is designed for easy extension. Add new methods or agent classes as needed.
+- For multiple agents, instantiate additional `StrategyDeckAgent` objects or implement a manager class.
+
+### Error Handling & Logging
+- All agent actions are logged using Python's `logging` module.
+- Errors are captured and reported for robust operation.
+
+### Contributing
+- See `CONTRIBUTING.md` for guidelines on extending agent functionality.
+
 ### Development Setup
 
 For development setup instructions, see [DEVELOPMENT.md](DEVELOPMENT.md).

@@ -40,6 +40,10 @@ class MetaCapsuleCreator:
         self.meta_ledger = self.meta_dir / "meta_ledger.log"
         self.state_snapshots = self.meta_dir / "state_snapshots"
         self.state_snapshots.mkdir(parents=True, exist_ok=True)
+        
+        # Create ethical snapshots directory
+        self.ethical_snapshots = self.meta_dir / "ethical_snapshots"
+        self.ethical_snapshots.mkdir(parents=True, exist_ok=True)
 
         # Initialize system managers if available
         self.agent_manager = AgentManager(base_dir) if AgentManager else None
@@ -56,6 +60,79 @@ class MetaCapsuleCreator:
         """Generate SHA256 hash consistent with EPOCH5"""
         return hashlib.sha256(data.encode("utf-8")).hexdigest()
 
+    def _compute_ethical_summary(self, agents: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """Compute summary of ethical metrics across all agents"""
+        if not agents:
+            return {
+                "status": "No active agents",
+                "timestamp": self.timestamp()
+            }
+
+        # Initialize counters
+        total_assessments = 0
+        successful_assessments = 0
+        ethical_scores = []
+        constraint_satisfaction = []
+        reflection_confidence = []
+        principle_scores = {}
+        stakeholder_impacts = {}
+
+        # Aggregate metrics
+        for agent in agents:
+            metrics = agent.get("ethical_metrics", {})
+            
+            # Count assessments
+            total_assessments += metrics.get("total_ethical_assessments", 0)
+            successful_assessments += metrics.get("successful_ethical_assessments", 0)
+            
+            # Collect scores
+            ethical_scores.append(metrics.get("ethical_score", 1.0))
+            constraint_satisfaction.append(metrics.get("constraint_satisfaction_rate", 1.0))
+            reflection_confidence.append(metrics.get("reflection_confidence", 0.5))
+            
+            # Aggregate principle performance
+            for principle, score in metrics.get("principle_performance", {}).items():
+                if principle not in principle_scores:
+                    principle_scores[principle] = []
+                principle_scores[principle].append(score)
+                
+            # Aggregate stakeholder impacts
+            for stakeholder, impact in metrics.get("stakeholder_impact", {}).items():
+                if stakeholder not in stakeholder_impacts:
+                    stakeholder_impacts[stakeholder] = []
+                stakeholder_impacts[stakeholder].append(
+                    impact.get("average_impact", 0.0)
+                )
+
+        # Compute averages and summaries
+        summary = {
+            "timestamp": self.timestamp(),
+            "total_assessments": total_assessments,
+            "successful_assessments": successful_assessments,
+            "success_rate": (successful_assessments / total_assessments 
+                           if total_assessments > 0 else 1.0),
+            "average_metrics": {
+                "ethical_score": sum(ethical_scores) / len(agents),
+                "constraint_satisfaction": sum(constraint_satisfaction) / len(agents),
+                "reflection_confidence": sum(reflection_confidence) / len(agents)
+            },
+            "principle_performance": {
+                principle: sum(scores) / len(scores)
+                for principle, scores in principle_scores.items()
+            },
+            "stakeholder_impacts": {
+                stakeholder: sum(impacts) / len(impacts)
+                for stakeholder, impacts in stakeholder_impacts.items()
+            }
+        }
+
+        # Save ethical snapshot
+        snapshot_file = self.ethical_snapshots / f"ethical_summary_{self.timestamp()}.json"
+        with open(snapshot_file, "w") as f:
+            json.dump(summary, f, indent=2)
+
+        return summary
+
     def capture_system_state(self) -> Dict[str, Any]:
         """Capture the current state of all EPOCH5 systems"""
         state = {
@@ -68,10 +145,15 @@ class MetaCapsuleCreator:
         # Capture agent management state
         if self.agent_manager:
             agent_registry = self.agent_manager.load_registry()
+            # Capture agent and ethical state
+            active_agents = self.agent_manager.get_active_agents()
+            ethical_summary = self._compute_ethical_summary(active_agents)
+            
             state["systems"]["agents"] = {
                 "registry": agent_registry,
-                "active_agents": len(self.agent_manager.get_active_agents()),
+                "active_agents": len(active_agents),
                 "total_agents": len(agent_registry.get("agents", {})),
+                "ethical_metrics": ethical_summary
             }
 
             # Hash agent files

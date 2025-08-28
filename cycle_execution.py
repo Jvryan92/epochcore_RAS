@@ -13,6 +13,8 @@ from datetime import datetime, timezone
 from typing import Dict, List, Optional, Any, Tuple
 from enum import Enum
 import random
+from strategy_ethical import EthicalEngine, EthicalAssessment
+from ethical_reflection import EthicalReflectionEngine
 
 # Import the ceiling manager for dynamic ceiling support
 try:
@@ -46,6 +48,12 @@ class CycleExecutor:
         self.execution_log = self.cycles_dir / "cycle_execution.log"
         self.sla_metrics_file = self.cycles_dir / "sla_metrics.json"
         self.consensus_log = self.cycles_dir / "pbft_consensus.log"
+        
+        # Initialize ethical components
+        self.ethical_dir = self.cycles_dir / "ethical"
+        self.ethical_dir.mkdir(parents=True, exist_ok=True)
+        self.ethical_engine = EthicalEngine(str(self.ethical_dir))
+        self.ethical_reflection = EthicalReflectionEngine(str(self.ethical_dir / "reflection"))
 
         # Initialize ceiling manager for dynamic ceiling support
         if CEILING_MANAGER_AVAILABLE:
@@ -70,6 +78,7 @@ class CycleExecutor:
         sla_requirements: Dict[str, Any] = None,
         service_tier: str = "freemium",
         ceiling_config_id: str = None,
+        ethical_constraints: Optional[Dict[str, Any]] = None
     ) -> Dict[str, Any]:
         """Create a new execution cycle with dynamic ceiling support"""
 
@@ -77,6 +86,52 @@ class CycleExecutor:
         effective_budget = budget
         effective_max_latency = max_latency
 
+        # Perform ethical assessment before cycle creation
+        ethical_assessment = self.ethical_engine.assess_action(
+            action_id=f"cycle_{cycle_id}",
+            context={
+                "cycle_id": cycle_id,
+                "budget": budget,
+                "max_latency": max_latency,
+                "task_count": len(task_assignments),
+                "service_tier": service_tier,
+                "ethical_constraints": ethical_constraints
+            }
+        )
+        
+        if not ethical_assessment.constraints_satisfied:
+            self.log_execution(
+                cycle_id,
+                "ETHICAL_ASSESSMENT_FAILED",
+                {
+                    "reasoning": ethical_assessment.reasoning,
+                    "scores": ethical_assessment.scores,
+                    "timestamp": self.timestamp()
+                }
+            )
+            raise ValueError(f"Cycle creation failed ethical assessment: {', '.join(ethical_assessment.reasoning)}")
+            
+        # Predict potential impact
+        impact = self.ethical_engine.predict_impact(
+            action_id=f"cycle_{cycle_id}",
+            context={
+                "budget": budget,
+                "task_assignments": task_assignments,
+                "service_tier": service_tier
+            }
+        )
+        
+        if impact.uncertainty > 0.8:
+            self.log_execution(
+                cycle_id,
+                "HIGH_IMPACT_UNCERTAINTY",
+                {
+                    "uncertainty": impact.uncertainty,
+                    "stakeholders": impact.stakeholders,
+                    "timestamp": self.timestamp()
+                }
+            )
+        
         if self.ceiling_manager and ceiling_config_id:
             try:
                 tier = ServiceTier(service_tier)
@@ -98,6 +153,10 @@ class CycleExecutor:
                         "effective_max_latency": effective_max_latency,
                         "service_tier": service_tier,
                         "ceiling_config_id": ceiling_config_id,
+                        "ethical_assessment": {
+                            "score": ethical_assessment.overall_score,
+                            "impact_uncertainty": impact.uncertainty
+                        },
                     },
                 )
             except Exception as e:
