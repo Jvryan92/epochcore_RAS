@@ -16,21 +16,27 @@ from typing import Dict, List, Optional, Any
 
 class AgentManagementError(Exception):
     """Base exception for agent management errors"""
+
     pass
+
 
 class AgentNotFoundError(AgentManagementError):
     """Raised when an agent cannot be found"""
+
     pass
+
 
 class AgentValidationError(AgentManagementError):
     """Raised when agent validation fails"""
+
     pass
+
 
 class AgentManager:
     def __init__(self, base_dir: str = "./archive/EPOCH5"):
         self.base_dir = Path(base_dir)
         self.agents_dir = self.base_dir / "agents"
-        
+
         # Ensure directory structure exists
         try:
             self.agents_dir.mkdir(parents=True, exist_ok=True)
@@ -81,7 +87,7 @@ class AgentManager:
                 "successful_ethical_assessments": 0,
                 "principle_performance": {},
                 "stakeholder_impact": {},
-                "last_reflection": None
+                "last_reflection": None,
             },
             "metadata": {
                 "creation_hash": self.sha256(f"{did}|{skills}|{self.timestamp()}")
@@ -116,7 +122,13 @@ class AgentManager:
         registry = self.load_registry()
         return registry["agents"].get(did)
 
-    def update_agent_stats(self, did: str, success: bool, latency: float, ethical_metrics: Optional[Dict[str, Any]] = None):
+    def update_agent_stats(
+        self,
+        did: str,
+        success: bool,
+        latency: float,
+        ethical_metrics: Optional[Dict[str, Any]] = None,
+    ):
         """Update agent performance statistics including ethical metrics"""
         registry = self.load_registry()
         if did in registry["agents"]:
@@ -150,7 +162,7 @@ class AgentManager:
         if did in registry["agents"]:
             agent = registry["agents"][did]
             ethical = agent["ethical_metrics"]
-            
+
             # Update assessment counts
             ethical["total_ethical_assessments"] += 1
             if metrics.get("assessment_success", False):
@@ -158,12 +170,18 @@ class AgentManager:
 
             # Update scores with exponential moving averages
             alpha = 0.1  # Learning rate
-            ethical["ethical_score"] = (alpha * metrics.get("ethical_score", 1.0) + 
-                                      (1 - alpha) * ethical["ethical_score"])
-            ethical["constraint_satisfaction_rate"] = (alpha * metrics.get("constraint_satisfaction", 1.0) +
-                                                     (1 - alpha) * ethical["constraint_satisfaction_rate"])
-            ethical["reflection_confidence"] = (alpha * metrics.get("reflection_confidence", 0.5) +
-                                             (1 - alpha) * ethical["reflection_confidence"])
+            ethical["ethical_score"] = (
+                alpha * metrics.get("ethical_score", 1.0)
+                + (1 - alpha) * ethical["ethical_score"]
+            )
+            ethical["constraint_satisfaction_rate"] = (
+                alpha * metrics.get("constraint_satisfaction", 1.0)
+                + (1 - alpha) * ethical["constraint_satisfaction_rate"]
+            )
+            ethical["reflection_confidence"] = (
+                alpha * metrics.get("reflection_confidence", 0.5)
+                + (1 - alpha) * ethical["reflection_confidence"]
+            )
 
             # Update principle performance
             for principle, score in metrics.get("principle_performance", {}).items():
@@ -171,8 +189,8 @@ class AgentManager:
                     ethical["principle_performance"][principle] = score
                 else:
                     ethical["principle_performance"][principle] = (
-                        alpha * score +
-                        (1 - alpha) * ethical["principle_performance"][principle]
+                        alpha * score
+                        + (1 - alpha) * ethical["principle_performance"][principle]
                     )
 
             # Update stakeholder impact tracking
@@ -181,7 +199,7 @@ class AgentManager:
                     ethical["stakeholder_impact"][stakeholder] = {
                         "total_impact": impact,
                         "impact_count": 1,
-                        "average_impact": impact
+                        "average_impact": impact,
                     }
                 else:
                     stake_data = ethical["stakeholder_impact"][stakeholder]

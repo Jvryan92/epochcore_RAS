@@ -40,14 +40,15 @@ class ResilienceStrategy(StrategyComponent):
         """Set up resilience-specific configuration validation."""
         self._validator.register_schema(
             self.name,
-            super()._validator._schemas.get(self.name, []) + [
+            super()._validator._schemas.get(self.name, [])
+            + [
                 ConfigField(
                     "error_threshold",
                     float,
                     False,
                     0.1,
                     lambda x: 0 <= x <= 1,
-                    "Maximum acceptable error rate"
+                    "Maximum acceptable error rate",
                 ),
                 ConfigField(
                     "response_threshold",
@@ -55,7 +56,7 @@ class ResilienceStrategy(StrategyComponent):
                     False,
                     1.0,
                     lambda x: x > 0,
-                    "Maximum acceptable response time in seconds"
+                    "Maximum acceptable response time in seconds",
                 ),
                 ConfigField(
                     "resource_thresholds",
@@ -63,9 +64,9 @@ class ResilienceStrategy(StrategyComponent):
                     False,
                     {},
                     None,
-                    "Resource usage thresholds"
-                )
-            ]
+                    "Resource usage thresholds",
+                ),
+            ],
         )
 
     def _execute(self) -> Dict[str, Any]:
@@ -90,7 +91,7 @@ class ResilienceStrategy(StrategyComponent):
         return {
             "health_status": health_status,
             "incidents": incidents,
-            "metrics": self._get_metrics_summary()
+            "metrics": self._get_metrics_summary(),
         }
 
     def _analyze_health(self) -> Dict[str, Any]:
@@ -115,29 +116,26 @@ class ResilienceStrategy(StrategyComponent):
                 resource_status[resource] = {
                     "current": values[-1],
                     "average": np.mean(values),
-                    "peak": max(values)
+                    "peak": max(values),
                 }
 
         return {
             "response_time": {
                 "average": avg_response,
                 "maximum": max_response,
-                "samples": len(response_times)
+                "samples": len(response_times),
             },
-            "error_rate": {
-                "current": current_error_rate,
-                "samples": len(error_rates)
-            },
+            "error_rate": {"current": current_error_rate, "samples": len(error_rates)},
             "resources": resource_status,
             "last_incident": self.health.last_incident,
-            "avg_recovery_time": np.mean(self.health.recovery_times) 
-                if self.health.recovery_times else None
+            "avg_recovery_time": (
+                np.mean(self.health.recovery_times)
+                if self.health.recovery_times
+                else None
+            ),
         }
 
-    def _detect_incidents(
-        self,
-        health_status: Dict[str, Any]
-    ) -> List[Dict[str, Any]]:
+    def _detect_incidents(self, health_status: Dict[str, Any]) -> List[Dict[str, Any]]:
         """Detect system incidents based on health status.
 
         Args:
@@ -153,31 +151,36 @@ class ResilienceStrategy(StrategyComponent):
         if health_status["response_time"]["average"] > self.config.get(
             "response_threshold", 1.0
         ):
-            incidents.append({
-                "type": "high_latency",
-                "value": health_status["response_time"]["average"],
-                "threshold": self.config.get("response_threshold", 1.0)
-            })
+            incidents.append(
+                {
+                    "type": "high_latency",
+                    "value": health_status["response_time"]["average"],
+                    "threshold": self.config.get("response_threshold", 1.0),
+                }
+            )
 
         # Check error rate
         if health_status["error_rate"]["current"] > self.config.get(
             "error_threshold", 0.1
         ):
-            incidents.append({
-                "type": "high_error_rate",
-                "value": health_status["error_rate"]["current"],
-                "threshold": self.config.get("error_threshold", 0.1)
-            })
+            incidents.append(
+                {
+                    "type": "high_error_rate",
+                    "value": health_status["error_rate"]["current"],
+                    "threshold": self.config.get("error_threshold", 0.1),
+                }
+            )
 
         # Check resource usage
         for resource, status in health_status["resources"].items():
-            if (resource in thresholds and 
-                status["current"] > thresholds[resource]):
-                incidents.append({
-                    "type": f"high_{resource}_usage",
-                    "value": status["current"],
-                    "threshold": thresholds[resource]
-                })
+            if resource in thresholds and status["current"] > thresholds[resource]:
+                incidents.append(
+                    {
+                        "type": f"high_{resource}_usage",
+                        "value": status["current"],
+                        "threshold": thresholds[resource],
+                    }
+                )
 
         return incidents
 
@@ -199,9 +202,7 @@ class ResilienceStrategy(StrategyComponent):
                     )
 
     def _update_metrics(
-        self,
-        health_status: Dict[str, Any],
-        incidents: List[Dict[str, Any]]
+        self, health_status: Dict[str, Any], incidents: List[Dict[str, Any]]
     ):
         """Update health metrics.
 
@@ -214,8 +215,11 @@ class ResilienceStrategy(StrategyComponent):
             self.health.last_incident = time.time()
 
         # Update recovery times if we've recovered
-        if (self.health.last_incident and not incidents and
-            self.health.last_incident < time.time()):
+        if (
+            self.health.last_incident
+            and not incidents
+            and self.health.last_incident < time.time()
+        ):
             recovery_time = time.time() - self.health.last_incident
             self.health.recovery_times.append(recovery_time)
 
@@ -231,12 +235,17 @@ class ResilienceStrategy(StrategyComponent):
             Dictionary containing metrics summary
         """
         return {
-            "response_times": {
-                "avg": np.mean(self.health.response_times),
-                "max": max(self.health.response_times)
-            } if self.health.response_times else {},
-            "error_rate": np.mean(self.health.error_rates)
-                if self.health.error_rates else 0,
+            "response_times": (
+                {
+                    "avg": np.mean(self.health.response_times),
+                    "max": max(self.health.response_times),
+                }
+                if self.health.response_times
+                else {}
+            ),
+            "error_rate": (
+                np.mean(self.health.error_rates) if self.health.error_rates else 0
+            ),
             "resources": {
                 name: np.mean(values)
                 for name, values in self.health.resource_usage.items()
@@ -244,15 +253,16 @@ class ResilienceStrategy(StrategyComponent):
             },
             "incidents": {
                 "last": self.health.last_incident,
-                "avg_recovery": np.mean(self.health.recovery_times)
-                    if self.health.recovery_times else None
-            }
+                "avg_recovery": (
+                    np.mean(self.health.recovery_times)
+                    if self.health.recovery_times
+                    else None
+                ),
+            },
         }
 
     def register_recovery_handler(
-        self,
-        incident_type: str,
-        handler: Callable[[Dict[str, Any]], None]
+        self, incident_type: str, handler: Callable[[Dict[str, Any]], None]
     ):
         """Register a recovery handler for an incident type.
 

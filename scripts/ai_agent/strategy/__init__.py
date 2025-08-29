@@ -33,9 +33,10 @@ class StrategyComponent:
         """Set up configuration validation schema."""
         self._validator.register_schema(
             self.name,
-            AGENT_BASE_SCHEMA + [
+            AGENT_BASE_SCHEMA
+            + [
                 # Add component-specific schema fields here
-            ]
+            ],
         )
 
     @log_errors(logging.getLogger("strategy_ai_agent.strategy"))
@@ -62,7 +63,7 @@ class StrategyComponent:
                 "status": "success",
                 "component": self.name,
                 "result": result,
-                "metrics": self.metrics.get_metrics_summary()
+                "metrics": self.metrics.get_metrics_summary(),
             }
         except Exception as e:
             self.metrics.end_run(success=False, error=e)
@@ -87,5 +88,5 @@ class StrategyComponent:
             "name": self.name,
             "type": self.__class__.__name__,
             "metrics": self.metrics.get_metrics_summary(),
-            "config": self.config
+            "config": self.config,
         }

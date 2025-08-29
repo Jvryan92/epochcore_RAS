@@ -40,7 +40,7 @@ class MetaCapsuleCreator:
         self.meta_ledger = self.meta_dir / "meta_ledger.log"
         self.state_snapshots = self.meta_dir / "state_snapshots"
         self.state_snapshots.mkdir(parents=True, exist_ok=True)
-        
+
         # Create ethical snapshots directory
         self.ethical_snapshots = self.meta_dir / "ethical_snapshots"
         self.ethical_snapshots.mkdir(parents=True, exist_ok=True)
@@ -63,10 +63,7 @@ class MetaCapsuleCreator:
     def _compute_ethical_summary(self, agents: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Compute summary of ethical metrics across all agents"""
         if not agents:
-            return {
-                "status": "No active agents",
-                "timestamp": self.timestamp()
-            }
+            return {"status": "No active agents", "timestamp": self.timestamp()}
 
         # Initialize counters
         total_assessments = 0
@@ -80,22 +77,24 @@ class MetaCapsuleCreator:
         # Aggregate metrics
         for agent in agents:
             metrics = agent.get("ethical_metrics", {})
-            
+
             # Count assessments
             total_assessments += metrics.get("total_ethical_assessments", 0)
             successful_assessments += metrics.get("successful_ethical_assessments", 0)
-            
+
             # Collect scores
             ethical_scores.append(metrics.get("ethical_score", 1.0))
-            constraint_satisfaction.append(metrics.get("constraint_satisfaction_rate", 1.0))
+            constraint_satisfaction.append(
+                metrics.get("constraint_satisfaction_rate", 1.0)
+            )
             reflection_confidence.append(metrics.get("reflection_confidence", 0.5))
-            
+
             # Aggregate principle performance
             for principle, score in metrics.get("principle_performance", {}).items():
                 if principle not in principle_scores:
                     principle_scores[principle] = []
                 principle_scores[principle].append(score)
-                
+
             # Aggregate stakeholder impacts
             for stakeholder, impact in metrics.get("stakeholder_impact", {}).items():
                 if stakeholder not in stakeholder_impacts:
@@ -109,12 +108,15 @@ class MetaCapsuleCreator:
             "timestamp": self.timestamp(),
             "total_assessments": total_assessments,
             "successful_assessments": successful_assessments,
-            "success_rate": (successful_assessments / total_assessments 
-                           if total_assessments > 0 else 1.0),
+            "success_rate": (
+                successful_assessments / total_assessments
+                if total_assessments > 0
+                else 1.0
+            ),
             "average_metrics": {
                 "ethical_score": sum(ethical_scores) / len(agents),
                 "constraint_satisfaction": sum(constraint_satisfaction) / len(agents),
-                "reflection_confidence": sum(reflection_confidence) / len(agents)
+                "reflection_confidence": sum(reflection_confidence) / len(agents),
             },
             "principle_performance": {
                 principle: sum(scores) / len(scores)
@@ -123,11 +125,13 @@ class MetaCapsuleCreator:
             "stakeholder_impacts": {
                 stakeholder: sum(impacts) / len(impacts)
                 for stakeholder, impacts in stakeholder_impacts.items()
-            }
+            },
         }
 
         # Save ethical snapshot
-        snapshot_file = self.ethical_snapshots / f"ethical_summary_{self.timestamp()}.json"
+        snapshot_file = (
+            self.ethical_snapshots / f"ethical_summary_{self.timestamp()}.json"
+        )
         with open(snapshot_file, "w") as f:
             json.dump(summary, f, indent=2)
 
@@ -148,12 +152,12 @@ class MetaCapsuleCreator:
             # Capture agent and ethical state
             active_agents = self.agent_manager.get_active_agents()
             ethical_summary = self._compute_ethical_summary(active_agents)
-            
+
             state["systems"]["agents"] = {
                 "registry": agent_registry,
                 "active_agents": len(active_agents),
                 "total_agents": len(agent_registry.get("agents", {})),
-                "ethical_metrics": ethical_summary
+                "ethical_metrics": ethical_summary,
             }
 
             # Hash agent files

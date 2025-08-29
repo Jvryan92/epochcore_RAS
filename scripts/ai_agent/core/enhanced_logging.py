@@ -40,18 +40,20 @@ class StructuredLogFormatter(logging.Formatter):
         }
 
         # Add location data
-        log_data.update({
-            "function": record.funcName,
-            "line": record.lineno,
-            "path": record.pathname,
-        })
+        log_data.update(
+            {
+                "function": record.funcName,
+                "line": record.lineno,
+                "path": record.pathname,
+            }
+        )
 
         # Add any exception info
         if record.exc_info:
             log_data["exception"] = {
                 "type": record.exc_info[0].__name__,
                 "message": str(record.exc_info[1]),
-                "traceback": traceback.format_exception(*record.exc_info)
+                "traceback": traceback.format_exception(*record.exc_info),
             }
 
         # Add additional configured fields
@@ -70,7 +72,7 @@ def setup_logging(
     max_size: int = 10 * 1024 * 1024,  # 10MB
     backup_count: int = 5,
     add_console_handler: bool = True,
-    **kwargs: Any
+    **kwargs: Any,
 ) -> None:
     """Set up enhanced logging configuration.
 
@@ -83,11 +85,11 @@ def setup_logging(
         **kwargs: Additional fields for structured logging
     """
     log_dir.mkdir(parents=True, exist_ok=True)
-    
+
     # Create base logger
     logger = logging.getLogger("strategy_ai_agent")
     logger.setLevel(level)
-    
+
     # Remove any existing handlers
     logger.handlers = []
 
@@ -97,9 +99,7 @@ def setup_logging(
     # File handler with rotation
     log_file = log_dir / "agent.log"
     file_handler = RotatingFileHandler(
-        log_file,
-        maxBytes=max_size,
-        backupCount=backup_count
+        log_file, maxBytes=max_size, backupCount=backup_count
     )
     file_handler.setFormatter(formatter)
     logger.addHandler(file_handler)
@@ -118,7 +118,7 @@ class ContextLogger:
         self,
         logger: logging.Logger,
         context: Dict[str, Any],
-        level: Optional[int] = None
+        level: Optional[int] = None,
     ):
         """Initialize the context logger.
 

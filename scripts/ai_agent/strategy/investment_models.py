@@ -9,7 +9,7 @@ import logging
 
 class ModelType(Enum):
     """Type of investment model."""
-    
+
     SALES_PITCH = "sales_pitch"
     PERSONAL_INVESTMENT = "personal_investment"
 
@@ -17,13 +17,13 @@ class ModelType(Enum):
 @dataclass
 class ModelParameters:
     """Parameters for investment model calculations."""
-    
+
     initial_capital: Decimal
     model_type: ModelType
     risk_tolerance: str = "Moderate"  # Conservative, Moderate, Aggressive
-    monthly_contribution: Decimal = Decimal('0')
-    tax_bracket: Decimal = Decimal('0.25')  # 25% default
-    inflation_rate: Decimal = Decimal('0.03')  # 3% default
+    monthly_contribution: Decimal = Decimal("0")
+    tax_bracket: Decimal = Decimal("0.25")  # 25% default
+    inflation_rate: Decimal = Decimal("0.03")  # 3% default
     emergency_fund_months: int = 6
 
 
@@ -34,56 +34,51 @@ class InvestmentModelStrategy:
         """Initialize strategy with optional logger."""
         self.logger = logger or logging.getLogger(__name__)
 
-    def _calculate_sales_model(
-        self,
-        params: ModelParameters
-    ) -> Dict[str, Any]:
+    def _calculate_sales_model(self, params: ModelParameters) -> Dict[str, Any]:
         """Calculate optimistic sales pitch model.
-        
+
         This model emphasizes:
         - Potential maximum returns
         - Compound growth visualization
         - Success case scenarios
         - Competitive advantage examples
         """
-        base_growth = Decimal('0.15')  # 15% base growth rate
+        base_growth = Decimal("0.15")  # 15% base growth rate
         scenarios = []
         current_capital = params.initial_capital
 
         for year in range(1, 11):
             # Progressive growth rates for sales pitch
-            growth_rate = base_growth * (1 + Decimal('0.2') * (year - 1))
-            
+            growth_rate = base_growth * (1 + Decimal("0.2") * (year - 1))
+
             # Calculate compound growth with reinvestment
-            compound_value = current_capital * (
-                1 + growth_rate
-            ) ** year
-            
+            compound_value = current_capital * (1 + growth_rate) ** year
+
             # Calculate potential client base
             potential_clients = 10 * (2 ** (year - 1))  # Geometric growth
-            
+
             scenario = {
                 "year": year,
                 "initial_investment": str(current_capital),
-                "projected_value": str(compound_value.quantize(
-                    Decimal('0.01'),
-                    rounding=ROUND_HALF_UP
-                )),
+                "projected_value": str(
+                    compound_value.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+                ),
                 "potential_clients": potential_clients,
-                "revenue_potential": str((compound_value * Decimal('0.02')).quantize(
-                    Decimal('0.01'),
-                    rounding=ROUND_HALF_UP
-                )),
+                "revenue_potential": str(
+                    (compound_value * Decimal("0.02")).quantize(
+                        Decimal("0.01"), rounding=ROUND_HALF_UP
+                    )
+                ),
                 "market_opportunity": f"Tier {min(year, 5)}",
                 "competitive_advantage": [
                     "Proprietary Strategy",
                     "AI-Driven Insights",
                     "Market Adaptation",
-                    "Risk Management"
-                ]
+                    "Risk Management",
+                ],
             }
             scenarios.append(scenario)
-            current_capital = current_capital * Decimal('1.5')
+            current_capital = current_capital * Decimal("1.5")
 
         return {
             "model_type": "Sales Pitch",
@@ -93,21 +88,18 @@ class InvestmentModelStrategy:
                 "Proven Track Record",
                 "Innovative Technology Integration",
                 "Risk-Managed Approach",
-                "Scalable Business Model"
+                "Scalable Business Model",
             ],
             "market_positioning": {
                 "target_market": "High-Growth Segments",
                 "competitive_edge": "AI-Powered Strategy",
-                "value_proposition": "Accelerated Growth Path"
-            }
+                "value_proposition": "Accelerated Growth Path",
+            },
         }
 
-    def _calculate_personal_model(
-        self,
-        params: ModelParameters
-    ) -> Dict[str, Any]:
+    def _calculate_personal_model(self, params: ModelParameters) -> Dict[str, Any]:
         """Calculate realistic personal investment model.
-        
+
         This model emphasizes:
         - Conservative growth estimates
         - Risk management
@@ -117,65 +109,57 @@ class InvestmentModelStrategy:
         """
         # Risk-based growth rates
         growth_rates = {
-            "Conservative": Decimal('0.06'),  # 6%
-            "Moderate": Decimal('0.08'),      # 8%
-            "Aggressive": Decimal('0.10')     # 10%
+            "Conservative": Decimal("0.06"),  # 6%
+            "Moderate": Decimal("0.08"),  # 8%
+            "Aggressive": Decimal("0.10"),  # 10%
         }
         base_growth = growth_rates[params.risk_tolerance]
-        
+
         # Calculate emergency fund requirement
-        monthly_expenses = params.initial_capital * Decimal('0.05')  # Estimated
+        monthly_expenses = params.initial_capital * Decimal("0.05")  # Estimated
         emergency_fund = monthly_expenses * params.emergency_fund_months
-        
+
         # Investable amount after emergency fund
-        investable_capital = max(
-            params.initial_capital - emergency_fund,
-            Decimal('0')
-        )
-        
+        investable_capital = max(params.initial_capital - emergency_fund, Decimal("0"))
+
         scenarios = []
         current_capital = investable_capital
 
         for year in range(1, 11):
             # Calculate real return (after inflation)
-            real_growth_rate = (
-                (1 + base_growth) / (1 + params.inflation_rate) - 1
-            )
-            
+            real_growth_rate = (1 + base_growth) / (1 + params.inflation_rate) - 1
+
             # Calculate compound growth with monthly contributions
             compound_value = current_capital * (1 + real_growth_rate) ** year
             contribution_value = params.monthly_contribution * 12 * year
-            
+
             # Tax implications
             taxable_gains = compound_value - current_capital - contribution_value
             tax_impact = taxable_gains * params.tax_bracket
-            
+
             scenario = {
                 "year": year,
                 "initial_investment": str(current_capital),
                 "monthly_contribution": str(params.monthly_contribution),
-                "projected_value_pre_tax": str(compound_value.quantize(
-                    Decimal('0.01'),
-                    rounding=ROUND_HALF_UP
-                )),
+                "projected_value_pre_tax": str(
+                    compound_value.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+                ),
                 "projected_value_post_tax": str(
                     (compound_value - tax_impact).quantize(
-                        Decimal('0.01'),
-                        rounding=ROUND_HALF_UP
+                        Decimal("0.01"), rounding=ROUND_HALF_UP
                     )
                 ),
-                "emergency_fund": str(emergency_fund.quantize(
-                    Decimal('0.01'),
-                    rounding=ROUND_HALF_UP
-                )),
+                "emergency_fund": str(
+                    emergency_fund.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+                ),
                 "real_return_rate": f"{float(real_growth_rate * 100):.1f}%",
                 "recommended_rebalancing": "Quarterly",
                 "risk_mitigation": [
                     "Diversification",
                     "Regular Rebalancing",
                     "Emergency Fund Maintenance",
-                    "Tax Optimization"
-                ]
+                    "Tax Optimization",
+                ],
             }
             scenarios.append(scenario)
 
@@ -188,50 +172,47 @@ class InvestmentModelStrategy:
                 "asset_allocation": self._get_allocation(params.risk_tolerance),
                 "rebalancing_schedule": "Quarterly",
                 "tax_strategy": "Tax-Loss Harvesting",
-                "emergency_fund_months": params.emergency_fund_months
+                "emergency_fund_months": params.emergency_fund_months,
             },
             "action_items": [
                 "Set up emergency fund",
                 "Establish automatic monthly contributions",
                 "Implement tax-efficient strategy",
                 "Regular portfolio rebalancing",
-                "Annual strategy review"
-            ]
+                "Annual strategy review",
+            ],
         }
 
     def _get_allocation(self, risk_tolerance: str) -> Dict[str, Decimal]:
         """Get recommended asset allocation based on risk tolerance."""
         allocations = {
             "Conservative": {
-                "stocks": Decimal('0.40'),
-                "bonds": Decimal('0.40'),
-                "cash": Decimal('0.15'),
-                "alternatives": Decimal('0.05')
+                "stocks": Decimal("0.40"),
+                "bonds": Decimal("0.40"),
+                "cash": Decimal("0.15"),
+                "alternatives": Decimal("0.05"),
             },
             "Moderate": {
-                "stocks": Decimal('0.60'),
-                "bonds": Decimal('0.25'),
-                "cash": Decimal('0.10'),
-                "alternatives": Decimal('0.05')
+                "stocks": Decimal("0.60"),
+                "bonds": Decimal("0.25"),
+                "cash": Decimal("0.10"),
+                "alternatives": Decimal("0.05"),
             },
             "Aggressive": {
-                "stocks": Decimal('0.80'),
-                "bonds": Decimal('0.10'),
-                "cash": Decimal('0.05'),
-                "alternatives": Decimal('0.05')
-            }
+                "stocks": Decimal("0.80"),
+                "bonds": Decimal("0.10"),
+                "cash": Decimal("0.05"),
+                "alternatives": Decimal("0.05"),
+            },
         }
         return allocations[risk_tolerance]
 
-    def calculate_model(
-        self,
-        params: ModelParameters
-    ) -> Dict[str, Any]:
+    def calculate_model(self, params: ModelParameters) -> Dict[str, Any]:
         """Calculate investment model based on type.
-        
+
         Args:
             params: Model parameters including type and initial capital
-            
+
         Returns:
             Dictionary containing model calculations and recommendations
         """
@@ -240,27 +221,23 @@ class InvestmentModelStrategy:
         else:
             return self._calculate_personal_model(params)
 
-    def generate_comparison(
-        self,
-        initial_capital: Decimal
-    ) -> Dict[str, Any]:
+    def generate_comparison(self, initial_capital: Decimal) -> Dict[str, Any]:
         """Generate comparison between sales and personal models.
-        
+
         Args:
             initial_capital: Starting investment amount
-            
+
         Returns:
             Dictionary containing both models and key differences
         """
         sales_params = ModelParameters(
-            initial_capital=initial_capital,
-            model_type=ModelType.SALES_PITCH
+            initial_capital=initial_capital, model_type=ModelType.SALES_PITCH
         )
-        
+
         personal_params = ModelParameters(
             initial_capital=initial_capital,
             model_type=ModelType.PERSONAL_INVESTMENT,
-            risk_tolerance="Moderate"
+            risk_tolerance="Moderate",
         )
 
         sales_model = self._calculate_sales_model(sales_params)
@@ -274,8 +251,8 @@ class InvestmentModelStrategy:
                 "risk_consideration": "Personal model includes risk management",
                 "tax_treatment": "Personal model accounts for tax implications",
                 "emergency_planning": "Personal model includes emergency fund",
-                "realistic_factors": "Personal model accounts for inflation"
+                "realistic_factors": "Personal model accounts for inflation",
             },
             "recommendation": "Use sales model for business pitches, "
-                            "personal model for actual investment planning"
+            "personal model for actual investment planning",
         }

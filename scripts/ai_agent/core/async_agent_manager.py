@@ -16,7 +16,7 @@ class AsyncAgentManager(AgentManager):
         """Start all registered agents asynchronously and return their results as a dict."""
         tasks = []
         for agent_name in self.agents:
-            if hasattr(self.agents[agent_name], 'run_async'):
+            if hasattr(self.agents[agent_name], "run_async"):
                 tasks.append(self.agents[agent_name].run_async())
             else:
                 # Create async wrapper for sync agents
@@ -25,12 +25,12 @@ class AsyncAgentManager(AgentManager):
                         None, self.agents[agent_name].run
                     )
                 )
-        
+
         results = {}
         completed_tasks = await asyncio.gather(*tasks)
         for agent_name, result in zip(self.agents.keys(), completed_tasks):
             results[agent_name] = result
-            
+
         return results
 
     async def run_agent_async(self, agent_name: str) -> Dict[str, Any]:
@@ -43,13 +43,10 @@ class AsyncAgentManager(AgentManager):
             Agent execution results
         """
         if agent_name not in self.agents:
-            return {
-                "status": "error",
-                "error": f"Agent '{agent_name}' not found"
-            }
+            return {"status": "error", "error": f"Agent '{agent_name}' not found"}
 
         agent = self.agents[agent_name]
-        if hasattr(agent, 'run_async'):
+        if hasattr(agent, "run_async"):
             return await agent.run_async()
         else:
             # Create async wrapper for sync agent

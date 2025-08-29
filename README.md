@@ -171,3 +171,61 @@ The automated workflows will handle:
 
 This project is part of the StrategyDECK brand assets.
 
+## 🧬 Capsule System
+
+Capsules are autonomous, self-contained digital assets minted by the EpochCore RAS system. Each capsule represents a unique bundle of value, intent, and metadata, and can be used for revenue, governance, network expansion, or custom business actions.
+
+### Capsule Features
+- **Self-contained JSON asset**: Each capsule is a JSON file with unique ID, timestamp, trigger, and metadata.
+- **Minting via Strike actions**: Capsules are created using batch scripts or dashboard actions (see Strike Actions below).
+- **Ledger integration**: All capsule events are logged for analytics and auditing.
+- **Payment options**: Capsules can include payment QR codes for Stripe, PayPal, or CashApp.
+- **Asset glyphs**: Each capsule is visually represented by a ranked icon (see Asset Glyphs by Rank).
+
+### Capsule Types (Strike Actions)
+1. **Strike 1:** Mint revenue/ROI capsule  
+   `./ultra_trigger_pack_batch.sh --batch roi-burst`
+2. **Strike 2:** Mint mesh/network expansion capsule  
+   `./ultra_trigger_pack_batch.sh --batch mesh-expand`
+3. **Strike 3:** Mint governance/security capsule  
+   `./ultra_trigger_pack_batch.sh --batch gov-harden`
+4. **Strike 4:** Mint all types at once  
+   `./ultra_trigger_pack_batch.sh --batch full-send`
+5. **Strike 5:** Custom selection (ask Copilot)  
+   `./ultra_trigger_pack_batch.sh --pick '1 3 8 10'`
+
+### Asset Glyphs by Rank
+
+**Dark Mode**
+- **burnt-orange (Premium)**: 48px/print
+    - strategy_icon-dark-burnt-orange-48px.png
+    - strategy_icon-dark-burnt-orange-48px.svg
+- **copper-foil (Elite)**: 32px/web
+    - strategy_icon-dark-copper-foil-32px.png
+    - strategy_icon-dark-copper-foil-32px.svg
+- **flat-orange (Standard)**: 16px/32px/48px/web
+    - strategy_icon-dark-flat-orange-16px.png
+    - strategy_icon-dark-flat-orange-16px.svg
+    - strategy_icon-dark-flat-orange-32px.png
+    - strategy_icon-dark-flat-orange-32px.svg
+    - strategy_icon-dark-flat-orange-48px.png
+    - strategy_icon-dark-flat-orange-48px.svg
+
+**Light Mode**
+- **flat-orange (Standard)**: 16px/32px/48px/web
+    - strategy_icon-light-flat-orange-16px.png
+    - strategy_icon-light-flat-orange-16px.svg
+    - strategy_icon-light-flat-orange-32px.png
+    - strategy_icon-light-flat-orange-32px.svg
+    - strategy_icon-light-flat-orange-48px.png
+    - strategy_icon-light-flat-orange-48px.svg
+- **matte-carbon (Executive)**: 16px/32px/print
+    - strategy_icon-light-matte-carbon-16px.png
+    - strategy_icon-light-matte-carbon-16px.svg
+    - strategy_icon-light-matte-carbon-32px.png
+    - strategy_icon-light-matte-carbon-32px.svg
+
+---
+
+For more details, see the dashboard sidebar or run `streamlit run capsule_dashboard.py` for interactive capsule management.
+

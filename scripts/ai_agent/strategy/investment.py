@@ -12,7 +12,7 @@ from ..core.error_handling import safe_execute
 @dataclass
 class InvestmentScenario:
     """Container for investment scenario calculations."""
-    
+
     initial_amount: Decimal
     growth_rate: Decimal
     risk_level: str
@@ -26,16 +26,15 @@ class InvestmentScenario:
         """Calculate compound value over time horizon."""
         rate = self.growth_rate / self.compound_frequency
         periods = self.time_horizon * self.compound_frequency
-        
+
         # (1 + r/n)^(nt) where:
         # r = annual rate
         # n = number of times compounded per year
         # t = time in years
         compound_factor = (1 + rate) ** periods
-        
+
         return (self.initial_amount * compound_factor).quantize(
-            Decimal('0.01'),
-            rounding=ROUND_HALF_UP
+            Decimal("0.01"), rounding=ROUND_HALF_UP
         )
 
 
@@ -50,12 +49,12 @@ class InvestmentStrategy(StrategyComponent):
     def _generate_scenarios(self) -> List[InvestmentScenario]:
         """Generate progressive investment scenarios."""
         scenarios = []
-        
+
         # Base parameters
-        initial_amount = Decimal('10000.00')  # Starting with 10k
-        base_growth = Decimal('0.15')         # 15% base growth rate
-        compound_freq = 12                    # Monthly compounding
-        
+        initial_amount = Decimal("10000.00")  # Starting with 10k
+        base_growth = Decimal("0.15")  # 15% base growth rate
+        compound_freq = 12  # Monthly compounding
+
         # Progressive scenarios with increasing complexity and return potential
         scenarios = [
             InvestmentScenario(
@@ -68,13 +67,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Allocate 70% to broad market index funds",
                     "30% to bond index funds",
-                    "Monthly rebalancing"
+                    "Monthly rebalancing",
                 ],
-                expected_outcome=Decimal('0')  # Calculated later
+                expected_outcome=Decimal("0"),  # Calculated later
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('1.5'),
-                growth_rate=base_growth * Decimal('1.2'),
+                initial_amount=initial_amount * Decimal("1.5"),
+                growth_rate=base_growth * Decimal("1.2"),
                 risk_level="Moderate",
                 time_horizon=2,
                 compound_frequency=compound_freq,
@@ -82,13 +81,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Factor-based investment approach",
                     "Quality and momentum tilts",
-                    "Quarterly rebalancing"
+                    "Quarterly rebalancing",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('2.25'),
-                growth_rate=base_growth * Decimal('1.4'),
+                initial_amount=initial_amount * Decimal("2.25"),
+                growth_rate=base_growth * Decimal("1.4"),
                 risk_level="Growth",
                 time_horizon=3,
                 compound_frequency=compound_freq,
@@ -96,13 +95,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Dynamic sector allocation",
                     "Economic cycle positioning",
-                    "Monthly sector review"
+                    "Monthly sector review",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('3.375'),
-                growth_rate=base_growth * Decimal('1.6'),
+                initial_amount=initial_amount * Decimal("3.375"),
+                growth_rate=base_growth * Decimal("1.6"),
                 risk_level="Aggressive Growth",
                 time_horizon=4,
                 compound_frequency=compound_freq,
@@ -110,13 +109,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "High-growth stock selection",
                     "Technology sector emphasis",
-                    "Quarterly performance review"
+                    "Quarterly performance review",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('5.0625'),
-                growth_rate=base_growth * Decimal('1.8'),
+                initial_amount=initial_amount * Decimal("5.0625"),
+                growth_rate=base_growth * Decimal("1.8"),
                 risk_level="Opportunistic",
                 time_horizon=5,
                 compound_frequency=compound_freq,
@@ -124,13 +123,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Emerging market allocation",
                     "Thematic investment focus",
-                    "Bi-monthly rebalancing"
+                    "Bi-monthly rebalancing",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('7.59375'),
-                growth_rate=base_growth * Decimal('2.0'),
+                initial_amount=initial_amount * Decimal("7.59375"),
+                growth_rate=base_growth * Decimal("2.0"),
                 risk_level="Dynamic",
                 time_horizon=6,
                 compound_frequency=compound_freq,
@@ -138,13 +137,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Alternative investment inclusion",
                     "Real estate and commodities",
-                    "Quarterly risk assessment"
+                    "Quarterly risk assessment",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('11.390625'),
-                growth_rate=base_growth * Decimal('2.2'),
+                initial_amount=initial_amount * Decimal("11.390625"),
+                growth_rate=base_growth * Decimal("2.2"),
                 risk_level="Aggressive",
                 time_horizon=7,
                 compound_frequency=compound_freq,
@@ -152,13 +151,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Concentrated position management",
                     "High-conviction investments",
-                    "Monthly risk monitoring"
+                    "Monthly risk monitoring",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('17.0859375'),
-                growth_rate=base_growth * Decimal('2.4'),
+                initial_amount=initial_amount * Decimal("17.0859375"),
+                growth_rate=base_growth * Decimal("2.4"),
                 risk_level="Maximum Growth",
                 time_horizon=8,
                 compound_frequency=compound_freq,
@@ -166,13 +165,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Aggressive growth tactics",
                     "Emerging technology focus",
-                    "Weekly performance tracking"
+                    "Weekly performance tracking",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('25.62890625'),
-                growth_rate=base_growth * Decimal('2.6'),
+                initial_amount=initial_amount * Decimal("25.62890625"),
+                growth_rate=base_growth * Decimal("2.6"),
                 risk_level="Speculative",
                 time_horizon=9,
                 compound_frequency=compound_freq,
@@ -180,13 +179,13 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Disruptive innovation focus",
                     "Early-stage opportunities",
-                    "Daily monitoring required"
+                    "Daily monitoring required",
                 ],
-                expected_outcome=Decimal('0')
+                expected_outcome=Decimal("0"),
             ),
             InvestmentScenario(
-                initial_amount=initial_amount * Decimal('38.443359375'),
-                growth_rate=base_growth * Decimal('2.8'),
+                initial_amount=initial_amount * Decimal("38.443359375"),
+                growth_rate=base_growth * Decimal("2.8"),
                 risk_level="Maximum Opportunity",
                 time_horizon=10,
                 compound_frequency=compound_freq,
@@ -194,10 +193,10 @@ class InvestmentStrategy(StrategyComponent):
                 strategic_actions=[
                     "Pre-IPO opportunities",
                     "Strategic partnerships",
-                    "Continuous opportunity scanning"
+                    "Continuous opportunity scanning",
                 ],
-                expected_outcome=Decimal('0')
-            )
+                expected_outcome=Decimal("0"),
+            ),
         ]
 
         # Calculate expected outcomes
@@ -214,7 +213,7 @@ class InvestmentStrategy(StrategyComponent):
             Dictionary containing investment scenarios and recommendations
         """
         scenarios = self._generate_scenarios()
-        
+
         return {
             "status": "success",
             "recommendations": [
@@ -228,7 +227,7 @@ class InvestmentStrategy(StrategyComponent):
                     "expected_outcome": str(s.expected_outcome),
                     "description": s.description,
                     "strategic_actions": s.strategic_actions,
-                    "annual_return": f"{float(s.expected_outcome / s.initial_amount - 1) * 100:.1f}%"
+                    "annual_return": f"{float(s.expected_outcome / s.initial_amount - 1) * 100:.1f}%",
                 }
                 for i, s in enumerate(scenarios)
             ],
@@ -236,6 +235,6 @@ class InvestmentStrategy(StrategyComponent):
                 "total_scenarios": len(scenarios),
                 "compound_frequency": "Monthly",
                 "risk_progression": "Progressive increase",
-                "time_span": "1-10 years"
-            }
+                "time_span": "1-10 years",
+            },
         }

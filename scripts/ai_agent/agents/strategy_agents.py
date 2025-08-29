@@ -18,12 +18,12 @@ class AnalystAgent(BaseStrategyAgent):
             "market_trend": self._analyze_market_trend,
             "sentiment": self._analyze_sentiment,
             "correlation": self._analyze_correlation,
-            "volatility": self._analyze_volatility
+            "volatility": self._analyze_volatility,
         }
 
     async def process_message(self, message: AgentMessage):
         """Process received messages.
-        
+
         Args:
             message: Received message
         """
@@ -36,7 +36,7 @@ class AnalystAgent(BaseStrategyAgent):
                 await self.send_message(
                     receiver=message.sender,
                     message_type="analysis_response",
-                    content=result
+                    content=result,
                 )
 
     async def _analyze_market_trend(self, data: Dict[str, Any]) -> Dict[str, Any]:
@@ -74,66 +74,44 @@ class StrategistAgent(BaseStrategyAgent):
             await self.send_message(
                 receiver=message.sender,
                 message_type="strategy_response",
-                content=strategy
+                content=strategy,
             )
 
     async def _develop_strategy(self, parameters: Dict[str, Any]) -> Dict[str, Any]:
         """Develop investment strategy."""
         # Request market analysis
         market_analysis = await self.request_analysis(
-            "market_trend",
-            {"timeframe": "6m"}
+            "market_trend", {"timeframe": "6m"}
         )
-        
+
         # Request risk assessment
         risk_assessment = await self.request_risk_assessment(
             parameters.get("portfolio", {})
         )
-        
+
         # Combine insights into strategy
         return {
-            "allocation": self._determine_allocation(
-                market_analysis,
-                risk_assessment
-            ),
+            "allocation": self._determine_allocation(market_analysis, risk_assessment),
             "rebalancing": self._determine_rebalancing(parameters),
-            "hedging": self._determine_hedging(risk_assessment)
+            "hedging": self._determine_hedging(risk_assessment),
         }
 
     def _determine_allocation(
-        self,
-        market_analysis: Dict[str, Any],
-        risk_assessment: Dict[str, Any]
+        self, market_analysis: Dict[str, Any], risk_assessment: Dict[str, Any]
     ) -> Dict[str, float]:
         """Determine optimal asset allocation."""
         # Implement allocation logic
-        return {
-            "stocks": 0.60,
-            "bonds": 0.30,
-            "cash": 0.10
-        }
+        return {"stocks": 0.60, "bonds": 0.30, "cash": 0.10}
 
-    def _determine_rebalancing(
-        self,
-        parameters: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _determine_rebalancing(self, parameters: Dict[str, Any]) -> Dict[str, Any]:
         """Determine rebalancing strategy."""
         # Implement rebalancing logic
-        return {
-            "frequency": "quarterly",
-            "threshold": 0.05
-        }
+        return {"frequency": "quarterly", "threshold": 0.05}
 
-    def _determine_hedging(
-        self,
-        risk_assessment: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _determine_hedging(self, risk_assessment: Dict[str, Any]) -> Dict[str, Any]:
         """Determine hedging strategy."""
         # Implement hedging logic
-        return {
-            "method": "options",
-            "coverage": 0.20
-        }
+        return {"method": "options", "coverage": 0.20}
 
 
 class RiskManagerAgent(BaseStrategyAgent):
@@ -150,28 +128,23 @@ class RiskManagerAgent(BaseStrategyAgent):
             await self.send_message(
                 receiver=message.sender,
                 message_type="risk_assessment_response",
-                content=assessment
+                content=assessment,
             )
 
     async def _assess_risk(self, portfolio: Dict[str, Any]) -> Dict[str, Any]:
         """Assess portfolio risk."""
         # Request volatility analysis
-        volatility = await self.request_analysis(
-            "volatility",
-            {"portfolio": portfolio}
-        )
-        
+        volatility = await self.request_analysis("volatility", {"portfolio": portfolio})
+
         return {
             "var": self._calculate_var(portfolio, volatility),
             "sharpe": self._calculate_sharpe(portfolio),
             "max_drawdown": self._calculate_max_drawdown(portfolio),
-            "risk_concentration": self._analyze_concentration(portfolio)
+            "risk_concentration": self._analyze_concentration(portfolio),
         }
 
     def _calculate_var(
-        self,
-        portfolio: Dict[str, Any],
-        volatility: Dict[str, Any]
+        self, portfolio: Dict[str, Any], volatility: Dict[str, Any]
     ) -> float:
         """Calculate Value at Risk."""
         # Implement VaR calculation
@@ -187,17 +160,10 @@ class RiskManagerAgent(BaseStrategyAgent):
         # Implement max drawdown calculation
         return 0.25
 
-    def _analyze_concentration(
-        self,
-        portfolio: Dict[str, Any]
-    ) -> Dict[str, float]:
+    def _analyze_concentration(self, portfolio: Dict[str, Any]) -> Dict[str, float]:
         """Analyze risk concentration."""
         # Implement concentration analysis
-        return {
-            "sector": 0.30,
-            "asset": 0.15,
-            "geography": 0.25
-        }
+        return {"sector": 0.30, "asset": 0.15, "geography": 0.25}
 
 
 class TaxAdvisorAgent(BaseStrategyAgent):
@@ -211,57 +177,39 @@ class TaxAdvisorAgent(BaseStrategyAgent):
         """Process received messages."""
         if message.message_type == "tax_optimization":
             strategy = await self._optimize_tax_strategy(
-                message.content["portfolio"],
-                message.content["parameters"]
+                message.content["portfolio"], message.content["parameters"]
             )
             await self.send_message(
                 receiver=message.sender,
                 message_type="tax_strategy_response",
-                content=strategy
+                content=strategy,
             )
 
     async def _optimize_tax_strategy(
-        self,
-        portfolio: Dict[str, Any],
-        parameters: Dict[str, Any]
+        self, portfolio: Dict[str, Any], parameters: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Optimize tax strategy."""
         return {
             "harvesting": self._tax_loss_harvesting(portfolio),
             "location": self._asset_location_strategy(portfolio, parameters),
-            "withdrawal": self._tax_efficient_withdrawal(parameters)
+            "withdrawal": self._tax_efficient_withdrawal(parameters),
         }
 
-    def _tax_loss_harvesting(
-        self,
-        portfolio: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _tax_loss_harvesting(self, portfolio: Dict[str, Any]) -> Dict[str, Any]:
         """Develop tax loss harvesting strategy."""
-        return {
-            "candidates": ["asset_a", "asset_b"],
-            "potential_savings": 5000
-        }
+        return {"candidates": ["asset_a", "asset_b"], "potential_savings": 5000}
 
     def _asset_location_strategy(
-        self,
-        portfolio: Dict[str, Any],
-        parameters: Dict[str, Any]
+        self, portfolio: Dict[str, Any], parameters: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Develop asset location strategy."""
-        return {
-            "taxable": ["stocks"],
-            "tax_deferred": ["bonds"],
-            "tax_free": ["reits"]
-        }
+        return {"taxable": ["stocks"], "tax_deferred": ["bonds"], "tax_free": ["reits"]}
 
-    def _tax_efficient_withdrawal(
-        self,
-        parameters: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _tax_efficient_withdrawal(self, parameters: Dict[str, Any]) -> Dict[str, Any]:
         """Develop tax-efficient withdrawal strategy."""
         return {
             "sequence": ["taxable", "tax_deferred", "tax_free"],
-            "annual_amount": 50000
+            "annual_amount": 50000,
         }
 
 
@@ -280,49 +228,32 @@ class MonitorAgent(BaseStrategyAgent):
                 message.content["portfolio"]
             )
             await self.send_message(
-                receiver=message.sender,
-                message_type="monitor_response",
-                content=report
+                receiver=message.sender, message_type="monitor_response", content=report
             )
 
     async def _generate_monitoring_report(
-        self,
-        portfolio: Dict[str, Any]
+        self, portfolio: Dict[str, Any]
     ) -> Dict[str, Any]:
         """Generate monitoring report."""
         # Request risk assessment
         risk = await self.request_risk_assessment(portfolio)
-        
+
         return {
             "performance": self._analyze_performance(portfolio),
             "risk_metrics": risk,
             "alerts": self.alerts,
-            "rebalancing_needs": self._check_rebalancing(portfolio)
+            "rebalancing_needs": self._check_rebalancing(portfolio),
         }
 
-    def _analyze_performance(
-        self,
-        portfolio: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _analyze_performance(self, portfolio: Dict[str, Any]) -> Dict[str, Any]:
         """Analyze portfolio performance."""
-        return {
-            "return": 0.12,
-            "alpha": 0.02,
-            "beta": 0.95
-        }
+        return {"return": 0.12, "alpha": 0.02, "beta": 0.95}
 
-    def _check_rebalancing(
-        self,
-        portfolio: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _check_rebalancing(self, portfolio: Dict[str, Any]) -> Dict[str, Any]:
         """Check if rebalancing is needed."""
         return {
             "needed": True,
-            "drift": {
-                "stocks": 0.03,
-                "bonds": -0.02,
-                "cash": -0.01
-            }
+            "drift": {"stocks": 0.03, "bonds": -0.02, "cash": -0.01},
         }
 
 
@@ -351,38 +282,38 @@ class CoordinatorAgent(BaseStrategyAgent):
             await self.agents[AgentRole.ANALYST].send_message(
                 receiver=AgentRole.ANALYST,
                 message_type="analysis_request",
-                content={"type": "market_trend", "data": task["data"]}
+                content={"type": "market_trend", "data": task["data"]},
             )
-            
+
             # 2. Get risk assessment
             await self.agents[AgentRole.RISK_MANAGER].send_message(
                 receiver=AgentRole.RISK_MANAGER,
                 message_type="risk_assessment",
-                content={"portfolio": task["data"]["portfolio"]}
+                content={"portfolio": task["data"]["portfolio"]},
             )
-            
+
             # 3. Update strategy
             await self.agents[AgentRole.STRATEGIST].send_message(
                 receiver=AgentRole.STRATEGIST,
                 message_type="strategy_request",
-                content=task["data"]
+                content=task["data"],
             )
-            
+
             # 4. Check tax implications
             await self.agents[AgentRole.TAX_ADVISOR].send_message(
                 receiver=AgentRole.TAX_ADVISOR,
                 message_type="tax_optimization",
                 content={
                     "portfolio": task["data"]["portfolio"],
-                    "parameters": task["data"]["parameters"]
-                }
+                    "parameters": task["data"]["parameters"],
+                },
             )
-            
+
             # 5. Update monitoring
             await self.agents[AgentRole.MONITOR].send_message(
                 receiver=AgentRole.MONITOR,
                 message_type="monitor_request",
-                content={"portfolio": task["data"]["portfolio"]}
+                content={"portfolio": task["data"]["portfolio"]},
             )
 
     async def start_all_agents(self):

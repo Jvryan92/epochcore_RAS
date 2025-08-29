@@ -29,13 +29,15 @@ class BaseAgent(ABC):
         self._error_count = 0
         self._success_count = 0
         self._performance_metrics: List[Dict[str, Any]] = []
-        
+
         # Inter-agent communication
         self._message_queue: Dict[str, List[Dict[str, Any]]] = {}
         self._subscribed_topics: Set[str] = set()
-        self._connected_agents: Dict[str, 'BaseAgent'] = {}
+        self._connected_agents: Dict[str, "BaseAgent"] = {}
         self._agent_interactions: List[Dict[str, Any]] = []
-        self._last_error: Optional[Tuple[str, str]] = None  # (error_type, error_message)
+        self._last_error: Optional[Tuple[str, str]] = (
+            None  # (error_type, error_message)
+        )
 
     @abstractmethod
     def run(self) -> Dict[str, Any]:
@@ -64,19 +66,19 @@ class BaseAgent(ABC):
         # Clear any pending messages
         self._message_queue.clear()
         self._agent_interactions.clear()
-        
-    def connect_to_agent(self, agent: 'BaseAgent') -> None:
+
+    def connect_to_agent(self, agent: "BaseAgent") -> None:
         """Establish a direct connection to another agent.
-        
+
         Args:
             agent: The agent to connect with
         """
         self._connected_agents[agent.name] = agent
         self.logger.info(f"Connected to agent: {agent.name}")
-        
+
     def disconnect_from_agent(self, agent_name: str) -> None:
         """Remove connection to an agent.
-        
+
         Args:
             agent_name: Name of agent to disconnect from
         """
@@ -86,16 +88,16 @@ class BaseAgent(ABC):
 
     def subscribe_to_topic(self, topic: str) -> None:
         """Subscribe to a message topic.
-        
+
         Args:
             topic: Topic to subscribe to
         """
         self._subscribed_topics.add(topic)
         self.logger.info(f"Subscribed to topic: {topic}")
-        
+
     def unsubscribe_from_topic(self, topic: str) -> None:
         """Unsubscribe from a message topic.
-        
+
         Args:
             topic: Topic to unsubscribe from
         """
@@ -103,13 +105,15 @@ class BaseAgent(ABC):
             self._subscribed_topics.remove(topic)
             self.logger.info(f"Unsubscribed from topic: {topic}")
 
-    def send_message(self, 
-                    recipient: Optional[str], 
-                    topic: str, 
-                    data: Dict[str, Any],
-                    priority: str = 'normal') -> None:
+    def send_message(
+        self,
+        recipient: Optional[str],
+        topic: str,
+        data: Dict[str, Any],
+        priority: str = "normal",
+    ) -> None:
         """Send a message to another agent or broadcast to a topic.
-        
+
         Args:
             recipient: Target agent name, or None for broadcast
             topic: Message topic
@@ -117,22 +121,24 @@ class BaseAgent(ABC):
             priority: Message priority ('high', 'normal', 'low')
         """
         message = {
-            'sender': self.name,
-            'timestamp': datetime.now(timezone.utc).isoformat(),
-            'topic': topic,
-            'data': data,
-            'priority': priority
+            "sender": self.name,
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "topic": topic,
+            "data": data,
+            "priority": priority,
         }
-        
+
         # Record interaction
-        self._agent_interactions.append({
-            'type': 'send',
-            'timestamp': message['timestamp'],
-            'recipient': recipient or 'broadcast',
-            'topic': topic,
-            'priority': priority
-        })
-        
+        self._agent_interactions.append(
+            {
+                "type": "send",
+                "timestamp": message["timestamp"],
+                "recipient": recipient or "broadcast",
+                "topic": topic,
+                "priority": priority,
+            }
+        )
+
         if recipient:
             if recipient in self._connected_agents:
                 self._connected_agents[recipient]._receive_message(message)
@@ -148,37 +154,39 @@ class BaseAgent(ABC):
 
     def _receive_message(self, message: Dict[str, Any]) -> None:
         """Handle incoming message from another agent.
-        
+
         Args:
             message: The received message
         """
-        topic = message['topic']
+        topic = message["topic"]
         if topic not in self._message_queue:
             self._message_queue[topic] = []
-            
+
         self._message_queue[topic].append(message)
-        
+
         # Record interaction
-        self._agent_interactions.append({
-            'type': 'receive',
-            'timestamp': datetime.now(timezone.utc).isoformat(),
-            'sender': message['sender'],
-            'topic': topic,
-            'priority': message['priority']
-        })
-        
+        self._agent_interactions.append(
+            {
+                "type": "receive",
+                "timestamp": datetime.now(timezone.utc).isoformat(),
+                "sender": message["sender"],
+                "topic": topic,
+                "priority": message["priority"],
+            }
+        )
+
         self.logger.debug(f"Received message from {message['sender']} on topic {topic}")
-        
+
         # Process high priority messages immediately
-        if message['priority'] == 'high':
+        if message["priority"] == "high":
             self._process_message(message)
 
     def get_messages(self, topic: Optional[str] = None) -> List[Dict[str, Any]]:
         """Get received messages, optionally filtered by topic.
-        
+
         Args:
             topic: Optional topic filter
-            
+
         Returns:
             List of messages
         """
@@ -186,17 +194,17 @@ class BaseAgent(ABC):
             messages = self._message_queue.get(topic, [])
             self._message_queue[topic] = []  # Clear after reading
             return messages
-        
+
         # Get all messages
         all_messages = []
         for topic_messages in self._message_queue.values():
             all_messages.extend(topic_messages)
         self._message_queue.clear()
         return all_messages
-        
+
     def get_interaction_history(self) -> List[Dict[str, Any]]:
         """Get history of agent interactions.
-        
+
         Returns:
             List of interaction records
         """
@@ -204,7 +212,7 @@ class BaseAgent(ABC):
 
     def _process_message(self, message: Dict[str, Any]) -> None:
         """Process a received message. Override in subclasses.
-        
+
         Args:
             message: Message to process
         """
@@ -240,24 +248,28 @@ class BaseAgent(ABC):
             self._success_count += 1
 
             # Add performance metrics
-            self._performance_metrics.append({
-                "timestamp": datetime.now().isoformat(),
-                "duration": duration,
-                "success": True,
-                "memory_usage": self._get_memory_usage()
-            })
+            self._performance_metrics.append(
+                {
+                    "timestamp": datetime.now().isoformat(),
+                    "duration": duration,
+                    "success": True,
+                    "memory_usage": self._get_memory_usage(),
+                }
+            )
 
             # Cleanup phase
             self.cleanup()
 
             # Enhance result with metrics
-            result.update({
-                "status": "success",
-                "agent": self.name,
-                "execution_time": duration,
-                "success_rate": self._calculate_success_rate(),
-                "performance_metrics": self._get_latest_metrics()
-            })
+            result.update(
+                {
+                    "status": "success",
+                    "agent": self.name,
+                    "execution_time": duration,
+                    "success_rate": self._calculate_success_rate(),
+                    "performance_metrics": self._get_latest_metrics(),
+                }
+            )
 
             return result
 
@@ -266,13 +278,13 @@ class BaseAgent(ABC):
             self._last_error = (type(e).__name__, str(e))
             self.logger.error(f"Error in agent {self.name}: {str(e)}")
             self.logger.debug(traceback.format_exc())
-            
+
             return {
                 "status": "error",
                 "agent": self.name,
                 "error": str(e),
                 "error_type": type(e).__name__,
-                "traceback": traceback.format_exc()
+                "traceback": traceback.format_exc(),
             }
 
         finally:
@@ -286,6 +298,7 @@ class BaseAgent(ABC):
             Dictionary with memory usage metrics
         """
         import psutil
+
         process = psutil.Process()
         memory_info = process.memory_info()
         return {
@@ -327,7 +340,7 @@ class BaseAgent(ABC):
             "error_count": self._error_count,
             "success_rate": self._calculate_success_rate(),
             "last_error": self._last_error,
-            "recent_performance": self._get_latest_metrics()
+            "recent_performance": self._get_latest_metrics(),
         }
         """Start the agent with error handling and logging.
 

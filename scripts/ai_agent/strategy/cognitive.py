@@ -37,14 +37,15 @@ class CognitiveStrategy(StrategyComponent):
         """Set up cognitive-specific configuration validation."""
         self._validator.register_schema(
             self.name,
-            super()._validator._schemas.get(self.name, []) + [
+            super()._validator._schemas.get(self.name, [])
+            + [
                 ConfigField(
                     "confidence_threshold",
                     float,
                     False,
                     0.7,
                     validate_percentage,
-                    "Minimum confidence threshold for decisions"
+                    "Minimum confidence threshold for decisions",
                 ),
                 ConfigField(
                     "max_uncertainty",
@@ -52,7 +53,7 @@ class CognitiveStrategy(StrategyComponent):
                     False,
                     0.3,
                     validate_percentage,
-                    "Maximum acceptable uncertainty"
+                    "Maximum acceptable uncertainty",
                 ),
                 ConfigField(
                     "context_decay",
@@ -60,9 +61,9 @@ class CognitiveStrategy(StrategyComponent):
                     False,
                     0.1,
                     lambda x: 0 <= x <= 1,
-                    "Rate at which context influence decays"
-                )
-            ]
+                    "Rate at which context influence decays",
+                ),
+            ],
         )
 
     def _execute(self) -> Dict[str, Any]:
@@ -88,24 +89,21 @@ class CognitiveStrategy(StrategyComponent):
             "confidence": self.state.confidence,
             "uncertainty": self.state.uncertainty,
             "active_contexts": self.state.active_contexts,
-            "context_influence": context_influence
+            "context_influence": context_influence,
         }
 
     def _update_state(self):
         """Update internal state based on configuration and history."""
         # Decay uncertainty over time
-        self.state.uncertainty *= (1 - self.config.get("context_decay", 0.1))
+        self.state.uncertainty *= 1 - self.config.get("context_decay", 0.1)
         self.state.uncertainty = max(0.1, min(1.0, self.state.uncertainty))
 
         # Update confidence based on successful decisions
         if self.state.historical_decisions:
-            recent_success = np.mean([
-                d.get("success", False) 
-                for d in self.state.historical_decisions[-5:]
-            ])
-            self.state.confidence = (
-                0.7 * self.state.confidence + 0.3 * recent_success
+            recent_success = np.mean(
+                [d.get("success", False) for d in self.state.historical_decisions[-5:]]
             )
+            self.state.confidence = 0.7 * self.state.confidence + 0.3 * recent_success
 
     def _process_contexts(self) -> Dict[str, float]:
         """Process active contexts and their influence.
@@ -120,10 +118,10 @@ class CognitiveStrategy(StrategyComponent):
             # Calculate temporal decay
             age = len(self.state.historical_decisions)
             decay = np.exp(-self.config.get("context_decay", 0.1) * age)
-            
+
             # Get base weight from state
             base_weight = self.state.decision_weights.get(context, 0.5)
-            
+
             # Combine with decay
             weight = base_weight * decay
             context_weights[context] = weight
@@ -131,16 +129,10 @@ class CognitiveStrategy(StrategyComponent):
 
         # Normalize weights
         if total_weight > 0:
-            return {
-                k: v/total_weight 
-                for k, v in context_weights.items()
-            }
+            return {k: v / total_weight for k, v in context_weights.items()}
         return context_weights
 
-    def _make_decision(
-        self,
-        context_influence: Dict[str, float]
-    ) -> Dict[str, Any]:
+    def _make_decision(self, context_influence: Dict[str, float]) -> Dict[str, Any]:
         """Make a decision incorporating context influence.
 
         Args:
@@ -158,9 +150,7 @@ class CognitiveStrategy(StrategyComponent):
 
         # Incorporate context influence
         strongest_context = max(
-            context_influence.items(),
-            key=lambda x: x[1],
-            default=("none", 0.0)
+            context_influence.items(), key=lambda x: x[1], default=("none", 0.0)
         )
 
         return {
@@ -168,7 +158,7 @@ class CognitiveStrategy(StrategyComponent):
             "confidence": confidence,
             "uncertainty": self.state.uncertainty,
             "dominant_context": strongest_context[0],
-            "context_strength": strongest_context[1]
+            "context_strength": strongest_context[1],
         }
 
     def _update_history(self, decision: Dict[str, Any]):
@@ -178,12 +168,10 @@ class CognitiveStrategy(StrategyComponent):
             decision: Decision data to record
         """
         self.state.historical_decisions.append(decision)
-        
+
         # Keep only last 100 decisions
         if len(self.state.historical_decisions) > 100:
-            self.state.historical_decisions = (
-                self.state.historical_decisions[-100:]
-            )
+            self.state.historical_decisions = self.state.historical_decisions[-100:]
 
     def add_context(self, context: str, weight: float = 0.5):
         """Add a new context to consider in decision making.
@@ -212,9 +200,7 @@ class CognitiveStrategy(StrategyComponent):
         Args:
             adjustment: Amount to adjust confidence by
         """
-        self.state.confidence = max(0.0, min(1.0, 
-            self.state.confidence + adjustment
-        ))
+        self.state.confidence = max(0.0, min(1.0, self.state.confidence + adjustment))
 
     def set_uncertainty(self, uncertainty: float):
         """Set the uncertainty level.

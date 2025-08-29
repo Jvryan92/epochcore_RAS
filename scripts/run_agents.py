@@ -4,6 +4,7 @@
 import sys
 import argparse
 from pathlib import Path
+
 # Add the parent directory to the path so we can import the agent modules
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
@@ -25,22 +26,13 @@ Examples:
   python run_agents.py --config custom.json    # Use custom config
         """,
     )
-    parser.add_argument(
-        "--verbose", action="store_true", help="Enable verbose logging"
-    )
-    parser.add_argument(
-        "--agent",
-        help="Run a specific agent by name"
-    )
-    parser.add_argument(
-        "--list",
-        action="store_true",
-        help="List available agents"
-    )
+    parser.add_argument("--verbose", action="store_true", help="Enable verbose logging")
+    parser.add_argument("--agent", help="Run a specific agent by name")
+    parser.add_argument("--list", action="store_true", help="List available agents")
     parser.add_argument(
         "--config",
         default="ai_agent/config/default.json",
-        help="Path to custom config file"
+        help="Path to custom config file",
     )
 
     args = parser.parse_args()
@@ -55,12 +47,8 @@ Examples:
 
     # Register available agents
     agents = [
-        AssetManagerAgent(
-            manager.config.get("agents", {}).get("asset_manager", {})
-        ),
-        LedgerAgent(
-            manager.config.get("agents", {}).get("ledger", {})
-        ),
+        AssetManagerAgent(manager.config.get("agents", {}).get("asset_manager", {})),
+        LedgerAgent(manager.config.get("agents", {}).get("ledger", {})),
     ]
 
     for agent in agents:
@@ -147,8 +135,7 @@ def print_summary(result_data):
         elif isinstance(suggestions, dict):
             # Handle nested structure
             total_suggestions = sum(
-                len(v) if isinstance(v, list) else 1
-                for v in suggestions.values()
+                len(v) if isinstance(v, list) else 1 for v in suggestions.values()
             )
             print(f"   Optimization suggestions: {total_suggestions}")
 

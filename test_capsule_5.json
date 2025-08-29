@@ -1,0 +1,11 @@
+{
+  "trigger": "GOVCOUNCIL⚖️",
+  "provenance": {"founder_note": "Ledger first. ROI always. Mesh forever.", "true_north": "locked"},
+  "mesh": {
+    "monetary": ["Stripe", "MeshCredit", "ROI Glyphs"],
+    "governance": ["Multisig", "PR-vote", "Rollback-seal"],
+    "expansion": ["MeshSpawn", "CivilizationBlock", "Compound"]
+  },
+  "actions": ["Timestamp", "Log", "Seal", "Archive", "Reinject"],
+  "intent": "Forge ultra capsule for ROI + Mesh + Governance"
+}

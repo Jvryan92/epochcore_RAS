@@ -19,7 +19,7 @@ from enum import Enum
 
 class AgentType(Enum):
     """Extended agent types with new specialized roles."""
-    
+
     ANALYST = "analyst"
     STRATEGIST = "strategist"
     RISK_MANAGER = "risk"
@@ -35,7 +35,7 @@ class AgentType(Enum):
 
 class MLCapability(Enum):
     """Machine learning capabilities for agents."""
-    
+
     PREDICTION = "prediction"
     CLASSIFICATION = "classification"
     CLUSTERING = "clustering"
@@ -46,7 +46,7 @@ class MLCapability(Enum):
 @dataclass
 class MarketData:
     """Real-time market data structure."""
-    
+
     symbol: str
     price: float
     volume: int
@@ -68,13 +68,10 @@ class AgentNetwork:
         self.interaction_history = []
 
     def add_interaction(
-        self,
-        sender: AgentType,
-        receiver: AgentType,
-        message_type: str
+        self, sender: AgentType, receiver: AgentType, message_type: str
     ):
         """Add interaction to network.
-        
+
         Args:
             sender: Sending agent type
             receiver: Receiving agent type
@@ -82,42 +79,57 @@ class AgentNetwork:
         """
         edge_key = (sender.value, receiver.value)
         self.G.add_edge(sender.value, receiver.value)
-        
+
         if edge_key not in self.message_counts:
             self.message_counts[edge_key] = {}
         if message_type not in self.message_counts[edge_key]:
             self.message_counts[edge_key][message_type] = 0
-            
+
         self.message_counts[edge_key][message_type] += 1
-        
-        self.interaction_history.append({
-            "timestamp": datetime.now(),
-            "sender": sender.value,
-            "receiver": receiver.value,
-            "type": message_type
-        })
+
+        self.interaction_history.append(
+            {
+                "timestamp": datetime.now(),
+                "sender": sender.value,
+                "receiver": receiver.value,
+                "type": message_type,
+            }
+        )
 
     def visualize_network(self) -> str:
         """Generate network visualization.
-        
+
         Returns:
             Base64 encoded PNG image
         """
         plt.figure(figsize=(12, 8))
         pos = nx.spring_layout(self.G)
-        
+
         # Draw nodes with different colors for different agent types
         colors = [
-            "skyblue" if "analyst" in node else
-            "lightgreen" if "strategist" in node else
-            "salmon" if "risk" in node else
-            "orange" if "tax" in node else
-            "purple" if "monitor" in node else
-            "yellow" for node in self.G.nodes()
+            (
+                "skyblue"
+                if "analyst" in node
+                else (
+                    "lightgreen"
+                    if "strategist" in node
+                    else (
+                        "salmon"
+                        if "risk" in node
+                        else (
+                            "orange"
+                            if "tax" in node
+                            else "purple" if "monitor" in node else "yellow"
+                        )
+                    )
+                )
+            )
+            for node in self.G.nodes()
         ]
-        
+
         nx.draw(
-            self.G, pos,
+            self.G,
+            pos,
             with_labels=True,
             node_color=colors,
             node_size=2000,
@@ -125,32 +137,30 @@ class AgentNetwork:
             font_weight="bold",
             arrows=True,
             edge_color="gray",
-            arrowsize=20
+            arrowsize=20,
         )
-        
+
         # Add edge labels with message counts
         edge_labels = {
             (s, r): sum(counts.values())
             for (s, r), counts in self.message_counts.items()
         }
-        nx.draw_networkx_edge_labels(
-            self.G, pos,
-            edge_labels=edge_labels
-        )
-        
+        nx.draw_networkx_edge_labels(self.G, pos, edge_labels=edge_labels)
+
         plt.title("Agent Interaction Network")
-        
+
         # Save to bytes
         import io
         import base64
+
         buf = io.BytesIO()
-        plt.savefig(buf, format='png', dpi=300, bbox_inches='tight')
+        plt.savefig(buf, format="png", dpi=300, bbox_inches="tight")
         buf.seek(0)
         return base64.b64encode(buf.getvalue()).decode()
 
     def generate_interaction_report(self) -> Dict[str, Any]:
         """Generate detailed interaction report.
-        
+
         Returns:
             Dictionary containing interaction statistics
         """
@@ -159,7 +169,7 @@ class AgentNetwork:
             "agent_activity": self._get_agent_activity(),
             "message_types": self._get_message_type_stats(),
             "busiest_paths": self._get_busiest_paths(),
-            "temporal_analysis": self._get_temporal_analysis()
+            "temporal_analysis": self._get_temporal_analysis(),
         }
 
     def _get_agent_activity(self) -> Dict[str, Dict[str, int]]:
@@ -167,27 +177,22 @@ class AgentNetwork:
         activity = {}
         for agent in AgentType:
             sent = sum(
-                1 for i in self.interaction_history
-                if i["sender"] == agent.value
+                1 for i in self.interaction_history if i["sender"] == agent.value
             )
             received = sum(
-                1 for i in self.interaction_history
-                if i["receiver"] == agent.value
+                1 for i in self.interaction_history if i["receiver"] == agent.value
             )
             activity[agent.value] = {
                 "sent": sent,
                 "received": received,
-                "total": sent + received
+                "total": sent + received,
             }
         return activity
 
     def _get_message_type_stats(self) -> Dict[str, int]:
         """Analyze message type frequencies."""
         return {
-            msg_type: sum(
-                1 for i in self.interaction_history
-                if i["type"] == msg_type
-            )
+            msg_type: sum(1 for i in self.interaction_history if i["type"] == msg_type)
             for msg_type in set(i["type"] for i in self.interaction_history)
         }
 
@@ -199,18 +204,14 @@ class AgentNetwork:
             if path not in path_counts:
                 path_counts[path] = 0
             path_counts[path] += 1
-            
+
         return sorted(
             [
-                {
-                    "sender": s,
-                    "receiver": r,
-                    "count": c
-                }
+                {"sender": s, "receiver": r, "count": c}
                 for (s, r), c in path_counts.items()
             ],
             key=lambda x: x["count"],
-            reverse=True
+            reverse=True,
         )[:5]
 
     def _get_temporal_analysis(self) -> Dict[str, Any]:
@@ -218,7 +219,7 @@ class AgentNetwork:
         timestamps = [i["timestamp"] for i in self.interaction_history]
         if not timestamps:
             return {}
-            
+
         return {
             "start_time": min(timestamps),
             "end_time": max(timestamps),
@@ -228,8 +229,8 @@ class AgentNetwork:
                 .groupby(lambda x: timestamps[x].hour)
                 .size()
                 .items(),
-                key=lambda x: x[1]
-            )[0]
+                key=lambda x: x[1],
+            )[0],
         }
 
 
@@ -238,7 +239,7 @@ class MLAgent:
 
     def __init__(self, capability: MLCapability):
         """Initialize ML agent.
-        
+
         Args:
             capability: Type of ML capability
         """
@@ -251,33 +252,22 @@ class MLAgent:
         """Initialize ML models based on capability."""
         if self.capability == MLCapability.PREDICTION:
             self.models["price"] = RandomForestRegressor(
-                n_estimators=100,
-                random_state=42
+                n_estimators=100, random_state=42
             )
             self.models["volume"] = RandomForestRegressor(
-                n_estimators=100,
-                random_state=42
+                n_estimators=100, random_state=42
             )
-            
+
         elif self.capability == MLCapability.CLASSIFICATION:
             self.models["trend"] = RandomForestClassifier(
-                n_estimators=100,
-                random_state=42
+                n_estimators=100, random_state=42
             )
-            
-        self.scalers = {
-            name: StandardScaler()
-            for name in self.models.keys()
-        }
 
-    def train(
-        self,
-        data: pd.DataFrame,
-        target_col: str,
-        feature_cols: List[str]
-    ):
+        self.scalers = {name: StandardScaler() for name in self.models.keys()}
+
+    def train(self, data: pd.DataFrame, target_col: str, feature_cols: List[str]):
         """Train ML model.
-        
+
         Args:
             data: Training data
             target_col: Target column name
@@ -285,38 +275,35 @@ class MLAgent:
         """
         if target_col not in self.models:
             raise ValueError(f"No model initialized for {target_col}")
-            
+
         X = data[feature_cols]
         y = data[target_col]
-        
+
         # Scale features
         X_scaled = self.scalers[target_col].fit_transform(X)
-        
+
         # Train model
         self.models[target_col].fit(X_scaled, y)
 
     def predict(
-        self,
-        data: pd.DataFrame,
-        target_col: str,
-        feature_cols: List[str]
+        self, data: pd.DataFrame, target_col: str, feature_cols: List[str]
     ) -> np.ndarray:
         """Make predictions.
-        
+
         Args:
             data: Input data
             target_col: Target column name
             feature_cols: Feature column names
-            
+
         Returns:
             Predictions
         """
         if target_col not in self.models:
             raise ValueError(f"No model initialized for {target_col}")
-            
+
         X = data[feature_cols]
         X_scaled = self.scalers[target_col].transform(X)
-        
+
         return self.models[target_col].predict(X_scaled)
 
 
@@ -331,7 +318,7 @@ class MarketDataFeed:
 
     async def subscribe(self, symbol: str):
         """Subscribe to market data for a symbol.
-        
+
         Args:
             symbol: Stock symbol
         """
@@ -368,31 +355,27 @@ class MarketDataFeed:
                         low=latest["Low"],
                         indicators={
                             "sma_20": data["Close"].rolling(20).mean().iloc[-1],
-                            "rsi_14": self._calculate_rsi(data["Close"], 14)
-                        }
+                            "rsi_14": self._calculate_rsi(data["Close"], 14),
+                        },
                     )
                     self.data_cache[symbol].append(market_data)
-                    
+
                     # Keep last 1000 data points
                     if len(self.data_cache[symbol]) > 1000:
                         self.data_cache[symbol].pop(0)
-                        
+
             except Exception as e:
                 logging.error(f"Error updating {symbol}: {e}")
 
-    def _calculate_rsi(
-        self,
-        prices: pd.Series,
-        period: int = 14
-    ) -> float:
+    def _calculate_rsi(self, prices: pd.Series, period: int = 14) -> float:
         """Calculate RSI indicator."""
         delta = prices.diff()
         gain = (delta.where(delta > 0, 0)).rolling(window=period).mean()
         loss = (-delta.where(delta < 0, 0)).rolling(window=period).mean()
-        
+
         rs = gain / loss
         rsi = 100 - (100 / (1 + rs))
-        
+
         return rsi.iloc[-1]
 
 
@@ -417,17 +400,11 @@ def market_data_feed():
 def test_agent_network_visualization(agent_network):
     """Test agent network visualization."""
     # Add some test interactions
+    agent_network.add_interaction(AgentType.ANALYST, AgentType.STRATEGIST, "analysis")
     agent_network.add_interaction(
-        AgentType.ANALYST,
-        AgentType.STRATEGIST,
-        "analysis"
+        AgentType.STRATEGIST, AgentType.RISK_MANAGER, "strategy"
     )
-    agent_network.add_interaction(
-        AgentType.STRATEGIST,
-        AgentType.RISK_MANAGER,
-        "strategy"
-    )
-    
+
     # Generate visualization
     viz = agent_network.visualize_network()
     assert viz is not None
@@ -437,27 +414,21 @@ def test_agent_network_visualization(agent_network):
 def test_ml_agent_training(ml_agent):
     """Test ML agent training."""
     # Create test data
-    data = pd.DataFrame({
-        "price": np.random.random(100),
-        "volume": np.random.random(100),
-        "feature1": np.random.random(100),
-        "feature2": np.random.random(100)
-    })
-    
+    data = pd.DataFrame(
+        {
+            "price": np.random.random(100),
+            "volume": np.random.random(100),
+            "feature1": np.random.random(100),
+            "feature2": np.random.random(100),
+        }
+    )
+
     # Train model
-    ml_agent.train(
-        data,
-        "price",
-        ["feature1", "feature2"]
-    )
-    
+    ml_agent.train(data, "price", ["feature1", "feature2"])
+
     # Make predictions
-    preds = ml_agent.predict(
-        data,
-        "price",
-        ["feature1", "feature2"]
-    )
-    
+    preds = ml_agent.predict(data, "price", ["feature1", "feature2"])
+
     assert len(preds) == len(data)
 
 
@@ -466,17 +437,17 @@ async def test_market_data_feed(market_data_feed):
     """Test market data feed."""
     # Subscribe to a symbol
     await market_data_feed.subscribe("AAPL")
-    
+
     # Start feed
     feed_task = asyncio.create_task(market_data_feed.start())
-    
+
     # Wait for some data
     await asyncio.sleep(5)
-    
+
     # Stop feed
     await market_data_feed.stop()
     await feed_task
-    
+
     # Check data
     assert "AAPL" in market_data_feed.data_cache
     assert len(market_data_feed.data_cache["AAPL"]) > 0

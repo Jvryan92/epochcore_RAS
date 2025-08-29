@@ -33,7 +33,9 @@ class ConfigValidator:
         """
         self._schemas[name] = fields
 
-    def validate(self, schema_name: str, config: Dict[str, Any]) -> tuple[bool, List[str]]:
+    def validate(
+        self, schema_name: str, config: Dict[str, Any]
+    ) -> tuple[bool, List[str]]:
         """Validate a configuration against a schema.
 
         Args:
@@ -67,13 +69,9 @@ class ConfigValidator:
             if field.validator and value is not None:
                 try:
                     if not field.validator(value):
-                        errors.append(
-                            f"Validation failed for field {field.name}"
-                        )
+                        errors.append(f"Validation failed for field {field.name}")
                 except Exception as e:
-                    errors.append(
-                        f"Validation error for field {field.name}: {str(e)}"
-                    )
+                    errors.append(f"Validation error for field {field.name}: {str(e)}")
 
         return len(errors) == 0, errors
 
@@ -106,7 +104,8 @@ def validate_url(value: str) -> bool:
         r"localhost|"  # localhost
         r"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})"  # ip
         r"(?::\d+)?"  # optional port
-        r"(?:/?|[/?]\S+)$", re.IGNORECASE
+        r"(?:/?|[/?]\S+)$",
+        re.IGNORECASE,
     )
     return bool(url_pattern.match(value))
 
@@ -141,28 +140,16 @@ def validate_percentage(value: float) -> bool:
 # Common schemas
 AGENT_BASE_SCHEMA = [
     ConfigField(
-        "name",
-        str,
-        True,
-        None,
-        lambda x: bool(x.strip()),
-        "Agent name identifier"
+        "name", str, True, None, lambda x: bool(x.strip()), "Agent name identifier"
     ),
-    ConfigField(
-        "enabled",
-        bool,
-        False,
-        True,
-        None,
-        "Whether the agent is enabled"
-    ),
+    ConfigField("enabled", bool, False, True, None, "Whether the agent is enabled"),
     ConfigField(
         "log_level",
         str,
         False,
         "INFO",
         lambda x: x in ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
-        "Logging level for the agent"
+        "Logging level for the agent",
     ),
     ConfigField(
         "max_retries",
@@ -170,7 +157,7 @@ AGENT_BASE_SCHEMA = [
         False,
         3,
         validate_positive_int,
-        "Maximum number of retry attempts"
+        "Maximum number of retry attempts",
     ),
     ConfigField(
         "timeout",
@@ -178,6 +165,6 @@ AGENT_BASE_SCHEMA = [
         False,
         300,
         validate_positive_int,
-        "Operation timeout in seconds"
-    )
+        "Operation timeout in seconds",
+    ),
 ]

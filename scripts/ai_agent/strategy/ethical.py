@@ -38,14 +38,15 @@ class EthicalStrategy(StrategyComponent):
         """Set up ethics-specific configuration validation."""
         self._validator.register_schema(
             self.name,
-            super()._validator._schemas.get(self.name, []) + [
+            super()._validator._schemas.get(self.name, [])
+            + [
                 ConfigField(
                     "principles",
                     dict,
                     True,
                     None,
                     None,
-                    "Dictionary of ethical principles to enforce"
+                    "Dictionary of ethical principles to enforce",
                 ),
                 ConfigField(
                     "min_ethical_score",
@@ -53,22 +54,22 @@ class EthicalStrategy(StrategyComponent):
                     False,
                     0.7,
                     lambda x: 0 <= x <= 1,
-                    "Minimum ethical score required for approval"
-                )
-            ]
+                    "Minimum ethical score required for approval",
+                ),
+            ],
         )
 
     def _initialize_principles(self):
         """Initialize ethical principles from configuration."""
         principle_configs = self.config.get("principles", {})
-        
+
         for name, config in principle_configs.items():
             self.principles[name] = EthicalPrinciple(
                 name=name,
                 description=config.get("description", ""),
                 weight=config.get("weight", 1.0),
                 constraints=config.get("constraints", []),
-                dependencies=set(config.get("dependencies", []))
+                dependencies=set(config.get("dependencies", [])),
             )
 
     def _execute(self) -> Dict[str, Any]:
@@ -94,7 +95,7 @@ class EthicalStrategy(StrategyComponent):
             "is_ethical": is_ethical,
             "total_score": total_score,
             "principle_scores": principle_scores,
-            "violations": self._get_violations(principle_scores)
+            "violations": self._get_violations(principle_scores),
         }
 
     def _validate_dependencies(self):
@@ -113,27 +114,24 @@ class EthicalStrategy(StrategyComponent):
             Dictionary mapping principles to their scores
         """
         scores = {}
-        
+
         for name, principle in self.principles.items():
             # Start with base score
             base_score = principle.metrics.get("base_score", 0.5)
-            
+
             # Apply constraint penalties
             penalties = sum(
                 principle.metrics.get(f"constraint_{c}", 0.1)
                 for c in principle.constraints
             )
-            
+
             # Calculate final score
             score = max(0.0, min(1.0, base_score - penalties))
             scores[name] = score * principle.weight
 
         return scores
 
-    def _calculate_total_score(
-        self,
-        principle_scores: Dict[str, float]
-    ) -> float:
+    def _calculate_total_score(self, principle_scores: Dict[str, float]) -> float:
         """Calculate overall ethical score.
 
         Args:
@@ -145,10 +143,8 @@ class EthicalStrategy(StrategyComponent):
         if not principle_scores:
             return 0.0
 
-        total_weight = sum(
-            p.weight for p in self.principles.values()
-        )
-        
+        total_weight = sum(p.weight for p in self.principles.values())
+
         if total_weight == 0:
             return 0.0
 
@@ -160,8 +156,7 @@ class EthicalStrategy(StrategyComponent):
         return weighted_sum / total_weight
 
     def _get_violations(
-        self,
-        principle_scores: Dict[str, float]
+        self, principle_scores: Dict[str, float]
     ) -> List[Dict[str, Any]]:
         """Identify ethical violations.
 
@@ -177,12 +172,14 @@ class EthicalStrategy(StrategyComponent):
         for name, score in principle_scores.items():
             if score < min_score:
                 principle = self.principles[name]
-                violations.append({
-                    "principle": name,
-                    "score": score,
-                    "description": principle.description,
-                    "constraints": principle.constraints
-                })
+                violations.append(
+                    {
+                        "principle": name,
+                        "score": score,
+                        "description": principle.description,
+                        "constraints": principle.constraints,
+                    }
+                )
 
         return violations
 
@@ -192,7 +189,7 @@ class EthicalStrategy(StrategyComponent):
         description: str,
         weight: float = 1.0,
         constraints: Optional[List[str]] = None,
-        dependencies: Optional[Set[str]] = None
+        dependencies: Optional[Set[str]] = None,
     ):
         """Add a new ethical principle.
 
@@ -208,14 +205,10 @@ class EthicalStrategy(StrategyComponent):
             description=description,
             weight=weight,
             constraints=constraints or [],
-            dependencies=dependencies or set()
+            dependencies=dependencies or set(),
         )
 
-    def update_metrics(
-        self,
-        principle: str,
-        metrics: Dict[str, float]
-    ):
+    def update_metrics(self, principle: str, metrics: Dict[str, float]):
         """Update metrics for a principle.
 
         Args:

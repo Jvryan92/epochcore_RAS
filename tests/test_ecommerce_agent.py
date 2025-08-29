@@ -9,6 +9,7 @@ from unittest.mock import patch
 
 from scripts.ai_agent.agents.ecommerce_agent import EcommerceAgent
 
+
 class TestEcommerceAgent(unittest.TestCase):
     """Test cases for EcommerceAgent."""
 
@@ -16,7 +17,7 @@ class TestEcommerceAgent(unittest.TestCase):
         """Set up test environment."""
         self.test_dir = tempfile.mkdtemp()
         self.test_path = Path(self.test_dir)
-        
+
         # Create test structure
         (self.test_path / "public").mkdir(parents=True)
         (self.test_path / "src/app/api/products").mkdir(parents=True)
@@ -24,20 +25,19 @@ class TestEcommerceAgent(unittest.TestCase):
         (self.test_path / "src/lib").mkdir(parents=True)
         (self.test_path / "src/app/pricing").mkdir(parents=True)
         (self.test_path / ".github/workflows").mkdir(parents=True)
-        
+
         # Create test files
         self._create_test_products()
         self._create_test_env()
         self._create_test_api_routes()
         self._create_test_pricing_page()
         self._create_test_workflows()
-        
+
         # Initialize agent
-        self.agent = EcommerceAgent({
-            "products_path": "public/products.json",
-            "env_path": ".env.local"
-        })
-        
+        self.agent = EcommerceAgent(
+            {"products_path": "public/products.json", "env_path": ".env.local"}
+        )
+
         # Mock project root
         self.original_get_root = self.agent.get_project_root
         self.agent.get_project_root = lambda: self.test_path
@@ -46,6 +46,7 @@ class TestEcommerceAgent(unittest.TestCase):
         """Clean up test environment."""
         self.agent.get_project_root = self.original_get_root
         import shutil
+
         shutil.rmtree(self.test_dir)
 
     def _create_test_products(self):
@@ -56,7 +57,7 @@ class TestEcommerceAgent(unittest.TestCase):
                     "Name": "Test Product",
                     "Price (USD cents)": 9900,
                     "License": "perpetual",
-                    "Description": "Test description"
+                    "Description": "Test description",
                 }
             ]
         }
@@ -86,7 +87,7 @@ class TestEcommerceAgent(unittest.TestCase):
         """
         with open(self.test_path / "src/app/api/products/route.ts", "w") as f:
             f.write(products_route)
-        
+
         # Checkout route
         checkout_route = """
         import { stripe } from "@/lib/stripe";
@@ -97,7 +98,7 @@ class TestEcommerceAgent(unittest.TestCase):
         """
         with open(self.test_path / "src/app/api/checkout/route.ts", "w") as f:
             f.write(checkout_route)
-        
+
         # Stripe lib
         stripe_lib = """
         import Stripe from "stripe";
@@ -138,7 +139,7 @@ class TestEcommerceAgent(unittest.TestCase):
     def test_validate_config(self):
         """Test configuration validation."""
         self.assertTrue(self.agent.validate_config())
-        
+
         # Test with missing files
         os.remove(self.test_path / "public/products.json")
         self.assertFalse(self.agent.validate_config())

@@ -9,6 +9,7 @@ from datetime import datetime
 @dataclass
 class AgentMetric:
     """Individual agent metric."""
+
     name: str
     value: float
     timestamp: datetime
@@ -31,7 +32,9 @@ class AgentMonitor:
         """
         self.start_times[operation_name] = time.time()
 
-    def end_operation(self, operation_name: str, labels: Optional[Dict[str, str]] = None):
+    def end_operation(
+        self, operation_name: str, labels: Optional[Dict[str, str]] = None
+    ):
         """End timing an operation and record metric.
 
         Args:
@@ -41,9 +44,7 @@ class AgentMonitor:
         if operation_name in self.start_times:
             duration = time.time() - self.start_times[operation_name]
             self.record_metric(
-                f"{operation_name}_duration_seconds",
-                duration,
-                labels or {}
+                f"{operation_name}_duration_seconds", duration, labels or {}
             )
             del self.start_times[operation_name]
 
@@ -55,12 +56,9 @@ class AgentMonitor:
             value: Metric value
             labels: Labels to attach to metric
         """
-        self.metrics.append(AgentMetric(
-            name=name,
-            value=value,
-            timestamp=datetime.now(),
-            labels=labels
-        ))
+        self.metrics.append(
+            AgentMetric(name=name, value=value, timestamp=datetime.now(), labels=labels)
+        )
 
     def get_metrics(self) -> List[AgentMetric]:
         """Get all recorded metrics.

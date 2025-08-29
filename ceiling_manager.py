@@ -18,6 +18,7 @@ from enum import Enum
 # Import security and audit components if available
 try:
     from epoch_audit import EpochAudit
+
     SECURITY_SYSTEM_AVAILABLE = True
 except ImportError:
     SECURITY_SYSTEM_AVAILABLE = False
@@ -320,18 +321,22 @@ class CeilingManager:
         # Apply dynamic adjustment
         adjustment_factor = config["dynamic_adjustments"].get(ceiling_type.value, 1.0)
         effective_ceiling = base_ceiling * adjustment_factor
-        
+
         # Apply audit system enforcement if available
-        if self.audit_system and hasattr(self.audit_system, 'enforce_ceiling'):
+        if self.audit_system and hasattr(self.audit_system, "enforce_ceiling"):
             # Create a temporary ceiling setting in audit system if needed
             if ceiling_type.value not in self.audit_system.ceilings:
                 self.audit_system.ceilings[ceiling_type.value] = effective_ceiling
-                
+
             # This is just to verify the ceiling is registered, no actual enforcement here
             self.audit_system.log_event(
                 "ceiling_verification",
                 f"Ceiling verified for {ceiling_type.value}: {effective_ceiling}",
-                {"config_id": config_id, "ceiling_type": ceiling_type.value, "value": effective_ceiling}
+                {
+                    "config_id": config_id,
+                    "ceiling_type": ceiling_type.value,
+                    "value": effective_ceiling,
+                },
             )
 
         return effective_ceiling
@@ -368,65 +373,68 @@ class CeilingManager:
             "confidence_level": 0.75,  # 75% confidence in estimate
             "recommendation": self._generate_revenue_recommendation(revenue_impact),
         }
-        
+
         # Log revenue impact calculation to audit system
         if self.audit_system:
             self.audit_system.log_event(
                 "revenue_impact_calculation",
                 f"Revenue impact calculated for {config_id}: ${revenue_impact:.2f}/month",
-                impact_analysis
+                impact_analysis,
             )
 
         return impact_analysis
-        
-    def enforce_value_ceiling(self, config_id: str, ceiling_type: CeilingType, value: float) -> Dict[str, Any]:
+
+    def enforce_value_ceiling(
+        self, config_id: str, ceiling_type: CeilingType, value: float
+    ) -> Dict[str, Any]:
         """
         Enforce a ceiling on a specific value based on configuration settings
-        
+
         Args:
             config_id: Configuration ID
             ceiling_type: Type of ceiling to enforce
             value: Value to check against ceiling
-            
+
         Returns:
             Dictionary with enforcement results
         """
         # Get effective ceiling
         ceiling = self.get_effective_ceiling(config_id, ceiling_type)
-        
+
         # Track original value
         original_value = value
         capped = False
-        
+
         # Apply ceiling if needed
         if value > ceiling:
             value = ceiling
             capped = True
-            
+
             # Log ceiling enforcement
-            self.log_ceiling_event("ENFORCEMENT", {
-                "config_id": config_id,
-                "ceiling_type": ceiling_type.value,
-                "original_value": original_value,
-                "capped_value": value,
-                "ceiling": ceiling
-            })
-            
+            self.log_ceiling_event(
+                "ENFORCEMENT",
+                {
+                    "config_id": config_id,
+                    "ceiling_type": ceiling_type.value,
+                    "original_value": original_value,
+                    "capped_value": value,
+                    "ceiling": ceiling,
+                },
+            )
+
             # Use audit system if available
             if self.audit_system:
                 self.audit_system.enforce_ceiling(
-                    ceiling_type.value, 
-                    original_value,
-                    config_id
+                    ceiling_type.value, original_value, config_id
                 )
-        
+
         return {
             "config_id": config_id,
             "ceiling_type": ceiling_type.value,
             "original_value": original_value,
             "final_value": value,
             "ceiling": ceiling,
-            "capped": capped
+            "capped": capped,
         }
 
     def _generate_revenue_recommendation(self, revenue_impact: float) -> str:
@@ -473,13 +481,13 @@ class CeilingManager:
 
         with open(self.ceiling_events_log, "a") as f:
             f.write(f"{json.dumps(log_entry)}\n")
-            
+
         # Use audit system if available
         if self.audit_system:
             self.audit_system.log_event(
-                f"ceiling_{event_type.lower()}", 
-                f"Ceiling event: {event_type}", 
-                event_data
+                f"ceiling_{event_type.lower()}",
+                f"Ceiling event: {event_type}",
+                event_data,
             )
 
     def get_upgrade_recommendations(self, config_id: str) -> Dict[str, Any]:
@@ -572,7 +580,7 @@ def main():
         choices=["budget", "latency", "trust_threshold", "success_rate", "rate_limit"],
         help="Ceiling type",
     )
-    
+
     # Enforce ceiling command
     enforce_parser = subparsers.add_parser("enforce", help="Enforce ceiling on a value")
     enforce_parser.add_argument("config_id", help="Configuration ID")
@@ -581,26 +589,39 @@ def main():
         choices=["budget", "latency", "trust_threshold", "success_rate", "rate_limit"],
         help="Ceiling type",
     )
-    enforce_parser.add_argument("value", type=float, help="Value to check against ceiling")
+    enforce_parser.add_argument(
+        "value", type=float, help="Value to check against ceiling"
+    )
 
     # Upgrade recommendation command
     upgrade_parser = subparsers.add_parser(
         "upgrade-rec", help="Get upgrade recommendations"
     )
     upgrade_parser.add_argument("config_id", help="Configuration ID")
-    
+
     # Security verification command
     if SECURITY_SYSTEM_AVAILABLE:
         verify_parser = subparsers.add_parser("verify", help="Verify ceiling security")
-        verify_parser.add_argument("--max-events", type=int, default=20, 
-                                 help="Maximum number of ceiling events to verify")
-        
+        verify_parser.add_argument(
+            "--max-events",
+            type=int,
+            default=20,
+            help="Maximum number of ceiling events to verify",
+        )
+
         # Security alerts command
-        alerts_parser = subparsers.add_parser("security-alerts", help="Monitor security alerts")
-        alerts_parser.add_argument("--continuous", action="store_true", default=True,
-                                  help="Continuously monitor for security alerts")
-        alerts_parser.add_argument("--interval", type=int, default=5,
-                                  help="Interval in seconds between checks")
+        alerts_parser = subparsers.add_parser(
+            "security-alerts", help="Monitor security alerts"
+        )
+        alerts_parser.add_argument(
+            "--continuous",
+            action="store_true",
+            default=True,
+            help="Continuously monitor for security alerts",
+        )
+        alerts_parser.add_argument(
+            "--interval", type=int, default=5, help="Interval in seconds between checks"
+        )
 
     args = parser.parse_args()
 
@@ -663,35 +684,41 @@ def main():
                     print(f"    - {benefit}")
             else:
                 print(f"  No upgrade recommended at this time")
-                
+
     elif args.command == "enforce":
         ceiling_type = CeilingType(args.ceiling_type)
         result = manager.enforce_value_ceiling(args.config_id, ceiling_type, args.value)
-        
+
         if result["capped"]:
-            print(f"🔒 Ceiling enforced: {result['original_value']} → {result['final_value']}")
+            print(
+                f"🔒 Ceiling enforced: {result['original_value']} → {result['final_value']}"
+            )
             print(f"  Config: {args.config_id}")
             print(f"  Ceiling type: {ceiling_type.value}")
             print(f"  Ceiling value: {result['ceiling']}")
         else:
-            print(f"✓ Value {result['original_value']} is within ceiling ({result['ceiling']})")
-    
+            print(
+                f"✓ Value {result['original_value']} is within ceiling ({result['ceiling']})"
+            )
+
     elif args.command == "verify" and SECURITY_SYSTEM_AVAILABLE:
         # Verify recent ceiling events using the audit system
         if manager.audit_system:
             results = manager.audit_system.verify_seals(args.max_events)
-            
+
             print(f"Security verification status: {results['status']}")
             print(f"Verified {results['verified_count']} events")
-            print(f"Valid: {results['valid_count']}, Invalid: {results['invalid_count']}")
-            
-            if results['invalid_count'] > 0:
+            print(
+                f"Valid: {results['valid_count']}, Invalid: {results['invalid_count']}"
+            )
+
+            if results["invalid_count"] > 0:
                 print("\n⚠️ WARNING: Invalid events detected:")
-                for event in results['invalid_events']:
+                for event in results["invalid_events"]:
                     print(f"  [{event['ts']}] {event['event']}")
             else:
                 print("\n✅ All ceiling events verified successfully")
-                
+
     elif args.command == "security-alerts" and SECURITY_SYSTEM_AVAILABLE:
         # Start security alert monitoring - continuously checks for security alerts and ceiling violations
         # Simulates a real-time security monitoring system that would typically be part of a SOC dashboard
@@ -699,31 +726,39 @@ def main():
             try:
                 print("🚨 Starting Security Alert Monitor...")
                 print("Press Ctrl+C to stop monitoring")
-                
+
                 # Track the last alert timestamp to avoid duplicates
                 last_alert_time = None
-                
+
                 while True:
-                    alerts = manager.audit_system.get_security_alerts(since=last_alert_time)
-                    
+                    alerts = manager.audit_system.get_security_alerts(
+                        since=last_alert_time
+                    )
+
                     if alerts and len(alerts) > 0:
                         print(f"\n🔔 {len(alerts)} new security alert(s) detected:")
                         for alert in alerts:
-                            print(f"  [{alert['timestamp']}] {alert['severity'].upper()}: {alert['message']}")
+                            print(
+                                f"  [{alert['timestamp']}] {alert['severity'].upper()}: {alert['message']}"
+                            )
                             print(f"      {alert['details']}")
-                            last_alert_time = alert['timestamp']
-                    
+                            last_alert_time = alert["timestamp"]
+
                     # Check for ceiling violations
                     violations = manager.audit_system.get_ceiling_violations()
                     if violations and len(violations) > 0:
                         print(f"\n⚠️ {len(violations)} ceiling violation(s) detected:")
                         for violation in violations:
-                            print(f"  [{violation['timestamp']}] {violation['ceiling_type']}")
-                            print(f"      Attempted: {violation['attempted_value']}, Limit: {violation['ceiling_value']}")
+                            print(
+                                f"  [{violation['timestamp']}] {violation['ceiling_type']}"
+                            )
+                            print(
+                                f"      Attempted: {violation['attempted_value']}, Limit: {violation['ceiling_value']}"
+                            )
                             print(f"      Config: {violation['config_id']}")
-                    
+
                     time.sleep(args.interval)
-                    
+
             except KeyboardInterrupt:
                 print("\n✓ Security monitoring stopped")
         else:

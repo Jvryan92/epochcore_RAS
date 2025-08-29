@@ -204,9 +204,11 @@ class AgentManager:
         """Return a list of all agent instances."""
         return list(self.agents.values())
 
-    def register_compound_feature(self, feature_id: str, dependent_agents: List[str]) -> None:
+    def register_compound_feature(
+        self, feature_id: str, dependent_agents: List[str]
+    ) -> None:
         """Register a compound feature that requires multiple agents to make decisions.
-        
+
         Args:
             feature_id: Unique identifier for the compound feature
             dependent_agents: List of agent names that need to contribute to decisions
@@ -214,14 +216,16 @@ class AgentManager:
         for agent_name in dependent_agents:
             if agent_name not in self.agents:
                 raise ValueError(f"Agent '{agent_name}' not registered")
-        
+
         self.compound_decisions[feature_id] = []
         for agent_name in dependent_agents:
             self.agent_dependencies.setdefault(agent_name, set()).add(feature_id)
-            
-    def contribute_decision(self, agent_name: str, feature_id: str, decision: Dict[str, Any]) -> None:
+
+    def contribute_decision(
+        self, agent_name: str, feature_id: str, decision: Dict[str, Any]
+    ) -> None:
         """Contribute an agent's decision to a compound feature.
-        
+
         Args:
             agent_name: Name of the agent making the decision
             feature_id: ID of the compound feature
@@ -229,88 +233,96 @@ class AgentManager:
         """
         if feature_id not in self.compound_decisions:
             raise ValueError(f"Compound feature '{feature_id}' not registered")
-            
+
         if feature_id not in self.agent_dependencies.get(agent_name, set()):
-            raise ValueError(f"Agent '{agent_name}' not registered for feature '{feature_id}'")
-            
-        self.compound_decisions[feature_id].append({
-            'agent': agent_name,
-            'decision': decision,
-            'timestamp': dt.datetime.now(dt.UTC).isoformat()
-        })
-        
+            raise ValueError(
+                f"Agent '{agent_name}' not registered for feature '{feature_id}'"
+            )
+
+        self.compound_decisions[feature_id].append(
+            {
+                "agent": agent_name,
+                "decision": decision,
+                "timestamp": dt.datetime.now(dt.UTC).isoformat(),
+            }
+        )
+
     def get_compound_decision(self, feature_id: str) -> Dict[str, Any]:
         """Get the final compound decision by combining all agent contributions.
-        
+
         Args:
             feature_id: ID of the compound feature
-            
+
         Returns:
             Combined decision data from all contributing agents
         """
         if feature_id not in self.compound_decisions:
             raise ValueError(f"Compound feature '{feature_id}' not registered")
-            
+
         decisions = self.compound_decisions[feature_id]
         if not decisions:
-            return {'status': 'pending', 'message': 'No decisions contributed yet'}
-            
+            return {"status": "pending", "message": "No decisions contributed yet"}
+
         # Combine decisions (can be customized based on feature needs)
         combined = {
-            'status': 'complete',
-            'decisions': decisions,
-            'summary': self._summarize_decisions(decisions)
+            "status": "complete",
+            "decisions": decisions,
+            "summary": self._summarize_decisions(decisions),
         }
-        
+
         return combined
-        
+
     def _summarize_decisions(self, decisions: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Summarize multiple agent decisions into a final recommendation.
-        
+
         Args:
             decisions: List of individual agent decisions
-            
+
         Returns:
             Summary of combined decisions
         """
         # This is a simple example - customize based on your needs
         summary = {
-            'agents_involved': len(decisions),
-            'agreement_level': 0.0,
-            'recommendations': [],
-            'metrics': {}
+            "agents_involved": len(decisions),
+            "agreement_level": 0.0,
+            "recommendations": [],
+            "metrics": {},
         }
-        
+
         # Collect all metrics and recommendations
         metrics_count = defaultdict(int)
         metrics_sum = defaultdict(float)
         all_recommendations = []
-        
+
         for decision in decisions:
-            if 'metrics' in decision['decision']:
-                for k, v in decision['decision']['metrics'].items():
+            if "metrics" in decision["decision"]:
+                for k, v in decision["decision"]["metrics"].items():
                     metrics_count[k] += 1
                     metrics_sum[k] += float(v)
-                    
-            if 'recommendations' in decision['decision']:
-                all_recommendations.extend(decision['decision']['recommendations'])
-                
+
+            if "recommendations" in decision["decision"]:
+                all_recommendations.extend(decision["decision"]["recommendations"])
+
         # Average metrics
         for metric, count in metrics_count.items():
             if count > 0:
-                summary['metrics'][metric] = metrics_sum[metric] / count
-                
+                summary["metrics"][metric] = metrics_sum[metric] / count
+
         # Include most common recommendations
         from collections import Counter
+
         if all_recommendations:
             recommendation_counts = Counter(all_recommendations)
             total_recs = len(decisions)
-            summary['recommendations'] = [
-                rec for rec, count in recommendation_counts.most_common()
+            summary["recommendations"] = [
+                rec
+                for rec, count in recommendation_counts.most_common()
                 if count >= total_recs * 0.5  # At least 50% agreement
             ]
-            
+
             # Calculate agreement level
-            summary['agreement_level'] = len(summary['recommendations']) / len(all_recommendations)
-            
+            summary["agreement_level"] = len(summary["recommendations"]) / len(
+                all_recommendations
+            )
+
         return summary

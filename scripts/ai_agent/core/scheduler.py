@@ -21,7 +21,7 @@ class AgentScheduler:
         func: Callable,
         schedule: Union[str, int, timedelta],
         args: tuple = (),
-        kwargs: dict = None
+        kwargs: dict = None,
     ):
         """Add a task to the scheduler.
 
@@ -33,13 +33,13 @@ class AgentScheduler:
             kwargs: Function keyword arguments
         """
         self.tasks[name] = {
-            'func': func,
-            'schedule': schedule,
-            'args': args,
-            'kwargs': kwargs or {},
-            'last_run': None,
-            'next_run': None,
-            '_task': None
+            "func": func,
+            "schedule": schedule,
+            "args": args,
+            "kwargs": kwargs or {},
+            "last_run": None,
+            "next_run": None,
+            "_task": None,
         }
 
     async def _run_task(self, name: str):
@@ -52,30 +52,30 @@ class AgentScheduler:
         while self._running:
             try:
                 now = datetime.now()
-                
+
                 # Calculate next run time
-                if isinstance(task['schedule'], (int, float)):
-                    next_run = now + timedelta(seconds=task['schedule'])
-                elif isinstance(task['schedule'], timedelta):
-                    next_run = now + task['schedule']
+                if isinstance(task["schedule"], (int, float)):
+                    next_run = now + timedelta(seconds=task["schedule"])
+                elif isinstance(task["schedule"], timedelta):
+                    next_run = now + task["schedule"]
                 else:  # Cron expression
-                    cron = croniter.croniter(task['schedule'], now)
+                    cron = croniter.croniter(task["schedule"], now)
                     next_run = cron.get_next(datetime)
 
-                task['next_run'] = next_run
-                
+                task["next_run"] = next_run
+
                 # Wait until next run time
                 wait_seconds = (next_run - now).total_seconds()
                 if wait_seconds > 0:
                     await asyncio.sleep(wait_seconds)
 
                 # Execute task
-                if asyncio.iscoroutinefunction(task['func']):
-                    await task['func'](*task['args'], **task['kwargs'])
+                if asyncio.iscoroutinefunction(task["func"]):
+                    await task["func"](*task["args"], **task["kwargs"])
                 else:
-                    task['func'](*task['args'], **task['kwargs'])
+                    task["func"](*task["args"], **task["kwargs"])
 
-                task['last_run'] = datetime.now()
+                task["last_run"] = datetime.now()
 
             except Exception as e:
                 print(f"Error in task {name}: {e}")
@@ -85,18 +85,18 @@ class AgentScheduler:
         """Start the scheduler."""
         self._running = True
         self._loop = asyncio.get_event_loop()
-        
+
         for name in self.tasks:
             task = self.tasks[name]
-            task['_task'] = self._loop.create_task(self._run_task(name))
+            task["_task"] = self._loop.create_task(self._run_task(name))
 
     def stop(self):
         """Stop the scheduler."""
         self._running = False
         if self._loop:
             for task in self.tasks.values():
-                if task['_task']:
-                    task['_task'].cancel()
+                if task["_task"]:
+                    task["_task"].cancel()
 
     def get_task_status(self) -> List[Dict]:
         """Get status of all tasks.
@@ -106,11 +106,13 @@ class AgentScheduler:
         """
         status = []
         for name, task in self.tasks.items():
-            status.append({
-                'name': name,
-                'last_run': task['last_run'],
-                'next_run': task['next_run'],
-                'schedule': task['schedule'],
-                'running': task['_task'] is not None and not task['_task'].done()
-            })
+            status.append(
+                {
+                    "name": name,
+                    "last_run": task["last_run"],
+                    "next_run": task["next_run"],
+                    "schedule": task["schedule"],
+                    "running": task["_task"] is not None and not task["_task"].done(),
+                }
+            )
         return status

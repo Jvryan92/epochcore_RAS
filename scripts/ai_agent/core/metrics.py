@@ -24,24 +24,16 @@ class AgentMetrics:
 
     # Prometheus metrics
     success_counter = prom.Counter(
-        "agent_success_total",
-        "Total successful agent runs",
-        ["agent_name"]
+        "agent_success_total", "Total successful agent runs", ["agent_name"]
     )
     error_counter = prom.Counter(
-        "agent_errors_total", 
-        "Total agent errors",
-        ["agent_name"]
+        "agent_errors_total", "Total agent errors", ["agent_name"]
     )
     duration_histogram = prom.Histogram(
-        "agent_duration_seconds",
-        "Agent execution duration",
-        ["agent_name"]
+        "agent_duration_seconds", "Agent execution duration", ["agent_name"]
     )
     memory_gauge = prom.Gauge(
-        "agent_memory_bytes",
-        "Agent memory usage in bytes",
-        ["agent_name", "type"]
+        "agent_memory_bytes", "Agent memory usage in bytes", ["agent_name", "type"]
     )
 
     def start_run(self) -> None:
@@ -80,16 +72,10 @@ class AgentMetrics:
         """Update memory usage metrics."""
         process = psutil.Process()
         memory = process.memory_info()
-        
-        self.memory_gauge.labels(
-            agent_name=self.name,
-            type="rss"
-        ).set(memory.rss)
-        
-        self.memory_gauge.labels(
-            agent_name=self.name,
-            type="vms"
-        ).set(memory.vms)
+
+        self.memory_gauge.labels(agent_name=self.name, type="rss").set(memory.rss)
+
+        self.memory_gauge.labels(agent_name=self.name, type="vms").set(memory.vms)
 
     def _record_performance_metrics(self, duration: float, success: bool) -> None:
         """Record detailed performance metrics.
@@ -102,7 +88,7 @@ class AgentMetrics:
             "timestamp": datetime.now().isoformat(),
             "duration": duration,
             "success": success,
-            "memory_usage": self._get_memory_usage()
+            "memory_usage": self._get_memory_usage(),
         }
         self.performance_metrics.append(metrics)
 
@@ -118,10 +104,7 @@ class AgentMetrics:
         """
         process = psutil.Process()
         memory = process.memory_info()
-        return {
-            "rss": memory.rss / 1024 / 1024,
-            "vms": memory.vms / 1024 / 1024
-        }
+        return {"rss": memory.rss / 1024 / 1024, "vms": memory.vms / 1024 / 1024}
 
     def get_success_rate(self) -> float:
         """Calculate success rate as percentage.
@@ -159,5 +142,5 @@ class AgentMetrics:
             "last_run_duration": self.last_run_duration,
             "last_error": self.last_error,
             "memory_usage": self._get_memory_usage(),
-            "recent_performance": self.performance_metrics[-5:]  # Last 5 runs
+            "recent_performance": self.performance_metrics[-5:],  # Last 5 runs
         }
