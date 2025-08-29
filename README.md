@@ -1,5 +1,5 @@
 # EpochCore RAS (Recursive Autonomous Software)
-
+  🧙‍♂️                  🦿                      🤖
 A comprehensive autonomous software system that combines the capabilities of StrategyDECK's intelligent asset management with EpochCore5's advanced agent architecture. This system features recursive self-improvement, ethical decision-making, and adaptive learning capabilities.
 
 ## 🛠️ Installation
