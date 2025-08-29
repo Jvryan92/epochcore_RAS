@@ -1,0 +1,6 @@
+{"id": "GAME-001", "family": "GAME", "phase": "INIT", "command": "init_game_system", "intensity": 5}
+{"id": "GAME-002", "family": "GAME", "phase": "SETUP", "command": "setup_game_environment", "intensity": 8}
+{"id": "ASTRA-001", "family": "ASTRA", "phase": "INIT", "command": "init_command_structure", "intensity": 3}
+{"id": "ASTRA-002", "family": "ASTRA", "phase": "SETUP", "command": "setup_command_channels", "intensity": 6}
+{"id": "CRUX-001", "family": "CRUX", "phase": "INIT", "command": "init_core_anchors", "intensity": 4}
+{"id": "CRUX-002", "family": "CRUX", "phase": "SETUP", "command": "setup_anchor_network", "intensity": 7}

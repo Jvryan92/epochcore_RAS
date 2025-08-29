@@ -1,0 +1,75 @@
+{
+  "content_id": "content_1756426847_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "fun_quiz",
+  "theme": "creature_club",
+  "created_at": "2025-08-29T00:20:47.389973",
+  "status": "generated",
+  "content": {
+    "title": "Fun creature_club Fill Blanks Quiz",
+    "category": "Nature",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Matching",
+        "question": "Question 1 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "Matching",
+        "question": "Question 2 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Matching",
+        "question": "Question 3 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Fill Blanks",
+        "question": "Question 4 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Fill Blanks",
+        "question": "Question 5 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Brain Power"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T00:20:47.390017",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756426847_ledger_agent",
+    "agent_id": "ledger_agent",
+    "content_type": "fun_quiz",
+    "signature": "0tbEVno3aTEOVzFex4dqhKyAFIbAgvTjNuRqjKcW1Sw="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T00:20:47.395147",
+    "protection_level": "maximum",
+    "signature": "58477ef1ff05ff0c380343306eb44d26337748550ab5702ce61c48a553d8d8b6"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

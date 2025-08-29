@@ -1,0 +1,66 @@
+{
+  "content_id": "content_1756448448_analyst_agent",
+  "agent_id": "analyst_agent",
+  "content_type": "animated_lesson",
+  "theme": "cosmic_adventure",
+  "created_at": "2025-08-29T06:20:48.231625",
+  "status": "generated",
+  "content": {
+    "title": "cosmic_adventure Adventure in 2D Animation",
+    "duration": "5min",
+    "topic": "Learning about cosmic_adventure",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about cosmic_adventure",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about cosmic_adventure",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about cosmic_adventure",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about cosmic_adventure",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Questions",
+      "Activities"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T06:20:48.231702",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756448448_analyst_agent",
+    "agent_id": "analyst_agent",
+    "content_type": "animated_lesson",
+    "signature": "ABA7CzdVB82f6E4XEO6RxjVDFCP1SaBRNiPuMCb1Huw="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T06:20:48.244910",
+    "protection_level": "maximum",
+    "signature": "358f5925b2b38f722f956b87e93e880745e99ad089ab82b9740f4d4967b4ca0c"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "content_id": "content_1756430447_analyst_agent",
+  "agent_id": "analyst_agent",
+  "content_type": "brain_teaser",
+  "theme": "sea_explorers",
+  "created_at": "2025-08-29T01:20:47.502585",
+  "status": "generated",
+  "content": {
+    "title": "sea_explorers Logic Challenge",
+    "difficulty": "Medium",
+    "puzzle_type": "Logic",
+    "question": "A logic puzzle about sea_explorers",
+    "hints": [
+      "Hint 1",
+      "Hint 2",
+      "Hint 3"
+    ],
+    "solution": "Solution to the sea_explorers puzzle",
+    "learning_points": [
+      "Problem solving",
+      "Pattern recognition"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T01:20:47.502718",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756430447_analyst_agent",
+    "agent_id": "analyst_agent",
+    "content_type": "brain_teaser",
+    "signature": "vp73NNqJ9HRPH18Q8B1v8Y+JPUSooOwxleTIqmm9RCg="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T01:20:47.532672",
+    "protection_level": "maximum",
+    "signature": "30b80e98ad9f5abca9d6e077c515d0ac6a33e5d6bb4ee5d463c54fe9e830ded0"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

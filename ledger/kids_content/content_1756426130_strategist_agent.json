@@ -1,0 +1,24 @@
+{
+  "content_id": "content_1756426130_strategist_agent",
+  "agent_id": "strategist_agent",
+  "content_type": "brain_teaser",
+  "theme": "sound_safari",
+  "created_at": "2025-08-29T00:08:50.304437",
+  "status": "generated",
+  "content": {
+    "title": "sound_safari Riddle Challenge",
+    "difficulty": "Medium",
+    "puzzle_type": "Riddle",
+    "question": "A riddle puzzle about sound_safari",
+    "hints": [
+      "Hint 1",
+      "Hint 2",
+      "Hint 3"
+    ],
+    "solution": "Solution to the sound_safari puzzle",
+    "learning_points": [
+      "Pattern recognition",
+      "Critical thinking"
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "content_id": "content_1756441248_coordinator_agent",
+  "agent_id": "coordinator_agent",
+  "content_type": "animated_lesson",
+  "theme": "sound_safari",
+  "created_at": "2025-08-29T04:20:48.004821",
+  "status": "generated",
+  "content": {
+    "title": "sound_safari Adventure in 3D Animation",
+    "duration": "3min",
+    "topic": "Learning about sound_safari",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about sound_safari",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Questions",
+      "Pauses"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T04:20:48.004861",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756441248_coordinator_agent",
+    "agent_id": "coordinator_agent",
+    "content_type": "animated_lesson",
+    "signature": "vFt5TPHcKl4cy7TdrLWdiaCIPXgbmDlSfyhfeNK6TAE="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T04:20:48.008315",
+    "protection_level": "maximum",
+    "signature": "b6a0b72011c65f0cc231c360b1ae8e394d1fe2d459e4ae17a7b0637a8c443df6"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

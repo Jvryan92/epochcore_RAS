@@ -1,0 +1,24 @@
+{
+  "content_id": "content_1756433330_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "kidz_bop_song",
+  "theme": "sea_explorers",
+  "created_at": "2025-08-29T02:08:50.528399",
+  "status": "generated",
+  "content": {
+    "title": "sea_explorers Nature Groove",
+    "lyrics": [
+      "Verse 1: Fun lyrics about Nature",
+      "Verse 2: Fun lyrics about Nature",
+      "Verse 3: Fun lyrics about Nature"
+    ],
+    "tempo": "Upbeat",
+    "theme": "",
+    "dance_moves": [
+      "Spin",
+      "Clap",
+      "Spin",
+      "Spin"
+    ]
+  }
+}

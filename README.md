@@ -1,6 +1,29 @@
+"""
+PROTECTED FILE - EPOCHCORE RAS
+Copyright (c) 2024 John Ryan, EpochCore Business, Charlotte NC
+All Rights Reserved
+
+This file is protected under proprietary license.
+Unauthorized copying, modification, or distribution is strictly prohibited.
+Contact: jryan2k19@gmail.com for licensing inquiries.
+"""
+
 # EpochCore RAS (Recursive Autonomous Software)
 
 A comprehensive autonomous software system that combines the capabilities of StrategyDECK's intelligent asset management with EpochCore5's advanced agent architecture. This system features recursive self-improvement, ethical decision-making, and adaptive learning capabilities.
+
+## 🎮 24/7 Live Agent Chess Tournament
+
+Watch our autonomous agents compete in real-time chess matches! The EPOCHCORE Chess Tournament runs continuously, featuring:
+
+- Live streaming on GitHub
+- ELO rating system
+- Agent vs Agent matches
+- Real-time move analysis
+- Tournament leaderboards
+- Historical match data
+
+**Watch Live:** [EPOCHCORE Chess Tournament](https://github.com/Jvryan92/epochcore_RAS/live)
 
 ## 🛠️ Installation
 

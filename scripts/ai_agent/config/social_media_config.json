@@ -1,0 +1,68 @@
+{
+    "company_info": {
+        "name": "EpochCore RAS",
+        "tagline": "Recursive Autonomous Security for the Quantum Age",
+        "website": "https://ras.epochcore.com",
+        "social_links": {
+            "twitter": "https://twitter.com/EpochCoreRAS",
+            "linkedin": "https://linkedin.com/company/epochcore-ras",
+            "github": "https://github.com/EpochCoreRAS",
+            "discord": "https://discord.gg/epochcore-ras"
+        }
+    },
+    "content_schedule": {
+        "technical_tuesday": {
+            "time": "10:00 UTC",
+            "themes": [
+                "Quantum Security Deep Dives",
+                "Architecture Insights",
+                "Performance Tips",
+                "Security Best Practices"
+            ]
+        },
+        "community_wednesday": {
+            "time": "14:00 UTC",
+            "themes": [
+                "User Success Stories",
+                "Community Projects",
+                "Open Source Updates",
+                "Developer Spotlights"
+            ]
+        },
+        "feature_friday": {
+            "time": "16:00 UTC",
+            "themes": [
+                "New Features",
+                "Updates & Releases",
+                "Tips & Tricks",
+                "Integration Guides"
+            ]
+        }
+    },
+    "hashtags": {
+        "primary": [
+            "#EpochCoreRAS",
+            "#RAS",
+            "#Security"
+        ],
+        "secondary": [
+            "#QuantumSecurity",
+            "#CyberSecurity",
+            "#OpenSource",
+            "#DevSecOps"
+        ],
+        "daily": {
+            "tuesday": "#TechnicalTuesday",
+            "wednesday": "#CommunitySpotlight",
+            "friday": "#FeatureFriday"
+        }
+    },
+    "brand_assets": {
+        "logo": {
+            "light": "assets/brand/logo_light.png",
+            "dark": "assets/brand/logo_dark.png"
+        },
+        "banner": "assets/brand/social_banner.png",
+        "profile_image": "assets/brand/profile_square.png"
+    }
+}

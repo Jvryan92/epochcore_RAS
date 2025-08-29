@@ -1,0 +1,44 @@
+{
+  "content_id": "content_1756444130_coordinator_agent",
+  "agent_id": "coordinator_agent",
+  "content_type": "animated_lesson",
+  "theme": "wizard_academy",
+  "created_at": "2025-08-29T05:08:50.751756",
+  "status": "generated",
+  "content": {
+    "title": "wizard_academy Adventure in Mixed Media",
+    "duration": "3min",
+    "topic": "Learning about wizard_academy",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about wizard_academy",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about wizard_academy",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about wizard_academy",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about wizard_academy",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Pauses",
+      "Questions"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  }
+}

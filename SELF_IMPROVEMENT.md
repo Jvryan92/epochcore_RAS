@@ -1,3 +1,13 @@
+"""
+PROTECTED FILE - EPOCHCORE RAS
+Copyright (c) 2024 John Ryan, EpochCore Business, Charlotte NC
+All Rights Reserved
+
+This file is protected under proprietary license.
+Unauthorized copying, modification, or distribution is strictly prohibited.
+Contact: jryan2k19@gmail.com for licensing inquiries.
+"""
+
 # EPOCH5 Self-Improvement Integration
 
 The self-improvement system has been integrated into the EPOCH5 template with the following components:

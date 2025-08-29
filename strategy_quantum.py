@@ -1,232 +1,162 @@
-from typing import Dict, List, Any, Optional, Union, Tuple
-import numpy as np
-from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
-from qiskit.circuit import Parameter
-from qiskit_algorithms.optimizers import SPSA
-import networkx as nx
-from dataclasses import dataclass
+"""
+PROTECTED FILE - EPOCHCORE RAS
+Copyright (c) 2024 John Ryan, EpochCore Business, Charlotte NC
+All Rights Reserved
+
+This file is protected under proprietary license.
+Unauthorized copying, modification, or distribution is strictly prohibited.
+Contact: jryan2k19@gmail.com for licensing inquiries.
+
+Quantum Strategy Implementation (Enhanced Version)
+"""
+
 from datetime import datetime
-import json
-from pathlib import Path
+from typing import Dict, Optional
 
-@dataclass
-class QuantumState:
-    num_qubits: int
-    state_vector: np.ndarray
-    fidelity: float
-    timestamp: datetime
+import numpy as np
+from qiskit import ClassicalRegister, QuantumCircuit, QuantumRegister
+from qiskit_aer import Aer
 
-@dataclass
-class QuantumResult:
-    circuit_id: str
-    measurements: Dict[str, int]
-    probability_distribution: Dict[str, float]
-    execution_time: float
-    shots: int
-    timestamp: datetime
+from security_layers.integrated_layer import IntegratedSecurityLayer
 
-class QuantumArchitecture:
-    """
-    Quantum-Ready Architecture for future quantum computing integration
-    """
-    def __init__(self, quantum_dir: str = ".quantum"):
-        self.quantum_dir = Path(quantum_dir)
-        self.quantum_dir.mkdir(parents=True, exist_ok=True)
-        
-        self.state_history: List[QuantumState] = []
-        self.circuits: Dict[str, QuantumCircuit] = {}
-        self.optimization_results: Dict[str, List[float]] = {}
-        
-    def create_superposition_circuit(self, 
-                                   num_qubits: int, 
-                                   layers: int = 2) -> QuantumCircuit:
-        """Create a quantum circuit for superposition states"""
-        qr = QuantumRegister(num_qubits, 'q')
-        cr = ClassicalRegister(num_qubits, 'c')
-        circuit = QuantumCircuit(qr, cr)
-        
-        # Create parameterized circuit
-        params = [Parameter(f'θ_{i}') for i in range(layers * num_qubits)]
-        param_index = 0
-        
-        for layer in range(layers):
-            # Add Hadamard gates for superposition
-            for qubit in range(num_qubits):
-                circuit.h(qubit)
-                
-            # Add parameterized rotations
-            for qubit in range(num_qubits):
-                circuit.rz(params[param_index], qubit)
-                param_index += 1
-                
-            # Add entanglement
-            for qubit in range(num_qubits - 1):
-                circuit.cx(qubit, qubit + 1)
-                
-        circuit.measure(qr, cr)
-        
-        # Save circuit and return the circuit object itself
-        circuit_id = f"superposition_{datetime.now().timestamp()}"
-        self.circuits[circuit_id] = circuit
-        
-        return circuit
-        
-    def create_optimization_circuit(self,
-                                  cost_graph: nx.Graph,
-                                  depth: int = 3) -> QuantumCircuit:
-        """Create a quantum circuit for optimization problems"""
-        num_qubits = len(cost_graph.nodes())
-        qr = QuantumRegister(num_qubits, 'q')
-        cr = ClassicalRegister(num_qubits, 'c')
-        circuit = QuantumCircuit(qr, cr)
-        
-        # Create parameterized QAOA circuit
-        params = [Parameter(f'β_{i}') for i in range(depth)]
-        params.extend(Parameter(f'γ_{i}') for i in range(depth))
-        
-        # Initial state
-        circuit.h(range(num_qubits))
-        
-        # QAOA layers
-        for layer in range(depth):
-            # Cost unitary
-            for edge in cost_graph.edges():
-                i, j = edge
-                circuit.cx(i, j)
-                circuit.rz(params[layer], j)
-                circuit.cx(i, j)
-                
-            # Mixer unitary
-            for i in range(num_qubits):
-                circuit.rx(params[depth + layer], i)
-                
-        circuit.measure(qr, cr)
-        
-        # Save circuit and return the circuit object itself
-        circuit_id = f"optimization_{datetime.now().timestamp()}"
-        self.circuits[circuit_id] = circuit
-        
-        return circuit
-        
-    def simulate_quantum_execution(self, 
-                                 circuit_id: str,
-                                 param_values: Optional[List[float]] = None,
-                                 shots: int = 1000) -> QuantumResult:
-        """Simulate quantum circuit execution"""
-        if circuit_id not in self.circuits:
-            raise ValueError(f"Circuit {circuit_id} not found")
-            
-        circuit = self.circuits[circuit_id]
-        
-        # Bind parameters if provided
-        if param_values:
-            params = circuit.parameters
-            if len(params) != len(param_values):
-                raise ValueError("Number of parameters doesn't match")
-            param_dict = dict(zip(params, param_values))
-            circuit = circuit.bind_parameters(param_dict)
-            
-        # Simulate measurements (simplified)
-        num_qubits = len(circuit.qubits)
-        measurements = {}
-        probabilities = {}
-        
-        # Simple simulation
-        for i in range(shots):
-            # Random measurement outcome
-            outcome = np.binary_repr(
-                np.random.randint(2**num_qubits), 
-                width=num_qubits
-            )
-            measurements[outcome] = measurements.get(outcome, 0) + 1
-            
-        # Calculate probabilities
-        for outcome, count in measurements.items():
-            probabilities[outcome] = count / shots
-            
-        return QuantumResult(
-            circuit_id=circuit_id,
-            measurements=measurements,
-            probability_distribution=probabilities,
-            execution_time=0.1,  # Simulated time
-            shots=shots,
-            timestamp=datetime.now()
-        )
-        
-    def optimize_parameters(self,
-                          circuit_id: str,
-                          objective_function: callable,
-                          num_iterations: int = 100) -> Dict[str, Any]:
-        """Optimize quantum circuit parameters"""
-        circuit = self.circuits[circuit_id]
-        num_parameters = len(circuit.parameters)
-        
-        optimizer = SPSA(
-            maxiter=num_iterations,
-            learning_rate=0.1,
-            perturbation=0.1
-        )
-        
-        # Initial parameters
-        initial_point = np.random.random(num_parameters)
-        
-        # Optimization loop
-        def optimization_function(params):
-            result = self.simulate_quantum_execution(
-                circuit_id,
-                param_values=params
-            )
-            return objective_function(result)
-            
-        result = optimizer.optimize(
-            num_vars=num_parameters,
-            objective_function=optimization_function,
-            initial_point=initial_point
-        )
-        
-        optimal_value = result[1]
-        optimal_params = result[0]
-        
-        # Store optimization results
-        self.optimization_results[circuit_id] = [
-            optimal_value,
-            float(optimizer.get_support_level())
-        ]
-        
+
+class QuantumStrategy:
+    """Quantum-based strategy for collaborative backtesting."""
+
+    def __init__(self, config: Optional[Dict] = None):
+        self.config = config or {}
+        self.security = IntegratedSecurityLayer()
+        self._initialize_strategy()
+
+    def initialize_quantum_strategy(qubits: int = 4) -> QuantumCircuit:
+    """Initialize quantum strategy circuit"""
+    from strategy_recursion_enhancer import RecursiveEnhancer, RecursionMode
+    from strategy_compound_recursion import CompoundRecursion, CompoundMode
+
+    recursion_enhancer = RecursiveEnhancer(
+        base_dir=".quantum_recursion",
+        mode=RecursionMode.TARGETED,
+        max_depth=10  # Quantum strategies can handle deeper recursion
+    )
+
+    compound_recursion = CompoundRecursion(
+        base_dir=".quantum_compound",
+        num_layers=4,
+        mode=CompoundMode.QUANTUM  # Specialized for quantum advantage
+    )
+
+    circuit = QuantumCircuit(qubits, qubits)
+    for i in range(qubits):
+        circuit.h(i)
+
+    # Apply recursive enhancements
+    enhancements = recursion_enhancer.enhance_recursion(
+        "quantum",
+        {"qubits": qubits},
+        {"circuit_depth": 1}
+    )
+
+    return circuit
+
+    def _create_quantum_circuit(self, data: Dict) -> QuantumCircuit:
+        """Create quantum circuit based on input data."""
+        qr = QuantumRegister(self.qubit_count, 'q')
+        cr = ClassicalRegister(self.qubit_count, 'c')
+        qc = QuantumCircuit(qr, cr)
+
+        # Enhanced quantum operations
+        qc.h(qr)  # Initialize with Hadamard gates
+
+        # Add entanglement layers
+        for i in range(self.qubit_count - 1):
+            qc.cx(qr[i], qr[i + 1])
+
+        # Add rotation gates based on data
+        for i, qubit in enumerate(qr):
+            # Use data values to influence rotation angles
+            angle = (hash(str(data)) + i) % (2 * np.pi)
+            qc.rz(angle, qubit)
+            qc.rx(angle/2, qubit)
+
+        # Add barrier before measurement
+        qc.barrier()
+
+        # Measure all qubits
+        qc.measure(qr, cr)
+
+        return qc
+
+    def _run_quantum_circuit(self, circuit: QuantumCircuit) -> Dict:
+        """Execute quantum circuit and return results."""
+        # Run the circuit with increased shots for better statistics
+        result = self.backend.run(circuit, shots=2000).result()
+        counts = result.get_counts(circuit)
+
+        # Calculate additional metrics
+        total_shots = sum(counts.values())
+        probabilities = {state: count/total_shots for state, count in counts.items()}
+        entropy = -sum(p * np.log2(p) for p in probabilities.values())
+
         return {
-            "optimal_value": optimal_value,
-            "optimal_parameters": optimal_params.tolist(),
-            "iterations": num_iterations,
-            "convergence": optimizer.get_support_level()
+            'counts': counts,
+            'probabilities': probabilities,
+            'entropy': entropy,
+            'most_frequent': max(counts.items(), key=lambda x: x[1])[0],
+            'timestamp': datetime.now().isoformat()
         }
-        
-    def get_quantum_metrics(self) -> Dict[str, Any]:
-        """Get quantum execution metrics"""
-        metrics = {
-            "total_circuits": len(self.circuits),
-            "total_optimizations": len(self.optimization_results),
-            "circuit_types": {}
+
+    async def analyze_data(self, protected_data: Dict) -> Dict:
+        """Analyze data using quantum strategy."""
+        # Extract and verify data using integrated security
+        if not self.security.verify(protected_data):
+            raise ValueError("Security verification failed")
+
+        # Get the innermost protected data
+        data = protected_data['fully_protected_data']['quantum_protected_data']
+
+        # Create and run enhanced quantum circuit
+        circuit = self._create_quantum_circuit(data)
+        quantum_results = self._run_quantum_circuit(circuit)
+
+        # Prepare analysis results
+        analysis_result = {
+            'quantum_state': quantum_results['most_frequent'],
+            'state_distribution': quantum_results['probabilities'],
+            'quantum_entropy': quantum_results['entropy'],
+            'circuit_depth': self.circuit_depth,
+            'qubit_count': self.qubit_count,
+            'confidence': quantum_results['counts'][quantum_results['most_frequent']] / 2000,
+            'timestamp': quantum_results['timestamp']
         }
-        
-        # Analyze circuit types
-        for circuit_id in self.circuits:
-            circuit_type = circuit_id.split('_')[0]
-            if circuit_type not in metrics["circuit_types"]:
-                metrics["circuit_types"][circuit_type] = 0
-            metrics["circuit_types"][circuit_type] += 1
-            
-        # Calculate optimization success
-        if self.optimization_results:
-            avg_optimal_value = np.mean([
-                results[0] for results in self.optimization_results.values()
-            ])
-            avg_convergence = np.mean([
-                results[1] for results in self.optimization_results.values()
-            ])
-            
-            metrics["optimization"] = {
-                "average_optimal_value": float(avg_optimal_value),
-                "average_convergence": float(avg_convergence)
-            }
-            
-        return metrics
+
+        # Apply integrated security protection
+        return self.security.protect(analysis_result)
+
+    async def evaluate_consensus(self, validation_data: Dict) -> Dict:
+        """Evaluate consensus from quantum perspective."""
+        if not self.security.verify(validation_data):
+            raise ValueError("Security verification failed")
+
+        # Get the innermost protected data
+        data = validation_data['fully_protected_data']['quantum_protected_data']
+
+        # Create and run enhanced quantum circuit
+        circuit = self._create_quantum_circuit(data)
+        quantum_results = self._run_quantum_circuit(circuit)
+
+        consensus_evaluation = {
+            'quantum_consensus': quantum_results['most_frequent'],
+            'consensus_distribution': quantum_results['probabilities'],
+            'quantum_entropy': quantum_results['entropy'],
+            'consensus_confidence': quantum_results['counts'][quantum_results['most_frequent']] / 2000,
+            'timestamp': quantum_results['timestamp']
+        }
+
+        # Apply integrated security protection
+        return self.security.protect(consensus_evaluation)
+
+    def get_circuit_visualization(self) -> str:
+        """Get ASCII art visualization of the current quantum circuit."""
+        # Create a sample circuit for visualization
+        circuit = self._create_quantum_circuit({'sample': 'data'})
+        return circuit.draw(output='text', fold=50)

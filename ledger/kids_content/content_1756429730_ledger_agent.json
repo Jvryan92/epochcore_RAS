@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756429730_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "educational_game",
+  "theme": "cosmic_adventure",
+  "created_at": "2025-08-29T01:08:50.409901",
+  "status": "generated",
+  "content": {
+    "title": "cosmic_adventure Race Adventure",
+    "type": "Race & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Time",
+        "reward": "Cards"
+      },
+      {
+        "level": 2,
+        "challenge": "Collection",
+        "reward": "Stars"
+      },
+      {
+        "level": 3,
+        "challenge": "Puzzle",
+        "reward": "Cards"
+      },
+      {
+        "level": 4,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 5,
+        "challenge": "Score",
+        "reward": "Stars"
+      },
+      {
+        "level": 6,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 7,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 8,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 9,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      },
+      {
+        "level": 10,
+        "challenge": "Score",
+        "reward": "Points"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

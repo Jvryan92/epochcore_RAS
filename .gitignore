@@ -73,3 +73,4 @@ archive/
 *.tar
 *.gz
 *.rar
+scripts/mesh/.env

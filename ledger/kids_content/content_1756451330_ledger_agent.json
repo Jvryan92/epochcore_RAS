@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756451330_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "educational_game",
+  "theme": "dino_world",
+  "created_at": "2025-08-29T07:08:50.860075",
+  "status": "generated",
+  "content": {
+    "title": "dino_world Build Adventure",
+    "type": "Build & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      },
+      {
+        "level": 2,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 3,
+        "challenge": "Score",
+        "reward": "Cards"
+      },
+      {
+        "level": 4,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 5,
+        "challenge": "Score",
+        "reward": "Badges"
+      },
+      {
+        "level": 6,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 7,
+        "challenge": "Score",
+        "reward": "Stars"
+      },
+      {
+        "level": 8,
+        "challenge": "Score",
+        "reward": "Stars"
+      },
+      {
+        "level": 9,
+        "challenge": "Time",
+        "reward": "Stars"
+      },
+      {
+        "level": 10,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

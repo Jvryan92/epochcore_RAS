@@ -1,0 +1,77 @@
+{
+  "content_id": "content_1756440530_asset_manager_agent",
+  "agent_id": "asset_manager_agent",
+  "content_type": "interactive_ebook",
+  "theme": "dino_world",
+  "created_at": "2025-08-29T04:08:50.691523",
+  "status": "generated",
+  "content": {
+    "title": "Luna's dino_world Adventure",
+    "theme": "dino_world",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Page 1 story about Luna in Forest",
+        "interaction": "Explore"
+      },
+      {
+        "page": 2,
+        "text": "Page 2 story about Luna in Forest",
+        "interaction": "Play"
+      },
+      {
+        "page": 3,
+        "text": "Page 3 story about Luna in Forest",
+        "interaction": "Play"
+      },
+      {
+        "page": 4,
+        "text": "Page 4 story about Luna in Forest",
+        "interaction": "Learn"
+      },
+      {
+        "page": 5,
+        "text": "Page 5 story about Luna in Forest",
+        "interaction": "Create"
+      },
+      {
+        "page": 6,
+        "text": "Page 6 story about Luna in Forest",
+        "interaction": "Play"
+      },
+      {
+        "page": 7,
+        "text": "Page 7 story about Luna in Forest",
+        "interaction": "Explore"
+      },
+      {
+        "page": 8,
+        "text": "Page 8 story about Luna in Forest",
+        "interaction": "Solve"
+      },
+      {
+        "page": 9,
+        "text": "Page 9 story about Luna in Forest",
+        "interaction": "Create"
+      },
+      {
+        "page": 10,
+        "text": "Page 10 story about Luna in Forest",
+        "interaction": "Learn"
+      }
+    ],
+    "interactive_elements": [
+      "Touch responses",
+      "Sound effects",
+      "Mini-games",
+      "Collectibles"
+    ],
+    "learning_goals": [
+      "Reading comprehension",
+      "Problem-solving",
+      "Creativity",
+      "Knowledge retention"
+    ],
+    "age_group": ""
+  }
+}

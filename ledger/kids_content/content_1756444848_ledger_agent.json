@@ -1,0 +1,92 @@
+{
+  "content_id": "content_1756444848_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "educational_game",
+  "theme": "cosmic_adventure",
+  "created_at": "2025-08-29T05:20:48.122525",
+  "status": "generated",
+  "content": {
+    "title": "cosmic_adventure Match Adventure",
+    "type": "Match & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Score",
+        "reward": "Badges"
+      },
+      {
+        "level": 2,
+        "challenge": "Score",
+        "reward": "Cards"
+      },
+      {
+        "level": 3,
+        "challenge": "Collection",
+        "reward": "Cards"
+      },
+      {
+        "level": 4,
+        "challenge": "Time",
+        "reward": "Points"
+      },
+      {
+        "level": 5,
+        "challenge": "Time",
+        "reward": "Cards"
+      },
+      {
+        "level": 6,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 7,
+        "challenge": "Time",
+        "reward": "Cards"
+      },
+      {
+        "level": 8,
+        "challenge": "Puzzle",
+        "reward": "Cards"
+      },
+      {
+        "level": 9,
+        "challenge": "Time",
+        "reward": "Points"
+      },
+      {
+        "level": 10,
+        "challenge": "Score",
+        "reward": "Points"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T05:20:48.122578",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756444848_ledger_agent",
+    "agent_id": "ledger_agent",
+    "content_type": "educational_game",
+    "signature": "5qjE7L7Qiu28TQ3fjVFOtrCEjboaxGdFHVcVW8GOZXY="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T05:20:48.126153",
+    "protection_level": "maximum",
+    "signature": "053e0b8018e66f481ed702ff2d1a1ceab8a9e2803546d4611c0aacb2aeb8ac3d"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

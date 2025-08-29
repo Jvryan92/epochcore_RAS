@@ -1,0 +1,106 @@
+{
+  "content_id": "content_1756436930_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "coloring_book",
+  "theme": "dino_world",
+  "created_at": "2025-08-29T03:08:50.604307",
+  "status": "generated",
+  "content": {
+    "title": "Color & Learn: dino_world Animals",
+    "pages": [
+      {
+        "page": 1,
+        "style": "Pattern",
+        "technique": "Basic",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 2,
+        "style": "Detailed",
+        "technique": "Symmetry",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 3,
+        "style": "Simple",
+        "technique": "Patterns",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 4,
+        "style": "Pattern",
+        "technique": "Basic",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 5,
+        "style": "Pattern",
+        "technique": "Basic",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 6,
+        "style": "Pattern",
+        "technique": "Basic",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 7,
+        "style": "Pattern",
+        "technique": "Scenes",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 8,
+        "style": "Simple",
+        "technique": "Patterns",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 9,
+        "style": "Simple",
+        "technique": "Basic",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 10,
+        "style": "Simple",
+        "technique": "Symmetry",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 11,
+        "style": "Detailed",
+        "technique": "Basic",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 12,
+        "style": "Simple",
+        "technique": "Scenes",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 13,
+        "style": "Pattern",
+        "technique": "Symmetry",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 14,
+        "style": "Connect-dots",
+        "technique": "Scenes",
+        "description": "A fun Animals scene to color"
+      },
+      {
+        "page": 15,
+        "style": "Connect-dots",
+        "technique": "Patterns",
+        "description": "A fun Animals scene to color"
+      }
+    ],
+    "difficulty": "Easy",
+    "theme": "",
+    "learning_elements": []
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "content_id": "content_1756447730_coordinator_agent",
+  "agent_id": "coordinator_agent",
+  "content_type": "animated_lesson",
+  "theme": "creature_club",
+  "created_at": "2025-08-29T06:08:50.784044",
+  "status": "generated",
+  "content": {
+    "title": "creature_club Adventure in 2D Animation",
+    "duration": "5min",
+    "topic": "Learning about creature_club",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about creature_club",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about creature_club",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about creature_club",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about creature_club",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Activities",
+      "Pauses"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  }
+}

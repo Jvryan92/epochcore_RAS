@@ -1,0 +1,100 @@
+{
+  "content_id": "content_1756441248_workflow_optimizer_agent",
+  "agent_id": "workflow_optimizer_agent",
+  "content_type": "fun_quiz",
+  "theme": "sound_safari",
+  "created_at": "2025-08-29T04:20:48.016691",
+  "status": "generated",
+  "content": {
+    "title": "Fun sound_safari Multiple Choice Quiz",
+    "category": "Space",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Multiple Choice",
+        "question": "Question 1 about sound_safari",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "Fill Blanks",
+        "question": "Question 2 about sound_safari",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "True/False",
+        "question": "Question 3 about sound_safari",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Multiple Choice",
+        "question": "Question 4 about sound_safari",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Multiple Choice",
+        "question": "Question 5 about sound_safari",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Star Student"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T04:20:48.016737",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756441248_workflow_optimizer_agent",
+    "agent_id": "workflow_optimizer_agent",
+    "content_type": "fun_quiz",
+    "signature": "NdehdCqhQobjs6B2gg6xD4N8oJhJC7g+1ChCbjWfx5Y="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T04:20:48.020167",
+    "protection_level": "maximum",
+    "signature": "be229f0b72fc15894b49d28da64f3d400c19c3b51a15af01ee59d64df959e4c4"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

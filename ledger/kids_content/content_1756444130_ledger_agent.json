@@ -1,0 +1,78 @@
+{
+  "content_id": "content_1756444130_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "fun_quiz",
+  "theme": "sea_explorers",
+  "created_at": "2025-08-29T05:08:50.750748",
+  "status": "generated",
+  "content": {
+    "title": "Fun sea_explorers Multiple Choice Quiz",
+    "category": "General",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Multiple Choice",
+        "question": "Question 1 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "True/False",
+        "question": "Question 2 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Multiple Choice",
+        "question": "Question 3 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Matching",
+        "question": "Question 4 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "True/False",
+        "question": "Question 5 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Genius"
+    ]
+  }
+}

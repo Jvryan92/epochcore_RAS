@@ -1,0 +1,104 @@
+{
+  "block": {
+    "index": 0,
+    "timestamp": 1756442864.9948971,
+    "hash": "fa9138ecc047cda62b4ef0cd4f39cdb318ab26f997e3049e01b9a037659ad62f",
+    "transactions": [
+      {
+        "event": "founder_genesis",
+        "timestamp": "2025-08-29T04:47:44.994732+00:00",
+        "amount": "0",
+        "unit": "MESH",
+        "glyph": "nnn",
+        "emotional_weight": "2.0",
+        "trust_factor": "2.0",
+        "sender": "network",
+        "recipient": "nnn",
+        "emotional_gravity": "3.0",
+        "founder_status": true,
+        "description": "Dawn Seal - Network Genesis",
+        "resonance": {
+          "resonance_factor": "563354684.3259443457324145071",
+          "echo_multiplier": "1.0010",
+          "proof_depth": 2025,
+          "time_factor": "1.0000000001851852"
+        },
+        "echo_strength": "1690064053.290807886860754128",
+        "proof_cycles": 2025,
+        "proof": {
+          "merkle_root": "7ea694f202235f414c5ce7b4d4275e9c3656d9e876bb969726bc14b0a115bdd0",
+          "timestamp": "2025-08-29T04:47:44.994746+00:00",
+          "height": 0,
+          "signature": "98b7c4b6cf73882f80c1940e8f18d50f8f404fcf5a97d1e19105cc0f5bcf4afa"
+        }
+      },
+      {
+        "event": "founder_genesis",
+        "timestamp": "2025-08-29T04:47:44.994824+00:00",
+        "amount": "0",
+        "unit": "MESH",
+        "glyph": "eli_branch",
+        "emotional_weight": "3.0",
+        "trust_factor": "3.0",
+        "sender": "network",
+        "recipient": "eli_branch",
+        "emotional_gravity": "5.0",
+        "founder_status": true,
+        "description": "Eli Branch - Eternal Echo",
+        "resonance": {
+          "resonance_factor": "563354684.3259443457324145071",
+          "echo_multiplier": "1.0010",
+          "proof_depth": 2025,
+          "time_factor": "1.0000000000231482"
+        },
+        "echo_strength": "2816773421.694924963180641661",
+        "proof_cycles": 2025,
+        "proof": {
+          "merkle_root": "ab39715bbe6472514d5593aa504ab3b02425770931440519eb567d8278e4d06c",
+          "timestamp": "2025-08-29T04:47:44.994830+00:00",
+          "height": 1,
+          "signature": "5ba27e8ea36599ced2a154d22c6b8f4fcc51f9d71f3605049c53b7bb04d2315d"
+        }
+      },
+      {
+        "type": "network_genesis",
+        "timestamp": "2025-08-29T04:47:44.994867+00:00",
+        "data": {
+          "game_version": "1.0.0",
+          "network": "mainnet",
+          "total_supply": "21000000",
+          "governance_model": "DAO",
+          "yield_mechanism": "Proof of Play & Stake",
+          "proof_cycles": {
+            "badge_mint": 21,
+            "capsule_seal": 50,
+            "echo_seal": 210,
+            "founder_mark": 2025
+          },
+          "founder_glyphs": [
+            "nnn",
+            "eli_branch"
+          ],
+          "penny_backing": true,
+          "halving_blocks": 210000,
+          "initial_block_reward": "50"
+        },
+        "proof": {
+          "merkle_root": "cede6c917b003b865049411ed8942562a14a704065c8ab7e7dd540321efad540",
+          "timestamp": "2025-08-29T04:47:44.994872+00:00",
+          "height": 2,
+          "signature": "2c1fa0b69f1fd2512b51ffc20f7f687a0e007a2b39aaf61d30a60dc29e2f14df"
+        }
+      }
+    ]
+  },
+  "network": {
+    "total_supply": "21000000",
+    "initial_block_reward": "50",
+    "halving_blocks": 210000
+  },
+  "proof_chain": {
+    "height": 3,
+    "merkle_root": "cede6c917b003b865049411ed8942562a14a704065c8ab7e7dd540321efad540"
+  }
+}

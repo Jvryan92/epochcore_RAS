@@ -1,3 +1,18 @@
+"""
+PROTECTED FILE - EPOCHCORE RAS
+Copyright (c) 2024 John Ryan, EpochCore Business, Charlotte NC
+All Rights Reserved
+
+This file is protected under proprietary license.
+Unauthorized copying, modification, or distribution is strictly prohibited.
+Contact: jryan2k19@gmail.com for licensing inquiries.
+"""
+
+## [0.2.0] - 2025-08-29
+### Added
+- PayPal QR code payment asset added to `/assets/payment/paypal_qr.png`
+- Payment assets directory structure created for future payment integrations
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

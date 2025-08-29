@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756436930_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "educational_game",
+  "theme": "tech_buddies",
+  "created_at": "2025-08-29T03:08:50.599609",
+  "status": "generated",
+  "content": {
+    "title": "tech_buddies Race Adventure",
+    "type": "Race & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 2,
+        "challenge": "Score",
+        "reward": "Stars"
+      },
+      {
+        "level": 3,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 4,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 5,
+        "challenge": "Time",
+        "reward": "Stars"
+      },
+      {
+        "level": 6,
+        "challenge": "Puzzle",
+        "reward": "Badges"
+      },
+      {
+        "level": 7,
+        "challenge": "Score",
+        "reward": "Badges"
+      },
+      {
+        "level": 8,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 9,
+        "challenge": "Collection",
+        "reward": "Cards"
+      },
+      {
+        "level": 10,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

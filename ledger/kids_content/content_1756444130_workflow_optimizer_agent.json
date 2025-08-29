@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756444130_workflow_optimizer_agent",
+  "agent_id": "workflow_optimizer_agent",
+  "content_type": "educational_game",
+  "theme": "cosmic_adventure",
+  "created_at": "2025-08-29T05:08:50.753003",
+  "status": "generated",
+  "content": {
+    "title": "cosmic_adventure Sort Adventure",
+    "type": "Sort & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 2,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 3,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 4,
+        "challenge": "Puzzle",
+        "reward": "Badges"
+      },
+      {
+        "level": 5,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 6,
+        "challenge": "Puzzle",
+        "reward": "Cards"
+      },
+      {
+        "level": 7,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 8,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 9,
+        "challenge": "Collection",
+        "reward": "Cards"
+      },
+      {
+        "level": 10,
+        "challenge": "Score",
+        "reward": "Points"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756447730_workflow_optimizer_agent",
+  "agent_id": "workflow_optimizer_agent",
+  "content_type": "educational_game",
+  "theme": "sound_safari",
+  "created_at": "2025-08-29T06:08:50.785348",
+  "status": "generated",
+  "content": {
+    "title": "sound_safari Match Adventure",
+    "type": "Match & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 2,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 3,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 4,
+        "challenge": "Collection",
+        "reward": "Stars"
+      },
+      {
+        "level": 5,
+        "challenge": "Score",
+        "reward": "Stars"
+      },
+      {
+        "level": 6,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 7,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 8,
+        "challenge": "Score",
+        "reward": "Cards"
+      },
+      {
+        "level": 9,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      },
+      {
+        "level": 10,
+        "challenge": "Collection",
+        "reward": "Cards"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

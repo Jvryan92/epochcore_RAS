@@ -1,0 +1,164 @@
+"""Game Terms Data Generator"""
+
+from game_terms import GameTerm, GameVocabulary, TermCategory
+
+
+def generate_core_vocabulary() -> GameVocabulary:
+    """Generate core gaming vocabulary"""
+    vocab = GameVocabulary()
+
+    # Combat & Mechanics Terms
+    vocab.register_term(
+        GameTerm(
+            term="DPS",
+            category=TermCategory.MECHANICS,
+            definition="Damage Per Second; refers to damage dealing roles/builds",
+            usage="Discussing damage output and roles",
+            examples=[
+                "We need more DPS for this boss",
+                "I play DPS characters",
+                "Our DPS is too low"
+            ],
+            related_terms=["burst", "sustained damage", "glass cannon"],
+            variants=["damage dealer", "damage"],
+            community_context="Core role in team composition"
+        )
+    )
+
+    vocab.register_term(
+        GameTerm(
+            term="burst",
+            category=TermCategory.MECHANICS,
+            definition="High damage output in a short time window",
+            usage="Discussing damage patterns",
+            examples=[
+                "This build has great burst potential",
+                "We need burst damage for the squishies",
+                "Watch out for their burst combo"
+            ],
+            related_terms=["DPS", "combo", "one-shot"],
+            variants=["burst damage", "burst window"],
+            community_context="Important in PvP scenarios"
+        )
+    )
+
+    # Strategy Terms
+    vocab.register_term(
+        GameTerm(
+            term="rotation",
+            category=TermCategory.STRATEGY,
+            definition="Sequence of abilities/movements or map positioning",
+            usage="Discussing optimal play patterns",
+            examples=[
+                "Learn your skill rotation",
+                "Good map rotation wins games",
+                "Their rotation was perfect"
+            ],
+            related_terms=["pathing", "combo", "positioning"],
+            variants=["rotate", "rotational"],
+            community_context="Key to high-level play"
+        )
+    )
+
+    vocab.register_term(
+        GameTerm(
+            term="macro",
+            category=TermCategory.STRATEGY,
+            definition="Large-scale strategic decisions and game understanding",
+            usage="Discussing strategic gameplay",
+            examples=[
+                "Their macro play was superior",
+                "Focus on macro over mechanics",
+                "Good macro wins games"
+            ],
+            related_terms=["micro", "strategy", "game sense"],
+            variants=["macro game", "macro play"],
+            community_context="Differentiates skilled players"
+        )
+    )
+
+    # Competitive Terms
+    vocab.register_term(
+        GameTerm(
+            term="meta",
+            category=TermCategory.COMPETITIVE,
+            definition="Most Effective Tactics Available; current optimal strategies",
+            usage="Discussing optimal gameplay approaches",
+            examples=[
+                "The tank meta is dominant",
+                "This build is meta right now",
+                "Breaking the meta with new strats"
+            ],
+            related_terms=["tier list", "balance", "patch"],
+            variants=["metagame", "meta-strategy"],
+            community_context="Evolves with patches"
+        )
+    )
+
+    vocab.register_term(
+        GameTerm(
+            term="smurf",
+            category=TermCategory.COMPETITIVE,
+            definition="Experienced player using new/low-level account",
+            usage="Discussing matchmaking issues",
+            examples=[
+                "That's definitely a smurf account",
+                "Smurfing ruins low-rank games",
+                "Watch out, enemy team has a smurf"
+            ],
+            related_terms=["boosting", "matchmaking", "rank"],
+            variants=["smurfing", "smurf account"],
+            community_context="Controversial practice"
+        )
+    )
+
+    # Social Terms
+    vocab.register_term(
+        GameTerm(
+            term="toxic",
+            category=TermCategory.SOCIAL,
+            definition="Negative/harmful behavior in gaming communities",
+            usage="Discussing player behavior",
+            examples=[
+                "Report toxic players",
+                "That's toxic behavior",
+                "Less toxicity please"
+            ],
+            related_terms=["tilt", "flame", "report"],
+            variants=["toxicity", "toxic player"],
+            community_context="Major community issue"
+        )
+    )
+
+    vocab.register_term(
+        GameTerm(
+            term="tilt",
+            category=TermCategory.SOCIAL,
+            definition="Emotional state affecting performance negatively",
+            usage="Discussing mental state in gaming",
+            examples=[
+                "Don't get tilted",
+                "They're playing on tilt",
+                "Take a break if tilted"
+            ],
+            related_terms=["toxic", "rage", "mental"],
+            variants=["tilted", "tilting"],
+            community_context="Affects competitive play"
+        )
+    )
+
+    return vocab
+
+
+if __name__ == "__main__":
+    # Generate vocabulary
+    vocab = generate_core_vocabulary()
+
+    # Export to JSON
+    vocab.export_to_json('data/game_vocabulary.json')
+
+    # Print summary
+    print(f"Generated {len(vocab.terms)} gaming terms")
+    for category in TermCategory:
+        terms = vocab.get_terms_by_category(category)
+        print(f"{category.value}: {len(terms)} terms")

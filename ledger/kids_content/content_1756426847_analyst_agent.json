@@ -1,0 +1,75 @@
+{
+  "content_id": "content_1756426847_analyst_agent",
+  "agent_id": "analyst_agent",
+  "content_type": "fun_quiz",
+  "theme": "tech_buddies",
+  "created_at": "2025-08-29T00:20:47.367139",
+  "status": "generated",
+  "content": {
+    "title": "Fun tech_buddies Fill Blanks Quiz",
+    "category": "Science",
+    "questions": [
+      {
+        "id": 1,
+        "type": "True/False",
+        "question": "Question 1 about tech_buddies",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "Fill Blanks",
+        "question": "Question 2 about tech_buddies",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Multiple Choice",
+        "question": "Question 3 about tech_buddies",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "True/False",
+        "question": "Question 4 about tech_buddies",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Multiple Choice",
+        "question": "Question 5 about tech_buddies",
+        "options": null,
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Quiz Master"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T00:20:47.373653",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756426847_analyst_agent",
+    "agent_id": "analyst_agent",
+    "content_type": "fun_quiz",
+    "signature": "bccRXfEdjJU9wy6ADR9Tp6Gkui0DytI7ruUqgh7ehwI="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T00:20:47.381746",
+    "protection_level": "maximum",
+    "signature": "82a2536a3d4b955562e9a4968b74a8b25798043a44d7898bf4c19e17355e8e63"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

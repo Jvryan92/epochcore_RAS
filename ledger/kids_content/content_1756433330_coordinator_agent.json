@@ -1,0 +1,44 @@
+{
+  "content_id": "content_1756433330_coordinator_agent",
+  "agent_id": "coordinator_agent",
+  "content_type": "animated_lesson",
+  "theme": "sea_explorers",
+  "created_at": "2025-08-29T02:08:50.526402",
+  "status": "generated",
+  "content": {
+    "title": "sea_explorers Adventure in 3D Animation",
+    "duration": "2min",
+    "topic": "Learning about sea_explorers",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about sea_explorers",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about sea_explorers",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about sea_explorers",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about sea_explorers",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Activities",
+      "Pauses"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  }
+}

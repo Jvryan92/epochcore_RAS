@@ -1,0 +1,2 @@
+2025-08-29 01:21:32,338 [INFO] Starting security backtest cycle at 2025-08-29T01:21:32.338103+00:00
+2025-08-29 01:21:32,469 [ERROR] Security loop error: operands could not be broadcast together with shapes (64,) (6154,) 

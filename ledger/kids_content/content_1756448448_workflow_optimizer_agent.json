@@ -1,0 +1,66 @@
+{
+  "content_id": "content_1756448448_workflow_optimizer_agent",
+  "agent_id": "workflow_optimizer_agent",
+  "content_type": "animated_lesson",
+  "theme": "dino_world",
+  "created_at": "2025-08-29T06:20:48.269531",
+  "status": "generated",
+  "content": {
+    "title": "dino_world Adventure in Mixed Media",
+    "duration": "2min",
+    "topic": "Learning about dino_world",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about dino_world",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about dino_world",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about dino_world",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about dino_world",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Pauses",
+      "Activities"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T06:20:48.269573",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756448448_workflow_optimizer_agent",
+    "agent_id": "workflow_optimizer_agent",
+    "content_type": "animated_lesson",
+    "signature": "2kHQCp3mV7skqApd/Db+3xK1ZrNGxaQ8CwKaKSS5RQ8="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T06:20:48.273080",
+    "protection_level": "maximum",
+    "signature": "b4e99b52b7c0ecacdac6885ef490e8d6bdce9f3410dd6c5b0e7ea1354e42e691"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

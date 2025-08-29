@@ -1,0 +1,53 @@
+{
+  "content_id": "content_1756451330_analyst_agent",
+  "agent_id": "analyst_agent",
+  "content_type": "fun_quiz",
+  "theme": "creature_club",
+  "created_at": "2025-08-29T07:08:50.857888",
+  "status": "generated",
+  "content": {
+    "title": "Fun creature_club Matching Quiz",
+    "category": "Nature",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Fill Blanks",
+        "question": "Question 1 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "Multiple Choice",
+        "question": "Question 2 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Multiple Choice",
+        "question": "Question 3 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Fill Blanks",
+        "question": "Question 4 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Fill Blanks",
+        "question": "Question 5 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Brain Power"
+    ]
+  }
+}

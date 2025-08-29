@@ -1,0 +1,128 @@
+{
+  "content_id": "content_1756444848_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "coloring_book",
+  "theme": "creature_club",
+  "created_at": "2025-08-29T05:20:48.138891",
+  "status": "generated",
+  "content": {
+    "title": "Color & Learn: creature_club Space",
+    "pages": [
+      {
+        "page": 1,
+        "style": "Simple",
+        "technique": "Basic",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 2,
+        "style": "Simple",
+        "technique": "Symmetry",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 3,
+        "style": "Simple",
+        "technique": "Scenes",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 4,
+        "style": "Pattern",
+        "technique": "Patterns",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 5,
+        "style": "Detailed",
+        "technique": "Scenes",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 6,
+        "style": "Pattern",
+        "technique": "Basic",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 7,
+        "style": "Connect-dots",
+        "technique": "Symmetry",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 8,
+        "style": "Connect-dots",
+        "technique": "Symmetry",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 9,
+        "style": "Detailed",
+        "technique": "Patterns",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 10,
+        "style": "Pattern",
+        "technique": "Symmetry",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 11,
+        "style": "Detailed",
+        "technique": "Scenes",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 12,
+        "style": "Detailed",
+        "technique": "Basic",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 13,
+        "style": "Simple",
+        "technique": "Patterns",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 14,
+        "style": "Connect-dots",
+        "technique": "Symmetry",
+        "description": "A fun Space scene to color"
+      },
+      {
+        "page": 15,
+        "style": "Pattern",
+        "technique": "Symmetry",
+        "description": "A fun Space scene to color"
+      }
+    ],
+    "difficulty": "Medium",
+    "theme": "",
+    "learning_elements": []
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T05:20:48.138944",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756444848_ecommerce_agent",
+    "agent_id": "ecommerce_agent",
+    "content_type": "coloring_book",
+    "signature": "J0feIBRocbajRzKHd2+/lL91ScZ7wNVVykavhD1iyD4="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T05:20:48.142522",
+    "protection_level": "maximum",
+    "signature": "ed3056b6c79c620ddf3cadda1c373cae1f80c856b9a19ee46aeb62ca2e60117b"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

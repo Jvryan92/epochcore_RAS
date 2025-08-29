@@ -1,0 +1,106 @@
+{
+  "content_id": "content_1756429730_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "coloring_book",
+  "theme": "cosmic_adventure",
+  "created_at": "2025-08-29T01:08:50.418001",
+  "status": "generated",
+  "content": {
+    "title": "Color & Learn: cosmic_adventure Nature",
+    "pages": [
+      {
+        "page": 1,
+        "style": "Pattern",
+        "technique": "Scenes",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 2,
+        "style": "Pattern",
+        "technique": "Basic",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 3,
+        "style": "Pattern",
+        "technique": "Patterns",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 4,
+        "style": "Simple",
+        "technique": "Basic",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 5,
+        "style": "Pattern",
+        "technique": "Patterns",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 6,
+        "style": "Detailed",
+        "technique": "Scenes",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 7,
+        "style": "Detailed",
+        "technique": "Symmetry",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 8,
+        "style": "Connect-dots",
+        "technique": "Patterns",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 9,
+        "style": "Detailed",
+        "technique": "Basic",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 10,
+        "style": "Simple",
+        "technique": "Scenes",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 11,
+        "style": "Simple",
+        "technique": "Scenes",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 12,
+        "style": "Connect-dots",
+        "technique": "Scenes",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 13,
+        "style": "Simple",
+        "technique": "Basic",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 14,
+        "style": "Simple",
+        "technique": "Basic",
+        "description": "A fun Nature scene to color"
+      },
+      {
+        "page": 15,
+        "style": "Simple",
+        "technique": "Patterns",
+        "description": "A fun Nature scene to color"
+      }
+    ],
+    "difficulty": "Medium",
+    "theme": "",
+    "learning_elements": []
+  }
+}

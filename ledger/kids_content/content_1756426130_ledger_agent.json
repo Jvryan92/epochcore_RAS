@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756426130_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "educational_game",
+  "theme": "sea_explorers",
+  "created_at": "2025-08-29T00:08:50.304812",
+  "status": "generated",
+  "content": {
+    "title": "sea_explorers Build Adventure",
+    "type": "Build & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Puzzle",
+        "reward": "Cards"
+      },
+      {
+        "level": 2,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 3,
+        "challenge": "Time",
+        "reward": "Points"
+      },
+      {
+        "level": 4,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 5,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 6,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 7,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 8,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 9,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 10,
+        "challenge": "Score",
+        "reward": "Cards"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

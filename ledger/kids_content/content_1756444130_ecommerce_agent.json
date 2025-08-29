@@ -1,0 +1,64 @@
+{
+  "content_id": "content_1756444130_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "diy_project",
+  "theme": "wild_earth",
+  "created_at": "2025-08-29T05:08:50.752581",
+  "status": "generated",
+  "content": {
+    "title": "wild_earth DIY Creation",
+    "materials": [
+      "Glue",
+      "Scissors",
+      "Paper"
+    ],
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Step 1 of the wild_earth project",
+        "materials_needed": [
+          "Recycled",
+          "Colors"
+        ]
+      },
+      {
+        "step": 2,
+        "instruction": "Step 2 of the wild_earth project",
+        "materials_needed": [
+          "Colors",
+          "Paper"
+        ]
+      },
+      {
+        "step": 3,
+        "instruction": "Step 3 of the wild_earth project",
+        "materials_needed": [
+          "Recycled",
+          "Colors"
+        ]
+      },
+      {
+        "step": 4,
+        "instruction": "Step 4 of the wild_earth project",
+        "materials_needed": [
+          "Colors",
+          "Glue"
+        ]
+      },
+      {
+        "step": 5,
+        "instruction": "Step 5 of the wild_earth project",
+        "materials_needed": [
+          "Paper",
+          "Scissors"
+        ]
+      }
+    ],
+    "difficulty": "Advanced",
+    "duration": "15min",
+    "skills_learned": [
+      "Following instructions",
+      "Motor skills"
+    ]
+  }
+}

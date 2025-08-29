@@ -1,0 +1,46 @@
+{
+  "content_id": "content_1756437647_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "kidz_bop_song",
+  "theme": "tech_buddies",
+  "created_at": "2025-08-29T03:20:47.864818",
+  "status": "generated",
+  "content": {
+    "title": "tech_buddies Friendship Groove",
+    "lyrics": [
+      "Verse 1: Fun lyrics about Friendship",
+      "Verse 2: Fun lyrics about Friendship",
+      "Verse 3: Fun lyrics about Friendship"
+    ],
+    "tempo": "Moderate",
+    "theme": "",
+    "dance_moves": [
+      "Dance",
+      "Dance",
+      "Jump",
+      "Spin"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T03:20:47.864856",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756437647_ecommerce_agent",
+    "agent_id": "ecommerce_agent",
+    "content_type": "kidz_bop_song",
+    "signature": "beM7pkXZ7iAkWD9tUK4slexGi4+sc+YI2INPZpaXV0Q="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T03:20:47.868262",
+    "protection_level": "maximum",
+    "signature": "f05e3f32ebadc5e8201ec9bbe30b50844653fea3a2742d453592d30ea9711f3b"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

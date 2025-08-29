@@ -1,0 +1,75 @@
+{
+  "content_id": "content_1756434047_analyst_agent",
+  "agent_id": "analyst_agent",
+  "content_type": "fun_quiz",
+  "theme": "creature_club",
+  "created_at": "2025-08-29T02:20:47.661516",
+  "status": "generated",
+  "content": {
+    "title": "Fun creature_club Matching Quiz",
+    "category": "Space",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Multiple Choice",
+        "question": "Question 1 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "Matching",
+        "question": "Question 2 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "True/False",
+        "question": "Question 3 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Multiple Choice",
+        "question": "Question 4 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "True/False",
+        "question": "Question 5 about creature_club",
+        "options": null,
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Genius"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T02:20:47.661590",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756434047_analyst_agent",
+    "agent_id": "analyst_agent",
+    "content_type": "fun_quiz",
+    "signature": "CLfNbCnDEfPzVdYqzBOTQy7VwMt3iDry1mJQJPf/NE8="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T02:20:47.666441",
+    "protection_level": "maximum",
+    "signature": "22cfc365df5748e645d5bc0515e7a67b2d09988617d3091c418b99dab2869709"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

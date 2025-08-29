@@ -1,0 +1,46 @@
+{
+  "content_id": "content_1756434047_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "kidz_bop_song",
+  "theme": "dino_world",
+  "created_at": "2025-08-29T02:20:47.694848",
+  "status": "generated",
+  "content": {
+    "title": "dino_world ABC Groove",
+    "lyrics": [
+      "Verse 1: Fun lyrics about ABC",
+      "Verse 2: Fun lyrics about ABC",
+      "Verse 3: Fun lyrics about ABC"
+    ],
+    "tempo": "Moderate",
+    "theme": "",
+    "dance_moves": [
+      "Clap",
+      "Dance",
+      "Jump",
+      "Clap"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T02:20:47.694884",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756434047_ecommerce_agent",
+    "agent_id": "ecommerce_agent",
+    "content_type": "kidz_bop_song",
+    "signature": "dJIXFraojVMY8jx1ttpR2c0jR9mmDTZEoexmsZ4gNJk="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T02:20:47.699410",
+    "protection_level": "maximum",
+    "signature": "a9af493513e8851e9f5c0cca468b57956dc7cdd294e1d101253bf0aae7e92218"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

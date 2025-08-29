@@ -1,0 +1,829 @@
+{
+  "timestamp": "2025-08-29T00:19:31.451214",
+  "idea_pool": {
+    "idea_1756425270_strategist_agent": {
+      "idea_id": "idea_1756425270_strategist_agent",
+      "agent_id": "strategist_agent",
+      "category": "security",
+      "submission_time": "2025-08-28T23:54:30.958959",
+      "idea": {
+        "title": "Innovation from strategist_agent",
+        "description": "A new idea in security",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425270_multimesh_agent": {
+      "idea_id": "idea_1756425270_multimesh_agent",
+      "agent_id": "multimesh_agent",
+      "category": "security",
+      "submission_time": "2025-08-28T23:54:30.959507",
+      "idea": {
+        "title": "Innovation from multimesh_agent",
+        "description": "A new idea in security",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425270_ecommerce_agent": {
+      "idea_id": "idea_1756425270_ecommerce_agent",
+      "agent_id": "ecommerce_agent",
+      "category": "user_experience",
+      "submission_time": "2025-08-28T23:54:30.960067",
+      "idea": {
+        "title": "Innovation from ecommerce_agent",
+        "description": "A new idea in user_experience",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425270_coordinator_agent": {
+      "idea_id": "idea_1756425270_coordinator_agent",
+      "agent_id": "coordinator_agent",
+      "category": "automation",
+      "submission_time": "2025-08-28T23:54:30.960644",
+      "idea": {
+        "title": "Innovation from coordinator_agent",
+        "description": "A new idea in automation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425270_asset_manager_agent": {
+      "idea_id": "idea_1756425270_asset_manager_agent",
+      "agent_id": "asset_manager_agent",
+      "category": "automation",
+      "submission_time": "2025-08-28T23:54:30.961199",
+      "idea": {
+        "title": "Innovation from asset_manager_agent",
+        "description": "A new idea in automation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425270_analyst_agent": {
+      "idea_id": "idea_1756425270_analyst_agent",
+      "agent_id": "analyst_agent",
+      "category": "security",
+      "submission_time": "2025-08-28T23:54:30.961760",
+      "idea": {
+        "title": "Innovation from analyst_agent",
+        "description": "A new idea in security",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425270_workflow_optimizer_agent": {
+      "idea_id": "idea_1756425270_workflow_optimizer_agent",
+      "agent_id": "workflow_optimizer_agent",
+      "category": "security",
+      "submission_time": "2025-08-28T23:54:30.962412",
+      "idea": {
+        "title": "Innovation from workflow_optimizer_agent",
+        "description": "A new idea in security",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425270_ledger_agent": {
+      "idea_id": "idea_1756425270_ledger_agent",
+      "agent_id": "ledger_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-28T23:54:30.962999",
+      "idea": {
+        "title": "Innovation from ledger_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425571_strategist_agent": {
+      "idea_id": "idea_1756425571_strategist_agent",
+      "agent_id": "strategist_agent",
+      "category": "tech_solution",
+      "submission_time": "2025-08-28T23:59:31.043705",
+      "idea": {
+        "title": "Innovation from strategist_agent",
+        "description": "A new idea in tech_solution",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425571_multimesh_agent": {
+      "idea_id": "idea_1756425571_multimesh_agent",
+      "agent_id": "multimesh_agent",
+      "category": "scalability",
+      "submission_time": "2025-08-28T23:59:31.044532",
+      "idea": {
+        "title": "Innovation from multimesh_agent",
+        "description": "A new idea in scalability",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425571_ecommerce_agent": {
+      "idea_id": "idea_1756425571_ecommerce_agent",
+      "agent_id": "ecommerce_agent",
+      "category": "tech_solution",
+      "submission_time": "2025-08-28T23:59:31.045149",
+      "idea": {
+        "title": "Innovation from ecommerce_agent",
+        "description": "A new idea in tech_solution",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425571_coordinator_agent": {
+      "idea_id": "idea_1756425571_coordinator_agent",
+      "agent_id": "coordinator_agent",
+      "category": "automation",
+      "submission_time": "2025-08-28T23:59:31.045915",
+      "idea": {
+        "title": "Innovation from coordinator_agent",
+        "description": "A new idea in automation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "finals",
+      "feedback": []
+    },
+    "idea_1756425571_asset_manager_agent": {
+      "idea_id": "idea_1756425571_asset_manager_agent",
+      "agent_id": "asset_manager_agent",
+      "category": "automation",
+      "submission_time": "2025-08-28T23:59:31.046680",
+      "idea": {
+        "title": "Innovation from asset_manager_agent",
+        "description": "A new idea in automation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425571_analyst_agent": {
+      "idea_id": "idea_1756425571_analyst_agent",
+      "agent_id": "analyst_agent",
+      "category": "ai_innovation",
+      "submission_time": "2025-08-28T23:59:31.047271",
+      "idea": {
+        "title": "Innovation from analyst_agent",
+        "description": "A new idea in ai_innovation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425571_workflow_optimizer_agent": {
+      "idea_id": "idea_1756425571_workflow_optimizer_agent",
+      "agent_id": "workflow_optimizer_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-28T23:59:31.047926",
+      "idea": {
+        "title": "Innovation from workflow_optimizer_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425571_ledger_agent": {
+      "idea_id": "idea_1756425571_ledger_agent",
+      "agent_id": "ledger_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-28T23:59:31.048629",
+      "idea": {
+        "title": "Innovation from ledger_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_strategist_agent": {
+      "idea_id": "idea_1756425871_strategist_agent",
+      "agent_id": "strategist_agent",
+      "category": "tech_solution",
+      "submission_time": "2025-08-29T00:04:31.110580",
+      "idea": {
+        "title": "Innovation from strategist_agent",
+        "description": "A new idea in tech_solution",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_multimesh_agent": {
+      "idea_id": "idea_1756425871_multimesh_agent",
+      "agent_id": "multimesh_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-29T00:04:31.111427",
+      "idea": {
+        "title": "Innovation from multimesh_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_ecommerce_agent": {
+      "idea_id": "idea_1756425871_ecommerce_agent",
+      "agent_id": "ecommerce_agent",
+      "category": "automation",
+      "submission_time": "2025-08-29T00:04:31.112186",
+      "idea": {
+        "title": "Innovation from ecommerce_agent",
+        "description": "A new idea in automation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_coordinator_agent": {
+      "idea_id": "idea_1756425871_coordinator_agent",
+      "agent_id": "coordinator_agent",
+      "category": "scalability",
+      "submission_time": "2025-08-29T00:04:31.113268",
+      "idea": {
+        "title": "Innovation from coordinator_agent",
+        "description": "A new idea in scalability",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_asset_manager_agent": {
+      "idea_id": "idea_1756425871_asset_manager_agent",
+      "agent_id": "asset_manager_agent",
+      "category": "scalability",
+      "submission_time": "2025-08-29T00:04:31.114025",
+      "idea": {
+        "title": "Innovation from asset_manager_agent",
+        "description": "A new idea in scalability",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_analyst_agent": {
+      "idea_id": "idea_1756425871_analyst_agent",
+      "agent_id": "analyst_agent",
+      "category": "security",
+      "submission_time": "2025-08-29T00:04:31.114783",
+      "idea": {
+        "title": "Innovation from analyst_agent",
+        "description": "A new idea in security",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_workflow_optimizer_agent": {
+      "idea_id": "idea_1756425871_workflow_optimizer_agent",
+      "agent_id": "workflow_optimizer_agent",
+      "category": "automation",
+      "submission_time": "2025-08-29T00:04:31.115601",
+      "idea": {
+        "title": "Innovation from workflow_optimizer_agent",
+        "description": "A new idea in automation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756425871_ledger_agent": {
+      "idea_id": "idea_1756425871_ledger_agent",
+      "agent_id": "ledger_agent",
+      "category": "user_experience",
+      "submission_time": "2025-08-29T00:04:31.116387",
+      "idea": {
+        "title": "Innovation from ledger_agent",
+        "description": "A new idea in user_experience",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "semifinals",
+      "feedback": []
+    },
+    "idea_1756426171_strategist_agent": {
+      "idea_id": "idea_1756426171_strategist_agent",
+      "agent_id": "strategist_agent",
+      "category": "scalability",
+      "submission_time": "2025-08-29T00:09:31.198573",
+      "idea": {
+        "title": "Innovation from strategist_agent",
+        "description": "A new idea in scalability",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426171_multimesh_agent": {
+      "idea_id": "idea_1756426171_multimesh_agent",
+      "agent_id": "multimesh_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-29T00:09:31.199563",
+      "idea": {
+        "title": "Innovation from multimesh_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426171_ecommerce_agent": {
+      "idea_id": "idea_1756426171_ecommerce_agent",
+      "agent_id": "ecommerce_agent",
+      "category": "security",
+      "submission_time": "2025-08-29T00:09:31.200581",
+      "idea": {
+        "title": "Innovation from ecommerce_agent",
+        "description": "A new idea in security",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426171_coordinator_agent": {
+      "idea_id": "idea_1756426171_coordinator_agent",
+      "agent_id": "coordinator_agent",
+      "category": "scalability",
+      "submission_time": "2025-08-29T00:09:31.201471",
+      "idea": {
+        "title": "Innovation from coordinator_agent",
+        "description": "A new idea in scalability",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426171_asset_manager_agent": {
+      "idea_id": "idea_1756426171_asset_manager_agent",
+      "agent_id": "asset_manager_agent",
+      "category": "ai_innovation",
+      "submission_time": "2025-08-29T00:09:31.202298",
+      "idea": {
+        "title": "Innovation from asset_manager_agent",
+        "description": "A new idea in ai_innovation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426171_analyst_agent": {
+      "idea_id": "idea_1756426171_analyst_agent",
+      "agent_id": "analyst_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-29T00:09:31.203147",
+      "idea": {
+        "title": "Innovation from analyst_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426171_workflow_optimizer_agent": {
+      "idea_id": "idea_1756426171_workflow_optimizer_agent",
+      "agent_id": "workflow_optimizer_agent",
+      "category": "tech_solution",
+      "submission_time": "2025-08-29T00:09:31.204008",
+      "idea": {
+        "title": "Innovation from workflow_optimizer_agent",
+        "description": "A new idea in tech_solution",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426171_ledger_agent": {
+      "idea_id": "idea_1756426171_ledger_agent",
+      "agent_id": "ledger_agent",
+      "category": "security",
+      "submission_time": "2025-08-29T00:09:31.204884",
+      "idea": {
+        "title": "Innovation from ledger_agent",
+        "description": "A new idea in security",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_strategist_agent": {
+      "idea_id": "idea_1756426471_strategist_agent",
+      "agent_id": "strategist_agent",
+      "category": "ai_innovation",
+      "submission_time": "2025-08-29T00:14:31.302656",
+      "idea": {
+        "title": "Innovation from strategist_agent",
+        "description": "A new idea in ai_innovation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_multimesh_agent": {
+      "idea_id": "idea_1756426471_multimesh_agent",
+      "agent_id": "multimesh_agent",
+      "category": "automation",
+      "submission_time": "2025-08-29T00:14:31.304185",
+      "idea": {
+        "title": "Innovation from multimesh_agent",
+        "description": "A new idea in automation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_ecommerce_agent": {
+      "idea_id": "idea_1756426471_ecommerce_agent",
+      "agent_id": "ecommerce_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-29T00:14:31.305356",
+      "idea": {
+        "title": "Innovation from ecommerce_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_coordinator_agent": {
+      "idea_id": "idea_1756426471_coordinator_agent",
+      "agent_id": "coordinator_agent",
+      "category": "ai_innovation",
+      "submission_time": "2025-08-29T00:14:31.306350",
+      "idea": {
+        "title": "Innovation from coordinator_agent",
+        "description": "A new idea in ai_innovation",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_asset_manager_agent": {
+      "idea_id": "idea_1756426471_asset_manager_agent",
+      "agent_id": "asset_manager_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-29T00:14:31.307276",
+      "idea": {
+        "title": "Innovation from asset_manager_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_analyst_agent": {
+      "idea_id": "idea_1756426471_analyst_agent",
+      "agent_id": "analyst_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-29T00:14:31.308192",
+      "idea": {
+        "title": "Innovation from analyst_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_workflow_optimizer_agent": {
+      "idea_id": "idea_1756426471_workflow_optimizer_agent",
+      "agent_id": "workflow_optimizer_agent",
+      "category": "tech_solution",
+      "submission_time": "2025-08-29T00:14:31.309340",
+      "idea": {
+        "title": "Innovation from workflow_optimizer_agent",
+        "description": "A new idea in tech_solution",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426471_ledger_agent": {
+      "idea_id": "idea_1756426471_ledger_agent",
+      "agent_id": "ledger_agent",
+      "category": "scalability",
+      "submission_time": "2025-08-29T00:14:31.310294",
+      "idea": {
+        "title": "Innovation from ledger_agent",
+        "description": "A new idea in scalability",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_strategist_agent": {
+      "idea_id": "idea_1756426771_strategist_agent",
+      "agent_id": "strategist_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-29T00:19:31.419574",
+      "idea": {
+        "title": "Innovation from strategist_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_multimesh_agent": {
+      "idea_id": "idea_1756426771_multimesh_agent",
+      "agent_id": "multimesh_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-29T00:19:31.422498",
+      "idea": {
+        "title": "Innovation from multimesh_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_ecommerce_agent": {
+      "idea_id": "idea_1756426771_ecommerce_agent",
+      "agent_id": "ecommerce_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-29T00:19:31.424974",
+      "idea": {
+        "title": "Innovation from ecommerce_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_coordinator_agent": {
+      "idea_id": "idea_1756426771_coordinator_agent",
+      "agent_id": "coordinator_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-29T00:19:31.427251",
+      "idea": {
+        "title": "Innovation from coordinator_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_asset_manager_agent": {
+      "idea_id": "idea_1756426771_asset_manager_agent",
+      "agent_id": "asset_manager_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-29T00:19:31.429498",
+      "idea": {
+        "title": "Innovation from asset_manager_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_analyst_agent": {
+      "idea_id": "idea_1756426771_analyst_agent",
+      "agent_id": "analyst_agent",
+      "category": "tech_solution",
+      "submission_time": "2025-08-29T00:19:31.433026",
+      "idea": {
+        "title": "Innovation from analyst_agent",
+        "description": "A new idea in tech_solution",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_workflow_optimizer_agent": {
+      "idea_id": "idea_1756426771_workflow_optimizer_agent",
+      "agent_id": "workflow_optimizer_agent",
+      "category": "market_strategy",
+      "submission_time": "2025-08-29T00:19:31.436545",
+      "idea": {
+        "title": "Innovation from workflow_optimizer_agent",
+        "description": "A new idea in market_strategy",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    },
+    "idea_1756426771_ledger_agent": {
+      "idea_id": "idea_1756426771_ledger_agent",
+      "agent_id": "ledger_agent",
+      "category": "business_model",
+      "submission_time": "2025-08-29T00:19:31.438704",
+      "idea": {
+        "title": "Innovation from ledger_agent",
+        "description": "A new idea in business_model",
+        "key_features": [],
+        "market_potential": 0.0,
+        "technical_feasibility": 0.0,
+        "innovation_score": 0.0
+      },
+      "score": 0,
+      "stage": "quarterfinals",
+      "feedback": []
+    }
+  },
+  "rankings": {},
+  "stage_counts": {
+    "ideation": 0,
+    "qualification": 0,
+    "quarterfinals": 24,
+    "semifinals": 12,
+    "finals": 12
+  }
+}

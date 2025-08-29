@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cosmic/Void Glyph -->
+    <defs>
+        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge>
+                <feMergeNode in="blur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+        <radialGradient id="voidGradient">
+            <stop offset="0%" style="stop-color:#0F0F23;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#000000;stop-opacity:0.8" />
+        </radialGradient>
+    </defs>
+
+    <g filter="url(#glow)">
+        <!-- Void sphere -->
+        <circle cx="64" cy="64" r="32" 
+                fill="url(#voidGradient)" 
+                stroke="#0F0F23" 
+                stroke-width="2">
+            <animate attributeName="r"
+                     values="32;36;32"
+                     dur="6s"
+                     repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Cosmic rays -->
+        <g>
+            <path d="M 64,32 L 64,96" 
+                  stroke="#0F0F23" 
+                  stroke-width="2">
+                <animate attributeName="stroke-dasharray"
+                         values="0,64;64,0"
+                         dur="3s"
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 32,64 L 96,64" 
+                  stroke="#0F0F23" 
+                  stroke-width="2">
+                <animate attributeName="stroke-dasharray"
+                         values="0,64;64,0"
+                         dur="3s"
+                         begin="1s"
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 40,40 L 88,88" 
+                  stroke="#0F0F23" 
+                  stroke-width="2">
+                <animate attributeName="stroke-dasharray"
+                         values="0,64;64,0"
+                         dur="3s"
+                         begin="2s"
+                         repeatCount="indefinite"/>
+            </path>
+            <path d="M 88,40 L 40,88" 
+                  stroke="#0F0F23" 
+                  stroke-width="2">
+                <animate attributeName="stroke-dasharray"
+                         values="0,64;64,0"
+                         dur="3s"
+                         begin="1.5s"
+                         repeatCount="indefinite"/>
+            </path>
+        </g>
+
+        <!-- Event horizon -->
+        <circle cx="64" cy="64" r="8" 
+                fill="none" 
+                stroke="#0F0F23" 
+                stroke-width="2">
+            <animate attributeName="r"
+                     values="8;16;8"
+                     dur="4s"
+                     repeatCount="indefinite"/>
+            <animate attributeName="opacity"
+                     values="1;0.5;1"
+                     dur="4s"
+                     repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Quantum particles -->
+        <g>
+            <circle cx="64" cy="64" r="2" fill="#0F0F23">
+                <animateMotion dur="8s" repeatCount="indefinite"
+                    path="M 0,0 Q 20,-20 0,-40 Q -20,-20 0,0 T 0,40 T 0,0"/>
+            </circle>
+            <circle cx="64" cy="64" r="2" fill="#0F0F23">
+                <animateMotion dur="8s" repeatCount="indefinite" begin="2s"
+                    path="M 0,0 Q 40,0 40,-40 Q 40,-80 0,-40 Q -40,-80 -40,-40 Q -40,0 0,0"/>
+            </circle>
+            <circle cx="64" cy="64" r="2" fill="#0F0F23">
+                <animateMotion dur="8s" repeatCount="indefinite" begin="4s"
+                    path="M 0,0 Q -20,20 -40,0 Q -20,-20 0,0 T 40,0 T 0,0"/>
+            </circle>
+        </g>
+    </g>
+</svg>

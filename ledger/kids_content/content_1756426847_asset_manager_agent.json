@@ -1,0 +1,99 @@
+{
+  "content_id": "content_1756426847_asset_manager_agent",
+  "agent_id": "asset_manager_agent",
+  "content_type": "interactive_ebook",
+  "theme": "wizard_academy",
+  "created_at": "2025-08-29T00:20:47.396314",
+  "status": "generated",
+  "content": {
+    "title": "Robo's wizard_academy Adventure",
+    "theme": "wizard_academy",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Page 1 story about Robo in Lab",
+        "interaction": "Solve"
+      },
+      {
+        "page": 2,
+        "text": "Page 2 story about Robo in Lab",
+        "interaction": "Create"
+      },
+      {
+        "page": 3,
+        "text": "Page 3 story about Robo in Lab",
+        "interaction": "Explore"
+      },
+      {
+        "page": 4,
+        "text": "Page 4 story about Robo in Lab",
+        "interaction": "Create"
+      },
+      {
+        "page": 5,
+        "text": "Page 5 story about Robo in Lab",
+        "interaction": "Explore"
+      },
+      {
+        "page": 6,
+        "text": "Page 6 story about Robo in Lab",
+        "interaction": "Learn"
+      },
+      {
+        "page": 7,
+        "text": "Page 7 story about Robo in Lab",
+        "interaction": "Learn"
+      },
+      {
+        "page": 8,
+        "text": "Page 8 story about Robo in Lab",
+        "interaction": "Learn"
+      },
+      {
+        "page": 9,
+        "text": "Page 9 story about Robo in Lab",
+        "interaction": "Solve"
+      },
+      {
+        "page": 10,
+        "text": "Page 10 story about Robo in Lab",
+        "interaction": "Learn"
+      }
+    ],
+    "interactive_elements": [
+      "Touch responses",
+      "Sound effects",
+      "Mini-games",
+      "Collectibles"
+    ],
+    "learning_goals": [
+      "Reading comprehension",
+      "Problem-solving",
+      "Creativity",
+      "Knowledge retention"
+    ],
+    "age_group": ""
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T00:20:47.396360",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756426847_asset_manager_agent",
+    "agent_id": "asset_manager_agent",
+    "content_type": "interactive_ebook",
+    "signature": "ctyp8UkBeZIhA4JxSFSpPm3VzdTTzDxf3RxT7jpisfc="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T00:20:47.400992",
+    "protection_level": "maximum",
+    "signature": "a4839868e46256a8cd1a460a622b4119747945a954527696cb39f437c4c75e52"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

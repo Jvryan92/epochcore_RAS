@@ -1,0 +1,99 @@
+{
+  "content_id": "content_1756444848_asset_manager_agent",
+  "agent_id": "asset_manager_agent",
+  "content_type": "interactive_ebook",
+  "theme": "tech_buddies",
+  "created_at": "2025-08-29T05:20:48.126621",
+  "status": "generated",
+  "content": {
+    "title": "Robo's tech_buddies Adventure",
+    "theme": "tech_buddies",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Page 1 story about Robo in Forest",
+        "interaction": "Create"
+      },
+      {
+        "page": 2,
+        "text": "Page 2 story about Robo in Forest",
+        "interaction": "Learn"
+      },
+      {
+        "page": 3,
+        "text": "Page 3 story about Robo in Forest",
+        "interaction": "Play"
+      },
+      {
+        "page": 4,
+        "text": "Page 4 story about Robo in Forest",
+        "interaction": "Learn"
+      },
+      {
+        "page": 5,
+        "text": "Page 5 story about Robo in Forest",
+        "interaction": "Explore"
+      },
+      {
+        "page": 6,
+        "text": "Page 6 story about Robo in Forest",
+        "interaction": "Explore"
+      },
+      {
+        "page": 7,
+        "text": "Page 7 story about Robo in Forest",
+        "interaction": "Play"
+      },
+      {
+        "page": 8,
+        "text": "Page 8 story about Robo in Forest",
+        "interaction": "Learn"
+      },
+      {
+        "page": 9,
+        "text": "Page 9 story about Robo in Forest",
+        "interaction": "Create"
+      },
+      {
+        "page": 10,
+        "text": "Page 10 story about Robo in Forest",
+        "interaction": "Play"
+      }
+    ],
+    "interactive_elements": [
+      "Touch responses",
+      "Sound effects",
+      "Mini-games",
+      "Collectibles"
+    ],
+    "learning_goals": [
+      "Reading comprehension",
+      "Problem-solving",
+      "Creativity",
+      "Knowledge retention"
+    ],
+    "age_group": ""
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T05:20:48.126663",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756444848_asset_manager_agent",
+    "agent_id": "asset_manager_agent",
+    "content_type": "interactive_ebook",
+    "signature": "vhbowhke5OHhhwJVBfIegdJrgQSs8cBpTGAnJqaAsGo="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T05:20:48.130306",
+    "protection_level": "maximum",
+    "signature": "b0aae999c804f06707868ce8f90bc25016e130f58466771670b07e75b7ad41a0"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

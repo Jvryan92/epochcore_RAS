@@ -1,0 +1,53 @@
+{
+  "content_id": "content_1756436930_workflow_optimizer_agent",
+  "agent_id": "workflow_optimizer_agent",
+  "content_type": "fun_quiz",
+  "theme": "wild_earth",
+  "created_at": "2025-08-29T03:08:50.605735",
+  "status": "generated",
+  "content": {
+    "title": "Fun wild_earth True/False Quiz",
+    "category": "Space",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Matching",
+        "question": "Question 1 about wild_earth",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "Fill Blanks",
+        "question": "Question 2 about wild_earth",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Multiple Choice",
+        "question": "Question 3 about wild_earth",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "True/False",
+        "question": "Question 4 about wild_earth",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Multiple Choice",
+        "question": "Question 5 about wild_earth",
+        "options": null,
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Genius"
+    ]
+  }
+}

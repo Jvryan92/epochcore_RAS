@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756433330_multimesh_agent",
+  "agent_id": "multimesh_agent",
+  "content_type": "educational_game",
+  "theme": "wild_earth",
+  "created_at": "2025-08-29T02:08:50.527392",
+  "status": "generated",
+  "content": {
+    "title": "wild_earth Match Adventure",
+    "type": "Match & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Time",
+        "reward": "Stars"
+      },
+      {
+        "level": 2,
+        "challenge": "Puzzle",
+        "reward": "Cards"
+      },
+      {
+        "level": 3,
+        "challenge": "Time",
+        "reward": "Points"
+      },
+      {
+        "level": 4,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 5,
+        "challenge": "Collection",
+        "reward": "Stars"
+      },
+      {
+        "level": 6,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      },
+      {
+        "level": 7,
+        "challenge": "Time",
+        "reward": "Cards"
+      },
+      {
+        "level": 8,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 9,
+        "challenge": "Score",
+        "reward": "Badges"
+      },
+      {
+        "level": 10,
+        "challenge": "Collection",
+        "reward": "Badges"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

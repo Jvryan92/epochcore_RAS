@@ -31,10 +31,10 @@ Repository = "https://github.com/yourusername/StategyDECK"
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q"
-testpaths = [
-    "tests",
-]
+asyncio_mode = "auto"
+addopts = "-v --cov=. --cov-report=term-missing"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
 
 [tool.black]
 line-length = 88

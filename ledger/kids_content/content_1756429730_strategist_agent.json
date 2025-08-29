@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756429730_strategist_agent",
+  "agent_id": "strategist_agent",
+  "content_type": "educational_game",
+  "theme": "wizard_academy",
+  "created_at": "2025-08-29T01:08:50.409500",
+  "status": "generated",
+  "content": {
+    "title": "wizard_academy Build Adventure",
+    "type": "Build & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Time",
+        "reward": "Stars"
+      },
+      {
+        "level": 2,
+        "challenge": "Puzzle",
+        "reward": "Cards"
+      },
+      {
+        "level": 3,
+        "challenge": "Collection",
+        "reward": "Points"
+      },
+      {
+        "level": 4,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 5,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 6,
+        "challenge": "Collection",
+        "reward": "Cards"
+      },
+      {
+        "level": 7,
+        "challenge": "Time",
+        "reward": "Cards"
+      },
+      {
+        "level": 8,
+        "challenge": "Collection",
+        "reward": "Badges"
+      },
+      {
+        "level": 9,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 10,
+        "challenge": "Collection",
+        "reward": "Badges"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

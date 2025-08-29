@@ -1,0 +1,66 @@
+{
+  "content_id": "content_1756434047_multimesh_agent",
+  "agent_id": "multimesh_agent",
+  "content_type": "animated_lesson",
+  "theme": "sound_safari",
+  "created_at": "2025-08-29T02:20:47.689404",
+  "status": "generated",
+  "content": {
+    "title": "sound_safari Adventure in Mixed Media",
+    "duration": "5min",
+    "topic": "Learning about sound_safari",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about sound_safari",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Questions",
+      "Pauses"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T02:20:47.689446",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756434047_multimesh_agent",
+    "agent_id": "multimesh_agent",
+    "content_type": "animated_lesson",
+    "signature": "PPIjLk02JkEZqKKoHhiBRp3s011asyBqDy7sNkXubG8="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T02:20:47.693981",
+    "protection_level": "maximum",
+    "signature": "19b0e6fa97224f4f0d79b4777b65225fe541d2d7fe23618742b17a96afb3aaef"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

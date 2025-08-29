@@ -1,0 +1,44 @@
+{
+  "medals": {},
+  "active_events": {
+    "event_1756425128_pattern_recognition": {
+      "event_id": "event_1756425128_pattern_recognition",
+      "event_type": "pattern_recognition",
+      "participants": [
+        "workflow_optimizer_agent",
+        "analyst_agent",
+        "multimesh_agent",
+        "strategist_agent"
+      ],
+      "start_time": "2025-08-28T23:52:08.669040",
+      "status": "active",
+      "rounds": [],
+      "scores": {
+        "workflow_optimizer_agent": 0,
+        "analyst_agent": 0,
+        "multimesh_agent": 0,
+        "strategist_agent": 0
+      }
+    },
+    "event_1756425128_strategic_planning": {
+      "event_id": "event_1756425128_strategic_planning",
+      "event_type": "strategic_planning",
+      "participants": [
+        "ledger_agent",
+        "asset_manager_agent",
+        "coordinator_agent",
+        "ecommerce_agent"
+      ],
+      "start_time": "2025-08-28T23:52:08.669638",
+      "status": "active",
+      "rounds": [],
+      "scores": {
+        "ledger_agent": 0,
+        "asset_manager_agent": 0,
+        "coordinator_agent": 0,
+        "ecommerce_agent": 0
+      }
+    }
+  },
+  "last_updated": "2025-08-28T23:52:08.669646"
+}

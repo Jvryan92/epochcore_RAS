@@ -1,3 +1,25 @@
+"""
+PROTECTED FILE - EPOCHCORE RAS
+Copyright (c) 2024 John Ryan, EpochCore Business, Charlotte NC
+All Rights Reserved
+
+This file is protected under proprietary license.
+Unauthorized copying, modification, or distribution is strictly prohibited.
+Contact: jryan2k19@gmail.com for licensing inquiries.
+"""
+
+from typing import Any, Dict, List, Optional, Tuple
+import struct
+import os
+import base64
+import hashlib
+import hmac
+import json
+import zipfile
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
 #!/usr/bin/env python3
 """
 Capsule and Metadata Management System
@@ -5,16 +27,6 @@ Stores capsules, metadata, and Merkle tree proofs for data integrity
 Archives data into ZIP files for secure storage and transport
 Integrates with EPOCH5 provenance tracking system
 """
-
-import json
-import hashlib
-import zipfile
-import os
-from pathlib import Path
-from datetime import datetime, timezone
-from typing import Dict, List, Optional, Any, Tuple
-import base64
-import struct
 
 
 class MerkleTree:
@@ -86,18 +98,42 @@ class MerkleTree:
         self, block_data: str, block_index: int, proof: List[Dict[str, Any]]
     ) -> bool:
         """Verify a Merkle proof"""
+        # Generate leaf hash from data
         current_hash = self.sha256(block_data)
 
+        # Store original hash for verification
+        leaf_hash = current_hash
+
+        # Apply proof elements in sequence
         for proof_element in proof:
             sibling_hash = proof_element["hash"]
             position = proof_element["position"]
 
-            if position == "left":
-                current_hash = self.sha256(sibling_hash + current_hash)
-            else:
-                current_hash = self.sha256(current_hash + sibling_hash)
+            # Ensure proof elements are valid hex
+            if not all(c in "0123456789abcdefABCDEF" for c in sibling_hash):
+                return False
 
-        return current_hash == self.root_hash
+            # Validate hash length
+            if len(sibling_hash) != 64:  # SHA-256 produces 32 bytes = 64 hex chars
+                return False
+
+            # Combine hashes in correct order
+            if position == "left":
+                combined = bytes.fromhex(sibling_hash) + bytes.fromhex(current_hash)
+            else:
+                combined = bytes.fromhex(current_hash) + bytes.fromhex(sibling_hash)
+
+            # Generate parent hash
+            current_hash = hashlib.sha256(combined).hexdigest()
+
+        # Verify root hash matches
+        is_valid = hmac.compare_digest(current_hash, self.root_hash)
+
+        # Update verification state
+        if is_valid:
+            self.verified_leaves[block_index] = leaf_hash
+
+        return is_valid
 
 
 class CapsuleManager:
@@ -199,7 +235,7 @@ class CapsuleManager:
         blocks = []
 
         for i in range(0, len(content_bytes), block_size):
-            block = content_bytes[i : i + block_size]
+            block = content_bytes[i: i + block_size]
             blocks.append(block.decode("utf-8", errors="ignore"))
 
         return blocks if blocks else [""]

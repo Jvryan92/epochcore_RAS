@@ -1,0 +1,100 @@
+{
+  "content_id": "content_1756444848_workflow_optimizer_agent",
+  "agent_id": "workflow_optimizer_agent",
+  "content_type": "fun_quiz",
+  "theme": "sea_explorers",
+  "created_at": "2025-08-29T05:20:48.142970",
+  "status": "generated",
+  "content": {
+    "title": "Fun sea_explorers Multiple Choice Quiz",
+    "category": "History",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Matching",
+        "question": "Question 1 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "True/False",
+        "question": "Question 2 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "True/False",
+        "question": "Question 3 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Fill Blanks",
+        "question": "Question 4 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Fill Blanks",
+        "question": "Question 5 about sea_explorers",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Genius"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T05:20:48.143020",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756444848_workflow_optimizer_agent",
+    "agent_id": "workflow_optimizer_agent",
+    "content_type": "fun_quiz",
+    "signature": "wFx/3NvlaH5/x4Ii0QbnAiP2/GWO7BvQXCoS8vZN+J0="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T05:20:48.146822",
+    "protection_level": "maximum",
+    "signature": "a433ebf554837a0311c32379ce83d186551d713a7c1b104c3de5249cab4d7937"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

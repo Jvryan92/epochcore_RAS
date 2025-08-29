@@ -1,0 +1,70 @@
+{
+  "content_id": "content_1756436930_multimesh_agent",
+  "agent_id": "multimesh_agent",
+  "content_type": "educational_game",
+  "theme": "tech_buddies",
+  "created_at": "2025-08-29T03:08:50.603298",
+  "status": "generated",
+  "content": {
+    "title": "tech_buddies Sort Adventure",
+    "type": "Sort & Learn",
+    "levels": [
+      {
+        "level": 1,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      },
+      {
+        "level": 2,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 3,
+        "challenge": "Puzzle",
+        "reward": "Points"
+      },
+      {
+        "level": 4,
+        "challenge": "Time",
+        "reward": "Cards"
+      },
+      {
+        "level": 5,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 6,
+        "challenge": "Score",
+        "reward": "Points"
+      },
+      {
+        "level": 7,
+        "challenge": "Puzzle",
+        "reward": "Stars"
+      },
+      {
+        "level": 8,
+        "challenge": "Puzzle",
+        "reward": "Badges"
+      },
+      {
+        "level": 9,
+        "challenge": "Time",
+        "reward": "Badges"
+      },
+      {
+        "level": 10,
+        "challenge": "Time",
+        "reward": "Stars"
+      }
+    ],
+    "rewards": [],
+    "learning_objectives": [
+      "Game mechanics mastery",
+      "Strategic thinking",
+      "Quick decision making"
+    ]
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "content_id": "content_1756430447_coordinator_agent",
+  "agent_id": "coordinator_agent",
+  "content_type": "animated_lesson",
+  "theme": "sea_explorers",
+  "created_at": "2025-08-29T01:20:47.545731",
+  "status": "generated",
+  "content": {
+    "title": "sea_explorers Adventure in 2D Animation",
+    "duration": "3min",
+    "topic": "Learning about sea_explorers",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about sea_explorers",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about sea_explorers",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about sea_explorers",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about sea_explorers",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Pauses",
+      "Questions"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T01:20:47.545784",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756430447_coordinator_agent",
+    "agent_id": "coordinator_agent",
+    "content_type": "animated_lesson",
+    "signature": "tHKx8DX8i4bdbBuvgyPzLy4Q4v1K+xZTq1acKIJ0Hog="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T01:20:47.549204",
+    "protection_level": "maximum",
+    "signature": "20c97260872af5be0d1686384bd8c0653b4ed950397a3e5f4757622489b52fcc"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

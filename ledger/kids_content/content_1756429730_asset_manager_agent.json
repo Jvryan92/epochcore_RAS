@@ -1,0 +1,77 @@
+{
+  "content_id": "content_1756429730_asset_manager_agent",
+  "agent_id": "asset_manager_agent",
+  "content_type": "interactive_ebook",
+  "theme": "wild_earth",
+  "created_at": "2025-08-29T01:08:50.412971",
+  "status": "generated",
+  "content": {
+    "title": "Luna's wild_earth Adventure",
+    "theme": "wild_earth",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Page 1 story about Luna in Castle",
+        "interaction": "Play"
+      },
+      {
+        "page": 2,
+        "text": "Page 2 story about Luna in Castle",
+        "interaction": "Explore"
+      },
+      {
+        "page": 3,
+        "text": "Page 3 story about Luna in Castle",
+        "interaction": "Explore"
+      },
+      {
+        "page": 4,
+        "text": "Page 4 story about Luna in Castle",
+        "interaction": "Solve"
+      },
+      {
+        "page": 5,
+        "text": "Page 5 story about Luna in Castle",
+        "interaction": "Solve"
+      },
+      {
+        "page": 6,
+        "text": "Page 6 story about Luna in Castle",
+        "interaction": "Play"
+      },
+      {
+        "page": 7,
+        "text": "Page 7 story about Luna in Castle",
+        "interaction": "Learn"
+      },
+      {
+        "page": 8,
+        "text": "Page 8 story about Luna in Castle",
+        "interaction": "Learn"
+      },
+      {
+        "page": 9,
+        "text": "Page 9 story about Luna in Castle",
+        "interaction": "Explore"
+      },
+      {
+        "page": 10,
+        "text": "Page 10 story about Luna in Castle",
+        "interaction": "Solve"
+      }
+    ],
+    "interactive_elements": [
+      "Touch responses",
+      "Sound effects",
+      "Mini-games",
+      "Collectibles"
+    ],
+    "learning_goals": [
+      "Reading comprehension",
+      "Problem-solving",
+      "Creativity",
+      "Knowledge retention"
+    ],
+    "age_group": ""
+  }
+}

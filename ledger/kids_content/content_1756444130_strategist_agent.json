@@ -1,0 +1,77 @@
+{
+  "content_id": "content_1756444130_strategist_agent",
+  "agent_id": "strategist_agent",
+  "content_type": "interactive_ebook",
+  "theme": "dino_world",
+  "created_at": "2025-08-29T05:08:50.750153",
+  "status": "generated",
+  "content": {
+    "title": "Star's dino_world Adventure",
+    "theme": "dino_world",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Page 1 story about Star in Space",
+        "interaction": "Solve"
+      },
+      {
+        "page": 2,
+        "text": "Page 2 story about Star in Space",
+        "interaction": "Solve"
+      },
+      {
+        "page": 3,
+        "text": "Page 3 story about Star in Space",
+        "interaction": "Play"
+      },
+      {
+        "page": 4,
+        "text": "Page 4 story about Star in Space",
+        "interaction": "Learn"
+      },
+      {
+        "page": 5,
+        "text": "Page 5 story about Star in Space",
+        "interaction": "Learn"
+      },
+      {
+        "page": 6,
+        "text": "Page 6 story about Star in Space",
+        "interaction": "Solve"
+      },
+      {
+        "page": 7,
+        "text": "Page 7 story about Star in Space",
+        "interaction": "Solve"
+      },
+      {
+        "page": 8,
+        "text": "Page 8 story about Star in Space",
+        "interaction": "Play"
+      },
+      {
+        "page": 9,
+        "text": "Page 9 story about Star in Space",
+        "interaction": "Learn"
+      },
+      {
+        "page": 10,
+        "text": "Page 10 story about Star in Space",
+        "interaction": "Learn"
+      }
+    ],
+    "interactive_elements": [
+      "Touch responses",
+      "Sound effects",
+      "Mini-games",
+      "Collectibles"
+    ],
+    "learning_goals": [
+      "Reading comprehension",
+      "Problem-solving",
+      "Creativity",
+      "Knowledge retention"
+    ],
+    "age_group": ""
+  }
+}

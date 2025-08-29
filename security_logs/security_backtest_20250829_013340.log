@@ -1,0 +1,2077 @@
+2025-08-29 01:33:40,170 [INFO] Starting security cycle at 2025-08-29T01:33:40.170314+00:00
+2025-08-29 01:33:40,979 [ERROR] Primary security verification failed
+2025-08-29 01:33:40,980 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:40,980 [INFO] Starting security cycle at 2025-08-29T01:33:40.980710+00:00
+2025-08-29 01:33:41,393 [ERROR] Primary security verification failed
+2025-08-29 01:33:41,394 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:41,394 [INFO] Starting security cycle at 2025-08-29T01:33:41.394771+00:00
+2025-08-29 01:33:41,853 [ERROR] Primary security verification failed
+2025-08-29 01:33:41,854 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:41,854 [INFO] Starting security cycle at 2025-08-29T01:33:41.854510+00:00
+2025-08-29 01:33:42,155 [ERROR] Primary security verification failed
+2025-08-29 01:33:42,156 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:42,156 [INFO] Starting security cycle at 2025-08-29T01:33:42.156658+00:00
+2025-08-29 01:33:42,607 [ERROR] Primary security verification failed
+2025-08-29 01:33:42,608 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:42,608 [INFO] Starting security cycle at 2025-08-29T01:33:42.608468+00:00
+2025-08-29 01:33:42,983 [ERROR] Primary security verification failed
+2025-08-29 01:33:42,983 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:42,984 [INFO] Starting security cycle at 2025-08-29T01:33:42.984001+00:00
+2025-08-29 01:33:43,216 [ERROR] Primary security verification failed
+2025-08-29 01:33:43,216 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:43,216 [INFO] Starting security cycle at 2025-08-29T01:33:43.216677+00:00
+2025-08-29 01:33:43,726 [ERROR] Primary security verification failed
+2025-08-29 01:33:43,726 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:43,726 [INFO] Starting security cycle at 2025-08-29T01:33:43.726916+00:00
+2025-08-29 01:33:44,057 [ERROR] Primary security verification failed
+2025-08-29 01:33:44,057 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:44,058 [INFO] Starting security cycle at 2025-08-29T01:33:44.058030+00:00
+2025-08-29 01:33:44,451 [ERROR] Primary security verification failed
+2025-08-29 01:33:44,452 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:44,452 [INFO] Starting security cycle at 2025-08-29T01:33:44.452847+00:00
+2025-08-29 01:33:44,892 [ERROR] Primary security verification failed
+2025-08-29 01:33:44,893 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:44,893 [INFO] Starting security cycle at 2025-08-29T01:33:44.893624+00:00
+2025-08-29 01:33:45,200 [ERROR] Primary security verification failed
+2025-08-29 01:33:45,200 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:45,200 [INFO] Starting security cycle at 2025-08-29T01:33:45.200615+00:00
+2025-08-29 01:33:45,668 [ERROR] Primary security verification failed
+2025-08-29 01:33:45,669 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:45,669 [INFO] Starting security cycle at 2025-08-29T01:33:45.669813+00:00
+2025-08-29 01:33:46,288 [ERROR] Primary security verification failed
+2025-08-29 01:33:46,294 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:46,295 [INFO] Starting security cycle at 2025-08-29T01:33:46.295122+00:00
+2025-08-29 01:33:46,724 [ERROR] Primary security verification failed
+2025-08-29 01:33:46,724 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:46,725 [INFO] Starting security cycle at 2025-08-29T01:33:46.725024+00:00
+2025-08-29 01:33:47,074 [ERROR] Primary security verification failed
+2025-08-29 01:33:47,075 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:47,075 [INFO] Starting security cycle at 2025-08-29T01:33:47.075367+00:00
+2025-08-29 01:33:47,567 [ERROR] Primary security verification failed
+2025-08-29 01:33:47,568 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:47,569 [INFO] Starting security cycle at 2025-08-29T01:33:47.568988+00:00
+2025-08-29 01:33:47,964 [ERROR] Primary security verification failed
+2025-08-29 01:33:47,965 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:47,966 [INFO] Starting security cycle at 2025-08-29T01:33:47.966204+00:00
+2025-08-29 01:33:48,795 [ERROR] Primary security verification failed
+2025-08-29 01:33:48,796 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:48,796 [INFO] Starting security cycle at 2025-08-29T01:33:48.796316+00:00
+2025-08-29 01:33:49,393 [ERROR] Primary security verification failed
+2025-08-29 01:33:49,394 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:49,394 [INFO] Starting security cycle at 2025-08-29T01:33:49.394719+00:00
+2025-08-29 01:33:49,823 [ERROR] Primary security verification failed
+2025-08-29 01:33:49,824 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:49,824 [INFO] Starting security cycle at 2025-08-29T01:33:49.824906+00:00
+2025-08-29 01:33:50,129 [ERROR] Primary security verification failed
+2025-08-29 01:33:50,130 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:50,130 [INFO] Starting security cycle at 2025-08-29T01:33:50.130681+00:00
+2025-08-29 01:33:50,411 [ERROR] Primary security verification failed
+2025-08-29 01:33:50,412 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:50,412 [INFO] Starting security cycle at 2025-08-29T01:33:50.412564+00:00
+2025-08-29 01:33:50,792 [ERROR] Primary security verification failed
+2025-08-29 01:33:50,792 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:50,793 [INFO] Starting security cycle at 2025-08-29T01:33:50.793161+00:00
+2025-08-29 01:33:51,142 [ERROR] Primary security verification failed
+2025-08-29 01:33:51,142 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:51,143 [INFO] Starting security cycle at 2025-08-29T01:33:51.143088+00:00
+2025-08-29 01:33:51,459 [ERROR] Primary security verification failed
+2025-08-29 01:33:51,459 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:51,460 [INFO] Starting security cycle at 2025-08-29T01:33:51.460212+00:00
+2025-08-29 01:33:51,958 [ERROR] Primary security verification failed
+2025-08-29 01:33:51,960 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:51,960 [INFO] Starting security cycle at 2025-08-29T01:33:51.960583+00:00
+2025-08-29 01:33:52,326 [ERROR] Primary security verification failed
+2025-08-29 01:33:52,327 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:52,327 [INFO] Starting security cycle at 2025-08-29T01:33:52.327782+00:00
+2025-08-29 01:33:52,750 [ERROR] Primary security verification failed
+2025-08-29 01:33:52,750 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:52,751 [INFO] Starting security cycle at 2025-08-29T01:33:52.751183+00:00
+2025-08-29 01:33:53,164 [ERROR] Primary security verification failed
+2025-08-29 01:33:53,164 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:53,165 [INFO] Starting security cycle at 2025-08-29T01:33:53.165164+00:00
+2025-08-29 01:33:53,581 [ERROR] Primary security verification failed
+2025-08-29 01:33:53,582 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:53,583 [INFO] Starting security cycle at 2025-08-29T01:33:53.583054+00:00
+2025-08-29 01:33:53,877 [ERROR] Primary security verification failed
+2025-08-29 01:33:53,879 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:53,879 [INFO] Starting security cycle at 2025-08-29T01:33:53.879138+00:00
+2025-08-29 01:33:54,341 [ERROR] Primary security verification failed
+2025-08-29 01:33:54,341 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:54,341 [INFO] Starting security cycle at 2025-08-29T01:33:54.341793+00:00
+2025-08-29 01:33:54,729 [ERROR] Primary security verification failed
+2025-08-29 01:33:54,729 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:54,729 [INFO] Starting security cycle at 2025-08-29T01:33:54.729833+00:00
+2025-08-29 01:33:54,978 [ERROR] Primary security verification failed
+2025-08-29 01:33:54,979 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:54,980 [INFO] Starting security cycle at 2025-08-29T01:33:54.980014+00:00
+2025-08-29 01:33:55,344 [ERROR] Primary security verification failed
+2025-08-29 01:33:55,345 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:55,346 [INFO] Starting security cycle at 2025-08-29T01:33:55.346082+00:00
+2025-08-29 01:33:55,660 [ERROR] Primary security verification failed
+2025-08-29 01:33:55,661 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:55,661 [INFO] Starting security cycle at 2025-08-29T01:33:55.661639+00:00
+2025-08-29 01:33:56,196 [ERROR] Primary security verification failed
+2025-08-29 01:33:56,197 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:56,197 [INFO] Starting security cycle at 2025-08-29T01:33:56.197386+00:00
+2025-08-29 01:33:56,613 [ERROR] Primary security verification failed
+2025-08-29 01:33:56,614 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:56,614 [INFO] Starting security cycle at 2025-08-29T01:33:56.614535+00:00
+2025-08-29 01:33:57,131 [ERROR] Primary security verification failed
+2025-08-29 01:33:57,131 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:57,132 [INFO] Starting security cycle at 2025-08-29T01:33:57.132001+00:00
+2025-08-29 01:33:57,484 [ERROR] Primary security verification failed
+2025-08-29 01:33:57,485 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:57,485 [INFO] Starting security cycle at 2025-08-29T01:33:57.485609+00:00
+2025-08-29 01:33:57,969 [ERROR] Primary security verification failed
+2025-08-29 01:33:57,970 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:57,970 [INFO] Starting security cycle at 2025-08-29T01:33:57.970789+00:00
+2025-08-29 01:33:58,510 [ERROR] Primary security verification failed
+2025-08-29 01:33:58,511 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:58,511 [INFO] Starting security cycle at 2025-08-29T01:33:58.511702+00:00
+2025-08-29 01:33:58,875 [ERROR] Primary security verification failed
+2025-08-29 01:33:58,876 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:58,876 [INFO] Starting security cycle at 2025-08-29T01:33:58.876367+00:00
+2025-08-29 01:33:59,207 [ERROR] Primary security verification failed
+2025-08-29 01:33:59,207 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:59,208 [INFO] Starting security cycle at 2025-08-29T01:33:59.208243+00:00
+2025-08-29 01:33:59,742 [ERROR] Primary security verification failed
+2025-08-29 01:33:59,743 [ERROR] Backwards compatibility failed
+2025-08-29 01:33:59,743 [INFO] Starting security cycle at 2025-08-29T01:33:59.743598+00:00
+2025-08-29 01:34:00,054 [ERROR] Primary security verification failed
+2025-08-29 01:34:00,055 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:00,055 [INFO] Starting security cycle at 2025-08-29T01:34:00.055263+00:00
+2025-08-29 01:34:00,902 [ERROR] Primary security verification failed
+2025-08-29 01:34:00,905 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:00,905 [INFO] Starting security cycle at 2025-08-29T01:34:00.905422+00:00
+2025-08-29 01:34:01,232 [ERROR] Primary security verification failed
+2025-08-29 01:34:01,232 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:01,233 [INFO] Starting security cycle at 2025-08-29T01:34:01.233057+00:00
+2025-08-29 01:34:01,539 [ERROR] Primary security verification failed
+2025-08-29 01:34:01,540 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:01,540 [INFO] Starting security cycle at 2025-08-29T01:34:01.540764+00:00
+2025-08-29 01:34:02,205 [ERROR] Primary security verification failed
+2025-08-29 01:34:02,205 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:02,206 [INFO] Starting security cycle at 2025-08-29T01:34:02.206439+00:00
+2025-08-29 01:34:02,960 [ERROR] Primary security verification failed
+2025-08-29 01:34:02,961 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:02,962 [INFO] Starting security cycle at 2025-08-29T01:34:02.962207+00:00
+2025-08-29 01:34:03,530 [ERROR] Primary security verification failed
+2025-08-29 01:34:03,531 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:03,531 [INFO] Starting security cycle at 2025-08-29T01:34:03.531384+00:00
+2025-08-29 01:34:03,835 [ERROR] Primary security verification failed
+2025-08-29 01:34:03,837 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:03,837 [INFO] Starting security cycle at 2025-08-29T01:34:03.837516+00:00
+2025-08-29 01:34:04,230 [ERROR] Primary security verification failed
+2025-08-29 01:34:04,231 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:04,232 [INFO] Starting security cycle at 2025-08-29T01:34:04.232075+00:00
+2025-08-29 01:34:04,668 [ERROR] Primary security verification failed
+2025-08-29 01:34:04,668 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:04,669 [INFO] Starting security cycle at 2025-08-29T01:34:04.669072+00:00
+2025-08-29 01:34:05,197 [ERROR] Primary security verification failed
+2025-08-29 01:34:05,198 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:05,198 [INFO] Starting security cycle at 2025-08-29T01:34:05.198620+00:00
+2025-08-29 01:34:05,775 [ERROR] Primary security verification failed
+2025-08-29 01:34:05,776 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:05,776 [INFO] Starting security cycle at 2025-08-29T01:34:05.776874+00:00
+2025-08-29 01:34:06,278 [ERROR] Primary security verification failed
+2025-08-29 01:34:06,278 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:06,279 [INFO] Starting security cycle at 2025-08-29T01:34:06.279248+00:00
+2025-08-29 01:34:06,743 [ERROR] Primary security verification failed
+2025-08-29 01:34:06,744 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:06,744 [INFO] Starting security cycle at 2025-08-29T01:34:06.744432+00:00
+2025-08-29 01:34:07,330 [ERROR] Primary security verification failed
+2025-08-29 01:34:07,330 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:07,330 [INFO] Starting security cycle at 2025-08-29T01:34:07.330846+00:00
+2025-08-29 01:34:07,756 [ERROR] Primary security verification failed
+2025-08-29 01:34:07,758 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:07,758 [INFO] Starting security cycle at 2025-08-29T01:34:07.758327+00:00
+2025-08-29 01:34:08,098 [ERROR] Primary security verification failed
+2025-08-29 01:34:08,101 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:08,101 [INFO] Starting security cycle at 2025-08-29T01:34:08.101735+00:00
+2025-08-29 01:34:08,445 [ERROR] Primary security verification failed
+2025-08-29 01:34:08,445 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:08,446 [INFO] Starting security cycle at 2025-08-29T01:34:08.446222+00:00
+2025-08-29 01:34:09,108 [ERROR] Primary security verification failed
+2025-08-29 01:34:09,109 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:09,109 [INFO] Starting security cycle at 2025-08-29T01:34:09.109624+00:00
+2025-08-29 01:34:09,424 [ERROR] Primary security verification failed
+2025-08-29 01:34:09,425 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:09,425 [INFO] Starting security cycle at 2025-08-29T01:34:09.425867+00:00
+2025-08-29 01:34:09,902 [ERROR] Primary security verification failed
+2025-08-29 01:34:09,905 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:09,906 [INFO] Starting security cycle at 2025-08-29T01:34:09.906299+00:00
+2025-08-29 01:34:10,293 [ERROR] Primary security verification failed
+2025-08-29 01:34:10,293 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:10,294 [INFO] Starting security cycle at 2025-08-29T01:34:10.294349+00:00
+2025-08-29 01:34:10,842 [ERROR] Primary security verification failed
+2025-08-29 01:34:10,843 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:10,843 [INFO] Starting security cycle at 2025-08-29T01:34:10.843226+00:00
+2025-08-29 01:34:11,137 [ERROR] Primary security verification failed
+2025-08-29 01:34:11,137 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:11,138 [INFO] Starting security cycle at 2025-08-29T01:34:11.138395+00:00
+2025-08-29 01:34:11,524 [ERROR] Primary security verification failed
+2025-08-29 01:34:11,525 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:11,526 [INFO] Starting security cycle at 2025-08-29T01:34:11.526081+00:00
+2025-08-29 01:34:12,103 [ERROR] Primary security verification failed
+2025-08-29 01:34:12,104 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:12,105 [INFO] Starting security cycle at 2025-08-29T01:34:12.105231+00:00
+2025-08-29 01:34:12,341 [ERROR] Primary security verification failed
+2025-08-29 01:34:12,342 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:12,342 [INFO] Starting security cycle at 2025-08-29T01:34:12.342574+00:00
+2025-08-29 01:34:12,660 [ERROR] Primary security verification failed
+2025-08-29 01:34:12,661 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:12,661 [INFO] Starting security cycle at 2025-08-29T01:34:12.661552+00:00
+2025-08-29 01:34:13,283 [ERROR] Primary security verification failed
+2025-08-29 01:34:13,285 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:13,285 [INFO] Starting security cycle at 2025-08-29T01:34:13.285611+00:00
+2025-08-29 01:34:13,695 [ERROR] Primary security verification failed
+2025-08-29 01:34:13,695 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:13,696 [INFO] Starting security cycle at 2025-08-29T01:34:13.696216+00:00
+2025-08-29 01:34:13,956 [ERROR] Primary security verification failed
+2025-08-29 01:34:13,957 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:13,958 [INFO] Starting security cycle at 2025-08-29T01:34:13.958045+00:00
+2025-08-29 01:34:14,389 [ERROR] Primary security verification failed
+2025-08-29 01:34:14,389 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:14,389 [INFO] Starting security cycle at 2025-08-29T01:34:14.389468+00:00
+2025-08-29 01:34:14,932 [ERROR] Primary security verification failed
+2025-08-29 01:34:14,933 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:14,933 [INFO] Starting security cycle at 2025-08-29T01:34:14.933475+00:00
+2025-08-29 01:34:15,223 [ERROR] Primary security verification failed
+2025-08-29 01:34:15,224 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:15,224 [INFO] Starting security cycle at 2025-08-29T01:34:15.224932+00:00
+2025-08-29 01:34:15,602 [ERROR] Primary security verification failed
+2025-08-29 01:34:15,604 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:15,605 [INFO] Starting security cycle at 2025-08-29T01:34:15.605350+00:00
+2025-08-29 01:34:16,190 [ERROR] Primary security verification failed
+2025-08-29 01:34:16,190 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:16,191 [INFO] Starting security cycle at 2025-08-29T01:34:16.191231+00:00
+2025-08-29 01:34:16,867 [ERROR] Primary security verification failed
+2025-08-29 01:34:16,867 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:16,867 [INFO] Starting security cycle at 2025-08-29T01:34:16.867936+00:00
+2025-08-29 01:34:17,275 [ERROR] Primary security verification failed
+2025-08-29 01:34:17,276 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:17,276 [INFO] Starting security cycle at 2025-08-29T01:34:17.276698+00:00
+2025-08-29 01:34:17,996 [ERROR] Primary security verification failed
+2025-08-29 01:34:18,000 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:18,000 [INFO] Starting security cycle at 2025-08-29T01:34:18.000780+00:00
+2025-08-29 01:34:18,449 [ERROR] Primary security verification failed
+2025-08-29 01:34:18,450 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:18,451 [INFO] Starting security cycle at 2025-08-29T01:34:18.451055+00:00
+2025-08-29 01:34:19,020 [ERROR] Primary security verification failed
+2025-08-29 01:34:19,021 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:19,022 [INFO] Starting security cycle at 2025-08-29T01:34:19.021999+00:00
+2025-08-29 01:34:19,522 [ERROR] Primary security verification failed
+2025-08-29 01:34:19,524 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:19,525 [INFO] Starting security cycle at 2025-08-29T01:34:19.525847+00:00
+2025-08-29 01:34:20,277 [ERROR] Primary security verification failed
+2025-08-29 01:34:20,279 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:20,279 [INFO] Starting security cycle at 2025-08-29T01:34:20.279503+00:00
+2025-08-29 01:34:20,575 [ERROR] Primary security verification failed
+2025-08-29 01:34:20,576 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:20,576 [INFO] Starting security cycle at 2025-08-29T01:34:20.576813+00:00
+2025-08-29 01:34:20,989 [ERROR] Primary security verification failed
+2025-08-29 01:34:20,989 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:20,990 [INFO] Starting security cycle at 2025-08-29T01:34:20.990066+00:00
+2025-08-29 01:34:21,689 [ERROR] Primary security verification failed
+2025-08-29 01:34:21,690 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:21,690 [INFO] Starting security cycle at 2025-08-29T01:34:21.690592+00:00
+2025-08-29 01:34:22,176 [ERROR] Primary security verification failed
+2025-08-29 01:34:22,177 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:22,178 [INFO] Starting security cycle at 2025-08-29T01:34:22.177992+00:00
+2025-08-29 01:34:22,483 [ERROR] Primary security verification failed
+2025-08-29 01:34:22,483 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:22,484 [INFO] Starting security cycle at 2025-08-29T01:34:22.484156+00:00
+2025-08-29 01:34:22,910 [ERROR] Primary security verification failed
+2025-08-29 01:34:22,910 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:22,911 [INFO] Starting security cycle at 2025-08-29T01:34:22.911077+00:00
+2025-08-29 01:34:23,532 [ERROR] Primary security verification failed
+2025-08-29 01:34:23,532 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:23,532 [INFO] Starting security cycle at 2025-08-29T01:34:23.532655+00:00
+2025-08-29 01:34:24,015 [ERROR] Primary security verification failed
+2025-08-29 01:34:24,015 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:24,015 [INFO] Starting security cycle at 2025-08-29T01:34:24.015819+00:00
+2025-08-29 01:34:24,475 [ERROR] Primary security verification failed
+2025-08-29 01:34:24,475 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:24,476 [INFO] Starting security cycle at 2025-08-29T01:34:24.476321+00:00
+2025-08-29 01:34:24,750 [ERROR] Primary security verification failed
+2025-08-29 01:34:24,751 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:24,752 [INFO] Starting security cycle at 2025-08-29T01:34:24.752251+00:00
+2025-08-29 01:34:25,078 [ERROR] Primary security verification failed
+2025-08-29 01:34:25,078 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:25,079 [INFO] Starting security cycle at 2025-08-29T01:34:25.079202+00:00
+2025-08-29 01:34:25,455 [ERROR] Primary security verification failed
+2025-08-29 01:34:25,456 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:25,457 [INFO] Starting security cycle at 2025-08-29T01:34:25.457302+00:00
+2025-08-29 01:34:25,840 [ERROR] Primary security verification failed
+2025-08-29 01:34:25,841 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:25,843 [INFO] Starting security cycle at 2025-08-29T01:34:25.843134+00:00
+2025-08-29 01:34:26,420 [ERROR] Primary security verification failed
+2025-08-29 01:34:26,421 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:26,421 [INFO] Starting security cycle at 2025-08-29T01:34:26.421703+00:00
+2025-08-29 01:34:26,885 [ERROR] Primary security verification failed
+2025-08-29 01:34:26,885 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:26,886 [INFO] Starting security cycle at 2025-08-29T01:34:26.886432+00:00
+2025-08-29 01:34:27,139 [ERROR] Primary security verification failed
+2025-08-29 01:34:27,140 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:27,140 [INFO] Starting security cycle at 2025-08-29T01:34:27.140914+00:00
+2025-08-29 01:34:27,573 [ERROR] Primary security verification failed
+2025-08-29 01:34:27,574 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:27,575 [INFO] Starting security cycle at 2025-08-29T01:34:27.575138+00:00
+2025-08-29 01:34:27,847 [ERROR] Primary security verification failed
+2025-08-29 01:34:27,848 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:27,848 [INFO] Starting security cycle at 2025-08-29T01:34:27.848634+00:00
+2025-08-29 01:34:28,120 [ERROR] Primary security verification failed
+2025-08-29 01:34:28,122 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:28,122 [INFO] Starting security cycle at 2025-08-29T01:34:28.122571+00:00
+2025-08-29 01:34:28,511 [ERROR] Primary security verification failed
+2025-08-29 01:34:28,512 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:28,513 [INFO] Starting security cycle at 2025-08-29T01:34:28.513277+00:00
+2025-08-29 01:34:29,058 [ERROR] Primary security verification failed
+2025-08-29 01:34:29,059 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:29,059 [INFO] Starting security cycle at 2025-08-29T01:34:29.059643+00:00
+2025-08-29 01:34:29,414 [ERROR] Primary security verification failed
+2025-08-29 01:34:29,415 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:29,415 [INFO] Starting security cycle at 2025-08-29T01:34:29.415901+00:00
+2025-08-29 01:34:29,897 [ERROR] Primary security verification failed
+2025-08-29 01:34:29,898 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:29,898 [INFO] Starting security cycle at 2025-08-29T01:34:29.898721+00:00
+2025-08-29 01:34:30,436 [ERROR] Primary security verification failed
+2025-08-29 01:34:30,437 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:30,437 [INFO] Starting security cycle at 2025-08-29T01:34:30.437741+00:00
+2025-08-29 01:34:31,006 [ERROR] Primary security verification failed
+2025-08-29 01:34:31,007 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:31,007 [INFO] Starting security cycle at 2025-08-29T01:34:31.007635+00:00
+2025-08-29 01:34:31,468 [ERROR] Primary security verification failed
+2025-08-29 01:34:31,469 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:31,469 [INFO] Starting security cycle at 2025-08-29T01:34:31.469899+00:00
+2025-08-29 01:34:31,882 [ERROR] Primary security verification failed
+2025-08-29 01:34:31,882 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:31,883 [INFO] Starting security cycle at 2025-08-29T01:34:31.883194+00:00
+2025-08-29 01:34:32,480 [ERROR] Primary security verification failed
+2025-08-29 01:34:32,481 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:32,481 [INFO] Starting security cycle at 2025-08-29T01:34:32.481415+00:00
+2025-08-29 01:34:32,812 [ERROR] Primary security verification failed
+2025-08-29 01:34:32,814 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:32,814 [INFO] Starting security cycle at 2025-08-29T01:34:32.814600+00:00
+2025-08-29 01:34:33,452 [ERROR] Primary security verification failed
+2025-08-29 01:34:33,452 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:33,453 [INFO] Starting security cycle at 2025-08-29T01:34:33.453013+00:00
+2025-08-29 01:34:33,996 [ERROR] Primary security verification failed
+2025-08-29 01:34:33,996 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:33,997 [INFO] Starting security cycle at 2025-08-29T01:34:33.997175+00:00
+2025-08-29 01:34:34,262 [ERROR] Primary security verification failed
+2025-08-29 01:34:34,262 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:34,263 [INFO] Starting security cycle at 2025-08-29T01:34:34.263081+00:00
+2025-08-29 01:34:34,586 [ERROR] Primary security verification failed
+2025-08-29 01:34:34,586 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:34,587 [INFO] Starting security cycle at 2025-08-29T01:34:34.587148+00:00
+2025-08-29 01:34:34,990 [ERROR] Primary security verification failed
+2025-08-29 01:34:34,990 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:34,991 [INFO] Starting security cycle at 2025-08-29T01:34:34.990948+00:00
+2025-08-29 01:34:35,526 [ERROR] Primary security verification failed
+2025-08-29 01:34:35,527 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:35,527 [INFO] Starting security cycle at 2025-08-29T01:34:35.527640+00:00
+2025-08-29 01:34:36,052 [ERROR] Primary security verification failed
+2025-08-29 01:34:36,052 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:36,053 [INFO] Starting security cycle at 2025-08-29T01:34:36.053034+00:00
+2025-08-29 01:34:36,396 [ERROR] Primary security verification failed
+2025-08-29 01:34:36,397 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:36,397 [INFO] Starting security cycle at 2025-08-29T01:34:36.397848+00:00
+2025-08-29 01:34:36,791 [ERROR] Primary security verification failed
+2025-08-29 01:34:36,791 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:36,791 [INFO] Starting security cycle at 2025-08-29T01:34:36.791720+00:00
+2025-08-29 01:34:37,293 [ERROR] Primary security verification failed
+2025-08-29 01:34:37,293 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:37,294 [INFO] Starting security cycle at 2025-08-29T01:34:37.294142+00:00
+2025-08-29 01:34:37,744 [ERROR] Primary security verification failed
+2025-08-29 01:34:37,747 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:37,747 [INFO] Starting security cycle at 2025-08-29T01:34:37.747694+00:00
+2025-08-29 01:34:38,217 [ERROR] Primary security verification failed
+2025-08-29 01:34:38,218 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:38,218 [INFO] Starting security cycle at 2025-08-29T01:34:38.218836+00:00
+2025-08-29 01:34:38,547 [ERROR] Primary security verification failed
+2025-08-29 01:34:38,548 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:38,548 [INFO] Starting security cycle at 2025-08-29T01:34:38.548568+00:00
+2025-08-29 01:34:38,933 [ERROR] Primary security verification failed
+2025-08-29 01:34:38,934 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:38,934 [INFO] Starting security cycle at 2025-08-29T01:34:38.934622+00:00
+2025-08-29 01:34:39,145 [ERROR] Primary security verification failed
+2025-08-29 01:34:39,145 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:39,146 [INFO] Starting security cycle at 2025-08-29T01:34:39.146231+00:00
+2025-08-29 01:34:39,570 [ERROR] Primary security verification failed
+2025-08-29 01:34:39,571 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:39,571 [INFO] Starting security cycle at 2025-08-29T01:34:39.571342+00:00
+2025-08-29 01:34:40,226 [ERROR] Primary security verification failed
+2025-08-29 01:34:40,227 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:40,228 [INFO] Starting security cycle at 2025-08-29T01:34:40.227681+00:00
+2025-08-29 01:34:40,828 [ERROR] Primary security verification failed
+2025-08-29 01:34:40,828 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:40,829 [INFO] Starting security cycle at 2025-08-29T01:34:40.829100+00:00
+2025-08-29 01:34:41,402 [ERROR] Primary security verification failed
+2025-08-29 01:34:41,403 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:41,404 [INFO] Starting security cycle at 2025-08-29T01:34:41.404197+00:00
+2025-08-29 01:34:41,746 [ERROR] Primary security verification failed
+2025-08-29 01:34:41,746 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:41,747 [INFO] Starting security cycle at 2025-08-29T01:34:41.747215+00:00
+2025-08-29 01:34:42,129 [ERROR] Primary security verification failed
+2025-08-29 01:34:42,129 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:42,129 [INFO] Starting security cycle at 2025-08-29T01:34:42.129860+00:00
+2025-08-29 01:34:42,759 [ERROR] Primary security verification failed
+2025-08-29 01:34:42,760 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:42,760 [INFO] Starting security cycle at 2025-08-29T01:34:42.760310+00:00
+2025-08-29 01:34:43,334 [ERROR] Primary security verification failed
+2025-08-29 01:34:43,335 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:43,335 [INFO] Starting security cycle at 2025-08-29T01:34:43.335456+00:00
+2025-08-29 01:34:43,846 [ERROR] Primary security verification failed
+2025-08-29 01:34:43,848 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:43,849 [INFO] Starting security cycle at 2025-08-29T01:34:43.849435+00:00
+2025-08-29 01:34:44,245 [ERROR] Primary security verification failed
+2025-08-29 01:34:44,246 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:44,246 [INFO] Starting security cycle at 2025-08-29T01:34:44.246903+00:00
+2025-08-29 01:34:44,641 [ERROR] Primary security verification failed
+2025-08-29 01:34:44,641 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:44,642 [INFO] Starting security cycle at 2025-08-29T01:34:44.642258+00:00
+2025-08-29 01:34:45,134 [ERROR] Primary security verification failed
+2025-08-29 01:34:45,134 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:45,134 [INFO] Starting security cycle at 2025-08-29T01:34:45.134704+00:00
+2025-08-29 01:34:45,597 [ERROR] Primary security verification failed
+2025-08-29 01:34:45,598 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:45,598 [INFO] Starting security cycle at 2025-08-29T01:34:45.598582+00:00
+2025-08-29 01:34:45,910 [ERROR] Primary security verification failed
+2025-08-29 01:34:45,911 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:45,912 [INFO] Starting security cycle at 2025-08-29T01:34:45.911633+00:00
+2025-08-29 01:34:46,299 [ERROR] Primary security verification failed
+2025-08-29 01:34:46,299 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:46,300 [INFO] Starting security cycle at 2025-08-29T01:34:46.300207+00:00
+2025-08-29 01:34:46,542 [ERROR] Primary security verification failed
+2025-08-29 01:34:46,542 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:46,543 [INFO] Starting security cycle at 2025-08-29T01:34:46.543183+00:00
+2025-08-29 01:34:46,905 [ERROR] Primary security verification failed
+2025-08-29 01:34:46,906 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:46,907 [INFO] Starting security cycle at 2025-08-29T01:34:46.907044+00:00
+2025-08-29 01:34:47,431 [ERROR] Primary security verification failed
+2025-08-29 01:34:47,431 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:47,432 [INFO] Starting security cycle at 2025-08-29T01:34:47.432120+00:00
+2025-08-29 01:34:47,990 [ERROR] Primary security verification failed
+2025-08-29 01:34:47,991 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:47,991 [INFO] Starting security cycle at 2025-08-29T01:34:47.991503+00:00
+2025-08-29 01:34:48,569 [ERROR] Primary security verification failed
+2025-08-29 01:34:48,570 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:48,571 [INFO] Starting security cycle at 2025-08-29T01:34:48.570582+00:00
+2025-08-29 01:34:48,926 [ERROR] Primary security verification failed
+2025-08-29 01:34:48,927 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:48,927 [INFO] Starting security cycle at 2025-08-29T01:34:48.927531+00:00
+2025-08-29 01:34:49,420 [ERROR] Primary security verification failed
+2025-08-29 01:34:49,420 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:49,421 [INFO] Starting security cycle at 2025-08-29T01:34:49.420974+00:00
+2025-08-29 01:34:49,966 [ERROR] Primary security verification failed
+2025-08-29 01:34:49,966 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:49,967 [INFO] Starting security cycle at 2025-08-29T01:34:49.967151+00:00
+2025-08-29 01:34:50,409 [ERROR] Primary security verification failed
+2025-08-29 01:34:50,409 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:50,410 [INFO] Starting security cycle at 2025-08-29T01:34:50.410438+00:00
+2025-08-29 01:34:50,815 [ERROR] Primary security verification failed
+2025-08-29 01:34:50,816 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:50,816 [INFO] Starting security cycle at 2025-08-29T01:34:50.816636+00:00
+2025-08-29 01:34:51,262 [ERROR] Primary security verification failed
+2025-08-29 01:34:51,263 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:51,264 [INFO] Starting security cycle at 2025-08-29T01:34:51.264051+00:00
+2025-08-29 01:34:51,611 [ERROR] Primary security verification failed
+2025-08-29 01:34:51,612 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:51,612 [INFO] Starting security cycle at 2025-08-29T01:34:51.612478+00:00
+2025-08-29 01:34:52,026 [ERROR] Primary security verification failed
+2025-08-29 01:34:52,027 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:52,027 [INFO] Starting security cycle at 2025-08-29T01:34:52.027740+00:00
+2025-08-29 01:34:52,751 [ERROR] Primary security verification failed
+2025-08-29 01:34:52,752 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:52,753 [INFO] Starting security cycle at 2025-08-29T01:34:52.753146+00:00
+2025-08-29 01:34:53,170 [ERROR] Primary security verification failed
+2025-08-29 01:34:53,170 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:53,171 [INFO] Starting security cycle at 2025-08-29T01:34:53.171039+00:00
+2025-08-29 01:34:53,579 [ERROR] Primary security verification failed
+2025-08-29 01:34:53,579 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:53,580 [INFO] Starting security cycle at 2025-08-29T01:34:53.580393+00:00
+2025-08-29 01:34:54,184 [ERROR] Primary security verification failed
+2025-08-29 01:34:54,185 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:54,185 [INFO] Starting security cycle at 2025-08-29T01:34:54.185335+00:00
+2025-08-29 01:34:54,726 [ERROR] Primary security verification failed
+2025-08-29 01:34:54,726 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:54,727 [INFO] Starting security cycle at 2025-08-29T01:34:54.727245+00:00
+2025-08-29 01:34:55,068 [ERROR] Primary security verification failed
+2025-08-29 01:34:55,070 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:55,071 [INFO] Starting security cycle at 2025-08-29T01:34:55.071249+00:00
+2025-08-29 01:34:55,529 [ERROR] Primary security verification failed
+2025-08-29 01:34:55,529 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:55,530 [INFO] Starting security cycle at 2025-08-29T01:34:55.530307+00:00
+2025-08-29 01:34:55,916 [ERROR] Primary security verification failed
+2025-08-29 01:34:55,917 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:55,917 [INFO] Starting security cycle at 2025-08-29T01:34:55.917523+00:00
+2025-08-29 01:34:56,352 [ERROR] Primary security verification failed
+2025-08-29 01:34:56,353 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:56,354 [INFO] Starting security cycle at 2025-08-29T01:34:56.354029+00:00
+2025-08-29 01:34:56,566 [ERROR] Primary security verification failed
+2025-08-29 01:34:56,566 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:56,566 [INFO] Starting security cycle at 2025-08-29T01:34:56.566806+00:00
+2025-08-29 01:34:56,909 [ERROR] Primary security verification failed
+2025-08-29 01:34:56,909 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:56,909 [INFO] Starting security cycle at 2025-08-29T01:34:56.909822+00:00
+2025-08-29 01:34:57,339 [ERROR] Primary security verification failed
+2025-08-29 01:34:57,342 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:57,342 [INFO] Starting security cycle at 2025-08-29T01:34:57.342608+00:00
+2025-08-29 01:34:57,755 [ERROR] Primary security verification failed
+2025-08-29 01:34:57,756 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:57,756 [INFO] Starting security cycle at 2025-08-29T01:34:57.756127+00:00
+2025-08-29 01:34:58,137 [ERROR] Primary security verification failed
+2025-08-29 01:34:58,138 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:58,138 [INFO] Starting security cycle at 2025-08-29T01:34:58.138876+00:00
+2025-08-29 01:34:58,632 [ERROR] Primary security verification failed
+2025-08-29 01:34:58,633 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:58,633 [INFO] Starting security cycle at 2025-08-29T01:34:58.633427+00:00
+2025-08-29 01:34:59,010 [ERROR] Primary security verification failed
+2025-08-29 01:34:59,011 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:59,011 [INFO] Starting security cycle at 2025-08-29T01:34:59.011551+00:00
+2025-08-29 01:34:59,587 [ERROR] Primary security verification failed
+2025-08-29 01:34:59,587 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:59,588 [INFO] Starting security cycle at 2025-08-29T01:34:59.587961+00:00
+2025-08-29 01:34:59,961 [ERROR] Primary security verification failed
+2025-08-29 01:34:59,961 [ERROR] Backwards compatibility failed
+2025-08-29 01:34:59,962 [INFO] Starting security cycle at 2025-08-29T01:34:59.962012+00:00
+2025-08-29 01:35:00,280 [ERROR] Primary security verification failed
+2025-08-29 01:35:00,280 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:00,281 [INFO] Starting security cycle at 2025-08-29T01:35:00.281345+00:00
+2025-08-29 01:35:00,976 [ERROR] Primary security verification failed
+2025-08-29 01:35:00,977 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:00,978 [INFO] Starting security cycle at 2025-08-29T01:35:00.978083+00:00
+2025-08-29 01:35:01,436 [ERROR] Primary security verification failed
+2025-08-29 01:35:01,437 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:01,437 [INFO] Starting security cycle at 2025-08-29T01:35:01.437617+00:00
+2025-08-29 01:35:01,767 [ERROR] Primary security verification failed
+2025-08-29 01:35:01,768 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:01,768 [INFO] Starting security cycle at 2025-08-29T01:35:01.768654+00:00
+2025-08-29 01:35:02,233 [ERROR] Primary security verification failed
+2025-08-29 01:35:02,234 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:02,234 [INFO] Starting security cycle at 2025-08-29T01:35:02.234604+00:00
+2025-08-29 01:35:02,922 [ERROR] Primary security verification failed
+2025-08-29 01:35:02,922 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:02,922 [INFO] Starting security cycle at 2025-08-29T01:35:02.922744+00:00
+2025-08-29 01:35:03,402 [ERROR] Primary security verification failed
+2025-08-29 01:35:03,402 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:03,402 [INFO] Starting security cycle at 2025-08-29T01:35:03.402940+00:00
+2025-08-29 01:35:03,711 [ERROR] Primary security verification failed
+2025-08-29 01:35:03,711 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:03,712 [INFO] Starting security cycle at 2025-08-29T01:35:03.711950+00:00
+2025-08-29 01:35:04,091 [ERROR] Primary security verification failed
+2025-08-29 01:35:04,092 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:04,094 [INFO] Starting security cycle at 2025-08-29T01:35:04.094390+00:00
+2025-08-29 01:35:04,565 [ERROR] Primary security verification failed
+2025-08-29 01:35:04,565 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:04,566 [INFO] Starting security cycle at 2025-08-29T01:35:04.566094+00:00
+2025-08-29 01:35:05,041 [ERROR] Primary security verification failed
+2025-08-29 01:35:05,042 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:05,043 [INFO] Starting security cycle at 2025-08-29T01:35:05.043439+00:00
+2025-08-29 01:35:05,660 [ERROR] Primary security verification failed
+2025-08-29 01:35:05,661 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:05,661 [INFO] Starting security cycle at 2025-08-29T01:35:05.661269+00:00
+2025-08-29 01:35:06,061 [ERROR] Primary security verification failed
+2025-08-29 01:35:06,062 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:06,062 [INFO] Starting security cycle at 2025-08-29T01:35:06.062416+00:00
+2025-08-29 01:35:06,462 [ERROR] Primary security verification failed
+2025-08-29 01:35:06,462 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:06,462 [INFO] Starting security cycle at 2025-08-29T01:35:06.462919+00:00
+2025-08-29 01:35:06,975 [ERROR] Primary security verification failed
+2025-08-29 01:35:06,975 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:06,976 [INFO] Starting security cycle at 2025-08-29T01:35:06.975980+00:00
+2025-08-29 01:35:07,339 [ERROR] Primary security verification failed
+2025-08-29 01:35:07,340 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:07,340 [INFO] Starting security cycle at 2025-08-29T01:35:07.340323+00:00
+2025-08-29 01:35:08,061 [ERROR] Primary security verification failed
+2025-08-29 01:35:08,061 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:08,062 [INFO] Starting security cycle at 2025-08-29T01:35:08.062025+00:00
+2025-08-29 01:35:08,380 [ERROR] Primary security verification failed
+2025-08-29 01:35:08,381 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:08,381 [INFO] Starting security cycle at 2025-08-29T01:35:08.381540+00:00
+2025-08-29 01:35:08,777 [ERROR] Primary security verification failed
+2025-08-29 01:35:08,778 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:08,778 [INFO] Starting security cycle at 2025-08-29T01:35:08.778921+00:00
+2025-08-29 01:35:09,132 [ERROR] Primary security verification failed
+2025-08-29 01:35:09,133 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:09,133 [INFO] Starting security cycle at 2025-08-29T01:35:09.133646+00:00
+2025-08-29 01:35:09,506 [ERROR] Primary security verification failed
+2025-08-29 01:35:09,506 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:09,507 [INFO] Starting security cycle at 2025-08-29T01:35:09.506905+00:00
+2025-08-29 01:35:09,888 [ERROR] Primary security verification failed
+2025-08-29 01:35:09,890 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:09,891 [INFO] Starting security cycle at 2025-08-29T01:35:09.891631+00:00
+2025-08-29 01:35:10,315 [ERROR] Primary security verification failed
+2025-08-29 01:35:10,316 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:10,316 [INFO] Starting security cycle at 2025-08-29T01:35:10.316756+00:00
+2025-08-29 01:35:10,791 [ERROR] Primary security verification failed
+2025-08-29 01:35:10,792 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:10,793 [INFO] Starting security cycle at 2025-08-29T01:35:10.792878+00:00
+2025-08-29 01:35:11,201 [ERROR] Primary security verification failed
+2025-08-29 01:35:11,203 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:11,203 [INFO] Starting security cycle at 2025-08-29T01:35:11.203573+00:00
+2025-08-29 01:35:11,600 [ERROR] Primary security verification failed
+2025-08-29 01:35:11,600 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:11,600 [INFO] Starting security cycle at 2025-08-29T01:35:11.600939+00:00
+2025-08-29 01:35:11,907 [ERROR] Primary security verification failed
+2025-08-29 01:35:11,908 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:11,908 [INFO] Starting security cycle at 2025-08-29T01:35:11.908680+00:00
+2025-08-29 01:35:12,163 [ERROR] Primary security verification failed
+2025-08-29 01:35:12,164 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:12,164 [INFO] Starting security cycle at 2025-08-29T01:35:12.164820+00:00
+2025-08-29 01:35:12,427 [ERROR] Primary security verification failed
+2025-08-29 01:35:12,429 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:12,429 [INFO] Starting security cycle at 2025-08-29T01:35:12.429796+00:00
+2025-08-29 01:35:12,891 [ERROR] Primary security verification failed
+2025-08-29 01:35:12,892 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:12,892 [INFO] Starting security cycle at 2025-08-29T01:35:12.892655+00:00
+2025-08-29 01:35:13,348 [ERROR] Primary security verification failed
+2025-08-29 01:35:13,349 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:13,350 [INFO] Starting security cycle at 2025-08-29T01:35:13.349978+00:00
+2025-08-29 01:35:13,703 [ERROR] Primary security verification failed
+2025-08-29 01:35:13,704 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:13,704 [INFO] Starting security cycle at 2025-08-29T01:35:13.704663+00:00
+2025-08-29 01:35:14,138 [ERROR] Primary security verification failed
+2025-08-29 01:35:14,138 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:14,139 [INFO] Starting security cycle at 2025-08-29T01:35:14.139328+00:00
+2025-08-29 01:35:14,569 [ERROR] Primary security verification failed
+2025-08-29 01:35:14,570 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:14,571 [INFO] Starting security cycle at 2025-08-29T01:35:14.570962+00:00
+2025-08-29 01:35:15,165 [ERROR] Primary security verification failed
+2025-08-29 01:35:15,166 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:15,166 [INFO] Starting security cycle at 2025-08-29T01:35:15.166867+00:00
+2025-08-29 01:35:15,513 [ERROR] Primary security verification failed
+2025-08-29 01:35:15,514 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:15,514 [INFO] Starting security cycle at 2025-08-29T01:35:15.514534+00:00
+2025-08-29 01:35:15,977 [ERROR] Primary security verification failed
+2025-08-29 01:35:15,978 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:15,978 [INFO] Starting security cycle at 2025-08-29T01:35:15.978758+00:00
+2025-08-29 01:35:16,556 [ERROR] Primary security verification failed
+2025-08-29 01:35:16,557 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:16,557 [INFO] Starting security cycle at 2025-08-29T01:35:16.557748+00:00
+2025-08-29 01:35:17,022 [ERROR] Primary security verification failed
+2025-08-29 01:35:17,022 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:17,023 [INFO] Starting security cycle at 2025-08-29T01:35:17.023270+00:00
+2025-08-29 01:35:17,619 [ERROR] Primary security verification failed
+2025-08-29 01:35:17,620 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:17,621 [INFO] Starting security cycle at 2025-08-29T01:35:17.621477+00:00
+2025-08-29 01:35:17,947 [ERROR] Primary security verification failed
+2025-08-29 01:35:17,947 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:17,948 [INFO] Starting security cycle at 2025-08-29T01:35:17.948271+00:00
+2025-08-29 01:35:18,418 [ERROR] Primary security verification failed
+2025-08-29 01:35:18,419 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:18,420 [INFO] Starting security cycle at 2025-08-29T01:35:18.420296+00:00
+2025-08-29 01:35:18,744 [ERROR] Primary security verification failed
+2025-08-29 01:35:18,745 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:18,745 [INFO] Starting security cycle at 2025-08-29T01:35:18.745592+00:00
+2025-08-29 01:35:19,245 [ERROR] Primary security verification failed
+2025-08-29 01:35:19,245 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:19,246 [INFO] Starting security cycle at 2025-08-29T01:35:19.246136+00:00
+2025-08-29 01:35:19,483 [ERROR] Primary security verification failed
+2025-08-29 01:35:19,484 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:19,484 [INFO] Starting security cycle at 2025-08-29T01:35:19.484599+00:00
+2025-08-29 01:35:20,177 [ERROR] Primary security verification failed
+2025-08-29 01:35:20,177 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:20,177 [INFO] Starting security cycle at 2025-08-29T01:35:20.177895+00:00
+2025-08-29 01:35:20,519 [ERROR] Primary security verification failed
+2025-08-29 01:35:20,520 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:20,520 [INFO] Starting security cycle at 2025-08-29T01:35:20.520311+00:00
+2025-08-29 01:35:21,072 [ERROR] Primary security verification failed
+2025-08-29 01:35:21,073 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:21,073 [INFO] Starting security cycle at 2025-08-29T01:35:21.073676+00:00
+2025-08-29 01:35:21,336 [ERROR] Primary security verification failed
+2025-08-29 01:35:21,337 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:21,337 [INFO] Starting security cycle at 2025-08-29T01:35:21.337586+00:00
+2025-08-29 01:35:21,569 [ERROR] Primary security verification failed
+2025-08-29 01:35:21,569 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:21,570 [INFO] Starting security cycle at 2025-08-29T01:35:21.570340+00:00
+2025-08-29 01:35:22,080 [ERROR] Primary security verification failed
+2025-08-29 01:35:22,080 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:22,081 [INFO] Starting security cycle at 2025-08-29T01:35:22.081258+00:00
+2025-08-29 01:35:22,740 [ERROR] Primary security verification failed
+2025-08-29 01:35:22,740 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:22,741 [INFO] Starting security cycle at 2025-08-29T01:35:22.741187+00:00
+2025-08-29 01:35:23,226 [ERROR] Primary security verification failed
+2025-08-29 01:35:23,227 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:23,227 [INFO] Starting security cycle at 2025-08-29T01:35:23.227904+00:00
+2025-08-29 01:35:23,724 [ERROR] Primary security verification failed
+2025-08-29 01:35:23,725 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:23,725 [INFO] Starting security cycle at 2025-08-29T01:35:23.725888+00:00
+2025-08-29 01:35:24,247 [ERROR] Primary security verification failed
+2025-08-29 01:35:24,248 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:24,248 [INFO] Starting security cycle at 2025-08-29T01:35:24.248820+00:00
+2025-08-29 01:35:24,545 [ERROR] Primary security verification failed
+2025-08-29 01:35:24,545 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:24,546 [INFO] Starting security cycle at 2025-08-29T01:35:24.545943+00:00
+2025-08-29 01:35:25,231 [ERROR] Primary security verification failed
+2025-08-29 01:35:25,232 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:25,233 [INFO] Starting security cycle at 2025-08-29T01:35:25.233329+00:00
+2025-08-29 01:35:25,637 [ERROR] Primary security verification failed
+2025-08-29 01:35:25,637 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:25,638 [INFO] Starting security cycle at 2025-08-29T01:35:25.637949+00:00
+2025-08-29 01:35:26,111 [ERROR] Primary security verification failed
+2025-08-29 01:35:26,112 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:26,113 [INFO] Starting security cycle at 2025-08-29T01:35:26.113010+00:00
+2025-08-29 01:35:26,458 [ERROR] Primary security verification failed
+2025-08-29 01:35:26,458 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:26,459 [INFO] Starting security cycle at 2025-08-29T01:35:26.459114+00:00
+2025-08-29 01:35:26,966 [ERROR] Primary security verification failed
+2025-08-29 01:35:26,966 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:26,967 [INFO] Starting security cycle at 2025-08-29T01:35:26.967125+00:00
+2025-08-29 01:35:27,237 [ERROR] Primary security verification failed
+2025-08-29 01:35:27,237 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:27,238 [INFO] Starting security cycle at 2025-08-29T01:35:27.238278+00:00
+2025-08-29 01:35:27,757 [ERROR] Primary security verification failed
+2025-08-29 01:35:27,758 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:27,758 [INFO] Starting security cycle at 2025-08-29T01:35:27.758477+00:00
+2025-08-29 01:35:28,043 [ERROR] Primary security verification failed
+2025-08-29 01:35:28,044 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:28,045 [INFO] Starting security cycle at 2025-08-29T01:35:28.045042+00:00
+2025-08-29 01:35:28,509 [ERROR] Primary security verification failed
+2025-08-29 01:35:28,510 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:28,511 [INFO] Starting security cycle at 2025-08-29T01:35:28.510994+00:00
+2025-08-29 01:35:28,904 [ERROR] Primary security verification failed
+2025-08-29 01:35:28,905 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:28,905 [INFO] Starting security cycle at 2025-08-29T01:35:28.905321+00:00
+2025-08-29 01:35:29,300 [ERROR] Primary security verification failed
+2025-08-29 01:35:29,301 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:29,301 [INFO] Starting security cycle at 2025-08-29T01:35:29.301715+00:00
+2025-08-29 01:35:29,554 [ERROR] Primary security verification failed
+2025-08-29 01:35:29,555 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:29,555 [INFO] Starting security cycle at 2025-08-29T01:35:29.555665+00:00
+2025-08-29 01:35:29,914 [ERROR] Primary security verification failed
+2025-08-29 01:35:29,915 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:29,915 [INFO] Starting security cycle at 2025-08-29T01:35:29.915214+00:00
+2025-08-29 01:35:30,536 [ERROR] Primary security verification failed
+2025-08-29 01:35:30,537 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:30,537 [INFO] Starting security cycle at 2025-08-29T01:35:30.537301+00:00
+2025-08-29 01:35:30,880 [ERROR] Primary security verification failed
+2025-08-29 01:35:30,880 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:30,881 [INFO] Starting security cycle at 2025-08-29T01:35:30.881121+00:00
+2025-08-29 01:35:31,535 [ERROR] Primary security verification failed
+2025-08-29 01:35:31,535 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:31,536 [INFO] Starting security cycle at 2025-08-29T01:35:31.536027+00:00
+2025-08-29 01:35:31,959 [ERROR] Primary security verification failed
+2025-08-29 01:35:31,960 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:31,960 [INFO] Starting security cycle at 2025-08-29T01:35:31.960711+00:00
+2025-08-29 01:35:32,642 [ERROR] Primary security verification failed
+2025-08-29 01:35:32,643 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:32,644 [INFO] Starting security cycle at 2025-08-29T01:35:32.644517+00:00
+2025-08-29 01:35:33,221 [ERROR] Primary security verification failed
+2025-08-29 01:35:33,221 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:33,222 [INFO] Starting security cycle at 2025-08-29T01:35:33.221998+00:00
+2025-08-29 01:35:33,643 [ERROR] Primary security verification failed
+2025-08-29 01:35:33,644 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:33,644 [INFO] Starting security cycle at 2025-08-29T01:35:33.644538+00:00
+2025-08-29 01:35:33,900 [ERROR] Primary security verification failed
+2025-08-29 01:35:33,901 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:33,901 [INFO] Starting security cycle at 2025-08-29T01:35:33.901621+00:00
+2025-08-29 01:35:34,318 [ERROR] Primary security verification failed
+2025-08-29 01:35:34,318 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:34,319 [INFO] Starting security cycle at 2025-08-29T01:35:34.319169+00:00
+2025-08-29 01:35:34,694 [ERROR] Primary security verification failed
+2025-08-29 01:35:34,694 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:34,695 [INFO] Starting security cycle at 2025-08-29T01:35:34.695317+00:00
+2025-08-29 01:35:34,996 [ERROR] Primary security verification failed
+2025-08-29 01:35:34,997 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:34,997 [INFO] Starting security cycle at 2025-08-29T01:35:34.997579+00:00
+2025-08-29 01:35:35,576 [ERROR] Primary security verification failed
+2025-08-29 01:35:35,576 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:35,576 [INFO] Starting security cycle at 2025-08-29T01:35:35.576736+00:00
+2025-08-29 01:35:35,992 [ERROR] Primary security verification failed
+2025-08-29 01:35:35,992 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:35,993 [INFO] Starting security cycle at 2025-08-29T01:35:35.993220+00:00
+2025-08-29 01:35:36,454 [ERROR] Primary security verification failed
+2025-08-29 01:35:36,454 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:36,454 [INFO] Starting security cycle at 2025-08-29T01:35:36.454562+00:00
+2025-08-29 01:35:36,771 [ERROR] Primary security verification failed
+2025-08-29 01:35:36,771 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:36,771 [INFO] Starting security cycle at 2025-08-29T01:35:36.771651+00:00
+2025-08-29 01:35:37,146 [ERROR] Primary security verification failed
+2025-08-29 01:35:37,148 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:37,148 [INFO] Starting security cycle at 2025-08-29T01:35:37.148675+00:00
+2025-08-29 01:35:37,670 [ERROR] Primary security verification failed
+2025-08-29 01:35:37,671 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:37,671 [INFO] Starting security cycle at 2025-08-29T01:35:37.671552+00:00
+2025-08-29 01:35:38,011 [ERROR] Primary security verification failed
+2025-08-29 01:35:38,011 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:38,012 [INFO] Starting security cycle at 2025-08-29T01:35:38.012216+00:00
+2025-08-29 01:35:38,349 [ERROR] Primary security verification failed
+2025-08-29 01:35:38,350 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:38,350 [INFO] Starting security cycle at 2025-08-29T01:35:38.350779+00:00
+2025-08-29 01:35:38,732 [ERROR] Primary security verification failed
+2025-08-29 01:35:38,732 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:38,732 [INFO] Starting security cycle at 2025-08-29T01:35:38.732763+00:00
+2025-08-29 01:35:38,992 [ERROR] Primary security verification failed
+2025-08-29 01:35:38,993 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:38,993 [INFO] Starting security cycle at 2025-08-29T01:35:38.993445+00:00
+2025-08-29 01:35:39,444 [ERROR] Primary security verification failed
+2025-08-29 01:35:39,444 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:39,445 [INFO] Starting security cycle at 2025-08-29T01:35:39.445000+00:00
+2025-08-29 01:35:39,742 [ERROR] Primary security verification failed
+2025-08-29 01:35:39,743 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:39,743 [INFO] Starting security cycle at 2025-08-29T01:35:39.743794+00:00
+2025-08-29 01:35:40,188 [ERROR] Primary security verification failed
+2025-08-29 01:35:40,188 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:40,188 [INFO] Starting security cycle at 2025-08-29T01:35:40.188912+00:00
+2025-08-29 01:35:40,768 [ERROR] Primary security verification failed
+2025-08-29 01:35:40,769 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:40,769 [INFO] Starting security cycle at 2025-08-29T01:35:40.769140+00:00
+2025-08-29 01:35:41,163 [ERROR] Primary security verification failed
+2025-08-29 01:35:41,164 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:41,164 [INFO] Starting security cycle at 2025-08-29T01:35:41.164736+00:00
+2025-08-29 01:35:41,738 [ERROR] Primary security verification failed
+2025-08-29 01:35:41,739 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:41,739 [INFO] Starting security cycle at 2025-08-29T01:35:41.739395+00:00
+2025-08-29 01:35:42,219 [ERROR] Primary security verification failed
+2025-08-29 01:35:42,221 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:42,222 [INFO] Starting security cycle at 2025-08-29T01:35:42.221964+00:00
+2025-08-29 01:35:42,703 [ERROR] Primary security verification failed
+2025-08-29 01:35:42,704 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:42,704 [INFO] Starting security cycle at 2025-08-29T01:35:42.704499+00:00
+2025-08-29 01:35:43,111 [ERROR] Primary security verification failed
+2025-08-29 01:35:43,111 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:43,111 [INFO] Starting security cycle at 2025-08-29T01:35:43.111688+00:00
+2025-08-29 01:35:43,537 [ERROR] Primary security verification failed
+2025-08-29 01:35:43,537 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:43,538 [INFO] Starting security cycle at 2025-08-29T01:35:43.538020+00:00
+2025-08-29 01:35:43,884 [ERROR] Primary security verification failed
+2025-08-29 01:35:43,884 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:43,885 [INFO] Starting security cycle at 2025-08-29T01:35:43.885284+00:00
+2025-08-29 01:35:44,147 [ERROR] Primary security verification failed
+2025-08-29 01:35:44,147 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:44,148 [INFO] Starting security cycle at 2025-08-29T01:35:44.148305+00:00
+2025-08-29 01:35:44,706 [ERROR] Primary security verification failed
+2025-08-29 01:35:44,706 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:44,707 [INFO] Starting security cycle at 2025-08-29T01:35:44.707214+00:00
+2025-08-29 01:35:45,095 [ERROR] Primary security verification failed
+2025-08-29 01:35:45,096 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:45,096 [INFO] Starting security cycle at 2025-08-29T01:35:45.096594+00:00
+2025-08-29 01:35:45,545 [ERROR] Primary security verification failed
+2025-08-29 01:35:45,546 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:45,546 [INFO] Starting security cycle at 2025-08-29T01:35:45.546785+00:00
+2025-08-29 01:35:46,260 [ERROR] Primary security verification failed
+2025-08-29 01:35:46,261 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:46,261 [INFO] Starting security cycle at 2025-08-29T01:35:46.261826+00:00
+2025-08-29 01:35:46,552 [ERROR] Primary security verification failed
+2025-08-29 01:35:46,553 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:46,553 [INFO] Starting security cycle at 2025-08-29T01:35:46.553782+00:00
+2025-08-29 01:35:46,885 [ERROR] Primary security verification failed
+2025-08-29 01:35:46,885 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:46,886 [INFO] Starting security cycle at 2025-08-29T01:35:46.886181+00:00
+2025-08-29 01:35:47,362 [ERROR] Primary security verification failed
+2025-08-29 01:35:47,363 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:47,363 [INFO] Starting security cycle at 2025-08-29T01:35:47.363676+00:00
+2025-08-29 01:35:47,669 [ERROR] Primary security verification failed
+2025-08-29 01:35:47,670 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:47,670 [INFO] Starting security cycle at 2025-08-29T01:35:47.670510+00:00
+2025-08-29 01:35:47,987 [ERROR] Primary security verification failed
+2025-08-29 01:35:47,987 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:47,988 [INFO] Starting security cycle at 2025-08-29T01:35:47.988001+00:00
+2025-08-29 01:35:48,506 [ERROR] Primary security verification failed
+2025-08-29 01:35:48,507 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:48,507 [INFO] Starting security cycle at 2025-08-29T01:35:48.507687+00:00
+2025-08-29 01:35:48,993 [ERROR] Primary security verification failed
+2025-08-29 01:35:48,993 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:48,994 [INFO] Starting security cycle at 2025-08-29T01:35:48.994222+00:00
+2025-08-29 01:35:49,262 [ERROR] Primary security verification failed
+2025-08-29 01:35:49,263 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:49,263 [INFO] Starting security cycle at 2025-08-29T01:35:49.263751+00:00
+2025-08-29 01:35:49,892 [ERROR] Primary security verification failed
+2025-08-29 01:35:49,893 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:49,894 [INFO] Starting security cycle at 2025-08-29T01:35:49.894520+00:00
+2025-08-29 01:35:50,254 [ERROR] Primary security verification failed
+2025-08-29 01:35:50,257 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:50,257 [INFO] Starting security cycle at 2025-08-29T01:35:50.257606+00:00
+2025-08-29 01:35:51,013 [ERROR] Primary security verification failed
+2025-08-29 01:35:51,014 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:51,015 [INFO] Starting security cycle at 2025-08-29T01:35:51.014967+00:00
+2025-08-29 01:35:51,393 [ERROR] Primary security verification failed
+2025-08-29 01:35:51,394 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:51,394 [INFO] Starting security cycle at 2025-08-29T01:35:51.394825+00:00
+2025-08-29 01:35:52,005 [ERROR] Primary security verification failed
+2025-08-29 01:35:52,006 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:52,006 [INFO] Starting security cycle at 2025-08-29T01:35:52.006551+00:00
+2025-08-29 01:35:52,419 [ERROR] Primary security verification failed
+2025-08-29 01:35:52,420 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:52,420 [INFO] Starting security cycle at 2025-08-29T01:35:52.420701+00:00
+2025-08-29 01:35:52,812 [ERROR] Primary security verification failed
+2025-08-29 01:35:52,813 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:52,814 [INFO] Starting security cycle at 2025-08-29T01:35:52.814036+00:00
+2025-08-29 01:35:53,150 [ERROR] Primary security verification failed
+2025-08-29 01:35:53,150 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:53,150 [INFO] Starting security cycle at 2025-08-29T01:35:53.150735+00:00
+2025-08-29 01:35:53,609 [ERROR] Primary security verification failed
+2025-08-29 01:35:53,610 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:53,610 [INFO] Starting security cycle at 2025-08-29T01:35:53.610934+00:00
+2025-08-29 01:35:53,895 [ERROR] Primary security verification failed
+2025-08-29 01:35:53,895 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:53,896 [INFO] Starting security cycle at 2025-08-29T01:35:53.896109+00:00
+2025-08-29 01:35:54,380 [ERROR] Primary security verification failed
+2025-08-29 01:35:54,381 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:54,381 [INFO] Starting security cycle at 2025-08-29T01:35:54.381681+00:00
+2025-08-29 01:35:54,804 [ERROR] Primary security verification failed
+2025-08-29 01:35:54,805 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:54,805 [INFO] Starting security cycle at 2025-08-29T01:35:54.805279+00:00
+2025-08-29 01:35:55,200 [ERROR] Primary security verification failed
+2025-08-29 01:35:55,201 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:55,202 [INFO] Starting security cycle at 2025-08-29T01:35:55.202015+00:00
+2025-08-29 01:35:55,863 [ERROR] Primary security verification failed
+2025-08-29 01:35:55,864 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:55,864 [INFO] Starting security cycle at 2025-08-29T01:35:55.864880+00:00
+2025-08-29 01:35:56,297 [ERROR] Primary security verification failed
+2025-08-29 01:35:56,298 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:56,299 [INFO] Starting security cycle at 2025-08-29T01:35:56.299144+00:00
+2025-08-29 01:35:56,671 [ERROR] Primary security verification failed
+2025-08-29 01:35:56,672 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:56,672 [INFO] Starting security cycle at 2025-08-29T01:35:56.672764+00:00
+2025-08-29 01:35:57,191 [ERROR] Primary security verification failed
+2025-08-29 01:35:57,192 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:57,193 [INFO] Starting security cycle at 2025-08-29T01:35:57.193085+00:00
+2025-08-29 01:35:57,698 [ERROR] Primary security verification failed
+2025-08-29 01:35:57,699 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:57,699 [INFO] Starting security cycle at 2025-08-29T01:35:57.699579+00:00
+2025-08-29 01:35:58,186 [ERROR] Primary security verification failed
+2025-08-29 01:35:58,187 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:58,187 [INFO] Starting security cycle at 2025-08-29T01:35:58.187406+00:00
+2025-08-29 01:35:58,651 [ERROR] Primary security verification failed
+2025-08-29 01:35:58,652 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:58,653 [INFO] Starting security cycle at 2025-08-29T01:35:58.653148+00:00
+2025-08-29 01:35:58,946 [ERROR] Primary security verification failed
+2025-08-29 01:35:58,947 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:58,947 [INFO] Starting security cycle at 2025-08-29T01:35:58.947551+00:00
+2025-08-29 01:35:59,215 [ERROR] Primary security verification failed
+2025-08-29 01:35:59,216 [ERROR] Backwards compatibility failed
+2025-08-29 01:35:59,216 [INFO] Starting security cycle at 2025-08-29T01:35:59.216511+00:00
+2025-08-29 01:36:00,105 [ERROR] Primary security verification failed
+2025-08-29 01:36:00,105 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:00,105 [INFO] Starting security cycle at 2025-08-29T01:36:00.105912+00:00
+2025-08-29 01:36:00,474 [ERROR] Primary security verification failed
+2025-08-29 01:36:00,474 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:00,475 [INFO] Starting security cycle at 2025-08-29T01:36:00.475194+00:00
+2025-08-29 01:36:00,892 [ERROR] Primary security verification failed
+2025-08-29 01:36:00,892 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:00,893 [INFO] Starting security cycle at 2025-08-29T01:36:00.893281+00:00
+2025-08-29 01:36:01,334 [ERROR] Primary security verification failed
+2025-08-29 01:36:01,335 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:01,335 [INFO] Starting security cycle at 2025-08-29T01:36:01.335578+00:00
+2025-08-29 01:36:01,707 [ERROR] Primary security verification failed
+2025-08-29 01:36:01,707 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:01,708 [INFO] Starting security cycle at 2025-08-29T01:36:01.708181+00:00
+2025-08-29 01:36:02,421 [ERROR] Primary security verification failed
+2025-08-29 01:36:02,421 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:02,422 [INFO] Starting security cycle at 2025-08-29T01:36:02.422013+00:00
+2025-08-29 01:36:02,848 [ERROR] Primary security verification failed
+2025-08-29 01:36:02,849 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:02,850 [INFO] Starting security cycle at 2025-08-29T01:36:02.849964+00:00
+2025-08-29 01:36:03,251 [ERROR] Primary security verification failed
+2025-08-29 01:36:03,252 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:03,252 [INFO] Starting security cycle at 2025-08-29T01:36:03.252321+00:00
+2025-08-29 01:36:03,540 [ERROR] Primary security verification failed
+2025-08-29 01:36:03,540 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:03,541 [INFO] Starting security cycle at 2025-08-29T01:36:03.541282+00:00
+2025-08-29 01:36:03,813 [ERROR] Primary security verification failed
+2025-08-29 01:36:03,813 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:03,814 [INFO] Starting security cycle at 2025-08-29T01:36:03.814044+00:00
+2025-08-29 01:36:04,387 [ERROR] Primary security verification failed
+2025-08-29 01:36:04,388 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:04,389 [INFO] Starting security cycle at 2025-08-29T01:36:04.389223+00:00
+2025-08-29 01:36:05,002 [ERROR] Primary security verification failed
+2025-08-29 01:36:05,003 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:05,003 [INFO] Starting security cycle at 2025-08-29T01:36:05.003550+00:00
+2025-08-29 01:36:05,433 [ERROR] Primary security verification failed
+2025-08-29 01:36:05,434 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:05,434 [INFO] Starting security cycle at 2025-08-29T01:36:05.434662+00:00
+2025-08-29 01:36:05,808 [ERROR] Primary security verification failed
+2025-08-29 01:36:05,809 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:05,809 [INFO] Starting security cycle at 2025-08-29T01:36:05.809502+00:00
+2025-08-29 01:36:06,303 [ERROR] Primary security verification failed
+2025-08-29 01:36:06,304 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:06,305 [INFO] Starting security cycle at 2025-08-29T01:36:06.305052+00:00
+2025-08-29 01:36:06,820 [ERROR] Primary security verification failed
+2025-08-29 01:36:06,821 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:06,821 [INFO] Starting security cycle at 2025-08-29T01:36:06.821430+00:00
+2025-08-29 01:36:07,201 [ERROR] Primary security verification failed
+2025-08-29 01:36:07,201 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:07,201 [INFO] Starting security cycle at 2025-08-29T01:36:07.201807+00:00
+2025-08-29 01:36:07,748 [ERROR] Primary security verification failed
+2025-08-29 01:36:07,749 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:07,749 [INFO] Starting security cycle at 2025-08-29T01:36:07.749858+00:00
+2025-08-29 01:36:08,103 [ERROR] Primary security verification failed
+2025-08-29 01:36:08,103 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:08,103 [INFO] Starting security cycle at 2025-08-29T01:36:08.103942+00:00
+2025-08-29 01:36:08,780 [ERROR] Primary security verification failed
+2025-08-29 01:36:08,781 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:08,781 [INFO] Starting security cycle at 2025-08-29T01:36:08.781650+00:00
+2025-08-29 01:36:09,251 [ERROR] Primary security verification failed
+2025-08-29 01:36:09,251 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:09,252 [INFO] Starting security cycle at 2025-08-29T01:36:09.252273+00:00
+2025-08-29 01:36:09,905 [ERROR] Primary security verification failed
+2025-08-29 01:36:09,906 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:09,906 [INFO] Starting security cycle at 2025-08-29T01:36:09.906728+00:00
+2025-08-29 01:36:10,280 [ERROR] Primary security verification failed
+2025-08-29 01:36:10,281 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:10,281 [INFO] Starting security cycle at 2025-08-29T01:36:10.281324+00:00
+2025-08-29 01:36:10,749 [ERROR] Primary security verification failed
+2025-08-29 01:36:10,750 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:10,751 [INFO] Starting security cycle at 2025-08-29T01:36:10.750962+00:00
+2025-08-29 01:36:11,161 [ERROR] Primary security verification failed
+2025-08-29 01:36:11,161 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:11,162 [INFO] Starting security cycle at 2025-08-29T01:36:11.161940+00:00
+2025-08-29 01:36:11,697 [ERROR] Primary security verification failed
+2025-08-29 01:36:11,698 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:11,698 [INFO] Starting security cycle at 2025-08-29T01:36:11.698273+00:00
+2025-08-29 01:36:12,319 [ERROR] Primary security verification failed
+2025-08-29 01:36:12,323 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:12,324 [INFO] Starting security cycle at 2025-08-29T01:36:12.324461+00:00
+2025-08-29 01:36:12,788 [ERROR] Primary security verification failed
+2025-08-29 01:36:12,788 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:12,789 [INFO] Starting security cycle at 2025-08-29T01:36:12.788960+00:00
+2025-08-29 01:36:13,300 [ERROR] Primary security verification failed
+2025-08-29 01:36:13,301 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:13,302 [INFO] Starting security cycle at 2025-08-29T01:36:13.302192+00:00
+2025-08-29 01:36:13,584 [ERROR] Primary security verification failed
+2025-08-29 01:36:13,584 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:13,584 [INFO] Starting security cycle at 2025-08-29T01:36:13.584720+00:00
+2025-08-29 01:36:14,136 [ERROR] Primary security verification failed
+2025-08-29 01:36:14,137 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:14,137 [INFO] Starting security cycle at 2025-08-29T01:36:14.137411+00:00
+2025-08-29 01:36:14,443 [ERROR] Primary security verification failed
+2025-08-29 01:36:14,444 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:14,444 [INFO] Starting security cycle at 2025-08-29T01:36:14.444473+00:00
+2025-08-29 01:36:14,747 [ERROR] Primary security verification failed
+2025-08-29 01:36:14,747 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:14,748 [INFO] Starting security cycle at 2025-08-29T01:36:14.748223+00:00
+2025-08-29 01:36:15,272 [ERROR] Primary security verification failed
+2025-08-29 01:36:15,273 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:15,273 [INFO] Starting security cycle at 2025-08-29T01:36:15.273756+00:00
+2025-08-29 01:36:15,617 [ERROR] Primary security verification failed
+2025-08-29 01:36:15,617 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:15,618 [INFO] Starting security cycle at 2025-08-29T01:36:15.618253+00:00
+2025-08-29 01:36:16,048 [ERROR] Primary security verification failed
+2025-08-29 01:36:16,049 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:16,050 [INFO] Starting security cycle at 2025-08-29T01:36:16.050086+00:00
+2025-08-29 01:36:16,519 [ERROR] Primary security verification failed
+2025-08-29 01:36:16,520 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:16,521 [INFO] Starting security cycle at 2025-08-29T01:36:16.521385+00:00
+2025-08-29 01:36:16,925 [ERROR] Primary security verification failed
+2025-08-29 01:36:16,928 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:16,928 [INFO] Starting security cycle at 2025-08-29T01:36:16.928658+00:00
+2025-08-29 01:36:17,626 [ERROR] Primary security verification failed
+2025-08-29 01:36:17,628 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:17,628 [INFO] Starting security cycle at 2025-08-29T01:36:17.628633+00:00
+2025-08-29 01:36:18,082 [ERROR] Primary security verification failed
+2025-08-29 01:36:18,082 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:18,085 [INFO] Starting security cycle at 2025-08-29T01:36:18.085618+00:00
+2025-08-29 01:36:18,692 [ERROR] Primary security verification failed
+2025-08-29 01:36:18,693 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:18,693 [INFO] Starting security cycle at 2025-08-29T01:36:18.693936+00:00
+2025-08-29 01:36:19,063 [ERROR] Primary security verification failed
+2025-08-29 01:36:19,063 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:19,064 [INFO] Starting security cycle at 2025-08-29T01:36:19.064049+00:00
+2025-08-29 01:36:19,492 [ERROR] Primary security verification failed
+2025-08-29 01:36:19,493 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:19,493 [INFO] Starting security cycle at 2025-08-29T01:36:19.493551+00:00
+2025-08-29 01:36:20,058 [ERROR] Primary security verification failed
+2025-08-29 01:36:20,059 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:20,059 [INFO] Starting security cycle at 2025-08-29T01:36:20.059396+00:00
+2025-08-29 01:36:20,529 [ERROR] Primary security verification failed
+2025-08-29 01:36:20,529 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:20,530 [INFO] Starting security cycle at 2025-08-29T01:36:20.530115+00:00
+2025-08-29 01:36:20,962 [ERROR] Primary security verification failed
+2025-08-29 01:36:20,962 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:20,963 [INFO] Starting security cycle at 2025-08-29T01:36:20.963248+00:00
+2025-08-29 01:36:21,295 [ERROR] Primary security verification failed
+2025-08-29 01:36:21,295 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:21,296 [INFO] Starting security cycle at 2025-08-29T01:36:21.296180+00:00
+2025-08-29 01:36:21,833 [ERROR] Primary security verification failed
+2025-08-29 01:36:21,834 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:21,836 [INFO] Starting security cycle at 2025-08-29T01:36:21.836573+00:00
+2025-08-29 01:36:22,214 [ERROR] Primary security verification failed
+2025-08-29 01:36:22,214 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:22,214 [INFO] Starting security cycle at 2025-08-29T01:36:22.214583+00:00
+2025-08-29 01:36:22,771 [ERROR] Primary security verification failed
+2025-08-29 01:36:22,773 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:22,773 [INFO] Starting security cycle at 2025-08-29T01:36:22.773541+00:00
+2025-08-29 01:36:23,140 [ERROR] Primary security verification failed
+2025-08-29 01:36:23,140 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:23,141 [INFO] Starting security cycle at 2025-08-29T01:36:23.141256+00:00
+2025-08-29 01:36:23,775 [ERROR] Primary security verification failed
+2025-08-29 01:36:23,776 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:23,776 [INFO] Starting security cycle at 2025-08-29T01:36:23.776678+00:00
+2025-08-29 01:36:24,545 [ERROR] Primary security verification failed
+2025-08-29 01:36:24,545 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:24,546 [INFO] Starting security cycle at 2025-08-29T01:36:24.546218+00:00
+2025-08-29 01:36:24,934 [ERROR] Primary security verification failed
+2025-08-29 01:36:24,934 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:24,935 [INFO] Starting security cycle at 2025-08-29T01:36:24.935208+00:00
+2025-08-29 01:36:25,381 [ERROR] Primary security verification failed
+2025-08-29 01:36:25,383 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:25,384 [INFO] Starting security cycle at 2025-08-29T01:36:25.384240+00:00
+2025-08-29 01:36:25,723 [ERROR] Primary security verification failed
+2025-08-29 01:36:25,724 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:25,724 [INFO] Starting security cycle at 2025-08-29T01:36:25.724838+00:00
+2025-08-29 01:36:25,973 [ERROR] Primary security verification failed
+2025-08-29 01:36:25,973 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:25,973 [INFO] Starting security cycle at 2025-08-29T01:36:25.973734+00:00
+2025-08-29 01:36:26,356 [ERROR] Primary security verification failed
+2025-08-29 01:36:26,357 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:26,357 [INFO] Starting security cycle at 2025-08-29T01:36:26.357901+00:00
+2025-08-29 01:36:27,054 [ERROR] Primary security verification failed
+2025-08-29 01:36:27,054 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:27,054 [INFO] Starting security cycle at 2025-08-29T01:36:27.054769+00:00
+2025-08-29 01:36:27,739 [ERROR] Primary security verification failed
+2025-08-29 01:36:27,740 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:27,740 [INFO] Starting security cycle at 2025-08-29T01:36:27.740711+00:00
+2025-08-29 01:36:28,458 [ERROR] Primary security verification failed
+2025-08-29 01:36:28,459 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:28,460 [INFO] Starting security cycle at 2025-08-29T01:36:28.460131+00:00
+2025-08-29 01:36:29,140 [ERROR] Primary security verification failed
+2025-08-29 01:36:29,141 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:29,141 [INFO] Starting security cycle at 2025-08-29T01:36:29.141642+00:00
+2025-08-29 01:36:29,786 [ERROR] Primary security verification failed
+2025-08-29 01:36:29,787 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:29,787 [INFO] Starting security cycle at 2025-08-29T01:36:29.787126+00:00
+2025-08-29 01:36:30,330 [ERROR] Primary security verification failed
+2025-08-29 01:36:30,331 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:30,331 [INFO] Starting security cycle at 2025-08-29T01:36:30.331791+00:00
+2025-08-29 01:36:30,743 [ERROR] Primary security verification failed
+2025-08-29 01:36:30,743 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:30,744 [INFO] Starting security cycle at 2025-08-29T01:36:30.744425+00:00
+2025-08-29 01:36:31,177 [ERROR] Primary security verification failed
+2025-08-29 01:36:31,177 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:31,177 [INFO] Starting security cycle at 2025-08-29T01:36:31.177797+00:00
+2025-08-29 01:36:31,699 [ERROR] Primary security verification failed
+2025-08-29 01:36:31,700 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:31,700 [INFO] Starting security cycle at 2025-08-29T01:36:31.700724+00:00
+2025-08-29 01:36:32,160 [ERROR] Primary security verification failed
+2025-08-29 01:36:32,161 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:32,161 [INFO] Starting security cycle at 2025-08-29T01:36:32.161606+00:00
+2025-08-29 01:36:32,514 [ERROR] Primary security verification failed
+2025-08-29 01:36:32,517 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:32,517 [INFO] Starting security cycle at 2025-08-29T01:36:32.517682+00:00
+2025-08-29 01:36:33,506 [ERROR] Primary security verification failed
+2025-08-29 01:36:33,506 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:33,507 [INFO] Starting security cycle at 2025-08-29T01:36:33.507483+00:00
+2025-08-29 01:36:34,158 [ERROR] Primary security verification failed
+2025-08-29 01:36:34,159 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:34,160 [INFO] Starting security cycle at 2025-08-29T01:36:34.160144+00:00
+2025-08-29 01:36:34,529 [ERROR] Primary security verification failed
+2025-08-29 01:36:34,530 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:34,530 [INFO] Starting security cycle at 2025-08-29T01:36:34.530387+00:00
+2025-08-29 01:36:35,069 [ERROR] Primary security verification failed
+2025-08-29 01:36:35,071 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:35,072 [INFO] Starting security cycle at 2025-08-29T01:36:35.071981+00:00
+2025-08-29 01:36:35,300 [ERROR] Primary security verification failed
+2025-08-29 01:36:35,300 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:35,301 [INFO] Starting security cycle at 2025-08-29T01:36:35.301298+00:00
+2025-08-29 01:36:35,726 [ERROR] Primary security verification failed
+2025-08-29 01:36:35,728 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:35,728 [INFO] Starting security cycle at 2025-08-29T01:36:35.728611+00:00
+2025-08-29 01:36:36,206 [ERROR] Primary security verification failed
+2025-08-29 01:36:36,207 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:36,208 [INFO] Starting security cycle at 2025-08-29T01:36:36.207954+00:00
+2025-08-29 01:36:36,499 [ERROR] Primary security verification failed
+2025-08-29 01:36:36,501 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:36,502 [INFO] Starting security cycle at 2025-08-29T01:36:36.502295+00:00
+2025-08-29 01:36:36,876 [ERROR] Primary security verification failed
+2025-08-29 01:36:36,876 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:36,877 [INFO] Starting security cycle at 2025-08-29T01:36:36.877423+00:00
+2025-08-29 01:36:37,414 [ERROR] Primary security verification failed
+2025-08-29 01:36:37,414 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:37,414 [INFO] Starting security cycle at 2025-08-29T01:36:37.414352+00:00
+2025-08-29 01:36:37,925 [ERROR] Primary security verification failed
+2025-08-29 01:36:37,925 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:37,926 [INFO] Starting security cycle at 2025-08-29T01:36:37.926334+00:00
+2025-08-29 01:36:38,515 [ERROR] Primary security verification failed
+2025-08-29 01:36:38,515 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:38,516 [INFO] Starting security cycle at 2025-08-29T01:36:38.516273+00:00
+2025-08-29 01:36:39,047 [ERROR] Primary security verification failed
+2025-08-29 01:36:39,050 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:39,052 [INFO] Starting security cycle at 2025-08-29T01:36:39.052404+00:00
+2025-08-29 01:36:39,399 [ERROR] Primary security verification failed
+2025-08-29 01:36:39,399 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:39,400 [INFO] Starting security cycle at 2025-08-29T01:36:39.400586+00:00
+2025-08-29 01:36:39,763 [ERROR] Primary security verification failed
+2025-08-29 01:36:39,764 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:39,764 [INFO] Starting security cycle at 2025-08-29T01:36:39.764469+00:00
+2025-08-29 01:36:40,143 [ERROR] Primary security verification failed
+2025-08-29 01:36:40,144 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:40,145 [INFO] Starting security cycle at 2025-08-29T01:36:40.145240+00:00
+2025-08-29 01:36:40,652 [ERROR] Primary security verification failed
+2025-08-29 01:36:40,653 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:40,654 [INFO] Starting security cycle at 2025-08-29T01:36:40.654044+00:00
+2025-08-29 01:36:41,079 [ERROR] Primary security verification failed
+2025-08-29 01:36:41,079 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:41,080 [INFO] Starting security cycle at 2025-08-29T01:36:41.080157+00:00
+2025-08-29 01:36:41,558 [ERROR] Primary security verification failed
+2025-08-29 01:36:41,559 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:41,559 [INFO] Starting security cycle at 2025-08-29T01:36:41.559444+00:00
+2025-08-29 01:36:42,080 [ERROR] Primary security verification failed
+2025-08-29 01:36:42,081 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:42,081 [INFO] Starting security cycle at 2025-08-29T01:36:42.081807+00:00
+2025-08-29 01:36:42,717 [ERROR] Primary security verification failed
+2025-08-29 01:36:42,718 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:42,718 [INFO] Starting security cycle at 2025-08-29T01:36:42.718776+00:00
+2025-08-29 01:36:43,166 [ERROR] Primary security verification failed
+2025-08-29 01:36:43,168 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:43,168 [INFO] Starting security cycle at 2025-08-29T01:36:43.168703+00:00
+2025-08-29 01:36:43,657 [ERROR] Primary security verification failed
+2025-08-29 01:36:43,657 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:43,658 [INFO] Starting security cycle at 2025-08-29T01:36:43.658104+00:00
+2025-08-29 01:36:44,218 [ERROR] Primary security verification failed
+2025-08-29 01:36:44,218 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:44,219 [INFO] Starting security cycle at 2025-08-29T01:36:44.219152+00:00
+2025-08-29 01:36:44,868 [ERROR] Primary security verification failed
+2025-08-29 01:36:44,869 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:44,869 [INFO] Starting security cycle at 2025-08-29T01:36:44.869587+00:00
+2025-08-29 01:36:45,217 [ERROR] Primary security verification failed
+2025-08-29 01:36:45,219 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:45,219 [INFO] Starting security cycle at 2025-08-29T01:36:45.219432+00:00
+2025-08-29 01:36:45,711 [ERROR] Primary security verification failed
+2025-08-29 01:36:45,712 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:45,712 [INFO] Starting security cycle at 2025-08-29T01:36:45.712586+00:00
+2025-08-29 01:36:46,165 [ERROR] Primary security verification failed
+2025-08-29 01:36:46,165 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:46,166 [INFO] Starting security cycle at 2025-08-29T01:36:46.166079+00:00
+2025-08-29 01:36:46,464 [ERROR] Primary security verification failed
+2025-08-29 01:36:46,465 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:46,465 [INFO] Starting security cycle at 2025-08-29T01:36:46.465450+00:00
+2025-08-29 01:36:46,807 [ERROR] Primary security verification failed
+2025-08-29 01:36:46,807 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:46,807 [INFO] Starting security cycle at 2025-08-29T01:36:46.807434+00:00
+2025-08-29 01:36:47,108 [ERROR] Primary security verification failed
+2025-08-29 01:36:47,108 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:47,109 [INFO] Starting security cycle at 2025-08-29T01:36:47.109464+00:00
+2025-08-29 01:36:47,464 [ERROR] Primary security verification failed
+2025-08-29 01:36:47,464 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:47,465 [INFO] Starting security cycle at 2025-08-29T01:36:47.465135+00:00
+2025-08-29 01:36:48,073 [ERROR] Primary security verification failed
+2025-08-29 01:36:48,073 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:48,073 [INFO] Starting security cycle at 2025-08-29T01:36:48.073840+00:00
+2025-08-29 01:36:48,524 [ERROR] Primary security verification failed
+2025-08-29 01:36:48,524 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:48,524 [INFO] Starting security cycle at 2025-08-29T01:36:48.524878+00:00
+2025-08-29 01:36:48,834 [ERROR] Primary security verification failed
+2025-08-29 01:36:48,835 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:48,835 [INFO] Starting security cycle at 2025-08-29T01:36:48.835514+00:00
+2025-08-29 01:36:49,320 [ERROR] Primary security verification failed
+2025-08-29 01:36:49,320 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:49,321 [INFO] Starting security cycle at 2025-08-29T01:36:49.321267+00:00
+2025-08-29 01:36:49,854 [ERROR] Primary security verification failed
+2025-08-29 01:36:49,856 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:49,857 [INFO] Starting security cycle at 2025-08-29T01:36:49.857497+00:00
+2025-08-29 01:36:50,249 [ERROR] Primary security verification failed
+2025-08-29 01:36:50,250 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:50,250 [INFO] Starting security cycle at 2025-08-29T01:36:50.250603+00:00
+2025-08-29 01:36:50,775 [ERROR] Primary security verification failed
+2025-08-29 01:36:50,776 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:50,778 [INFO] Starting security cycle at 2025-08-29T01:36:50.778410+00:00
+2025-08-29 01:36:51,308 [ERROR] Primary security verification failed
+2025-08-29 01:36:51,308 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:51,309 [INFO] Starting security cycle at 2025-08-29T01:36:51.309206+00:00
+2025-08-29 01:36:51,838 [ERROR] Primary security verification failed
+2025-08-29 01:36:51,839 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:51,840 [INFO] Starting security cycle at 2025-08-29T01:36:51.840426+00:00
+2025-08-29 01:36:52,598 [ERROR] Primary security verification failed
+2025-08-29 01:36:52,599 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:52,599 [INFO] Starting security cycle at 2025-08-29T01:36:52.599637+00:00
+2025-08-29 01:36:53,169 [ERROR] Primary security verification failed
+2025-08-29 01:36:53,173 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:53,173 [INFO] Starting security cycle at 2025-08-29T01:36:53.173325+00:00
+2025-08-29 01:36:53,547 [ERROR] Primary security verification failed
+2025-08-29 01:36:53,547 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:53,548 [INFO] Starting security cycle at 2025-08-29T01:36:53.548450+00:00
+2025-08-29 01:36:54,237 [ERROR] Primary security verification failed
+2025-08-29 01:36:54,238 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:54,238 [INFO] Starting security cycle at 2025-08-29T01:36:54.238502+00:00
+2025-08-29 01:36:54,723 [ERROR] Primary security verification failed
+2025-08-29 01:36:54,724 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:54,725 [INFO] Starting security cycle at 2025-08-29T01:36:54.725317+00:00
+2025-08-29 01:36:55,157 [ERROR] Primary security verification failed
+2025-08-29 01:36:55,157 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:55,158 [INFO] Starting security cycle at 2025-08-29T01:36:55.158056+00:00
+2025-08-29 01:36:55,439 [ERROR] Primary security verification failed
+2025-08-29 01:36:55,440 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:55,440 [INFO] Starting security cycle at 2025-08-29T01:36:55.440641+00:00
+2025-08-29 01:36:55,905 [ERROR] Primary security verification failed
+2025-08-29 01:36:55,906 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:55,906 [INFO] Starting security cycle at 2025-08-29T01:36:55.906770+00:00
+2025-08-29 01:36:56,266 [ERROR] Primary security verification failed
+2025-08-29 01:36:56,266 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:56,267 [INFO] Starting security cycle at 2025-08-29T01:36:56.267181+00:00
+2025-08-29 01:36:56,779 [ERROR] Primary security verification failed
+2025-08-29 01:36:56,780 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:56,780 [INFO] Starting security cycle at 2025-08-29T01:36:56.780547+00:00
+2025-08-29 01:36:57,092 [ERROR] Primary security verification failed
+2025-08-29 01:36:57,092 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:57,093 [INFO] Starting security cycle at 2025-08-29T01:36:57.093051+00:00
+2025-08-29 01:36:57,795 [ERROR] Primary security verification failed
+2025-08-29 01:36:57,797 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:57,799 [INFO] Starting security cycle at 2025-08-29T01:36:57.799281+00:00
+2025-08-29 01:36:58,422 [ERROR] Primary security verification failed
+2025-08-29 01:36:58,422 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:58,423 [INFO] Starting security cycle at 2025-08-29T01:36:58.423172+00:00
+2025-08-29 01:36:58,817 [ERROR] Primary security verification failed
+2025-08-29 01:36:58,818 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:58,818 [INFO] Starting security cycle at 2025-08-29T01:36:58.818844+00:00
+2025-08-29 01:36:59,172 [ERROR] Primary security verification failed
+2025-08-29 01:36:59,173 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:59,173 [INFO] Starting security cycle at 2025-08-29T01:36:59.173796+00:00
+2025-08-29 01:36:59,505 [ERROR] Primary security verification failed
+2025-08-29 01:36:59,505 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:59,506 [INFO] Starting security cycle at 2025-08-29T01:36:59.506343+00:00
+2025-08-29 01:36:59,932 [ERROR] Primary security verification failed
+2025-08-29 01:36:59,932 [ERROR] Backwards compatibility failed
+2025-08-29 01:36:59,933 [INFO] Starting security cycle at 2025-08-29T01:36:59.933313+00:00
+2025-08-29 01:37:00,379 [ERROR] Primary security verification failed
+2025-08-29 01:37:00,380 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:00,380 [INFO] Starting security cycle at 2025-08-29T01:37:00.380540+00:00
+2025-08-29 01:37:00,786 [ERROR] Primary security verification failed
+2025-08-29 01:37:00,787 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:00,787 [INFO] Starting security cycle at 2025-08-29T01:37:00.787446+00:00
+2025-08-29 01:37:01,175 [ERROR] Primary security verification failed
+2025-08-29 01:37:01,175 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:01,176 [INFO] Starting security cycle at 2025-08-29T01:37:01.176322+00:00
+2025-08-29 01:37:01,765 [ERROR] Primary security verification failed
+2025-08-29 01:37:01,766 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:01,767 [INFO] Starting security cycle at 2025-08-29T01:37:01.767085+00:00
+2025-08-29 01:37:02,772 [ERROR] Primary security verification failed
+2025-08-29 01:37:02,774 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:02,776 [INFO] Starting security cycle at 2025-08-29T01:37:02.776454+00:00
+2025-08-29 01:37:03,450 [ERROR] Primary security verification failed
+2025-08-29 01:37:03,450 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:03,451 [INFO] Starting security cycle at 2025-08-29T01:37:03.451055+00:00
+2025-08-29 01:37:03,984 [ERROR] Primary security verification failed
+2025-08-29 01:37:03,985 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:03,985 [INFO] Starting security cycle at 2025-08-29T01:37:03.985902+00:00
+2025-08-29 01:37:04,506 [ERROR] Primary security verification failed
+2025-08-29 01:37:04,506 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:04,507 [INFO] Starting security cycle at 2025-08-29T01:37:04.507046+00:00
+2025-08-29 01:37:05,021 [ERROR] Primary security verification failed
+2025-08-29 01:37:05,021 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:05,022 [INFO] Starting security cycle at 2025-08-29T01:37:05.022297+00:00
+2025-08-29 01:37:05,431 [ERROR] Primary security verification failed
+2025-08-29 01:37:05,431 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:05,432 [INFO] Starting security cycle at 2025-08-29T01:37:05.432105+00:00
+2025-08-29 01:37:05,895 [ERROR] Primary security verification failed
+2025-08-29 01:37:05,896 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:05,896 [INFO] Starting security cycle at 2025-08-29T01:37:05.896425+00:00
+2025-08-29 01:37:06,329 [ERROR] Primary security verification failed
+2025-08-29 01:37:06,330 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:06,331 [INFO] Starting security cycle at 2025-08-29T01:37:06.330941+00:00
+2025-08-29 01:37:06,661 [ERROR] Primary security verification failed
+2025-08-29 01:37:06,661 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:06,662 [INFO] Starting security cycle at 2025-08-29T01:37:06.662237+00:00
+2025-08-29 01:37:07,105 [ERROR] Primary security verification failed
+2025-08-29 01:37:07,106 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:07,106 [INFO] Starting security cycle at 2025-08-29T01:37:07.106770+00:00
+2025-08-29 01:37:07,481 [ERROR] Primary security verification failed
+2025-08-29 01:37:07,481 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:07,481 [INFO] Starting security cycle at 2025-08-29T01:37:07.481831+00:00
+2025-08-29 01:37:07,926 [ERROR] Primary security verification failed
+2025-08-29 01:37:07,927 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:07,927 [INFO] Starting security cycle at 2025-08-29T01:37:07.927453+00:00
+2025-08-29 01:37:08,402 [ERROR] Primary security verification failed
+2025-08-29 01:37:08,403 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:08,403 [INFO] Starting security cycle at 2025-08-29T01:37:08.403596+00:00
+2025-08-29 01:37:08,906 [ERROR] Primary security verification failed
+2025-08-29 01:37:08,907 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:08,907 [INFO] Starting security cycle at 2025-08-29T01:37:08.907907+00:00
+2025-08-29 01:37:09,426 [ERROR] Primary security verification failed
+2025-08-29 01:37:09,426 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:09,427 [INFO] Starting security cycle at 2025-08-29T01:37:09.427173+00:00
+2025-08-29 01:37:09,722 [ERROR] Primary security verification failed
+2025-08-29 01:37:09,722 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:09,723 [INFO] Starting security cycle at 2025-08-29T01:37:09.723236+00:00
+2025-08-29 01:37:10,132 [ERROR] Primary security verification failed
+2025-08-29 01:37:10,133 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:10,133 [INFO] Starting security cycle at 2025-08-29T01:37:10.133595+00:00
+2025-08-29 01:37:10,636 [ERROR] Primary security verification failed
+2025-08-29 01:37:10,637 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:10,637 [INFO] Starting security cycle at 2025-08-29T01:37:10.637604+00:00
+2025-08-29 01:37:10,994 [ERROR] Primary security verification failed
+2025-08-29 01:37:10,995 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:10,995 [INFO] Starting security cycle at 2025-08-29T01:37:10.995679+00:00
+2025-08-29 01:37:11,430 [ERROR] Primary security verification failed
+2025-08-29 01:37:11,431 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:11,431 [INFO] Starting security cycle at 2025-08-29T01:37:11.431647+00:00
+2025-08-29 01:37:11,771 [ERROR] Primary security verification failed
+2025-08-29 01:37:11,772 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:11,773 [INFO] Starting security cycle at 2025-08-29T01:37:11.772952+00:00
+2025-08-29 01:37:12,181 [ERROR] Primary security verification failed
+2025-08-29 01:37:12,181 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:12,181 [INFO] Starting security cycle at 2025-08-29T01:37:12.181877+00:00
+2025-08-29 01:37:12,740 [ERROR] Primary security verification failed
+2025-08-29 01:37:12,741 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:12,741 [INFO] Starting security cycle at 2025-08-29T01:37:12.741819+00:00
+2025-08-29 01:37:13,192 [ERROR] Primary security verification failed
+2025-08-29 01:37:13,193 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:13,194 [INFO] Starting security cycle at 2025-08-29T01:37:13.194320+00:00
+2025-08-29 01:37:13,772 [ERROR] Primary security verification failed
+2025-08-29 01:37:13,772 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:13,773 [INFO] Starting security cycle at 2025-08-29T01:37:13.773075+00:00
+2025-08-29 01:37:14,231 [ERROR] Primary security verification failed
+2025-08-29 01:37:14,231 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:14,231 [INFO] Starting security cycle at 2025-08-29T01:37:14.231578+00:00
+2025-08-29 01:37:14,772 [ERROR] Primary security verification failed
+2025-08-29 01:37:14,773 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:14,773 [INFO] Starting security cycle at 2025-08-29T01:37:14.773698+00:00
+2025-08-29 01:37:15,150 [ERROR] Primary security verification failed
+2025-08-29 01:37:15,151 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:15,151 [INFO] Starting security cycle at 2025-08-29T01:37:15.151842+00:00
+2025-08-29 01:37:15,697 [ERROR] Primary security verification failed
+2025-08-29 01:37:15,698 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:15,698 [INFO] Starting security cycle at 2025-08-29T01:37:15.698477+00:00
+2025-08-29 01:37:16,139 [ERROR] Primary security verification failed
+2025-08-29 01:37:16,140 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:16,140 [INFO] Starting security cycle at 2025-08-29T01:37:16.140152+00:00
+2025-08-29 01:37:16,829 [ERROR] Primary security verification failed
+2025-08-29 01:37:16,830 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:16,830 [INFO] Starting security cycle at 2025-08-29T01:37:16.830796+00:00
+2025-08-29 01:37:17,345 [ERROR] Primary security verification failed
+2025-08-29 01:37:17,345 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:17,345 [INFO] Starting security cycle at 2025-08-29T01:37:17.345906+00:00
+2025-08-29 01:37:17,681 [ERROR] Primary security verification failed
+2025-08-29 01:37:17,681 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:17,682 [INFO] Starting security cycle at 2025-08-29T01:37:17.681968+00:00
+2025-08-29 01:37:18,348 [ERROR] Primary security verification failed
+2025-08-29 01:37:18,351 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:18,351 [INFO] Starting security cycle at 2025-08-29T01:37:18.351752+00:00
+2025-08-29 01:37:18,693 [ERROR] Primary security verification failed
+2025-08-29 01:37:18,694 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:18,695 [INFO] Starting security cycle at 2025-08-29T01:37:18.695235+00:00
+2025-08-29 01:37:19,169 [ERROR] Primary security verification failed
+2025-08-29 01:37:19,170 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:19,170 [INFO] Starting security cycle at 2025-08-29T01:37:19.170690+00:00
+2025-08-29 01:37:19,570 [ERROR] Primary security verification failed
+2025-08-29 01:37:19,570 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:19,571 [INFO] Starting security cycle at 2025-08-29T01:37:19.571111+00:00
+2025-08-29 01:37:20,130 [ERROR] Primary security verification failed
+2025-08-29 01:37:20,131 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:20,132 [INFO] Starting security cycle at 2025-08-29T01:37:20.132266+00:00
+2025-08-29 01:37:20,812 [ERROR] Primary security verification failed
+2025-08-29 01:37:20,813 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:20,814 [INFO] Starting security cycle at 2025-08-29T01:37:20.814157+00:00
+2025-08-29 01:37:21,399 [ERROR] Primary security verification failed
+2025-08-29 01:37:21,400 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:21,401 [INFO] Starting security cycle at 2025-08-29T01:37:21.401031+00:00
+2025-08-29 01:37:21,792 [ERROR] Primary security verification failed
+2025-08-29 01:37:21,792 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:21,793 [INFO] Starting security cycle at 2025-08-29T01:37:21.793015+00:00
+2025-08-29 01:37:22,190 [ERROR] Primary security verification failed
+2025-08-29 01:37:22,190 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:22,190 [INFO] Starting security cycle at 2025-08-29T01:37:22.190932+00:00
+2025-08-29 01:37:22,684 [ERROR] Primary security verification failed
+2025-08-29 01:37:22,684 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:22,685 [INFO] Starting security cycle at 2025-08-29T01:37:22.685208+00:00
+2025-08-29 01:37:23,157 [ERROR] Primary security verification failed
+2025-08-29 01:37:23,157 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:23,157 [INFO] Starting security cycle at 2025-08-29T01:37:23.157683+00:00
+2025-08-29 01:37:23,667 [ERROR] Primary security verification failed
+2025-08-29 01:37:23,668 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:23,668 [INFO] Starting security cycle at 2025-08-29T01:37:23.668892+00:00
+2025-08-29 01:37:23,992 [ERROR] Primary security verification failed
+2025-08-29 01:37:23,993 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:23,993 [INFO] Starting security cycle at 2025-08-29T01:37:23.993622+00:00
+2025-08-29 01:37:24,451 [ERROR] Primary security verification failed
+2025-08-29 01:37:24,452 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:24,452 [INFO] Starting security cycle at 2025-08-29T01:37:24.452398+00:00
+2025-08-29 01:37:24,763 [ERROR] Primary security verification failed
+2025-08-29 01:37:24,763 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:24,763 [INFO] Starting security cycle at 2025-08-29T01:37:24.763672+00:00
+2025-08-29 01:37:25,211 [ERROR] Primary security verification failed
+2025-08-29 01:37:25,211 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:25,212 [INFO] Starting security cycle at 2025-08-29T01:37:25.212004+00:00
+2025-08-29 01:37:25,897 [ERROR] Primary security verification failed
+2025-08-29 01:37:25,897 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:25,898 [INFO] Starting security cycle at 2025-08-29T01:37:25.898052+00:00
+2025-08-29 01:37:26,239 [ERROR] Primary security verification failed
+2025-08-29 01:37:26,240 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:26,240 [INFO] Starting security cycle at 2025-08-29T01:37:26.240593+00:00
+2025-08-29 01:37:26,669 [ERROR] Primary security verification failed
+2025-08-29 01:37:26,670 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:26,670 [INFO] Starting security cycle at 2025-08-29T01:37:26.670234+00:00
+2025-08-29 01:37:27,057 [ERROR] Primary security verification failed
+2025-08-29 01:37:27,057 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:27,058 [INFO] Starting security cycle at 2025-08-29T01:37:27.058027+00:00
+2025-08-29 01:37:27,476 [ERROR] Primary security verification failed
+2025-08-29 01:37:27,476 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:27,477 [INFO] Starting security cycle at 2025-08-29T01:37:27.477054+00:00
+2025-08-29 01:37:28,038 [ERROR] Primary security verification failed
+2025-08-29 01:37:28,039 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:28,039 [INFO] Starting security cycle at 2025-08-29T01:37:28.039861+00:00
+2025-08-29 01:37:28,479 [ERROR] Primary security verification failed
+2025-08-29 01:37:28,479 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:28,480 [INFO] Starting security cycle at 2025-08-29T01:37:28.480212+00:00
+2025-08-29 01:37:29,014 [ERROR] Primary security verification failed
+2025-08-29 01:37:29,015 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:29,015 [INFO] Starting security cycle at 2025-08-29T01:37:29.015647+00:00
+2025-08-29 01:37:29,486 [ERROR] Primary security verification failed
+2025-08-29 01:37:29,486 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:29,487 [INFO] Starting security cycle at 2025-08-29T01:37:29.487408+00:00
+2025-08-29 01:37:29,857 [ERROR] Primary security verification failed
+2025-08-29 01:37:29,857 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:29,858 [INFO] Starting security cycle at 2025-08-29T01:37:29.858320+00:00
+2025-08-29 01:37:30,209 [ERROR] Primary security verification failed
+2025-08-29 01:37:30,210 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:30,210 [INFO] Starting security cycle at 2025-08-29T01:37:30.210907+00:00
+2025-08-29 01:37:30,482 [ERROR] Primary security verification failed
+2025-08-29 01:37:30,482 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:30,482 [INFO] Starting security cycle at 2025-08-29T01:37:30.482631+00:00
+2025-08-29 01:37:30,902 [ERROR] Primary security verification failed
+2025-08-29 01:37:30,903 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:30,903 [INFO] Starting security cycle at 2025-08-29T01:37:30.903699+00:00
+2025-08-29 01:37:31,570 [ERROR] Primary security verification failed
+2025-08-29 01:37:31,571 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:31,571 [INFO] Starting security cycle at 2025-08-29T01:37:31.571647+00:00
+2025-08-29 01:37:31,987 [ERROR] Primary security verification failed
+2025-08-29 01:37:31,988 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:31,988 [INFO] Starting security cycle at 2025-08-29T01:37:31.988753+00:00
+2025-08-29 01:37:32,564 [ERROR] Primary security verification failed
+2025-08-29 01:37:32,568 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:32,568 [INFO] Starting security cycle at 2025-08-29T01:37:32.568611+00:00
+2025-08-29 01:37:33,089 [ERROR] Primary security verification failed
+2025-08-29 01:37:33,090 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:33,092 [INFO] Starting security cycle at 2025-08-29T01:37:33.091224+00:00
+2025-08-29 01:37:33,478 [ERROR] Primary security verification failed
+2025-08-29 01:37:33,478 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:33,479 [INFO] Starting security cycle at 2025-08-29T01:37:33.479009+00:00
+2025-08-29 01:37:34,426 [ERROR] Primary security verification failed
+2025-08-29 01:37:34,427 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:34,427 [INFO] Starting security cycle at 2025-08-29T01:37:34.427793+00:00
+2025-08-29 01:37:34,947 [ERROR] Primary security verification failed
+2025-08-29 01:37:34,947 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:34,947 [INFO] Starting security cycle at 2025-08-29T01:37:34.947923+00:00
+2025-08-29 01:37:35,370 [ERROR] Primary security verification failed
+2025-08-29 01:37:35,371 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:35,371 [INFO] Starting security cycle at 2025-08-29T01:37:35.371200+00:00
+2025-08-29 01:37:35,871 [ERROR] Primary security verification failed
+2025-08-29 01:37:35,872 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:35,872 [INFO] Starting security cycle at 2025-08-29T01:37:35.872821+00:00
+2025-08-29 01:37:36,275 [ERROR] Primary security verification failed
+2025-08-29 01:37:36,275 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:36,276 [INFO] Starting security cycle at 2025-08-29T01:37:36.276242+00:00
+2025-08-29 01:37:37,051 [ERROR] Primary security verification failed
+2025-08-29 01:37:37,051 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:37,051 [INFO] Starting security cycle at 2025-08-29T01:37:37.051322+00:00
+2025-08-29 01:37:37,469 [ERROR] Primary security verification failed
+2025-08-29 01:37:37,470 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:37,470 [INFO] Starting security cycle at 2025-08-29T01:37:37.470783+00:00
+2025-08-29 01:37:37,957 [ERROR] Primary security verification failed
+2025-08-29 01:37:37,957 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:37,958 [INFO] Starting security cycle at 2025-08-29T01:37:37.958337+00:00
+2025-08-29 01:37:38,416 [ERROR] Primary security verification failed
+2025-08-29 01:37:38,417 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:38,417 [INFO] Starting security cycle at 2025-08-29T01:37:38.417254+00:00
+2025-08-29 01:37:38,731 [ERROR] Primary security verification failed
+2025-08-29 01:37:38,732 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:38,732 [INFO] Starting security cycle at 2025-08-29T01:37:38.732508+00:00
+2025-08-29 01:37:39,395 [ERROR] Primary security verification failed
+2025-08-29 01:37:39,396 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:39,396 [INFO] Starting security cycle at 2025-08-29T01:37:39.396930+00:00
+2025-08-29 01:37:40,043 [ERROR] Primary security verification failed
+2025-08-29 01:37:40,045 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:40,046 [INFO] Starting security cycle at 2025-08-29T01:37:40.046415+00:00
+2025-08-29 01:37:40,705 [ERROR] Primary security verification failed
+2025-08-29 01:37:40,708 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:40,708 [INFO] Starting security cycle at 2025-08-29T01:37:40.708877+00:00
+2025-08-29 01:37:41,083 [ERROR] Primary security verification failed
+2025-08-29 01:37:41,084 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:41,085 [INFO] Starting security cycle at 2025-08-29T01:37:41.085066+00:00
+2025-08-29 01:37:41,681 [ERROR] Primary security verification failed
+2025-08-29 01:37:41,684 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:41,685 [INFO] Starting security cycle at 2025-08-29T01:37:41.684973+00:00
+2025-08-29 01:37:42,241 [ERROR] Primary security verification failed
+2025-08-29 01:37:42,241 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:42,242 [INFO] Starting security cycle at 2025-08-29T01:37:42.241996+00:00
+2025-08-29 01:37:42,482 [ERROR] Primary security verification failed
+2025-08-29 01:37:42,482 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:42,483 [INFO] Starting security cycle at 2025-08-29T01:37:42.483269+00:00
+2025-08-29 01:37:42,837 [ERROR] Primary security verification failed
+2025-08-29 01:37:42,837 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:42,839 [INFO] Starting security cycle at 2025-08-29T01:37:42.839771+00:00
+2025-08-29 01:37:43,326 [ERROR] Primary security verification failed
+2025-08-29 01:37:43,329 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:43,330 [INFO] Starting security cycle at 2025-08-29T01:37:43.330681+00:00
+2025-08-29 01:37:43,747 [ERROR] Primary security verification failed
+2025-08-29 01:37:43,747 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:43,748 [INFO] Starting security cycle at 2025-08-29T01:37:43.748125+00:00
+2025-08-29 01:37:44,364 [ERROR] Primary security verification failed
+2025-08-29 01:37:44,364 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:44,365 [INFO] Starting security cycle at 2025-08-29T01:37:44.365306+00:00
+2025-08-29 01:37:44,821 [ERROR] Primary security verification failed
+2025-08-29 01:37:44,822 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:44,822 [INFO] Starting security cycle at 2025-08-29T01:37:44.822592+00:00
+2025-08-29 01:37:45,317 [ERROR] Primary security verification failed
+2025-08-29 01:37:45,317 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:45,318 [INFO] Starting security cycle at 2025-08-29T01:37:45.318025+00:00
+2025-08-29 01:37:45,756 [ERROR] Primary security verification failed
+2025-08-29 01:37:45,756 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:45,757 [INFO] Starting security cycle at 2025-08-29T01:37:45.757020+00:00
+2025-08-29 01:37:46,146 [ERROR] Primary security verification failed
+2025-08-29 01:37:46,146 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:46,147 [INFO] Starting security cycle at 2025-08-29T01:37:46.147113+00:00
+2025-08-29 01:37:47,016 [ERROR] Primary security verification failed
+2025-08-29 01:37:47,020 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:47,020 [INFO] Starting security cycle at 2025-08-29T01:37:47.020608+00:00
+2025-08-29 01:37:47,506 [ERROR] Primary security verification failed
+2025-08-29 01:37:47,506 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:47,507 [INFO] Starting security cycle at 2025-08-29T01:37:47.507295+00:00
+2025-08-29 01:37:47,854 [ERROR] Primary security verification failed
+2025-08-29 01:37:47,855 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:47,855 [INFO] Starting security cycle at 2025-08-29T01:37:47.855764+00:00
+2025-08-29 01:37:48,612 [ERROR] Primary security verification failed
+2025-08-29 01:37:48,613 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:48,613 [INFO] Starting security cycle at 2025-08-29T01:37:48.613639+00:00
+2025-08-29 01:37:49,382 [ERROR] Primary security verification failed
+2025-08-29 01:37:49,382 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:49,383 [INFO] Starting security cycle at 2025-08-29T01:37:49.383122+00:00
+2025-08-29 01:37:49,900 [ERROR] Primary security verification failed
+2025-08-29 01:37:49,900 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:49,900 [INFO] Starting security cycle at 2025-08-29T01:37:49.900932+00:00
+2025-08-29 01:37:50,311 [ERROR] Primary security verification failed
+2025-08-29 01:37:50,311 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:50,312 [INFO] Starting security cycle at 2025-08-29T01:37:50.312542+00:00
+2025-08-29 01:37:50,751 [ERROR] Primary security verification failed
+2025-08-29 01:37:50,752 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:50,753 [INFO] Starting security cycle at 2025-08-29T01:37:50.753124+00:00
+2025-08-29 01:37:51,118 [ERROR] Primary security verification failed
+2025-08-29 01:37:51,119 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:51,119 [INFO] Starting security cycle at 2025-08-29T01:37:51.119544+00:00
+2025-08-29 01:37:51,482 [ERROR] Primary security verification failed
+2025-08-29 01:37:51,483 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:51,483 [INFO] Starting security cycle at 2025-08-29T01:37:51.483341+00:00
+2025-08-29 01:37:51,888 [ERROR] Primary security verification failed
+2025-08-29 01:37:51,889 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:51,889 [INFO] Starting security cycle at 2025-08-29T01:37:51.889602+00:00
+2025-08-29 01:37:52,429 [ERROR] Primary security verification failed
+2025-08-29 01:37:52,429 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:52,430 [INFO] Starting security cycle at 2025-08-29T01:37:52.430085+00:00
+2025-08-29 01:37:52,849 [ERROR] Primary security verification failed
+2025-08-29 01:37:52,850 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:52,850 [INFO] Starting security cycle at 2025-08-29T01:37:52.850585+00:00
+2025-08-29 01:37:53,269 [ERROR] Primary security verification failed
+2025-08-29 01:37:53,271 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:53,272 [INFO] Starting security cycle at 2025-08-29T01:37:53.272110+00:00
+2025-08-29 01:37:53,697 [ERROR] Primary security verification failed
+2025-08-29 01:37:53,697 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:53,698 [INFO] Starting security cycle at 2025-08-29T01:37:53.698335+00:00
+2025-08-29 01:37:53,980 [ERROR] Primary security verification failed
+2025-08-29 01:37:53,981 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:53,981 [INFO] Starting security cycle at 2025-08-29T01:37:53.981690+00:00
+2025-08-29 01:37:54,608 [ERROR] Primary security verification failed
+2025-08-29 01:37:54,609 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:54,609 [INFO] Starting security cycle at 2025-08-29T01:37:54.609610+00:00
+2025-08-29 01:37:54,975 [ERROR] Primary security verification failed
+2025-08-29 01:37:54,976 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:54,976 [INFO] Starting security cycle at 2025-08-29T01:37:54.976689+00:00
+2025-08-29 01:37:55,566 [ERROR] Primary security verification failed
+2025-08-29 01:37:55,567 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:55,567 [INFO] Starting security cycle at 2025-08-29T01:37:55.567436+00:00
+2025-08-29 01:37:56,111 [ERROR] Primary security verification failed
+2025-08-29 01:37:56,111 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:56,111 [INFO] Starting security cycle at 2025-08-29T01:37:56.111864+00:00
+2025-08-29 01:37:56,370 [ERROR] Primary security verification failed
+2025-08-29 01:37:56,371 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:56,372 [INFO] Starting security cycle at 2025-08-29T01:37:56.372014+00:00
+2025-08-29 01:37:56,667 [ERROR] Primary security verification failed
+2025-08-29 01:37:56,667 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:56,668 [INFO] Starting security cycle at 2025-08-29T01:37:56.668464+00:00
+2025-08-29 01:37:57,242 [ERROR] Primary security verification failed
+2025-08-29 01:37:57,245 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:57,245 [INFO] Starting security cycle at 2025-08-29T01:37:57.245933+00:00
+2025-08-29 01:37:57,772 [ERROR] Primary security verification failed
+2025-08-29 01:37:57,772 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:57,772 [INFO] Starting security cycle at 2025-08-29T01:37:57.772707+00:00
+2025-08-29 01:37:58,354 [ERROR] Primary security verification failed
+2025-08-29 01:37:58,355 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:58,355 [INFO] Starting security cycle at 2025-08-29T01:37:58.355468+00:00
+2025-08-29 01:37:58,820 [ERROR] Primary security verification failed
+2025-08-29 01:37:58,821 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:58,821 [INFO] Starting security cycle at 2025-08-29T01:37:58.821721+00:00
+2025-08-29 01:37:59,277 [ERROR] Primary security verification failed
+2025-08-29 01:37:59,278 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:59,278 [INFO] Starting security cycle at 2025-08-29T01:37:59.278123+00:00
+2025-08-29 01:37:59,948 [ERROR] Primary security verification failed
+2025-08-29 01:37:59,949 [ERROR] Backwards compatibility failed
+2025-08-29 01:37:59,950 [INFO] Starting security cycle at 2025-08-29T01:37:59.950149+00:00
+2025-08-29 01:38:00,473 [ERROR] Primary security verification failed
+2025-08-29 01:38:00,474 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:00,474 [INFO] Starting security cycle at 2025-08-29T01:38:00.474549+00:00
+2025-08-29 01:38:01,085 [ERROR] Primary security verification failed
+2025-08-29 01:38:01,086 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:01,086 [INFO] Starting security cycle at 2025-08-29T01:38:01.086625+00:00
+2025-08-29 01:38:01,730 [ERROR] Primary security verification failed
+2025-08-29 01:38:01,731 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:01,731 [INFO] Starting security cycle at 2025-08-29T01:38:01.731322+00:00
+2025-08-29 01:38:02,231 [ERROR] Primary security verification failed
+2025-08-29 01:38:02,232 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:02,232 [INFO] Starting security cycle at 2025-08-29T01:38:02.232773+00:00
+2025-08-29 01:38:02,808 [ERROR] Primary security verification failed
+2025-08-29 01:38:02,809 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:02,809 [INFO] Starting security cycle at 2025-08-29T01:38:02.809359+00:00
+2025-08-29 01:38:03,161 [ERROR] Primary security verification failed
+2025-08-29 01:38:03,162 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:03,162 [INFO] Starting security cycle at 2025-08-29T01:38:03.162652+00:00
+2025-08-29 01:38:03,674 [ERROR] Primary security verification failed
+2025-08-29 01:38:03,674 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:03,675 [INFO] Starting security cycle at 2025-08-29T01:38:03.675226+00:00
+2025-08-29 01:38:04,121 [ERROR] Primary security verification failed
+2025-08-29 01:38:04,122 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:04,123 [INFO] Starting security cycle at 2025-08-29T01:38:04.122954+00:00
+2025-08-29 01:38:04,695 [ERROR] Primary security verification failed
+2025-08-29 01:38:04,695 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:04,696 [INFO] Starting security cycle at 2025-08-29T01:38:04.695948+00:00
+2025-08-29 01:38:05,370 [ERROR] Primary security verification failed
+2025-08-29 01:38:05,370 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:05,371 [INFO] Starting security cycle at 2025-08-29T01:38:05.371092+00:00
+2025-08-29 01:38:05,886 [ERROR] Primary security verification failed
+2025-08-29 01:38:05,886 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:05,887 [INFO] Starting security cycle at 2025-08-29T01:38:05.887034+00:00
+2025-08-29 01:38:06,460 [ERROR] Primary security verification failed
+2025-08-29 01:38:06,461 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:06,461 [INFO] Starting security cycle at 2025-08-29T01:38:06.461513+00:00
+2025-08-29 01:38:06,742 [ERROR] Primary security verification failed
+2025-08-29 01:38:06,742 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:06,743 [INFO] Starting security cycle at 2025-08-29T01:38:06.743207+00:00
+2025-08-29 01:38:07,269 [ERROR] Primary security verification failed
+2025-08-29 01:38:07,269 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:07,269 [INFO] Starting security cycle at 2025-08-29T01:38:07.269769+00:00
+2025-08-29 01:38:07,957 [ERROR] Primary security verification failed
+2025-08-29 01:38:07,958 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:07,961 [INFO] Starting security cycle at 2025-08-29T01:38:07.961338+00:00
+2025-08-29 01:38:08,316 [ERROR] Primary security verification failed
+2025-08-29 01:38:08,317 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:08,317 [INFO] Starting security cycle at 2025-08-29T01:38:08.317639+00:00
+2025-08-29 01:38:08,783 [ERROR] Primary security verification failed
+2025-08-29 01:38:08,785 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:08,785 [INFO] Starting security cycle at 2025-08-29T01:38:08.785834+00:00
+2025-08-29 01:38:09,085 [ERROR] Primary security verification failed
+2025-08-29 01:38:09,085 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:09,086 [INFO] Starting security cycle at 2025-08-29T01:38:09.086091+00:00
+2025-08-29 01:38:09,532 [ERROR] Primary security verification failed
+2025-08-29 01:38:09,533 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:09,533 [INFO] Starting security cycle at 2025-08-29T01:38:09.533286+00:00
+2025-08-29 01:38:09,875 [ERROR] Primary security verification failed
+2025-08-29 01:38:09,877 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:09,877 [INFO] Starting security cycle at 2025-08-29T01:38:09.877604+00:00
+2025-08-29 01:38:10,336 [ERROR] Primary security verification failed
+2025-08-29 01:38:10,337 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:10,338 [INFO] Starting security cycle at 2025-08-29T01:38:10.338021+00:00
+2025-08-29 01:38:11,306 [ERROR] Primary security verification failed
+2025-08-29 01:38:11,309 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:11,309 [INFO] Starting security cycle at 2025-08-29T01:38:11.309895+00:00
+2025-08-29 01:38:11,729 [ERROR] Primary security verification failed
+2025-08-29 01:38:11,730 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:11,730 [INFO] Starting security cycle at 2025-08-29T01:38:11.730297+00:00
+2025-08-29 01:38:12,096 [ERROR] Primary security verification failed
+2025-08-29 01:38:12,097 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:12,097 [INFO] Starting security cycle at 2025-08-29T01:38:12.097618+00:00
+2025-08-29 01:38:12,504 [ERROR] Primary security verification failed
+2025-08-29 01:38:12,504 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:12,505 [INFO] Starting security cycle at 2025-08-29T01:38:12.505153+00:00
+2025-08-29 01:38:13,040 [ERROR] Primary security verification failed
+2025-08-29 01:38:13,041 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:13,041 [INFO] Starting security cycle at 2025-08-29T01:38:13.041658+00:00
+2025-08-29 01:38:13,446 [ERROR] Primary security verification failed
+2025-08-29 01:38:13,447 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:13,447 [INFO] Starting security cycle at 2025-08-29T01:38:13.447499+00:00
+2025-08-29 01:38:13,777 [ERROR] Primary security verification failed
+2025-08-29 01:38:13,777 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:13,778 [INFO] Starting security cycle at 2025-08-29T01:38:13.778006+00:00
+2025-08-29 01:38:14,256 [ERROR] Primary security verification failed
+2025-08-29 01:38:14,257 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:14,257 [INFO] Starting security cycle at 2025-08-29T01:38:14.257732+00:00
+2025-08-29 01:38:14,833 [ERROR] Primary security verification failed
+2025-08-29 01:38:14,833 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:14,833 [INFO] Starting security cycle at 2025-08-29T01:38:14.833588+00:00
+2025-08-29 01:38:15,224 [ERROR] Primary security verification failed
+2025-08-29 01:38:15,225 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:15,225 [INFO] Starting security cycle at 2025-08-29T01:38:15.225422+00:00
+2025-08-29 01:38:15,606 [ERROR] Primary security verification failed
+2025-08-29 01:38:15,607 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:15,607 [INFO] Starting security cycle at 2025-08-29T01:38:15.607394+00:00
+2025-08-29 01:38:16,031 [ERROR] Primary security verification failed
+2025-08-29 01:38:16,032 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:16,032 [INFO] Starting security cycle at 2025-08-29T01:38:16.032746+00:00
+2025-08-29 01:38:16,410 [ERROR] Primary security verification failed
+2025-08-29 01:38:16,410 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:16,411 [INFO] Starting security cycle at 2025-08-29T01:38:16.411471+00:00
+2025-08-29 01:38:16,869 [ERROR] Primary security verification failed
+2025-08-29 01:38:16,869 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:16,870 [INFO] Starting security cycle at 2025-08-29T01:38:16.869997+00:00
+2025-08-29 01:38:17,129 [ERROR] Primary security verification failed
+2025-08-29 01:38:17,130 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:17,130 [INFO] Starting security cycle at 2025-08-29T01:38:17.130593+00:00
+2025-08-29 01:38:17,647 [ERROR] Primary security verification failed
+2025-08-29 01:38:17,648 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:17,648 [INFO] Starting security cycle at 2025-08-29T01:38:17.648926+00:00
+2025-08-29 01:38:17,979 [ERROR] Primary security verification failed
+2025-08-29 01:38:17,980 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:17,981 [INFO] Starting security cycle at 2025-08-29T01:38:17.981179+00:00
+2025-08-29 01:38:18,570 [ERROR] Primary security verification failed
+2025-08-29 01:38:18,570 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:18,571 [INFO] Starting security cycle at 2025-08-29T01:38:18.571048+00:00
+2025-08-29 01:38:18,954 [ERROR] Primary security verification failed
+2025-08-29 01:38:18,954 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:18,955 [INFO] Starting security cycle at 2025-08-29T01:38:18.955247+00:00
+2025-08-29 01:38:19,258 [ERROR] Primary security verification failed
+2025-08-29 01:38:19,259 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:19,259 [INFO] Starting security cycle at 2025-08-29T01:38:19.259714+00:00
+2025-08-29 01:38:19,694 [ERROR] Primary security verification failed
+2025-08-29 01:38:19,694 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:19,694 [INFO] Starting security cycle at 2025-08-29T01:38:19.694340+00:00
+2025-08-29 01:38:20,327 [ERROR] Primary security verification failed
+2025-08-29 01:38:20,330 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:20,330 [INFO] Starting security cycle at 2025-08-29T01:38:20.330595+00:00
+2025-08-29 01:38:20,691 [ERROR] Primary security verification failed
+2025-08-29 01:38:20,692 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:20,692 [INFO] Starting security cycle at 2025-08-29T01:38:20.692659+00:00
+2025-08-29 01:38:21,039 [ERROR] Primary security verification failed
+2025-08-29 01:38:21,039 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:21,040 [INFO] Starting security cycle at 2025-08-29T01:38:21.040419+00:00
+2025-08-29 01:38:21,372 [ERROR] Primary security verification failed
+2025-08-29 01:38:21,372 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:21,373 [INFO] Starting security cycle at 2025-08-29T01:38:21.373047+00:00
+2025-08-29 01:38:22,115 [ERROR] Primary security verification failed
+2025-08-29 01:38:22,116 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:22,116 [INFO] Starting security cycle at 2025-08-29T01:38:22.116823+00:00
+2025-08-29 01:38:22,636 [ERROR] Primary security verification failed
+2025-08-29 01:38:22,637 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:22,637 [INFO] Starting security cycle at 2025-08-29T01:38:22.637783+00:00
+2025-08-29 01:38:23,200 [ERROR] Primary security verification failed
+2025-08-29 01:38:23,200 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:23,200 [INFO] Starting security cycle at 2025-08-29T01:38:23.200876+00:00
+2025-08-29 01:38:23,585 [ERROR] Primary security verification failed
+2025-08-29 01:38:23,586 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:23,587 [INFO] Starting security cycle at 2025-08-29T01:38:23.586967+00:00
+2025-08-29 01:38:24,183 [ERROR] Primary security verification failed
+2025-08-29 01:38:24,183 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:24,185 [INFO] Starting security cycle at 2025-08-29T01:38:24.185083+00:00
+2025-08-29 01:38:24,470 [ERROR] Primary security verification failed
+2025-08-29 01:38:24,471 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:24,471 [INFO] Starting security cycle at 2025-08-29T01:38:24.471895+00:00
+2025-08-29 01:38:24,878 [ERROR] Primary security verification failed
+2025-08-29 01:38:24,879 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:24,879 [INFO] Starting security cycle at 2025-08-29T01:38:24.879764+00:00
+2025-08-29 01:38:25,066 [ERROR] Primary security verification failed
+2025-08-29 01:38:25,067 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:25,067 [INFO] Starting security cycle at 2025-08-29T01:38:25.067778+00:00
+2025-08-29 01:38:25,502 [ERROR] Primary security verification failed
+2025-08-29 01:38:25,503 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:25,506 [INFO] Starting security cycle at 2025-08-29T01:38:25.505972+00:00
+2025-08-29 01:38:26,048 [ERROR] Primary security verification failed
+2025-08-29 01:38:26,049 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:26,049 [INFO] Starting security cycle at 2025-08-29T01:38:26.049732+00:00
+2025-08-29 01:38:26,400 [ERROR] Primary security verification failed
+2025-08-29 01:38:26,401 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:26,401 [INFO] Starting security cycle at 2025-08-29T01:38:26.401300+00:00
+2025-08-29 01:38:26,760 [ERROR] Primary security verification failed
+2025-08-29 01:38:26,761 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:26,761 [INFO] Starting security cycle at 2025-08-29T01:38:26.761504+00:00
+2025-08-29 01:38:27,128 [ERROR] Primary security verification failed
+2025-08-29 01:38:27,129 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:27,129 [INFO] Starting security cycle at 2025-08-29T01:38:27.129761+00:00
+2025-08-29 01:38:27,564 [ERROR] Primary security verification failed
+2025-08-29 01:38:27,565 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:27,565 [INFO] Starting security cycle at 2025-08-29T01:38:27.565584+00:00
+2025-08-29 01:38:27,959 [ERROR] Primary security verification failed
+2025-08-29 01:38:27,959 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:27,960 [INFO] Starting security cycle at 2025-08-29T01:38:27.960412+00:00
+2025-08-29 01:38:28,579 [ERROR] Primary security verification failed
+2025-08-29 01:38:28,579 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:28,580 [INFO] Starting security cycle at 2025-08-29T01:38:28.580356+00:00
+2025-08-29 01:38:29,035 [ERROR] Primary security verification failed
+2025-08-29 01:38:29,035 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:29,036 [INFO] Starting security cycle at 2025-08-29T01:38:29.036070+00:00
+2025-08-29 01:38:29,521 [ERROR] Primary security verification failed
+2025-08-29 01:38:29,522 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:29,523 [INFO] Starting security cycle at 2025-08-29T01:38:29.523005+00:00
+2025-08-29 01:38:29,930 [ERROR] Primary security verification failed
+2025-08-29 01:38:29,930 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:29,931 [INFO] Starting security cycle at 2025-08-29T01:38:29.931043+00:00
+2025-08-29 01:38:30,496 [ERROR] Primary security verification failed
+2025-08-29 01:38:30,498 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:30,500 [INFO] Starting security cycle at 2025-08-29T01:38:30.500516+00:00
+2025-08-29 01:38:31,052 [ERROR] Primary security verification failed
+2025-08-29 01:38:31,053 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:31,053 [INFO] Starting security cycle at 2025-08-29T01:38:31.053446+00:00
+2025-08-29 01:38:31,423 [ERROR] Primary security verification failed
+2025-08-29 01:38:31,424 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:31,424 [INFO] Starting security cycle at 2025-08-29T01:38:31.424438+00:00
+2025-08-29 01:38:31,865 [ERROR] Primary security verification failed
+2025-08-29 01:38:31,865 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:31,865 [INFO] Starting security cycle at 2025-08-29T01:38:31.865852+00:00
+2025-08-29 01:38:32,169 [ERROR] Primary security verification failed
+2025-08-29 01:38:32,169 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:32,170 [INFO] Starting security cycle at 2025-08-29T01:38:32.170178+00:00
+2025-08-29 01:38:32,823 [ERROR] Primary security verification failed
+2025-08-29 01:38:32,824 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:32,825 [INFO] Starting security cycle at 2025-08-29T01:38:32.825212+00:00
+2025-08-29 01:38:33,356 [ERROR] Primary security verification failed
+2025-08-29 01:38:33,356 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:33,357 [INFO] Starting security cycle at 2025-08-29T01:38:33.357196+00:00
+2025-08-29 01:38:33,810 [ERROR] Primary security verification failed
+2025-08-29 01:38:33,811 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:33,812 [INFO] Starting security cycle at 2025-08-29T01:38:33.812428+00:00
+2025-08-29 01:38:34,378 [ERROR] Primary security verification failed
+2025-08-29 01:38:34,378 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:34,379 [INFO] Starting security cycle at 2025-08-29T01:38:34.379026+00:00
+2025-08-29 01:38:34,971 [ERROR] Primary security verification failed
+2025-08-29 01:38:34,971 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:34,971 [INFO] Starting security cycle at 2025-08-29T01:38:34.971741+00:00
+2025-08-29 01:38:35,322 [ERROR] Primary security verification failed
+2025-08-29 01:38:35,323 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:35,323 [INFO] Starting security cycle at 2025-08-29T01:38:35.323645+00:00
+2025-08-29 01:38:35,742 [ERROR] Primary security verification failed
+2025-08-29 01:38:35,744 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:35,744 [INFO] Starting security cycle at 2025-08-29T01:38:35.744733+00:00
+2025-08-29 01:38:36,197 [ERROR] Primary security verification failed
+2025-08-29 01:38:36,199 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:36,199 [INFO] Starting security cycle at 2025-08-29T01:38:36.199697+00:00
+2025-08-29 01:38:36,591 [ERROR] Primary security verification failed
+2025-08-29 01:38:36,591 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:36,592 [INFO] Starting security cycle at 2025-08-29T01:38:36.592131+00:00
+2025-08-29 01:38:37,040 [ERROR] Primary security verification failed
+2025-08-29 01:38:37,041 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:37,041 [INFO] Starting security cycle at 2025-08-29T01:38:37.041906+00:00
+2025-08-29 01:38:37,557 [ERROR] Primary security verification failed
+2025-08-29 01:38:37,558 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:37,558 [INFO] Starting security cycle at 2025-08-29T01:38:37.558453+00:00
+2025-08-29 01:38:37,903 [ERROR] Primary security verification failed
+2025-08-29 01:38:37,904 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:37,904 [INFO] Starting security cycle at 2025-08-29T01:38:37.904317+00:00
+2025-08-29 01:38:38,264 [ERROR] Primary security verification failed
+2025-08-29 01:38:38,264 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:38,265 [INFO] Starting security cycle at 2025-08-29T01:38:38.265148+00:00
+2025-08-29 01:38:38,813 [ERROR] Primary security verification failed
+2025-08-29 01:38:38,815 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:38,815 [INFO] Starting security cycle at 2025-08-29T01:38:38.815825+00:00
+2025-08-29 01:38:39,363 [ERROR] Primary security verification failed
+2025-08-29 01:38:39,363 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:39,363 [INFO] Starting security cycle at 2025-08-29T01:38:39.363924+00:00
+2025-08-29 01:38:39,726 [ERROR] Primary security verification failed
+2025-08-29 01:38:39,726 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:39,727 [INFO] Starting security cycle at 2025-08-29T01:38:39.727093+00:00
+2025-08-29 01:38:39,987 [ERROR] Primary security verification failed
+2025-08-29 01:38:39,988 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:39,988 [INFO] Starting security cycle at 2025-08-29T01:38:39.988604+00:00
+2025-08-29 01:38:40,343 [ERROR] Primary security verification failed
+2025-08-29 01:38:40,344 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:40,344 [INFO] Starting security cycle at 2025-08-29T01:38:40.344663+00:00
+2025-08-29 01:38:40,834 [ERROR] Primary security verification failed
+2025-08-29 01:38:40,835 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:40,835 [INFO] Starting security cycle at 2025-08-29T01:38:40.835613+00:00
+2025-08-29 01:38:41,383 [ERROR] Primary security verification failed
+2025-08-29 01:38:41,384 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:41,384 [INFO] Starting security cycle at 2025-08-29T01:38:41.384728+00:00
+2025-08-29 01:38:41,849 [ERROR] Primary security verification failed
+2025-08-29 01:38:41,850 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:41,850 [INFO] Starting security cycle at 2025-08-29T01:38:41.850648+00:00
+2025-08-29 01:38:42,077 [ERROR] Primary security verification failed
+2025-08-29 01:38:42,077 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:42,078 [INFO] Starting security cycle at 2025-08-29T01:38:42.078214+00:00
+2025-08-29 01:38:42,564 [ERROR] Primary security verification failed
+2025-08-29 01:38:42,564 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:42,565 [INFO] Starting security cycle at 2025-08-29T01:38:42.565086+00:00
+2025-08-29 01:38:43,107 [ERROR] Primary security verification failed
+2025-08-29 01:38:43,107 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:43,108 [INFO] Starting security cycle at 2025-08-29T01:38:43.108436+00:00
+2025-08-29 01:38:43,415 [ERROR] Primary security verification failed
+2025-08-29 01:38:43,416 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:43,417 [INFO] Starting security cycle at 2025-08-29T01:38:43.417040+00:00
+2025-08-29 01:38:43,717 [ERROR] Primary security verification failed
+2025-08-29 01:38:43,718 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:43,719 [INFO] Starting security cycle at 2025-08-29T01:38:43.719115+00:00
+2025-08-29 01:38:44,118 [ERROR] Primary security verification failed
+2025-08-29 01:38:44,118 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:44,119 [INFO] Starting security cycle at 2025-08-29T01:38:44.119365+00:00
+2025-08-29 01:38:44,671 [ERROR] Primary security verification failed
+2025-08-29 01:38:44,671 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:44,671 [INFO] Starting security cycle at 2025-08-29T01:38:44.671674+00:00
+2025-08-29 01:38:45,146 [ERROR] Primary security verification failed
+2025-08-29 01:38:45,147 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:45,147 [INFO] Starting security cycle at 2025-08-29T01:38:45.147193+00:00
+2025-08-29 01:38:45,562 [ERROR] Primary security verification failed
+2025-08-29 01:38:45,564 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:45,565 [INFO] Starting security cycle at 2025-08-29T01:38:45.565255+00:00
+2025-08-29 01:38:46,178 [ERROR] Primary security verification failed
+2025-08-29 01:38:46,179 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:46,179 [INFO] Starting security cycle at 2025-08-29T01:38:46.179875+00:00
+2025-08-29 01:38:46,610 [ERROR] Primary security verification failed
+2025-08-29 01:38:46,610 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:46,611 [INFO] Starting security cycle at 2025-08-29T01:38:46.611598+00:00
+2025-08-29 01:38:46,960 [ERROR] Primary security verification failed
+2025-08-29 01:38:46,961 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:46,961 [INFO] Starting security cycle at 2025-08-29T01:38:46.961752+00:00
+2025-08-29 01:38:47,643 [ERROR] Primary security verification failed
+2025-08-29 01:38:47,644 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:47,644 [INFO] Starting security cycle at 2025-08-29T01:38:47.644879+00:00
+2025-08-29 01:38:48,115 [ERROR] Primary security verification failed
+2025-08-29 01:38:48,115 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:48,116 [INFO] Starting security cycle at 2025-08-29T01:38:48.116305+00:00
+2025-08-29 01:38:48,564 [ERROR] Primary security verification failed
+2025-08-29 01:38:48,565 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:48,565 [INFO] Starting security cycle at 2025-08-29T01:38:48.565641+00:00
+2025-08-29 01:38:49,245 [ERROR] Primary security verification failed
+2025-08-29 01:38:49,245 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:49,246 [INFO] Starting security cycle at 2025-08-29T01:38:49.245989+00:00
+2025-08-29 01:38:49,709 [ERROR] Primary security verification failed
+2025-08-29 01:38:49,710 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:49,710 [INFO] Starting security cycle at 2025-08-29T01:38:49.710849+00:00
+2025-08-29 01:38:50,494 [ERROR] Primary security verification failed
+2025-08-29 01:38:50,496 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:50,497 [INFO] Starting security cycle at 2025-08-29T01:38:50.496955+00:00
+2025-08-29 01:38:51,508 [ERROR] Primary security verification failed
+2025-08-29 01:38:51,510 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:51,510 [INFO] Starting security cycle at 2025-08-29T01:38:51.510868+00:00
+2025-08-29 01:38:52,727 [ERROR] Primary security verification failed
+2025-08-29 01:38:52,730 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:52,731 [INFO] Starting security cycle at 2025-08-29T01:38:52.730949+00:00
+2025-08-29 01:38:53,521 [ERROR] Primary security verification failed
+2025-08-29 01:38:53,522 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:53,522 [INFO] Starting security cycle at 2025-08-29T01:38:53.522348+00:00
+2025-08-29 01:38:54,469 [ERROR] Primary security verification failed
+2025-08-29 01:38:54,472 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:54,472 [INFO] Starting security cycle at 2025-08-29T01:38:54.472659+00:00
+2025-08-29 01:38:55,112 [ERROR] Primary security verification failed
+2025-08-29 01:38:55,112 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:55,112 [INFO] Starting security cycle at 2025-08-29T01:38:55.112875+00:00
+2025-08-29 01:38:56,172 [ERROR] Primary security verification failed
+2025-08-29 01:38:56,176 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:56,179 [INFO] Starting security cycle at 2025-08-29T01:38:56.179498+00:00
+2025-08-29 01:38:57,593 [ERROR] Primary security verification failed
+2025-08-29 01:38:57,593 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:57,593 [INFO] Starting security cycle at 2025-08-29T01:38:57.593875+00:00
+2025-08-29 01:38:58,243 [ERROR] Primary security verification failed
+2025-08-29 01:38:58,243 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:58,243 [INFO] Starting security cycle at 2025-08-29T01:38:58.243912+00:00
+2025-08-29 01:38:59,107 [ERROR] Primary security verification failed
+2025-08-29 01:38:59,107 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:59,110 [INFO] Starting security cycle at 2025-08-29T01:38:59.110463+00:00
+2025-08-29 01:38:59,678 [ERROR] Primary security verification failed
+2025-08-29 01:38:59,679 [ERROR] Backwards compatibility failed
+2025-08-29 01:38:59,679 [INFO] Starting security cycle at 2025-08-29T01:38:59.679715+00:00
+2025-08-29 01:39:00,435 [ERROR] Primary security verification failed
+2025-08-29 01:39:00,436 [ERROR] Backwards compatibility failed
+2025-08-29 01:39:00,436 [INFO] Starting security cycle at 2025-08-29T01:39:00.436277+00:00
+2025-08-29 01:39:00,969 [ERROR] Primary security verification failed
+2025-08-29 01:39:00,970 [ERROR] Backwards compatibility failed
+2025-08-29 01:39:00,971 [INFO] Starting security cycle at 2025-08-29T01:39:00.971305+00:00
+2025-08-29 01:39:02,103 [ERROR] Primary security verification failed
+2025-08-29 01:39:02,104 [ERROR] Backwards compatibility failed
+2025-08-29 01:39:02,105 [INFO] Starting security cycle at 2025-08-29T01:39:02.105657+00:00
+2025-08-29 01:39:02,696 [ERROR] Primary security verification failed
+2025-08-29 01:39:02,698 [ERROR] Backwards compatibility failed
+2025-08-29 01:39:02,699 [INFO] Starting security cycle at 2025-08-29T01:39:02.699665+00:00
+2025-08-29 01:39:03,440 [ERROR] Primary security verification failed
+2025-08-29 01:39:03,441 [ERROR] Backwards compatibility failed
+2025-08-29 01:39:03,443 [INFO] Starting security cycle at 2025-08-29T01:39:03.443485+00:00
+2025-08-29 01:39:04,035 [ERROR] Primary security verification failed
+2025-08-29 01:39:04,037 [ERROR] Backwards compatibility failed
+2025-08-29 01:39:04,038 [INFO] Starting security cycle at 2025-08-29T01:39:04.038112+00:00
+2025-08-29 01:39:04,771 [ERROR] Primary security verification failed
+2025-08-29 01:39:04,776 [ERROR] Backwards compatibility failed
+2025-08-29 01:39:04,776 [INFO] Starting security cycle at 2025-08-29T01:39:04.776624+00:00

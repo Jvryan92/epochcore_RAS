@@ -1,3 +1,13 @@
+"""
+PROTECTED FILE - EPOCHCORE RAS
+Copyright (c) 2024 John Ryan, EpochCore Business, Charlotte NC
+All Rights Reserved
+
+This file is protected under proprietary license.
+Unauthorized copying, modification, or distribution is strictly prohibited.
+Contact: jryan2k19@gmail.com for licensing inquiries.
+"""
+
 #!/usr/bin/env bash
 # EPOCH 5 — One-shot Triple-Pass Capsule
 # Purpose: Run EPOCH5 as a single script that seals Pass 1, then Pass 2 and Pass 3 with safe delays,

@@ -1,0 +1,46 @@
+{
+  "content_id": "content_1756437647_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "brain_teaser",
+  "theme": "wizard_academy",
+  "created_at": "2025-08-29T03:20:47.846052",
+  "status": "generated",
+  "content": {
+    "title": "wizard_academy Riddle Challenge",
+    "difficulty": "Hard",
+    "puzzle_type": "Riddle",
+    "question": "A riddle puzzle about wizard_academy",
+    "hints": [
+      "Hint 1",
+      "Hint 2",
+      "Hint 3"
+    ],
+    "solution": "Solution to the wizard_academy puzzle",
+    "learning_points": [
+      "Pattern recognition",
+      "Problem solving"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T03:20:47.846098",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756437647_ledger_agent",
+    "agent_id": "ledger_agent",
+    "content_type": "brain_teaser",
+    "signature": "+w7xKLnUOpiN2O1JaPOw1YKtB0WI0W7ElWaCuiG5Jvg="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T03:20:47.851147",
+    "protection_level": "maximum",
+    "signature": "072437d437315d797e82f6473256f73ebbd8b83c0db13dcd08c93736d3588188"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

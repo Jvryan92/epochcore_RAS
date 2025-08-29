@@ -1,0 +1,75 @@
+{
+  "content_id": "content_1756441247_analyst_agent",
+  "agent_id": "analyst_agent",
+  "content_type": "fun_quiz",
+  "theme": "wizard_academy",
+  "created_at": "2025-08-29T04:20:47.973009",
+  "status": "generated",
+  "content": {
+    "title": "Fun wizard_academy Matching Quiz",
+    "category": "General",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Multiple Choice",
+        "question": "Question 1 about wizard_academy",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "True/False",
+        "question": "Question 2 about wizard_academy",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Fill Blanks",
+        "question": "Question 3 about wizard_academy",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Matching",
+        "question": "Question 4 about wizard_academy",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Multiple Choice",
+        "question": "Question 5 about wizard_academy",
+        "options": null,
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Quiz Master"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T04:20:47.973074",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756441247_analyst_agent",
+    "agent_id": "analyst_agent",
+    "content_type": "fun_quiz",
+    "signature": "cGAWsLoyxua2gP/hKanoEV830cS+hVlpfHAfPyULe2o="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T04:20:47.992108",
+    "protection_level": "maximum",
+    "signature": "09d084bd536995c61dfda3cfd3cc02e930cb8064d059b740717f4a7e8645d920"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

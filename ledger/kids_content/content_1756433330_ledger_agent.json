@@ -1,0 +1,78 @@
+{
+  "content_id": "content_1756433330_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "fun_quiz",
+  "theme": "tech_buddies",
+  "created_at": "2025-08-29T02:08:50.524056",
+  "status": "generated",
+  "content": {
+    "title": "Fun tech_buddies Multiple Choice Quiz",
+    "category": "Nature",
+    "questions": [
+      {
+        "id": 1,
+        "type": "True/False",
+        "question": "Question 1 about tech_buddies",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "True/False",
+        "question": "Question 2 about tech_buddies",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Matching",
+        "question": "Question 3 about tech_buddies",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "Matching",
+        "question": "Question 4 about tech_buddies",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "True/False",
+        "question": "Question 5 about tech_buddies",
+        "options": [
+          "Option 1",
+          "Option 2",
+          "Option 3",
+          "Option 4"
+        ],
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Brain Power"
+    ]
+  }
+}

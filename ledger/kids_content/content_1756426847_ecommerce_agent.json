@@ -1,0 +1,46 @@
+{
+  "content_id": "content_1756426847_ecommerce_agent",
+  "agent_id": "ecommerce_agent",
+  "content_type": "kidz_bop_song",
+  "theme": "dino_world",
+  "created_at": "2025-08-29T00:20:47.410186",
+  "status": "generated",
+  "content": {
+    "title": "dino_world Numbers Groove",
+    "lyrics": [
+      "Verse 1: Fun lyrics about Numbers",
+      "Verse 2: Fun lyrics about Numbers",
+      "Verse 3: Fun lyrics about Numbers"
+    ],
+    "tempo": "Lively",
+    "theme": "",
+    "dance_moves": [
+      "Clap",
+      "Jump",
+      "Clap",
+      "Clap"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T00:20:47.410218",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756426847_ecommerce_agent",
+    "agent_id": "ecommerce_agent",
+    "content_type": "kidz_bop_song",
+    "signature": "e8xYSZlXnWbS1mRZ2IcaVv4pvtTeIMFJI+W/CEG2LiI="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T00:20:47.413480",
+    "protection_level": "maximum",
+    "signature": "a6d9599799d17d9a14e5069af3ab1d12af734171ef3918fb16c08df5cc420989"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

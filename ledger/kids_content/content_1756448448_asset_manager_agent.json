@@ -1,0 +1,99 @@
+{
+  "content_id": "content_1756448448_asset_manager_agent",
+  "agent_id": "asset_manager_agent",
+  "content_type": "interactive_ebook",
+  "theme": "cosmic_adventure",
+  "created_at": "2025-08-29T06:20:48.253653",
+  "status": "generated",
+  "content": {
+    "title": "Star's cosmic_adventure Adventure",
+    "theme": "cosmic_adventure",
+    "pages": [
+      {
+        "page": 1,
+        "text": "Page 1 story about Star in Ocean",
+        "interaction": "Learn"
+      },
+      {
+        "page": 2,
+        "text": "Page 2 story about Star in Ocean",
+        "interaction": "Create"
+      },
+      {
+        "page": 3,
+        "text": "Page 3 story about Star in Ocean",
+        "interaction": "Solve"
+      },
+      {
+        "page": 4,
+        "text": "Page 4 story about Star in Ocean",
+        "interaction": "Learn"
+      },
+      {
+        "page": 5,
+        "text": "Page 5 story about Star in Ocean",
+        "interaction": "Explore"
+      },
+      {
+        "page": 6,
+        "text": "Page 6 story about Star in Ocean",
+        "interaction": "Play"
+      },
+      {
+        "page": 7,
+        "text": "Page 7 story about Star in Ocean",
+        "interaction": "Create"
+      },
+      {
+        "page": 8,
+        "text": "Page 8 story about Star in Ocean",
+        "interaction": "Solve"
+      },
+      {
+        "page": 9,
+        "text": "Page 9 story about Star in Ocean",
+        "interaction": "Create"
+      },
+      {
+        "page": 10,
+        "text": "Page 10 story about Star in Ocean",
+        "interaction": "Explore"
+      }
+    ],
+    "interactive_elements": [
+      "Touch responses",
+      "Sound effects",
+      "Mini-games",
+      "Collectibles"
+    ],
+    "learning_goals": [
+      "Reading comprehension",
+      "Problem-solving",
+      "Creativity",
+      "Knowledge retention"
+    ],
+    "age_group": ""
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T06:20:48.253693",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756448448_asset_manager_agent",
+    "agent_id": "asset_manager_agent",
+    "content_type": "interactive_ebook",
+    "signature": "fJ+Rc0svkToeuUFF4Sp7OAy6CVDHwJ5oqpbnJ4lUy88="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T06:20:48.257212",
+    "protection_level": "maximum",
+    "signature": "77d2b6b98cac5bdb934f60e6872c1d07b357604f642d778d4a344e75f3035f5a"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

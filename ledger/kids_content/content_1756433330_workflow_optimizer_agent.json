@@ -1,0 +1,44 @@
+{
+  "content_id": "content_1756433330_workflow_optimizer_agent",
+  "agent_id": "workflow_optimizer_agent",
+  "content_type": "animated_lesson",
+  "theme": "sound_safari",
+  "created_at": "2025-08-29T02:08:50.529325",
+  "status": "generated",
+  "content": {
+    "title": "sound_safari Adventure in 3D Animation",
+    "duration": "3min",
+    "topic": "Learning about sound_safari",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about sound_safari",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Questions",
+      "Activities"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  }
+}

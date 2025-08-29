@@ -1,0 +1,66 @@
+{
+  "content_id": "content_1756444848_coordinator_agent",
+  "agent_id": "coordinator_agent",
+  "content_type": "animated_lesson",
+  "theme": "wild_earth",
+  "created_at": "2025-08-29T05:20:48.130777",
+  "status": "generated",
+  "content": {
+    "title": "wild_earth Adventure in 3D Animation",
+    "duration": "5min",
+    "topic": "Learning about wild_earth",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about wild_earth",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about wild_earth",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about wild_earth",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about wild_earth",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Questions",
+      "Activities"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T05:20:48.130835",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756444848_coordinator_agent",
+    "agent_id": "coordinator_agent",
+    "content_type": "animated_lesson",
+    "signature": "6fK146/B4vEtwFxXEFxhGQRJuZrd7VOaxtMm63V86Rs="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T05:20:48.134363",
+    "protection_level": "maximum",
+    "signature": "cdfd687f6f1236b98e5b4784f59e9c6131e6e7855fbef54b8776e803ebd5a6a5"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

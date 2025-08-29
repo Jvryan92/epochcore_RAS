@@ -1,0 +1,75 @@
+{
+  "content_id": "content_1756434047_ledger_agent",
+  "agent_id": "ledger_agent",
+  "content_type": "fun_quiz",
+  "theme": "cosmic_adventure",
+  "created_at": "2025-08-29T02:20:47.672907",
+  "status": "generated",
+  "content": {
+    "title": "Fun cosmic_adventure True/False Quiz",
+    "category": "Nature",
+    "questions": [
+      {
+        "id": 1,
+        "type": "Multiple Choice",
+        "question": "Question 1 about cosmic_adventure",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 2,
+        "type": "Fill Blanks",
+        "question": "Question 2 about cosmic_adventure",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 3,
+        "type": "Multiple Choice",
+        "question": "Question 3 about cosmic_adventure",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 4,
+        "type": "True/False",
+        "question": "Question 4 about cosmic_adventure",
+        "options": null,
+        "answer": "Sample answer"
+      },
+      {
+        "id": 5,
+        "type": "Fill Blanks",
+        "question": "Question 5 about cosmic_adventure",
+        "options": null,
+        "answer": "Sample answer"
+      }
+    ],
+    "scoring": "Points per correct answer: 10",
+    "rewards": [
+      "Quiz Master"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T02:20:47.672950",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756434047_ledger_agent",
+    "agent_id": "ledger_agent",
+    "content_type": "fun_quiz",
+    "signature": "S2j2I+Njdzvys055NBrf2xgOZyt/mC74onLeZj2iyTM="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T02:20:47.677516",
+    "protection_level": "maximum",
+    "signature": "1219d63b428244d2520d99718a424b6c7121284c53c7a43f646d1ecb1135e565"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

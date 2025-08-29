@@ -1,0 +1,17 @@
+{"type": "genesis", "from": "MESH_ADMIN_GENESIS", "to": "MESH_ADMIN_GENESIS", "amount": "21000000", "signature": "0cf4b99bca4cb68a985b204df1926e18bad4fe575953c5ec729168fa6bc4dedc"}
+{"type": "investment", "from": "MESH_ADMIN_GENESIS", "to": "MESH_JVRYAN92_1756445384", "amount": "200000", "signature": "cd11d7f72a90855244772a4c9631e4ae5e66117691271ff1ff183ad0ff1c115a"}
+{"type": "investment", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_ADMIN_GENESIS", "amount": "50000", "signature": "2e767fc94adafde39ffb28d698ed70c1cfa1b4663d664e0b102bfdd859850238"}
+{"type": "investment", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_ADMIN_GENESIS", "amount": "25000", "signature": "71d37a825c6c019f75ee3c79dc0f476e2b444b0d1adf8bf0d08854b20cbbae9d"}
+{"type": "genesis", "from": "MESH_ADMIN_GENESIS", "to": "MESH_ADMIN_GENESIS", "amount": "21000000", "signature": "0cf4b99bca4cb68a985b204df1926e18bad4fe575953c5ec729168fa6bc4dedc"}
+{"type": "investment", "from": "MESH_ADMIN_GENESIS", "to": "MESH_JVRYAN92_1756445384", "amount": "200000", "signature": "cd11d7f72a90855244772a4c9631e4ae5e66117691271ff1ff183ad0ff1c115a"}
+{"type": "investment", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_ADMIN_GENESIS", "amount": "50000", "signature": "2e767fc94adafde39ffb28d698ed70c1cfa1b4663d664e0b102bfdd859850238"}
+{"type": "investment", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_ADMIN_GENESIS", "amount": "25000", "signature": "71d37a825c6c019f75ee3c79dc0f476e2b444b0d1adf8bf0d08854b20cbbae9d"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "5000", "signature": "cc50e4ee4a06e3c71e7f66222717d3375ced0d2821d76f638676a656d12c258b"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "15000", "signature": "6e9e5b11802700507a7545e0598f9304a45e12312f0d2337561bf4ab74df2122"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "30000", "signature": "bbfbdee2e43c9dcca96749c5457137213d2bee14e1097e9d29a44ff59be125fa"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "25000", "signature": "0f220cabcfd56f530955a8bffce18d668b77ae032f1e3d8530899a2c6d8f85a0"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "20000", "signature": "1a4916b388793694e406b927550eb1ba1205d84e9e89050c9c5094687a522ca8"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "15000", "signature": "6e9e5b11802700507a7545e0598f9304a45e12312f0d2337561bf4ab74df2122"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "30000", "signature": "bbfbdee2e43c9dcca96749c5457137213d2bee14e1097e9d29a44ff59be125fa"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "25000", "signature": "0f220cabcfd56f530955a8bffce18d668b77ae032f1e3d8530899a2c6d8f85a0"}
+{"type": "software_purchase", "from": "MESH_JVRYAN92_1756445384", "to": "MESH_SOFTWARE_STORE", "amount": "20000", "signature": "1a4916b388793694e406b927550eb1ba1205d84e9e89050c9c5094687a522ca8"}

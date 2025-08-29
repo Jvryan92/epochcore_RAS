@@ -1,0 +1,51 @@
+{
+  "triggers": [
+    {
+      "id": 1,
+      "key": "ASTRA-SEED-001",
+      "title": "Initial Command Structure",
+      "family": "ASTRA",
+      "exec_command": "initialize_command_structure",
+      "comp_base": "command_root",
+      "scale_command": "scale_command_channels",
+      "recur_command": "refine_command_paths",
+      "full_execution": "full_command_deployment",
+      "dep_from": 0.0,
+      "dep_to": 1.0,
+      "deps_list": []
+    },
+    {
+      "id": 2,
+      "key": "CRUX-SEED-001",
+      "title": "Core Anchoring System",
+      "family": "CRUX",
+      "exec_command": "establish_anchor_points",
+      "comp_base": "anchor_system",
+      "scale_command": "expand_anchor_network",
+      "recur_command": "optimize_anchor_stability",
+      "full_execution": "deploy_anchor_matrix",
+      "dep_from": 0.0,
+      "dep_to": 1.0,
+      "deps_list": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "key": "AETHER-SEED-001",
+      "title": "Connection Framework",
+      "family": "AETHER",
+      "exec_command": "create_connection_paths",
+      "comp_base": "connection_framework",
+      "scale_command": "scale_connection_channels",
+      "recur_command": "optimize_path_efficiency",
+      "full_execution": "deploy_full_framework",
+      "dep_from": 0.2,
+      "dep_to": 1.0,
+      "deps_list": [
+        1,
+        2
+      ]
+    }
+  ]
+}

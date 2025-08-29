@@ -1,0 +1,66 @@
+{
+  "content_id": "content_1756441248_multimesh_agent",
+  "agent_id": "multimesh_agent",
+  "content_type": "animated_lesson",
+  "theme": "wild_earth",
+  "created_at": "2025-08-29T04:20:48.008731",
+  "status": "generated",
+  "content": {
+    "title": "wild_earth Adventure in Mixed Media",
+    "duration": "5min",
+    "topic": "Learning about wild_earth",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about wild_earth",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about wild_earth",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about wild_earth",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about wild_earth",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Activities",
+      "Pauses"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  },
+  "_watermark": {
+    "timestamp": "2025-08-29T04:20:48.008767",
+    "version": "1.0.0",
+    "copyright": "\u00a9 2024 John Ryan, EpochCore Business",
+    "content_id": "content_1756441248_multimesh_agent",
+    "agent_id": "multimesh_agent",
+    "content_type": "animated_lesson",
+    "signature": "Y0wTYkMy22FxoLE/okFjVLKamKrVRgEr7NonappdPgI="
+  },
+  "_protected": {
+    "timestamp": "2025-08-29T04:20:48.012216",
+    "protection_level": "maximum",
+    "signature": "98984d75f3a18834eee635adf1b6b59d6dbc0f9aa1f22a5ddf75cc4436662f49"
+  },
+  "_copyright": {
+    "owner": "John Ryan",
+    "business": "EpochCore Business",
+    "location": "Charlotte NC",
+    "year": "2024",
+    "rights": "All Rights Reserved",
+    "contact": "jryan2k19@gmail.com"
+  }
+}

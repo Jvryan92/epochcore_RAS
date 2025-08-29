@@ -1,0 +1,44 @@
+{
+  "content_id": "content_1756426130_multimesh_agent",
+  "agent_id": "multimesh_agent",
+  "content_type": "animated_lesson",
+  "theme": "sound_safari",
+  "created_at": "2025-08-29T00:08:50.306086",
+  "status": "generated",
+  "content": {
+    "title": "sound_safari Adventure in 2D Animation",
+    "duration": "3min",
+    "topic": "Learning about sound_safari",
+    "scenes": [
+      {
+        "scene": 1,
+        "description": "Scene 1 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 2,
+        "description": "Scene 2 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 3,
+        "description": "Scene 3 about sound_safari",
+        "duration": "30s"
+      },
+      {
+        "scene": 4,
+        "description": "Scene 4 about sound_safari",
+        "duration": "30s"
+      }
+    ],
+    "interactions": [
+      "Activities",
+      "Questions"
+    ],
+    "learning_goals": [
+      "Visual comprehension",
+      "Active participation",
+      "Knowledge retention"
+    ]
+  }
+}
