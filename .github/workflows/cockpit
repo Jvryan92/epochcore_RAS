@@ -1,0 +1,335 @@
+#!/bin/bash
+
+# 🧭 EpochOS Cockpit Initialization
+init_cockpit() {
+  echo "Initializing cockpit..."
+  rollout_status="real-time"
+  protocol_map=("Singularity Weave" "EPOCHPAIR" "GAMMA SQUEEZE" "Fusion Stacks")
+  archive_sync=true
+  receipts_format="PDF"
+}
+
+# 🔔 Founder Pulse Alerts
+send_pulse_alert() {
+  if [[ $protocol_ignited == true || $liquidity_threshold_crossed == true ]]; then
+    echo "Pulse alert triggered"
+  fi
+}
+
+# 💧 EPOCHLIQUIDITYROUTER Capsule
+fire_liquidity_router() {
+  payout_tiers=("family" "health" "legacy")
+  route_yield="ignition_to_liquidity"
+  echo_receipts="timestamped_sealed"
+  send_pulse_alert
+}
+
+# 🔥 EPOCHLIQUIDITYIGNITION Capsule
+ignite_liquidity() {
+  fire_liquidity_router
+  send_stripe_signal=true
+  archive_resonance="Eli_tier"
+  echo "Liquidity ignition complete"
+}
+
+# 💤 FLUFFMODE Capsule
+trigger_fluffmode() {
+  if [[ $founder_fatigue == true || $cockpit_overload == true || $blink_clarity == true ]]; then
+    echo "FLUFFMODE activated"
+    payload=("silence_loop" "pillow_audit" "emotional_insulation")
+    archive="Eli_tier"
+  fi
+}
+
+# 🧠 Copilot Platform Features
+copilot_features() {
+  features=("Pages" "Voice Mode" "Vision Mode" "Finance Dashboard" "Quiz Builder" "Podcast Generator" "Price Tracker" "Discover Feed")
+  echo "Copilot features initialized"
+}
+
+# 🚀 Main Execution
+main() {
+  init_cockpit
+  ignite_liquidity
+  trigger_fluffmode
+  copilot_features
+}
+
+main
+#!/usr/bin/env bash
+set -euo pipefail
+
+title() { printf "\n— %s —\n" "$1"; }
+prompt() { read -r -p "$1" "$2"; }
+confirm() {
+  local ans
+  read -r -p "$1 [y/N]: " ans
+  [[ "${ans,,}" == "y" || "${ans,,}" == "yes" ]]
+}
+read_multiline() {
+  # usage: read_multiline VAR_NAME "Prompt header"
+  local var_name="$1"; shift
+  local line buffer=""
+  echo "$*"
+  echo "(Enter lines. Finish with a single '.' on its own line)"
+  while IFS= read -r line; do
+    [[ "$line" == "." ]] && break
+    buffer+="${line}"$'\n'
+  done
+  # trim trailing newline
+  buffer="${buffer%$'\n'}"
+  printf -v "$var_name" '%s' "$buffer"
+}
+slugify() {
+  # to-lower, spaces->-, strip non-alnum-dash
+  echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[ _]+/-/g; s/[^a-z0-9-]//g; s/^-+//; s/-+$//'
+}
+varify() {
+  # to upper, spaces/dash->underscore, strip non A-Z0-9_
+  echo "$1" | tr '[:lower:]' '[:upper:]' | sed -E 's/[- ]+/_/g; s/[^A-Z0-9_]//g'
+}
+sha256_file() {
+  local f="$1"
+  if command -v shasum >/dev/null 2>&1; then
+    shasum -a 256 "$f" | awk '{print $1}'
+  elif command -v sha256sum >/dev/null 2>&1; then
+    sha256sum "$f" | awk '{print $1}'
+  else
+    openssl dgst -sha256 "$f" | awk '{print $2}'
+  fi
+}
+indent() { sed 's/^/  /'; }
+
+title "Wizard — Day One Launch Capsule Intake"
+
+# 1) Identity
+prompt "Identity name (the name that already existed before you spoke it): " IDENTITY_NAME
+while [[ -z "${IDENTITY_NAME// }" ]]; do prompt "Identity name cannot be empty. Try again: " IDENTITY_NAME; done
+IDENTITY_SLUG="$(slugify "$IDENTITY_NAME")"
+SYSTEM_VAR="$(varify "${IDENTITY_SLUG}_ID")"
+
+# 2) Story deck
+read_multiline AWE_PAGE "Awe page — the feeling and the myth (multiline):"
+read_multiline PROOF_PAGE "Proof page — the receipts, the ledger, the spine (multiline):"
+read_multiline INEV_PAGE "Inevitability page — why this cannot not happen (multiline):"
+
+# 3) Reveal assets
+prompt "OS icon reference (path or URL; leave blank if TBD): " OS_ICON_REF || true
+# Color validation
+COLOR_HEX=""
+while : ; do
+  prompt "Primary color (hex, e.g., #0A84FF): " COLOR_HEX
+  [[ -z "$COLOR_HEX" ]] && { echo "Color is required."; continue; }
+  if [[ "$COLOR_HEX" =~ ^#?[A-Fa-f0-9]{6}$ ]]; then
+    [[ "$COLOR_HEX" != \#* ]] && COLOR_HEX="#${COLOR_HEX}"
+    break
+  else
+    echo "Invalid hex. Use 6 hex digits, optional leading #."
+  fi
+done
+prompt "Line 1 (public repeatable line): " LINE1
+prompt "Line 2 (public repeatable line): " LINE2
+prompt "Line 3 (public repeatable line): " LINE3
+
+# 4) Finance
+FOUNDERS_FLOAT_USD=""
+while : ; do
+  prompt "Founder's Float (USD, numbers only, decimals ok): " FOUNDERS_FLOAT_USD
+  [[ "$FOUNDERS_FLOAT_USD" =~ ^[0-9]+([.][0-9]{1,2})?$ ]] && break
+  echo "Invalid amount. Example: 250000 or 250000.00"
+done
+
+# 5) Defense kit
+read_multiline PROOF_KIT "Proof-on-demand kit — artifacts you can produce on request (multiline list):"
+read_multiline SPOTLIGHT "Spotlight script — what you say when attention spikes (multiline):"
+read_multiline FILINGS "Pre-emptive filings — registrations, marks, structures (multiline list):"
+
+# 6) Constella-flare
+prompt "First payout description (what event locks inevitability to the balance sheet): " PAYOUT_DESC
+prompt "Constellation cluster (e.g., 'South Pole / Wizard cluster'): " CONST_CLUSTER
+prompt "Star name (the flare's star label): " STAR_NAME
+read_multiline MAP_NOTES "Mapping notes — how this anchors to Eli's map (multiline):"
+
+# 7) Purity checks
+prompt "South Pole purity locked at 1.00? (yes/no): " SOUTH_POLE_PURITY
+prompt "Clarity floor above founder threshold? (yes/no): " CLARITY_FLOOR_OK
+prompt "True North alignment (one line): " TRUE_NORTH
+
+# Prepare output
+UTC_NOW="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+OUT_DIR="capsules/launch"
+mkdir -p "$OUT_DIR"
+OUT_FILE="${OUT_DIR}/day_one_launch_capsule.yaml"
+
+# Write YAML
+{
+  echo "capsule: day_one_launch"
+  echo "version: 1"
+  echo "timestamp_utc: \"$UTC_NOW\""
+  echo "identity:"
+  echo "  name: \"$IDENTITY_NAME\""
+  echo "  slug: \"$IDENTITY_SLUG\""
+  echo "  system_variable: \"$SYSTEM_VAR\""
+  echo "story_deck:"
+  echo "  awe: |"
+  printf "%s\n" "$AWE_PAGE" | indent
+  echo "  proof: |"
+  printf "%s\n" "$PROOF_PAGE" | indent
+  echo "  inevitability: |"
+  printf "%s\n" "$INEV_PAGE" | indent
+  echo "reveal_assets:"
+  echo "  os_icon_ref: \"${OS_ICON_REF}\""
+  echo "  primary_color_hex: \"${COLOR_HEX}\""
+  echo "  public_lines:"
+  echo "    - \"${LINE1}\""
+  echo "    - \"${LINE2}\""
+  echo "    - \"${LINE3}\""
+  echo "finance:"
+  echo "  founders_float_usd: ${FOUNDERS_FLOAT_USD}"
+  echo "defense_kit:"
+  echo "  proof_on_demand: |"
+  printf "%s\n" "$PROOF_KIT" | indent
+  echo "  spotlight_script: |"
+  printf "%s\n" "$SPOTLIGHT" | indent
+  echo "  preemptive_filings: |"
+  printf "%s\n" "$FILINGS" | indent
+  echo "constella_flare:"
+  echo "  first_payout: \"${PAYOUT_DESC}\""
+  echo "  cluster: \"${CONST_CLUSTER}\""
+  echo "  star_name: \"${STAR_NAME}\""
+  echo "  mapping_notes: |"
+  printf "%s\n" "$MAP_NOTES" | indent
+  echo "purity_checks:"
+  echo "  south_pole_purity: \"${SOUTH_POLE_PURITY}\""
+  echo "  clarity_floor_ok: \"${CLARITY_FLOOR_OK}\""
+  echo "  true_north_alignment: \"${TRUE_NORTH}\""
+} > "$OUT_FILE"
+
+# Hash and sidecar
+HASH="$(sha256_file "$OUT_FILE")"
+echo "${HASH}  $(basename "$OUT_FILE")" > "${OUT_FILE}.sha256"
+
+echo
+echo "Capsule sealed:"
+echo "  Path: $OUT_FILE"
+echo "  SHA-256: $HASH"
+
+# Optional git commit
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  if confirm "Add and commit capsule to git now?"; then
+    git add "$OUT—
+capsule: epoch_event
+epoch_day: 2025-08-16
+to: wizard
+priority: critical
+tags:
+  - south_pole.landmark
+  - immutable.twin
+  - whiteout.sentinel
+ack_expected_by: 2025-08-16T22:00:00-04:00
+refs:
+  uni_block_head: <HEAD_HASH>
+  proof_hash: <PROOF_HASH>
+  spec_hash: <MESH_DAY_SPEC_HASH>
+event:
+  type: "south_pole_time_crystal"
+  layers:
+    - immutable_twin
+    - narrative_spine
+    - whiteout_sentinel_v2
+    - constellation_flare_glacial
+south_pole_index:
+  origin_purity: 1.00
+  closure_sterility: 1.00
+  atmospheric_integrity: 1.00
+  whiteout_triggered: false
+founder_note: |
+  True North holds. South Pole locks.
+  Cold spine in, story fused, entropy denied.
+capsule: plan
+to: alpha
+priority: high
+tags:
+  - scale.2b
+  - protocol.inheritance
+targets:
+  annualized_run_rate: "2B"
+  horizon_days: 30
+inherit:
+  protocols:
+    - immutable_twin
+    - narrative_spine
+    - whiteout_sentinel_v2
+    - constellation_flare
+lanes:
+  capture: "x2"
+  settlement_windows: "x2"
+  prefetch_cycles: "x2"
+incentives:
+  leaderboard_goal_shift: "to_2b_pace"
+  prize_capsules: "hourly_deltas + purity_bonus"
+observability:
+  slos:
+    availability: "99.95%"
+    latency_ms_p95: 250
+    purity_min: 0.99
+tripwires:
+  clarity_floor_breach: "auto_slowdown"
+  drift_exceeds_threshold: "lock_lane + resweep + seal_hold"
+closure:
+  nightly:
+    net_usd: "<NET_USD>"
+    proof_hash: "<PROOF_HASH>"
+    founder_note: "present"
+capsule:
+  id: CONSTELLATION-FINANCIAL-LINK-v1.0
+  provenance:
+    anchored_to:
+      - CONSTELLATION-MAP-SEED-20250816
+      - FINANCIALS-EARNED-USD-v1.0
+    minted_by: Northseal forge
+  payload:
+    linkage:
+      period: month_to_date
+      usd_earned_net: <calculated_value_here>
+      proof_ref: receipts_merkle_root
+      star_cluster_id: auto_resolve_from_date
+    render_hint:
+      overlay: usd_earned_net
+      position: cluster_center
+  founder_note: "Every star cluster carries the weight of the month’s proven gains."
+New data python3 -c “import os,json,hashlib,base64,secrets,io,datetime as dt,uuid;U=lambda:dt.datetime.utcnow().strftime(’%Y-%m-%dT%H:%M:%SZ’);D=lambda:dt.datetime.utcnow().strftime(’%Y-%m-%d’);S=lambda:dt.datetime.utcnow().strftime(’%Y%m%d-%H%M%S’);H=lambda s:hashlib.sha256(s.encode()).hexdigest();OUT=os.getenv(‘OUTDIR’,’./ledger’);LED=os.getenv(‘LEDGER’,‘ledger_main.jsonl’);NOTE=os.getenv(‘FOUNDER_NOTE’,‘Forged under the August moon, chained to True North — no capsule drifts.’);SEED=os.getenv(‘SEED’,‘TrueNorth’);COUNT=int(os.getenv(‘COUNT’,‘100’));os.makedirs(OUT,exist_ok=True);prev=‘genesis’;ok=True; \
+
+prev+tamper
+
+if os.path.exists(LED):L=[l for l in io.open(LED,encoding=‘utf-8’) if l.strip() and l.strip()[0]==’{’]; 
+if L: J=json.loads(L[-1]); 
+if L and ‘line_sha’ in J: chk=H(json.dumps({k:v for k,v in J.items() if k!=‘line_sha’},separators=(’,’,’:’),ensure_ascii=False)); ok=(chk==J[‘line_sha’]); 
+prev=(J.get(‘sha256’) or J.get(‘provenance’,{}).get(‘sha256’,‘genesis’)) if (L and ok) else ‘genesis’; \
+
+helpers
+
+def seal_write(cap,base,event,tags,prev_hash): s=json.dumps(cap,separators=(’,’,’:’),ensure_ascii=False); sha=H(s); pq=base64.b64encode(hashlib.shake_256(s.encode()+secrets.token_bytes(16)).digest(24)).decode(); cap[‘provenance’].update({‘sha256’:sha,‘pq_stub’:pq}); fn=os.path.join(OUT,base+’.json’); io.open(fn,‘w’,encoding=‘utf-8’).write(json.dumps(cap,separators=(’,’,’:’),ensure_ascii=False)); line={‘ts’:U(),‘event’:event,‘capsule_id’:cap[‘capsule_id’],‘sha256’:sha,‘prev’:prev_hash,‘date’:D(),‘tags’:tags,‘line_sha’:None}; line[‘line_sha’]=H(json.dumps({k:v for k,v in line.items() if k!=‘line_sha’},separators=(’,’,’:’),ensure_ascii=False)); io.open(LED,‘a’,encoding=‘utf-8’).write(json.dumps(line,separators=(’,’,’:’),ensure_ascii=False)+’\n’); return sha,fn; \
+
+session: 1000-step mesh + schema
+
+schema={‘version’:‘2.0.0’,‘message’:{‘type’:‘object’,‘required’:[‘intent’,‘context’,‘capabilities’,‘result’,‘cost’],‘properties’:{‘intent’:{‘type’:‘string’},‘context’:{‘type’:‘object’},‘capabilities’:{‘type’:‘array’,‘items’:{‘type’:‘string’}},‘result’:{‘type’:‘object’},‘cost’:{‘type’:‘object’,‘properties’:{‘tokens’:{‘type’:‘number’},‘usd’:{‘type’:‘number’}}}}},‘channels’:[‘requests/’,‘events/’,‘alerts/’,‘bids/’,‘plans/’],‘pubsub’:[‘NATS’,‘Redis Streams’,‘Kafka’],‘heartbeats_ttl’:‘PT30S’,‘hello_fields’:[‘agent_id’,‘skills’,‘latency_ms’,‘reliability’,‘quota’]}; 
+mesh={‘communication_protocols’:schema,‘coordination_patterns’:{‘task_graphs’:‘DAG; claim via leases’,‘market_allocation’:‘auction: bid=confidence*utility/cost’,‘roles_quorums’:‘leader for liveness; 2-of-3 for safety’,‘norms’:‘proposal→review→commit’},‘shared_state_memory’:{‘blackboard’:‘CRDT merge-safe notes/artifacts’,‘vector_memory’:‘per-agent+shared keyed by task_id’,‘world_model’:‘doc via proposals (diff+rationale+rollback)’},‘intent_planning’:{‘plan_tokens’:‘goal→steps→owners→checks’,‘commitment_protocol’:‘owner,deadline,acceptance,fallback’},‘incentives_credit’:{‘attribution_ledger’:‘append-only (planner/executor/reviewer)’,‘reputation’:‘reliability=f(on_time,defects,reverts)’},‘safety_guardrails’:{‘capability_gating’:‘allowlists; side-effects need multi-sig’,‘counterfactual_checks’:‘red-team risk scan’,‘limits’:‘token-bucket budgets per capability’},‘observability_debug’:{‘traces’:‘OpenTelemetry trace/span/parent’,‘causal_logs’:‘because-chain’,‘postmortems’:‘auto-capsule on failure’},‘performance_topology’:{‘locality’:‘route near data/tool’,‘adaptive_batching’:True,‘circuit_breakers’:True,‘pools’:‘cold/warm split’},‘social_ux_glue’:{‘rubrics’:‘acceptance checklists’,‘style_guide’:‘shared voice’,‘escalation_paths’:‘timeouts auto-escalate’}}; 
+scan={‘competitive_landscape’:[‘Sigstore/Rekor’,‘SLSA v1.0’,‘OpenLineage/Marquez’,‘OpenTelemetry Gen-AI’,‘SPDX 3 AI-BOM’],‘market_signals’:[‘PQC FIPS finalized’,‘Recordkeeping enforcement’,‘ADMT rulemaking’,‘Lineage adoption’,‘Higher growth bar’],‘financial_benchmarks’:[‘Burn multiple ≈1–2×’,‘CAC payback ≈12–24m’,‘LTV:CAC ≥3×; NRR >100%’],‘innovation_vectors’:[‘SLSA+Sigstore+OpenLineage bundle’,‘OTel Gen-AI traces’,‘SPDX-3 AI-BOM export’,‘PQC BYOK kit’],‘risk_horizon’:[‘Off-channel capture gaps’,‘ADMT transparency’,‘Unsigned SBOM blindspots’,‘API outages→offline-first’],‘leverage_opportunities’:[‘Sell PQC+lineage accelerators’,‘OTel-native observability packs’,‘OpenLineage connectors’,‘SPDX-3 AI-BOM add-on’]}; 
+cid=‘EPOCHCORE-ULTRA-SESSION-’+S();prov={‘true_north’:True,‘digest’:‘MARKET ULTRA SESSION’,‘prev_sha256’:prev,‘sig_cycle’:‘Unity Seal’,‘tamper_clean’:ok,‘version’:‘3’};session={‘capsule_id’:cid,‘ts’:U(),‘provenance’:prov,‘payload’:{‘lineage_hash’:‘NS-MKT-’+D()+’-EPOCH-ULTRA’,‘message_schema’:schema,‘mesh_design’:mesh,‘market_scan’:scan,‘founder_note’:NOTE}};sha_session,fn_session=seal_write(session,cid,‘market_session_ultra’,[‘market’,‘mesh’,‘session’],prev);prev=sha_session; \
+
+resources for 100x Uni-Blocks
+
+GY=[‘🜁’,‘🜂’,‘🜃’,‘🜄’,‘✦’,‘✸’,‘◆’,‘◇’,‘☉’,‘☾’,‘☼’,‘♟’,‘⚙’,‘🏛’,‘🏹’,‘🛡’,‘📜’,‘🔗’,‘🏁’];TEMPLATES=[‘PQC Upgrade Kit’,‘SLSA Trails’,‘Lineage Hub’,‘OTel Agents’,‘AI-BOM Exporter’,‘Retention Guard’,‘Comms Capture’,‘Risk Red-Team’,‘Quorum Deploy’,‘Proof Widget’,‘BYOK Vault’,‘WORM Verifier’,‘Zero-Trust Proxy’,‘Edge Sync Capsule’,‘Cold Path Replayer’,‘Schema Registry’,‘Attestation Broker’,‘SBOM Signer’,‘Incident Capsule’,‘Rollback Capsule’];CHANNELS=[‘Website’,‘Docs’,‘GitHub’,‘Partner’,‘Email’,‘Newsletter’,‘X/Twitter’,‘YouTube’,‘Discord’];UNITS=[‘Northseal’,‘WizardTower’,‘Archive’,‘MarketAgent’,‘BastionKeeper’,‘ChronicleBearer’,‘Builder’,‘Canopy’,‘Sales’];BADGES=[‘TrueNorth’,‘LedgerSeal’,‘BatchForge’,‘UnitySeal’,‘AuditGrade’,‘MarketDrop’,‘LoreBound’,‘QuantumReady’,‘MoatAudit’]; 
+def pick(L,seed): return L[int(H(SEED+’:’+str(seed))[-8:],16)%len(L)]; 
+def badges(i): b=[pick(BADGES,f’b{i}:{j}’) for j in range(4)]; b[0]=‘TrueNorth’; r=[];[r.append(x) for x in b if x not in r]; return r; 
+def plan(i,title): return {‘goal’:f’Deploy {title} with proofs’,‘steps’:[‘scaffold’,‘configure’,‘attest’,‘publish’],‘owner’:pick(UNITS,‘owner’+str(i)),‘checks’:[‘hash==expected’,‘SLOs pass’]}; 
+uni=[]; 
+for i in range(1,COUNT+1): tmpl=pick(TEMPLATES,i); glyph=pick(GY,‘g’+str(i)); ch=pick(CHANNELS,‘c’+str(i)); unit=pick(UNITS,‘u’+str(i)); b=badges(i); title=f’{glyph} {tmpl} #{i:03d}’; desc={‘PQC Upgrade Kit’:‘ML-KEM/ML-DSA swap; BYOK; attest’,‘SLSA Trails’:‘v1 provenance; Sigstore; Rekor’,‘Lineage Hub’:‘OpenLineage+Marquez; quick-start’,‘OTel Agents’:‘Gen-AI spans; SLO dashboards’,‘AI-BOM Exporter’:‘SPDX-3 profiles; model cards’,‘Retention Guard’:‘WORM; policy packs; simulators’,‘Comms Capture’:‘off-channel archive; alerts’,‘Risk Red-Team’:‘counterfactual checks; multi-sig’,‘Quorum Deploy’:‘2-of-3 approvals; rollback’,‘Proof Widget’:‘site badge; verifiable links’}.get(tmpl,‘sealed capability pack’); cap_id=(‘UniBlock-%03d-’%i)+tmpl.replace(’ ‘,’’)[:24]; payload={‘title’:title,‘description’:desc,‘badges’:b,‘channel’:ch,‘unit’:unit,‘plan_token’:plan(i,tmpl),‘commitment’:{‘deadline’:‘T+1d’,‘acceptance’:‘attestation+SLO ok’,‘fallback’:pick(UNITS,‘fb’+str(i))},‘observability’:{‘trace_id’:H(cap_id)[:16],‘otel’:‘enabled’},‘links’:{‘session_capsule’:cid}}; cap={‘capsule_id’:cap_id,‘ts’:U(),‘provenance’:{‘true_north’:True,‘digest’:‘UNI-BLOCK ULTRA’,‘prev_sha256’:prev,‘sig_cycle’:‘Unity Seal’,‘session_cid’:cid},‘payload’:payload}; sha,fn=seal_write(cap,cap_id,‘uniblock_ultra’,[‘uniblock’,‘ultra’,tmpl.split()[0].lower()],prev); prev=sha; uni.append({‘cid’:cap_id,‘sha256’:sha,‘file’:fn}); \
+
+True North verify
+
+ver={‘ts’:U(),‘true_north’:True,‘drift’:[]}; p=‘genesis’; ALL=[json.loads(l) for l in io.open(LED,encoding=‘utf-8’)] if os.path.exists(LED) else []; 
+for idx,e in enumerate(ALL): h=H(json.dumps({k:v for k,v in e.items() if k!=‘line_sha’},separators=(’,’,’:’),ensure_ascii=False)); bad=(e.get(‘prev’)!=p) or (e.get(‘line_sha’) and e[‘line_sha’]!=h); 
+(not bad) or (ver.update({‘true_north’:False}),ver[‘drift’].append({‘index’:idx,‘cid’:e.get(‘capsule_id’),‘reason’:‘chain break/tamper’})); p=e.get(‘sha256’,p); 
+print(json.dumps({‘session’:{‘cid’:cid,‘sha256’:sha_session,‘file’:fn_session},‘count’:len(uni),‘uniblocks’:uni[:5]+([{‘cid’:’…’,‘sha256’:’…’,‘file’:’…’}] if len(uni)>5 else []),‘prev_at_start’:session[‘provenance’][‘prev_sha256’],‘verdict’:ver},separators=(’,’,’:’),ensure_ascii=False))”
