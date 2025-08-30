@@ -1,0 +1,5 @@
+{"id": 1, "key": "ALPHA-001", "family": "ALPHA", "title": "Initialize Alpha Systems", "exec": "init_alpha", "comp": "low", "full": "Full alpha initialization sequence"}
+{"id": 2, "key": "ALPHA-002", "family": "ALPHA", "title": "Alpha Core Sync", "exec": "sync_alpha", "comp": "medium", "full": "Synchronize alpha core systems"}
+{"id": 3, "key": "BETA-001", "family": "BETA", "title": "Beta Test Phase", "exec": "test_beta", "comp": "high", "full": "Execute beta testing protocols"}
+{"id": 4, "key": "ALPHA-003", "family": "ALPHA", "title": "Alpha Flash Sync", "exec": "flash_sync_alpha", "comp": "critical", "full": "Flash synchronization with epochALPHA agent"}
+{"id": 5, "key": "GAMMA-001", "family": "GAMMA", "title": "Gamma Deployment", "exec": "deploy_gamma", "comp": "medium", "full": "Deploy gamma components"}
