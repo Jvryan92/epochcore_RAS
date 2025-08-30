@@ -1,0 +1,93 @@
+{
+    "version": "1.0",
+    "model": "exponential_decay_with_floor",
+    "epoch_length_days": 30,
+    "epochs": [
+        {
+            "epoch": 1,
+            "base_rate": 0.120,
+            "total_staked_estimate": 5000000,
+            "treasury_mint": 1000000
+        },
+        {
+            "epoch": 2,
+            "base_rate": 0.102,
+            "total_staked_estimate": 15000000,
+            "treasury_mint": 850000
+        },
+        {
+            "epoch": 3,
+            "base_rate": 0.087,
+            "total_staked_estimate": 30000000,
+            "treasury_mint": 722500
+        },
+        {
+            "epoch": 4,
+            "base_rate": 0.074,
+            "total_staked_estimate": 50000000,
+            "treasury_mint": 614125
+        },
+        {
+            "epoch": 5,
+            "base_rate": 0.063,
+            "total_staked_estimate": 75000000,
+            "treasury_mint": 522006
+        },
+        {
+            "epoch": 6,
+            "base_rate": 0.053,
+            "total_staked_estimate": 100000000,
+            "treasury_mint": 443705
+        },
+        {
+            "epoch": 7,
+            "base_rate": 0.045,
+            "total_staked_estimate": 125000000,
+            "treasury_mint": 377149
+        },
+        {
+            "epoch": 8,
+            "base_rate": 0.038,
+            "total_staked_estimate": 150000000,
+            "treasury_mint": 320577
+        },
+        {
+            "epoch": 9,
+            "base_rate": 0.033,
+            "total_staked_estimate": 200000000,
+            "treasury_mint": 272490
+        },
+        {
+            "epoch": 10,
+            "base_rate": 0.028,
+            "total_staked_estimate": 250000000,
+            "treasury_mint": 231617
+        },
+        {
+            "epoch": 11,
+            "base_rate": 0.024,
+            "total_staked_estimate": 300000000,
+            "treasury_mint": 196874
+        },
+        {
+            "epoch": 12,
+            "base_rate": 0.020,
+            "total_staked_estimate": 350000000,
+            "treasury_mint": 167343
+        },
+        {
+            "epoch": "13+",
+            "base_rate": 0.010,
+            "note": "Floor rate reached - sustaining model"
+        }
+    ],
+    "validator_bonus_rate": 0.01,
+    "governance_bonus_rate": 0.005,
+    "early_unstake_penalty": 0.05,
+    "validator_requirements": {
+        "min_stake": 100000,
+        "uptime_requirement": 0.995,
+        "seal_verification": true,
+        "consensus_participation": true
+    }
+}

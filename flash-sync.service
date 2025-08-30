@@ -1,0 +1,17 @@
+[Unit]
+Description=Agent Flash Sync Scheduler
+After=network.target
+
+[Service]
+Type=simple
+User=epochras
+WorkingDirectory=/workspaces/epochcore_RAS
+ExecStart=/usr/bin/python3 /workspaces/epochcore_RAS/schedule_flash_sync.py
+Restart=on-failure
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=flash-sync
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,209 @@
+{
+  "manifest": {
+    "id": "alpha-sync-20250830_202155",
+    "agent": "agent://epochALPHA",
+    "did": "did:epoch:alpha:93d05a3601fe9fb6",
+    "ts": "2025-08-30T20:21:55Z",
+    "op": "full-sync",
+    "managed_fleet": [
+      "agent://alpha",
+      "agent://bravo",
+      "agent://gamma",
+      "agent://delta",
+      "agent://epsilon"
+    ],
+    "signature": "8717b0ea22e2b44e7d929f4ca912011732843680cae08fbff11a8095a738137c"
+  },
+  "agent": {
+    "id": "agent://epochALPHA",
+    "did": "did:epoch:alpha:93d05a3601fe9fb6",
+    "version": "6.3.2",
+    "codename": "Quantum Horizon",
+    "role": "coordinator",
+    "skills": [
+      "mesh.coordinate",
+      "consensus.pbft",
+      "ledger.append",
+      "security.audit",
+      "agent.lifecycle",
+      "mesh.topology",
+      "strategic.planning",
+      "anomaly.detect",
+      "quantum.bridge"
+    ],
+    "reliability": 0.998,
+    "latency_ms": 75,
+    "created_at": "2025-03-15T00:00:00Z",
+    "last_updated": "2025-08-30T20:21:53Z"
+  },
+  "metrics": {
+    "cpu_percent": 33.1228195997781,
+    "memory_mb": 413.8540390360281,
+    "network_latency_ms": 17.981534220988713,
+    "sync_duration_ms": 280.3769906106492,
+    "managed_agents_count": 5,
+    "managed_agents_online": 5,
+    "managed_agents_synced": 3,
+    "anomalies_detected": 0,
+    "threat_level": "none",
+    "disk_usage_mb": 1228.590740636126,
+    "sync_success_rate": 0.6,
+    "health_score": 0.96,
+    "elapsed_time_ms": 0.031232833862304688
+  },
+  "quantum_bridge": {
+    "quantum_states": [
+      {
+        "q_id": "q0",
+        "amplitude_0": "0.2831+0.2842j",
+        "amplitude_1": "0.7638-0.5057j",
+        "entangled_with": null,
+        "coherence": 0.9884643138230192,
+        "gate_history": [
+          "S",
+          "T",
+          "H",
+          "Z"
+        ]
+      },
+      {
+        "q_id": "q1",
+        "amplitude_0": "0.8740-0.1348j",
+        "amplitude_1": "0.2876-0.3677j",
+        "entangled_with": null,
+        "coherence": 0.8688435473600922,
+        "gate_history": [
+          "H",
+          "S"
+        ]
+      },
+      {
+        "q_id": "q2",
+        "amplitude_0": "0.6634-0.4232j",
+        "amplitude_1": "0.5712+0.2336j",
+        "entangled_with": "q3",
+        "coherence": 0.7828507880903516,
+        "gate_history": [
+          "S",
+          "Z",
+          "X"
+        ]
+      },
+      {
+        "q_id": "q3",
+        "amplitude_0": "0.5116+0.5422j",
+        "amplitude_1": "0.4214+0.5164j",
+        "entangled_with": "q4",
+        "coherence": 0.9826318432696095,
+        "gate_history": [
+          "Z",
+          "H"
+        ]
+      },
+      {
+        "q_id": "q4",
+        "amplitude_0": "0.6669+0.5820j",
+        "amplitude_1": "0.0626+0.4612j",
+        "entangled_with": null,
+        "coherence": 0.7345528127958025,
+        "gate_history": [
+          "X",
+          "S"
+        ]
+      }
+    ],
+    "bridge_status": "operational",
+    "entanglement_quality": 0.9158293414273662,
+    "decoherence_estimate_us": 61957.07910981304,
+    "error_correction_active": true
+  },
+  "strategic_directives": {
+    "priorities": [
+      {
+        "name": "system_integrity",
+        "weight": 0.35
+      },
+      {
+        "name": "data_consistency",
+        "weight": 0.25
+      },
+      {
+        "name": "anomaly_detection",
+        "weight": 0.2
+      },
+      {
+        "name": "resource_optimization",
+        "weight": 0.15
+      },
+      {
+        "name": "quantum_readiness",
+        "weight": 0.05
+      }
+    ],
+    "directives": [
+      {
+        "id": "dce8d5d9-f267-41a4-8780-b397c8fd285f",
+        "name": "Enhance mesh resilience",
+        "description": "Improve fault tolerance and recovery mechanisms",
+        "assigned_to": [
+          "agent://bravo",
+          "agent://delta"
+        ],
+        "priority": "high",
+        "deadline": "2025-09-01T20:21:56Z"
+      },
+      {
+        "id": "08ae2b7e-2537-4100-9090-b3aa1c78ef11",
+        "name": "Optimize data consensus",
+        "description": "Fine-tune PBFT parameters for faster convergence",
+        "assigned_to": [
+          "agent://gamma"
+        ],
+        "priority": "medium",
+        "deadline": "2025-09-04T20:21:56Z"
+      },
+      {
+        "id": "a383a86a-98da-4ba3-b7a2-97670080f17c",
+        "name": "Quantum channel preparation",
+        "description": "Prepare secure quantum channels for next-gen protocols",
+        "assigned_to": [
+          "agent://alpha",
+          "agent://epsilon"
+        ],
+        "priority": "low",
+        "deadline": "2025-09-13T20:21:56Z"
+      }
+    ],
+    "contingency_plans": [
+      {
+        "trigger": "reliability_below_90",
+        "action": "activate_backup_nodes",
+        "authorized_by": "agent://epochALPHA"
+      },
+      {
+        "trigger": "anomalies_exceed_5",
+        "action": "initiate_security_audit",
+        "authorized_by": "agent://epochALPHA"
+      }
+    ]
+  },
+  "timestamp": "2025-08-30T20:21:56Z",
+  "sync_status": "partial",
+  "economy_data": {
+    "agent_wallet": "wallet:agent://epochALPHA",
+    "balance": 0,
+    "daily_yield": 0,
+    "token_prices": {
+      "common": 100,
+      "uncommon": 250,
+      "rare": 500,
+      "epic": 1000,
+      "legendary": 2500
+    }
+  },
+  "assets": {
+    "strategy_icon_light": "/workspaces/epochcore_RAS/assets/icons/light/flat-orange/32px/web/strategy_icon-light-flat-orange-32px.png",
+    "strategy_icon_dark": "/workspaces/epochcore_RAS/assets/icons/dark/copper-foil/32px/web/strategy_icon-dark-copper-foil-32px.png"
+  },
+  "signature": "705f3a5a00396ec37bfb3277b881e8ba69bc5544c9e594241a2711aa9caced97"
+}

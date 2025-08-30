@@ -1,0 +1,3 @@
+{"ts": "2025-08-30T21:12:22Z", "agent_id": "agent://alpha", "latency": 249, "status": "healthy"}
+{"ts": "2025-08-30T21:12:22Z", "agent_id": "agent://bravo", "latency": 302, "status": "healthy"}
+{"ts": "2025-08-30T21:12:22Z", "agent_id": "agent://gamma", "latency": 316, "status": "healthy"}

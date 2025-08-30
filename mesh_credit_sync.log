@@ -1,0 +1,8 @@
+2025-08-30 19:21:51,232 [INFO] Starting Mesh Credit Whitepaper flash sync
+2025-08-30 19:21:51,232 [INFO] Scanning directory: economy/mesh_credit
+2025-08-30 19:21:51,232 [INFO] Found 5 files
+2025-08-30 19:21:51,233 [INFO] Extracting key concepts
+2025-08-30 19:21:51,233 [INFO] Generating summary
+2025-08-30 19:21:51,233 [INFO] Saving results
+2025-08-30 19:21:51,234 [INFO] Flash sync complete
+2025-08-30 19:21:51,234 [INFO] Summary available at: economy/mesh_credit/sync/mesh_credit_whitepaper_summary.md

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPOCH Core - Agent Fleet Commander</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <h1>EPOCH Core - Agent Fleet Commander</h1>
+            <div>
+                <span id="last-updated">Last updated: {{ last_updated }}</span>
+                <a href="/sync/alpha" class="btn btn-quantum">Sync epochALPHA</a>
+                <a href="/sync/fleet" class="btn btn-primary">Sync Fleet</a>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Alpha Agent Status -->
+        <div class="dashboard-grid">
+            <div class="card dashboard-full">
+                <div class="card-header alpha">
+                    epochALPHA Status (Quantum Horizon)
+                </div>
+                <div class="card-body">
+                    <div class="metrics-grid">
+                        <div class="metric-box">
+                            <div class="metric-value {{ 'success' if alpha_agent.health_score >= 0.9 else ('warning' if alpha_agent.health_score >= 0.7 else 'danger') }}">
+                                {{ "%.2f"|format(alpha_agent.health_score*100) }}%
+                            </div>
+                            <div class="metric-name">Health Score</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value">
+                                {{ alpha_agent.latency_ms }} ms
+                            </div>
+                            <div class="metric-name">Latency</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value {{ 'success' if alpha_agent.sync_success_rate >= 0.9 else ('warning' if alpha_agent.sync_success_rate >= 0.7 else 'danger') }}">
+                                {{ "%.0f"|format(alpha_agent.sync_success_rate*100) }}%
+                            </div>
+                            <div class="metric-name">Sync Success</div>
+                        </div>
+                        <div class="metric-box">
+                            <div class="metric-value {{ 'success' if alpha_agent.anomalies == 0 else ('warning' if alpha_agent.anomalies < 3 else 'danger') }}">
+                                {{ alpha_agent.anomalies }}
+                            </div>
+                            <div class="metric-name">Anomalies</div>
+                        </div>
+                    </div>
+                    
+                    <div class="quantum-box">
+                        <h3>Quantum Bridge Status</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <div>
+                                <strong>Status:</strong> {{ alpha_agent.quantum_bridge.bridge_status }}
+                            </div>
+                            <div>
+                                <strong>Entanglement Quality:</strong> {{ "%.2f"|format(alpha_agent.quantum_bridge.entanglement_quality*100) }}%
+                            </div>
+                            <div>
+                                <strong>Decoherence Estimate:</strong> {{ "%.2f"|format(alpha_agent.quantum_bridge.decoherence_estimate_us/1000) }} ms
+                            </div>
+                        </div>
+                        
+                        <h4>Quantum States</h4>
+                        <div style="display: flex; flex-wrap: wrap;">
+                            {% for state in alpha_agent.quantum_bridge.quantum_states %}
+                            <div class="quantum-state">
+                                <div class="quantum-state-indicator {{ 'active' if state.entangled_with else '' }}"></div>
+                                <div>
+                                    <strong>{{ state.q_id }}</strong>
+                                    {% if state.entangled_with %}
+                                    <span class="badge badge-primary">Entangled with {{ state.entangled_with }}</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Agent Fleet Status -->
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    Agent Fleet Status
+                </div>
+                <div class="card-body">
+                    <ul class="agent-list">
+                        {% for agent in fleet_agents %}
+                        <li class="agent-item">
+                            <div class="agent-name">{{ agent.id }}</div>
+                            <div class="agent-status {{ agent.status_class }}">{{ agent.status }}</div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    Fleet Metrics
+                </div>
+                <div class="card-body">
+                    <canvas id="fleetMetricsChart" class="chart-container"></canvas>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    Sync History
+                </div>
+                <div class="card-body">
+                    <canvas id="syncHistoryChart" class="chart-container"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Strategic Directives -->
+        <div class="dashboard-grid">
+            <div class="card dashboard-full">
+                <div class="card-header">
+                    Strategic Directives
+                </div>
+                <div class="card-body">
+                    <div class="tab-container">
+                        <div class="tabs">
+                            <div class="tab active" data-tab="priorities">Priorities</div>
+                            <div class="tab" data-tab="tasks">Active Tasks</div>
+                            <div class="tab" data-tab="contingency">Contingency Plans</div>
+                        </div>
+                        
+                        <div class="tab-content active" id="priorities">
+                            <div style="max-width: 600px; margin: 0 auto;">
+                                <canvas id="prioritiesChart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <div class="tab-content" id="tasks">
+                            {% for task in alpha_agent.strategic_directives.directives %}
+                            <div class="task-item">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <h3 style="margin: 0 0 0.5rem 0;">{{ task.name }}</h3>
+                                    <span class="badge badge-{{ 'danger' if task.priority == 'high' else ('warning' if task.priority == 'medium' else 'primary') }}">
+                                        {{ task.priority }}
+                                    </span>
+                                </div>
+                                <p>{{ task.description }}</p>
+                                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                    <div>
+                                        <strong>Assigned to:</strong> {{ ", ".join(task.assigned_to) }}
+                                    </div>
+                                    <div>
+                                        <strong>Deadline:</strong> {{ task.deadline }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="tab-content" id="contingency">
+                            {% for plan in alpha_agent.strategic_directives.contingency_plans %}
+                            <div class="task-item">
+                                <div style="display: flex; justify-content: space-between;">
+                                    <strong>Trigger:</strong> {{ plan.trigger }}
+                                </div>
+                                <div style="margin-top: 0.5rem;">
+                                    <strong>Action:</strong> {{ plan.action }}
+                                </div>
+                                <div style="margin-top: 0.5rem; font-size: 0.875rem;">
+                                    <strong>Authorized by:</strong> {{ plan.authorized_by }}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Anomalies and System Health -->
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    Recent Anomalies
+                </div>
+                <div class="card-body">
+                    {% if anomalies %}
+                        {% for anomaly in anomalies %}
+                        <div class="anomaly-item">
+                            <div style="display: flex; justify-content: space-between;">
+                                <strong>{{ anomaly.agent_id }}</strong>
+                                <span>{{ anomaly.timestamp }}</span>
+                            </div>
+                            <div style="margin-top: 0.5rem;">
+                                {{ anomaly.description }}
+                            </div>
+                            <div style="margin-top: 0.5rem; display: flex; justify-content: space-between; font-size: 0.875rem;">
+                                <span class="badge badge-{{ 'danger' if anomaly.severity == 'high' else ('warning' if anomaly.severity == 'medium' else 'primary') }}">
+                                    {{ anomaly.severity }}
+                                </span>
+                                <span>{{ anomaly.status }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <p>No recent anomalies detected.</p>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    System Health
+                </div>
+                <div class="card-body">
+                    <canvas id="systemHealthChart" class="chart-container"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>EPOCH Core - Agent Fleet Commander | {{ version }} | &copy; 2025</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+        
+        // Charts
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fleet Metrics Chart
+            const fleetMetricsCtx = document.getElementById('fleetMetricsChart').getContext('2d');
+            new Chart(fleetMetricsCtx, {
+                type: 'bar',
+                data: {
+                    labels: {{ fleet_metrics.labels|tojson }},
+                    datasets: [
+                        {
+                            label: 'Reliability',
+                            data: {{ fleet_metrics.reliability|tojson }},
+                            backgroundColor: '#4299e1',
+                        },
+                        {
+                            label: 'Latency (ms)',
+                            data: {{ fleet_metrics.latency|tojson }},
+                            backgroundColor: '#f6ad55',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Sync History Chart
+            const syncHistoryCtx = document.getElementById('syncHistoryChart').getContext('2d');
+            new Chart(syncHistoryCtx, {
+                type: 'line',
+                data: {
+                    labels: {{ sync_history.labels|tojson }},
+                    datasets: [
+                        {
+                            label: 'Success Rate',
+                            data: {{ sync_history.success_rate|tojson }},
+                            borderColor: '#48bb78',
+                            backgroundColor: 'rgba(72, 187, 120, 0.2)',
+                            fill: true,
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Anomalies',
+                            data: {{ sync_history.anomalies|tojson }},
+                            borderColor: '#f56565',
+                            backgroundColor: 'rgba(245, 101, 101, 0.2)',
+                            fill: true,
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+            
+            // Priorities Chart
+            const prioritiesCtx = document.getElementById('prioritiesChart').getContext('2d');
+            new Chart(prioritiesCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: {{ priorities.labels|tojson }},
+                    datasets: [{
+                        data: {{ priorities.values|tojson }},
+                        backgroundColor: [
+                            '#4299e1',
+                            '#48bb78',
+                            '#f6ad55',
+                            '#f56565',
+                            '#805ad5'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        }
+                    }
+                }
+            });
+            
+            // System Health Chart
+            const systemHealthCtx = document.getElementById('systemHealthChart').getContext('2d');
+            new Chart(systemHealthCtx, {
+                type: 'line',
+                data: {
+                    labels: {{ system_health.labels|tojson }},
+                    datasets: [{
+                        label: 'System Health Score',
+                        data: {{ system_health.values|tojson }},
+                        borderColor: '#805ad5',
+                        backgroundColor: 'rgba(128, 90, 213, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 50,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
