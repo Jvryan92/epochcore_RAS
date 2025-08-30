@@ -444,36 +444,6 @@ class WorkflowOptimizerAgent(BaseAgent):
             )
             return {"status": "error", "error": str(e)}
 
-    def optimize_cost(
-        self, workflow_data: Dict[str, Any], cost_factors: Dict[str, float]
-    ) -> Dict[str, Any]:
-        """Optimize workflow for cost efficiency.
-
-        Args:
-            workflow_data: Dictionary containing workflow tasks
-            cost_factors: Resource cost factors
-
-        Returns:
-            Dict containing cost optimization results
-        """
-        tasks = workflow_data.get("tasks", [])
-        resource_usage = self.analyze_resource_usage(workflow_data)
-
-        cost_breakdown = {}
-        total_cost = 0
-
-        for resource, usage in resource_usage.items():
-            if resource in cost_factors:
-                cost = usage * cost_factors[resource]
-                cost_breakdown[resource] = cost
-                total_cost += cost
-
-        return {
-            "total_cost": total_cost,
-            "cost_breakdown": cost_breakdown,
-            "cost_reduction_suggestions": self._generate_cost_suggestions(tasks),
-        }
-
     def monitor_task_execution(
         self, task_id: str, task_data: Dict[str, Any]
     ) -> Dict[str, Any]:
