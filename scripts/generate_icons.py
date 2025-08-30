@@ -27,6 +27,7 @@ FINISH_COLORS = {
     "burnt-orange": TOKENS["burnt_orange"],
     "copper-foil": TOKENS["copper"],
     "embossed-paper": TOKENS["embossed"],
+    "gold-accent": "#FFD700",
 }
 
 
@@ -46,17 +47,59 @@ def bake_svg(master_svg: str, mode: str, finish: str) -> str:
 
 def maybe_export_png(svg_bytes: bytes, out_png: Path, size_px: int):
     try:
-        import cairosvg
+        # Try cairosvg first
+        try:
+            import cairosvg
 
-        out_png.parent.mkdir(parents=True, exist_ok=True)
-        cairosvg.svg2png(
-            bytestring=svg_bytes,
-            write_to=str(out_png),
-            output_width=size_px,
-            output_height=size_px,
-        )
-        return True
-    except Exception:
+            out_png.parent.mkdir(parents=True, exist_ok=True)
+            cairosvg.svg2png(
+                bytestring=svg_bytes,
+                write_to=str(out_png),
+                output_width=size_px,
+                output_height=size_px,
+            )
+            return True
+        except Exception:
+            # Fall back to rsvg-convert if cairosvg fails
+            import subprocess
+            import tempfile
+
+            with tempfile.NamedTemporaryFile(suffix=".svg", delete=False) as tmp:
+                tmp_path = Path(tmp.name)
+                tmp_path.write_bytes(svg_bytes)
+
+            try:
+                subprocess.run(
+                    [
+                        "rsvg-convert",
+                        "-w",
+                        str(size_px),
+                        "-h",
+                        str(size_px),
+                        "-o",
+                        str(out_png),
+                        str(tmp_path),
+                    ],
+                    check=True,
+                )
+                tmp_path.unlink()  # Clean up temp file
+                return True
+            except subprocess.CalledProcessError:
+                # Check if rsvg-convert is installed
+                try:
+                    subprocess.run(
+                        ["rsvg-convert", "--version"],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                    )
+                except FileNotFoundError:
+                    print(
+                        "rsvg-convert not found. "
+                        "Install with: sudo apt-get install -y librsvg2-bin"
+                    )
+                return False
+    except Exception as e:
+        print(f"Error exporting PNG: {e}")
         return False
 
 
@@ -100,7 +143,8 @@ def main():
         generated += 1
 
     print(
-        f"[done] Generated {generated} SVG variants. PNG exports: {png_count} (requires cairosvg)."
+        f"[done] Generated {generated} SVG variants. "
+        f"PNG exports: {png_count} (using cairosvg or rsvg-convert)."
     )
 
 
