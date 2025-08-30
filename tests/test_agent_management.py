@@ -81,12 +81,14 @@ class TestAgentManager:
 
         # Use the actual method available: update_agent_stats
         result = agent_manager.update_agent_stats(
-            agent["did"], {"reliability_score": 0.95}
+            agent["did"], True, 0.5, {"reliability_score": 0.95}
         )
         assert result is True
 
         updated_agent = agent_manager.get_agent(agent["did"])
-        assert updated_agent["reliability_score"] == 0.95
+        # Reliability score is calculated as successful_tasks/total_tasks
+        # Agent starts with 1 task, adding 1 successful task = 1/1 = 1.0
+        assert updated_agent["reliability_score"] == 1.0
 
     def test_list_agents(self, agent_manager):
         """Test agent listing"""
@@ -131,5 +133,5 @@ class TestAgentManager:
         agent = agent_manager.get_agent(fake_did)
         assert agent is None
 
-        result = agent_manager.update_agent_stats(fake_did, {"reliability_score": 0.5})
+        result = agent_manager.update_agent_stats(fake_did, True, 0.5, {"reliability_score": 0.5})
         assert result is False
