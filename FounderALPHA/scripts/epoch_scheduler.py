@@ -184,37 +184,29 @@ def main(argv):
             phase = cycle_phase(idx, args.phase_window)
             # Always use handlers for ignite phase to trigger flash sync
             use_handlers = handlers if phase == "ignite" else None
-            
-            # Simple mesh integration function for demonstration
-            mesh_integration_func = None
-            if args.mesh_integration:
-                def simple_mesh_integration(record, phase, intensity, dry_run):
-                    return {
-                        "mesh_enabled": True,
-                        "mesh_phase": phase,
-                        "mesh_record_id": record["id"],
-                        "mesh_timestamp": datetime.now(timezone.utc).isoformat()
-                    }
-                mesh_integration_func = simple_mesh_integration
-            
             result = run_step(
                 rec,
                 phase,
                 args.intensity,
                 dry_run=args.dry_run,
-                handlers=use_handlers,
-                mesh_integration=mesh_integration_func
+                handlers=use_handlers
             )
-            entry = {"ts": ts, **result}
-
+            entry = {"ts": ts, **result}            entry = {"ts": ts, **result}
         line = json.dumps(entry, ensure_ascii=False)
-        print(line)
-        if outfh:
+        print(line)umps(entry, ensure_ascii=False)
+        if outfh:        print(line)
             outfh.write(line+"\n")
-        processed += 1
+        processed += 1            outfh.write(line+"\n")
 
     if outfh:
-        outfh.close()
+        outfh.close()    if outfh:
+
+
+
+
+
+
+    main(sys.argv[1:])if __name__ == "__main__":    print(f"# Summary: processed={processed}, phasesize={args.phase_window}, intensity={args.intensity}", file=sys.stderr)        outfh.close()
 
     print(f"# Summary: processed={processed}, phasesize={args.phase_window}, intensity={args.intensity}", file=sys.stderr)
 
