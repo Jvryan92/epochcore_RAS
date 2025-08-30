@@ -45,4 +45,3 @@ def test_config() -> dict:
             }
         }
     }
-    }
