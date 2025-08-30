@@ -92,19 +92,31 @@ class AgentSynchronizer:
                 f"Agent {agent_name} not registered for sync point {sync_id}"
             )
 
-        if sync_point.state != SyncState.READY:
+        # Check if sync has already failed or completed
+        if sync_point.state == SyncState.ERROR:
+            self.logger.warning(f"Agent {agent_name} attempted to join failed sync point {sync_id}")
             return False
+            
+        if sync_point.state == SyncState.COMPLETED:
+            self.logger.warning(f"Agent {agent_name} attempted to join completed sync point {sync_id}")
+            return True  # Consider this successful since sync already completed
 
-        # First agent to join starts the sync
-        if not sync_point.agents:
-            sync_point.state = SyncState.SYNCING
-            sync_point.start_time = datetime.now(timezone.utc)
+        # Check if agent already joined
+        if agent_name in sync_point.agents:
+            self.logger.debug(f"Agent {agent_name} already in sync point {sync_id}")
+            # Still need to wait for completion
+        else:
+            # First agent to join starts the sync
+            if not sync_point.agents and sync_point.state == SyncState.READY:
+                sync_point.state = SyncState.SYNCING
+                sync_point.start_time = datetime.now(timezone.utc)
+                self.logger.info(f"Sync point {sync_id} started by agent {agent_name}")
 
-        sync_point.agents.add(agent_name)
-        self.logger.debug(
-            f"Agent {agent_name} joined sync point {sync_id}. "
-            f"Waiting on {len(sync_point.required_agents) - len(sync_point.agents)} more agents"
-        )
+            sync_point.agents.add(agent_name)
+            self.logger.debug(
+                f"Agent {agent_name} joined sync point {sync_id}. "
+                f"Waiting on {len(sync_point.required_agents) - len(sync_point.agents)} more agents"
+            )
 
         try:
             # Wait for all agents or timeout
@@ -115,10 +127,14 @@ class AgentSynchronizer:
 
         except asyncio.TimeoutError:
             sync_point.state = SyncState.ERROR
+            missing_agents = sync_point.required_agents - sync_point.agents
             self.logger.error(
-                f"Sync point {sync_id} timed out waiting for agents: "
-                f"{sync_point.required_agents - sync_point.agents}"
+                f"Sync point {sync_id} timed out waiting for agents: {missing_agents}"
             )
+            return False
+        except Exception as e:
+            sync_point.state = SyncState.ERROR
+            self.logger.error(f"Sync point {sync_id} failed with error: {str(e)}")
             return False
 
     async def _wait_for_sync_completion(self, sync_point: SyncPoint) -> None:
@@ -172,6 +188,129 @@ class AgentSynchronizer:
             del self.sync_points[sync_id]
             self.logger.debug(f"Cleaned up sync point {sync_id}")
 
+    def list_active_sync_points(self) -> List[Dict[str, Any]]:
+        """List all active sync points.
+
+        Returns:
+            List of active sync point statuses
+        """
+        return [self.get_sync_status(sync_id) for sync_id in self.sync_points.keys()]
+
+    def diagnose_sync_issues(self, sync_id: str) -> Dict[str, Any]:
+        """Diagnose potential issues with a sync point.
+
+        Args:
+            sync_id: Sync point identifier
+
+        Returns:
+            Dictionary with diagnostic information
+        """
+        if sync_id not in self.sync_points:
+            return {"error": f"Sync point {sync_id} not found"}
+
+        sync_point = self.sync_points[sync_id]
+        status = self.get_sync_status(sync_id)
+        
+        diagnostics = {
+            "sync_id": sync_id,
+            "status": status,
+            "issues": [],
+            "recommendations": []
+        }
+
+        # Check for common issues
+        if sync_point.state == SyncState.ERROR:
+            diagnostics["issues"].append("Sync point is in error state")
+            diagnostics["recommendations"].append("Check logs for timeout or error details")
+
+        if sync_point.state == SyncState.SYNCING:
+            missing_agents = sync_point.required_agents - sync_point.agents
+            if missing_agents:
+                diagnostics["issues"].append(f"Missing agents: {missing_agents}")
+                diagnostics["recommendations"].append("Check if missing agents are running and can reach sync point")
+
+        # Check timing
+        if sync_point.start_time:
+            import time
+            elapsed = time.time() - sync_point.start_time.timestamp()
+            if elapsed > sync_point.timeout * 0.8:  # 80% of timeout
+                diagnostics["issues"].append(f"Sync taking long time: {elapsed:.1f}s / {sync_point.timeout}s")
+                diagnostics["recommendations"].append("Consider increasing timeout or checking agent performance")
+
+        return diagnostics
+
+    def force_complete_sync(self, sync_id: str) -> bool:
+        """Force complete a sync point (emergency recovery).
+
+        Args:
+            sync_id: Sync point identifier
+
+        Returns:
+            True if forced completion succeeded
+        """
+        if sync_id not in self.sync_points:
+            self.logger.warning(f"Cannot force complete unknown sync point: {sync_id}")
+            return False
+
+        sync_point = self.sync_points[sync_id]
+        sync_point.state = SyncState.COMPLETED
+        sync_point.completion_time = datetime.now(timezone.utc)
+        
+        self.logger.warning(f"Force completed sync point {sync_id}")
+        return True
+    
+    async def join_or_create_sync_point(
+        self, 
+        sync_id: str, 
+        agent_name: str, 
+        required_agents: Set[str], 
+        timeout: Optional[float] = None
+    ) -> bool:
+        """Join existing sync point or create new one if needed.
+        
+        This method handles the common case where agents want to sync 
+        but may have slightly different views of who should participate.
+        
+        Args:
+            sync_id: Sync point identifier
+            agent_name: Name of agent joining
+            required_agents: Set of agents this agent believes should participate
+            timeout: Optional timeout override
+            
+        Returns:
+            True if sync successful, False otherwise
+        """
+        # Ensure agent is in required set
+        required_agents = required_agents.copy()
+        required_agents.add(agent_name)
+        
+        # Create sync point if it doesn't exist
+        if sync_id not in self.sync_points:
+            try:
+                await self.create_sync_point(sync_id, required_agents, timeout)
+            except ValueError as e:
+                if "already exists" in str(e):
+                    # Race condition - another agent created it
+                    pass
+                else:
+                    raise
+        
+        # Check if we can join
+        sync_point = self.sync_points[sync_id]
+        if agent_name not in sync_point.required_agents:
+            # We're not in the required set - for now just log and fail gracefully
+            missing_agents = required_agents - sync_point.required_agents
+            extra_agents = sync_point.required_agents - required_agents
+            
+            self.logger.warning(
+                f"Agent {agent_name} sync set mismatch for {sync_id}. "
+                f"Missing from sync: {missing_agents}, Extra in sync: {extra_agents}"
+            )
+            return False
+        
+        # Join the sync point
+        return await self.join_sync_point(sync_id, agent_name)
+
 
 class SynchronizedAgent(BaseAgent):
     """Base class for agents that support synchronization."""
@@ -207,13 +346,10 @@ class SynchronizedAgent(BaseAgent):
             True if sync successful, False otherwise
         """
         try:
-            # Create sync point if we're the first
-            if sync_id not in self.synchronizer.sync_points:
-                agents.add(self.name)  # Include self
-                await self.synchronizer.create_sync_point(sync_id, agents, timeout)
-
-            # Join the sync point
-            success = await self.synchronizer.join_sync_point(sync_id, self.name)
+            # Use the improved join_or_create method
+            success = await self.synchronizer.join_or_create_sync_point(
+                sync_id, self.name, agents, timeout
+            )
             self._sync_results[sync_id] = success
             return success
 
