@@ -166,6 +166,17 @@ def main(argv):
         "ignite": flash_sync_handler
     }
 
+    # Setup mesh integration if requested
+    mesh_integration = None
+    if args.mesh_integration:
+        def mesh_integration_handler(record, phase, intensity, dry_run):
+            return {
+                "mesh_enabled": True,
+                "mesh_phase": phase,
+                "mesh_record_id": record["id"]
+            }
+        mesh_integration = mesh_integration_handler
+
     # Process nodes in order
     processed = 0
     outfh = open(args.json_log, "w", encoding="utf-8") if args.json_log else None
@@ -189,24 +200,18 @@ def main(argv):
                 phase,
                 args.intensity,
                 dry_run=args.dry_run,
-                handlers=use_handlers
+                handlers=use_handlers,
+                mesh_integration=mesh_integration
             )
-            entry = {"ts": ts, **result}            entry = {"ts": ts, **result}
+            entry = {"ts": ts, **result}
         line = json.dumps(entry, ensure_ascii=False)
-        print(line)umps(entry, ensure_ascii=False)
-        if outfh:        print(line)
+        print(line)
+        if outfh:
             outfh.write(line+"\n")
-        processed += 1            outfh.write(line+"\n")
+        processed += 1
 
     if outfh:
-        outfh.close()    if outfh:
-
-
-
-
-
-
-    main(sys.argv[1:])if __name__ == "__main__":    print(f"# Summary: processed={processed}, phasesize={args.phase_window}, intensity={args.intensity}", file=sys.stderr)        outfh.close()
+        outfh.close()
 
     print(f"# Summary: processed={processed}, phasesize={args.phase_window}, intensity={args.intensity}", file=sys.stderr)
 
