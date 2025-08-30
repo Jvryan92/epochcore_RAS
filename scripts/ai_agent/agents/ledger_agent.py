@@ -10,25 +10,14 @@ import uuid
 import zipfile
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Dict, List, Any, Optional
 
 from ..core.async_base_agent import AsyncBaseAgent
-from ..core.error_handling import RetryableError, safe_operation, with_retry
+from ..core.error_handling import safe_operation, with_retry, RetryableError
 from ..core.monitoring import AgentMonitor
 
 
 class LedgerAgent(AsyncBaseAgent):
-    def start(self) -> Dict[str, Any]:
-        """Synchronous entry point for agent manager compatibility."""
-        import asyncio
-
-        try:
-            result = asyncio.run(self.initialize_ledger())
-            return {"status": "success", "agent": self.name, "result": result}
-        except Exception as e:
-            self.logger.error(f"LedgerAgent start failed: {e}")
-            return {"status": "error", "agent": self.name, "error": str(e)}
-
     """Agent for managing secure distributed ledger operations."""
 
     def __init__(self, config: Optional[Dict[str, Any]] = None):
@@ -46,9 +35,7 @@ class LedgerAgent(AsyncBaseAgent):
         self.slo_ms = self.config.get("slo_ms", 300)
         self.budget = float(self.config.get("budget", 5000))
         self.power_index = self.config.get("power_index", 16)
-        import logging
-
-        self.logger = logging.getLogger(f"strategy_ai_agent.{self.name}")
+        
         # Ensure directories exist
         self.base_dir.mkdir(parents=True, exist_ok=True)
         self.cas_dir.mkdir(parents=True, exist_ok=True)
@@ -62,20 +49,18 @@ class LedgerAgent(AsyncBaseAgent):
         """
         # Generate root key using enhanced security
         self.root_key = await self._generate_root_key()
-
+        
         # Initialize key hierarchy
         self.keys = await self._initialize_key_hierarchy()
-
+        
         # Create initial ledger state
         state = {
             "ts": self._get_timestamp(),
-            "root": self._hash_string(
-                f"genesis:drip:{self.config.get('seed', 'TrueNorth')}"
-            ),
+            "root": self._hash_string(f"genesis:drip:{self.config.get('seed', 'TrueNorth')}"),
             "last": "genesis",
-            "segments": [],
+            "segments": []
         }
-
+        
         await self._write_json(self.base_dir / "drip_chain_state.json", state)
         return {"status": "initialized", "state": state}
 
@@ -91,28 +76,28 @@ class LedgerAgent(AsyncBaseAgent):
             Segment processing results
         """
         self.monitor.start_operation(f"segment_{segment_num}")
-
+        
         try:
             # Generate segment keys
             seg_keys = await self._derive_segment_keys(segment_num)
-
+            
             # Process cycles
             cycles = await self._process_cycles(segment_num)
-
+            
             # Calculate Merkle root
             merkle_root = await self._calculate_merkle_root(cycles)
-
+            
             # Create segment capsule
             capsule = await self._create_segment_capsule(
                 segment_num, cycles, merkle_root, seg_keys
             )
-
+            
             # Update ledger
             await self._update_ledger(capsule)
-
+            
             self.monitor.end_operation(f"segment_{segment_num}")
             return capsule
-
+            
         except Exception as e:
             self.logger.error(f"Segment {segment_num} processing failed: {str(e)}")
             raise RetryableError(f"Segment processing failed: {str(e)}")
@@ -128,12 +113,13 @@ class LedgerAgent(AsyncBaseAgent):
         """
         seed = self.config.get("seed", "TrueNorth")
         prk = self._hkdf_extract(
-            self._hash_string(f"SEG:{segment_num}:{seed}").encode(), self.root_key
+            self._hash_string(f"SEG:{segment_num}:{seed}").encode(),
+            self.root_key
         )
-
+        
         return {
             "segment": self._hkdf_expand(prk, b"DRIP-SEG"),
-            "ledger": self._hkdf_expand(prk, b"LEDGER"),
+            "ledger": self._hkdf_expand(prk, b"LEDGER")
         }
 
     @safe_operation("merkle_calculation")
@@ -148,9 +134,9 @@ class LedgerAgent(AsyncBaseAgent):
         """
         if not items:
             return hashlib.sha256(b"").hexdigest()
-
+            
         nodes = [bytes.fromhex(x) for x in items]
-
+        
         while len(nodes) > 1:
             new_level = []
             for i in range(0, len(nodes), 2):
@@ -158,7 +144,7 @@ class LedgerAgent(AsyncBaseAgent):
                 right = nodes[i + 1] if i + 1 < len(nodes) else nodes[i]
                 new_level.append(hashlib.sha256(left + right).digest())
             nodes = new_level
-
+            
         return nodes[0].hex()
 
     def _get_timestamp(self) -> str:
@@ -206,12 +192,12 @@ class LedgerAgent(AsyncBaseAgent):
         output = b""
         T = b""
         i = 1
-
+        
         while len(output) < length:
             T = hmac.new(prk, T + info + bytes([i]), hashlib.sha256).digest()
             output += T
             i += 1
-
+            
         return output[:length]
 
     async def _write_json(self, path: Path, data: Any):

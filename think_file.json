@@ -1,0 +1,43 @@
+{
+    "description": "EpochCore Mesh Agent Incentive & ROI Tracker",
+    "created": "2025-08-29T00:00:00Z",
+    "payment_qr": {
+        "paypal": "attached/paypal_qr.png",
+        "stripe": "attached/stripe_qr.png",
+        "coinbase": "attached/coinbase_qr.png",
+        "cashapp": "attached/cashapp_qr.png"
+    },
+    "metrics": {
+        "agent_sales": [],
+        "upsells": [],
+        "roi": [],
+        "badges": [],
+        "revenue": [],
+        "incentives": [],
+        "awards": [],
+        "stripe_transactions": [],
+        "paypal_transactions": [],
+        "daily_profit": [],
+        "agent_performance": [],
+        "customer_feedback": [],
+        "market_expansion": [],
+        "governance_votes": [],
+        "capsule_mints": [],
+        "meshcredit_flows": [],
+        "seasonal_rewards": [],
+        "primal_glyphs": [],
+        "distribution_events": []
+    },
+    "notes": "Track every metric, sale, badge, and incentive for mesh agents. Update as new fields emerge.",
+    "branding": {
+        "legal_entity": "EpochCore LLC",
+        "brand": "EpochCore Mesh Ecosystem"
+    },
+    "meshcredit_status": "MeshCredit is the most popular financial rail.",
+    "automation": {
+        "qr_code_usage": "Enabled for PayPal, Stripe, Coinbase, CashApp, MeshCredit",
+        "auto_badge_assignment": "Enabled",
+        "profit_calculation": "Automated",
+        "payment_flow_visualization": "Enabled for all rails"
+    }
+}

@@ -1,12 +1,15 @@
-import json
-import random
+from typing import Dict, List, Any, Optional, Tuple, Callable
+import numpy as np
 from dataclasses import dataclass
 from datetime import datetime
-from enum import Enum
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
-
-import numpy as np
+import json
+from enum import Enum
+import random
+from abc import ABC, abstractmethod
 
 
 @dataclass
@@ -366,7 +369,7 @@ class EvolutionaryMetaLearner:
         count = 0
 
         for i, s1 in enumerate(self.strategies):
-            for s2 in self.strategies[i + 1:]:
+            for s2 in self.strategies[i + 1 :]:
                 diff = sum(
                     abs(s1.parameters[p] - s2.parameters[p]) for p in s1.parameters
                 )
@@ -421,7 +424,7 @@ class RecursiveSelfImprover:
         objective = self._select_objective(context, metrics)
 
         # Evolve strategies for current level
-        self.meta_learner.evolve_strategies(objective, context)
+        strategies = self.meta_learner.evolve_strategies(objective, context)
         best_strategy = self.meta_learner.get_best_strategy()
 
         # Apply improvements

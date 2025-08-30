@@ -1,0 +1,10 @@
+# DISTRIBUTIONBLAST: Raid-tier Mega Capsule
+
+- Capsule: FOUNDER_CROWN_raid_mega_capsule.json
+- LEGENDSEAL: 7808041779d08f6bc1d98b6de049aa79725567a22ebc8094a4a77a80bbd4e4a9
+- Archive: FOUNDER_CROWN
+- Channels: newsletter, Telegram, GitHub, Docs
+- Published: 2025-08-29
+
+## Instructions
+Distribute the capsule to all canopy channels. Reference the LEGENDSEAL for integrity. Archive as FOUNDER_CROWN for eternal lineage.

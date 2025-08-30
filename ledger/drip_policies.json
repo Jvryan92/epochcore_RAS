@@ -1,0 +1,1 @@
+{"rules":[{"if":"cap==\"drip.signal\"","require":["quorum==2","evidence"]},{"if":"usd>=50","require":["quorum==2"]},{"if":"risk.radius!=\"low\"","require":["backup","shadow_or_dryrun"]}]}

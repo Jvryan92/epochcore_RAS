@@ -1,12 +1,12 @@
 """Test configuration and fixtures."""
 
-import shutil
+import os
+import pytest
 import sys
+import shutil
 import tempfile
 from pathlib import Path
 from typing import Generator
-
-import pytest
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
@@ -30,16 +30,7 @@ def temp_dir() -> Generator[str, None, None]:
 @pytest.fixture
 def sample_icon_path() -> Path:
     """Return path to a sample icon file."""
-    return (
-        project_root
-        / "assets"
-        / "icons"
-        / "dark"
-        / "flat-orange"
-        / "48px"
-        / "web"
-        / "strategy_icon-dark-flat-orange-48px.png"
-    )
+    return project_root / "assets" / "icons" / "dark" / "flat-orange" / "48px" / "web" / "strategy_icon-dark-flat-orange-48px.png"
 
 
 @pytest.fixture
@@ -50,7 +41,8 @@ def test_config() -> dict:
             "icons": {
                 "sizes": ["16px", "32px", "48px"],
                 "variants": ["dark", "light"],
-                "colors": ["flat-orange", "burnt-orange", "copper-foil"],
+                "colors": ["flat-orange", "burnt-orange", "copper-foil"]
             }
         }
+    }
     }

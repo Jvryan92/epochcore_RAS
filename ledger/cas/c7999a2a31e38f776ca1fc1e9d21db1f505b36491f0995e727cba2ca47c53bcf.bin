@@ -1,0 +1,1 @@
+{"capsule_id":"ALPHA-PULSE-SEG1-1220dfd6","ts":"2025-08-29T22:23:10Z","provenance":{"prev_sha256":"genesis","chain_prev":"genesis","merkle_root":"6ec5f2aea085549457852367d023ff7d29631f925dbaa9e24273b7308703fd38"},"payload":{"exec":"pulse_seg_1_exec.json","sla":"pulse_seg_1_sla.json","merkle":"pulse_seg_1_merkle.json"}}

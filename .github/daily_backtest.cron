@@ -1,3 +1,0 @@
-# EpochCore Daily Backtest Cron
-# Runs the comprehensive backtesting suite once per day
-0 3 * * * cd /workspaces/epochcore_RAS && pytest tests/test_backtest.py -v >> logs/daily_backtest.log 2>&1

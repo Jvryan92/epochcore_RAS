@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "agent_type": "Treasury_Agent",
+  "trigger": "TREASURYFLOW\ud83d\udcb5",
+  "timestamp": "2025-08-29T21:52:23Z",
+  "capsule_id": "capsule_Treasury_Agent_20250829_215223_7d05f4d3-2f74-48d0-8cd0-e4014e251e88",
+  "provenance": {
+    "founder_note": "Ledger first. Recursive always.",
+    "true_north": "locked"
+  },
+  "mesh": {
+    "channels": [
+      "requests/",
+      "events/",
+      "alerts/",
+      "bids/",
+      "plans/"
+    ],
+    "coordination": "DAG+contract-net",
+    "quorum": "2-of-3 for billing changes"
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Reinject"
+  ],
+  "intent": {
+    "goal": "Auto-log Stripe/MeshCredit inflows and outflows",
+    "sub_capsules": [
+      "invoices",
+      "payouts",
+      "ROI metrics"
+    ],
+    "github_action": "append daily revenue.json",
+    "outputs": [
+      "Treasury Flow Capsule"
+    ]
+  },
+  "recursion_depth": 0,
+  "monetary_artifacts": {
+    "coinbase_qr": "attached/coinbase_qr.png",
+    "cashapp_qr": "attached/cashapp_qr.png",
+    "paypal_qr": "attached/paypal_qr.png",
+    "stripe_qr": "attached/stripe_qr.png",
+    "meshcredit_status": "MeshCredit is the most popular financial rail.",
+    "founders_map": "attached/founders_map.png",
+    "edgecapsule_cloud_map": "attached/edgecapsule_cloud_map.png",
+    "margin_velocity_chart": "attached/margin_velocity_chart.png",
+    "mythic_glyph_tree": "attached/mythic_glyph_tree.png",
+    "mesh_ecosystem_diagram": "attached/mesh_ecosystem_diagram.png",
+    "root_capsule_card": "attached/root_capsule_card.png"
+  },
+  "sub_capsules": [
+    "invoice_d9956a35-cd00-480e-bf9a-4c79eb8b58e7",
+    "payout_75512c62-1370-488c-b690-4ed706cba294",
+    "roi_5ff23c4a-7f10-4a4a-be5d-376aebfbc5d4"
+  ]
+}

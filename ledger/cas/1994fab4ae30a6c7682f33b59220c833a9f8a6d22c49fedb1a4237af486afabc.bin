@@ -1,0 +1,1 @@
+{"capsule_id":"ALPHA-DRIP-SEG10-0044f5f7","ts":"2025-08-29T22:21:17Z","provenance":{"prev_sha256":"8751d43a985525c416fea620fcda89b454f5c9059956a6ecd3d0804df40fc8bd","chain_prev":"8f908eea2a4f38a999080124be0ed976b5bffff3e9cee538bd0f3099979dc304","merkle_root":""},"payload":{"exec":"drip_seg_10_exec.json","sla":"drip_seg_10_sla.json","merkle":"drip_seg_10_merkle.json"}}

@@ -1,0 +1,71 @@
+{
+    "saas_catalog": [
+        {
+            "name": "Mesh Agent Bundle",
+            "description": "Deployable agent packs for mesh operations, governance, and incentives.",
+            "features": [
+                "Capsule minting",
+                "Agent onboarding",
+                "Governance cycles",
+                "Incentive tracking"
+            ],
+            "pricing": "Custom, MeshCredit/Stripe/PayPal supported"
+        },
+        {
+            "name": "Mesh Expansion Node",
+            "description": "SaaS repo node with CI/CD, Stripe rails, and mesh integration.",
+            "features": [
+                "Auto-wired CI/CD",
+                "Stripe SKU",
+                "Mesh dashboard"
+            ],
+            "pricing": "Per node, MeshCredit/Stripe/PayPal supported"
+        },
+        {
+            "name": "Governance Capsule",
+            "description": "Multisig council, voting, rollback, and audit capsules.",
+            "features": [
+                "Quorum voting",
+                "Rollback seals",
+                "Audit logs"
+            ],
+            "pricing": "Custom, MeshCredit/Stripe/PayPal supported"
+        },
+        {
+            "name": "Incentive & ROI Tracker",
+            "description": "Track agent sales, upsells, ROI, badges, and awards.",
+            "features": [
+                "Automated badge assignment",
+                "Profit calculation",
+                "Payment flow visualization"
+            ],
+            "pricing": "Included with bundles"
+        },
+        {
+            "name": "Security as a Service (SecaaS)",
+            "description": "Mesh-native security agent, monitoring, and tamper alarms.",
+            "features": [
+                "Capability gating",
+                "Counterfactual checks",
+                "Tamper alarms",
+                "Audit capsules"
+            ],
+            "pricing": "Easy sell, MeshCredit/Stripe/PayPal supported"
+        },
+        {
+            "name": "Custom Dashboards & Analytics",
+            "description": "Business model maps, mesh analytics, and visualizations.",
+            "features": [
+                "Margin/velocity charts",
+                "Mesh ecosystem diagrams",
+                "Root capsule lineage"
+            ],
+            "pricing": "Custom, MeshCredit/Stripe/PayPal supported"
+        }
+    ],
+    "notes": "All SaaS offerings are mesh-native, ledger-sealed, and support all major payment rails. Security as a Service is a featured product for easy sales.",
+    "branding": {
+        "legal_entity": "EpochCore LLC",
+        "brand": "EpochCore Mesh Ecosystem"
+    }
+}

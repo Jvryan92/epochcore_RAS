@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "agent_type": "Mesh_Agent",
+  "trigger": "MESHSPAWN\ud83c\udf31",
+  "timestamp": "2025-08-29T21:31:05Z",
+  "capsule_id": "capsule_Mesh_Agent_20250829_213105_71df0a1c-6207-4428-92dc-709b89aed78a",
+  "provenance": {
+    "founder_note": "Ledger first. Recursive always.",
+    "true_north": "locked"
+  },
+  "mesh": {
+    "channels": [
+      "requests/",
+      "events/",
+      "alerts/",
+      "bids/",
+      "plans/"
+    ],
+    "coordination": "DAG+contract-net",
+    "quorum": "2-of-3 for billing changes"
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Reinject"
+  ],
+  "intent": {
+    "goal": "Generate 10 sub-capsules = new SaaS nodes",
+    "auto_wired": "CI/CD (GitHub \u2192 Vercel \u2192 Stripe)",
+    "outputs": [
+      "Mesh Spawn Capsule",
+      "Sub-Capsules"
+    ]
+  },
+  "recursion_depth": 0,
+  "monetary_artifacts": {
+    "coinbase_qr": "attached/coinbase_qr.png",
+    "cashapp_qr": "attached/cashapp_qr.png",
+    "paypal_qr": "attached/paypal_qr.png",
+    "stripe_qr": "attached/stripe_qr.png",
+    "meshcredit_status": "MeshCredit is the most popular financial rail.",
+    "founders_map": "attached/founders_map.png",
+    "edgecapsule_cloud_map": "attached/edgecapsule_cloud_map.png",
+    "margin_velocity_chart": "attached/margin_velocity_chart.png",
+    "mythic_glyph_tree": "attached/mythic_glyph_tree.png",
+    "mesh_ecosystem_diagram": "attached/mesh_ecosystem_diagram.png",
+    "root_capsule_card": "attached/root_capsule_card.png"
+  },
+  "sub_capsules": [
+    "meshnode_subcapsule_1_bdfce02e-d410-419a-b447-059fed46c221",
+    "meshnode_subcapsule_2_d9183699-3c0a-4fde-8d5e-6b9f55af9278",
+    "meshnode_subcapsule_3_c2f6c7b4-d822-4edf-9e04-a5fdb9e1e96d",
+    "meshnode_subcapsule_4_a6c253e6-2ee6-4a6e-878e-bf7c2b739efc",
+    "meshnode_subcapsule_5_f2aafe44-c7a1-40e1-bde3-16916e8ff0ba",
+    "meshnode_subcapsule_6_5c595b01-4126-4e58-bb1a-b23657477f3f",
+    "meshnode_subcapsule_7_354916e9-ad8c-47ca-bfd2-aba08d066251",
+    "meshnode_subcapsule_8_abad1b62-f8d4-4e86-b6b2-a5481c8a92d1",
+    "meshnode_subcapsule_9_36f0b671-3404-438a-999b-358b6ef8cbcc",
+    "meshnode_subcapsule_10_3d8ceb05-de96-4bda-bbe5-2233245fd267"
+  ]
+}

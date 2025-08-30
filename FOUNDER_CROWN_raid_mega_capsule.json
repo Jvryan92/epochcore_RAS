@@ -1,0 +1,112 @@
+{
+    "capsule_type": "raid-tier-mega-capsule",
+    "timestamp": "2025-08-29T00:00:00Z",
+    "legendseal": {
+        "method": "SHA-256",
+        "pbft_validated": true,
+        "sla_validated": true
+    },
+    "channels": {
+        "requests": "(not found)",
+        "bids": "(not found)",
+        "events": "(not found)",
+        "alerts": "(not found)",
+        "cryptic": "(not found)"
+    },
+    "market_loops": {
+        "ledgers": [
+            "ledger/SAAS-SEG17-12a7ec.json",
+            "ledger/SAAS-SEG14-767452.json",
+            "ledger/SKU-018-bb700b.json",
+            "ledger/SKU-017-a9988f.json",
+            "ledger/SKU-002-d1cd0c.json",
+            "ledger/saas_ledger.jsonl",
+            "ledger/drip_dag_base.json",
+            "ledger/SKU-009-b440f0.json",
+            "ledger/drip_seg_1_exec.json",
+            "ledger/SAAS-SEG16-810d65.json",
+            "ledger/SKU-003-1fc94a.json",
+            "ledger/SAAS-SEG7-342d8d.json",
+            "ledger/saas_summary.json",
+            "ledger/SKU-006-eeeedc.json",
+            "ledger/SKU-008-a0aa08.json",
+            "ledger/SKU-010-791d08.json",
+            "ledger/SAAS-SEG12-d66a7b.json",
+            "ledger/SAAS-SEG5-4776c6.json",
+            "ledger/alpha_genesis_ledger.jsonl",
+            "ledger/SAAS-SEG10-1285cd.json"
+        ]
+    },
+    "cultural_glyphs": {
+        "strategy_icons": "assets/icons/",
+        "eli_branch": "(embed mythic glyphs here)",
+        "docs": [
+            "docs/AI_AGENT.md",
+            "docs/WORKFLOWS.md",
+            "docs/installation.md",
+            "docs/CONTRIBUTING.md",
+            "docs/index.md"
+        ]
+    },
+    "capsule_lineage": {
+        "test_capsules": [
+            "test_capsule_1.json",
+            "test_capsule_2.json",
+            "test_capsule_3.json",
+            "test_capsule_4.json",
+            "test_capsule_5.json",
+            "test_capsule_6.json",
+            "test_capsule_7.json",
+            "test_capsule_10.json",
+            "test_capsule.json"
+        ]
+    },
+    "governance_rings": {
+        "quorum_types": [
+            "2-of-3",
+            "5-of-9"
+        ],
+        "rollback_seals": true
+    },
+    "recursive_forests": {
+        "capsule_sprouting": "enabled",
+        "sub_agent_generation": "enabled"
+    },
+    "memory_pools": {
+        "crdt_boards": "(to be linked)",
+        "doc_graphs": "(to be linked)",
+        "replay_archives": "(to be linked)"
+    },
+    "security_veins": {
+        "capability_gating": "enabled",
+        "counterfactual_checks": "enabled",
+        "tamper_alarms": "enabled"
+    },
+    "observability_roots": {
+        "opentelemetry": "(to be linked)",
+        "causal_logs": "(to be linked)",
+        "auto_postmortems": "(to be linked)"
+    },
+    "distribution_canopy": {
+        "newsletter": "(to be linked)",
+        "telegram": "(to be linked)",
+        "github": "(to be linked)",
+        "docs": "docs/",
+        "storekit": "(not found)"
+    },
+    "monetization_rails": {
+        "stripe_skus": [
+            "ledger/SKU-018-bb700b.json",
+            "ledger/SKU-017-a9988f.json",
+            "ledger/SKU-002-d1cd0c.json",
+            "ledger/SKU-009-b440f0.json",
+            "ledger/SKU-003-1fc94a.json",
+            "ledger/SKU-006-eeeedc.json",
+            "ledger/SKU-008-a0aa08.json",
+            "ledger/SKU-010-791d08.json"
+        ],
+        "bundle_pricing": "(to be linked)",
+        "meshcredit_tokens": "(to be linked)"
+    },
+    "archive": "FOUNDER_CROWN"
+}

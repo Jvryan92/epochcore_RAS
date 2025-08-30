@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "agent_type": "Generic_Agent",
+  "trigger": "Mesh Treasury Index",
+  "timestamp": "2025-08-29T22:01:23Z",
+  "capsule_id": "capsule_Generic_Agent_20250829_220123_a16adf9e-476f-4888-a248-c81bbc6d9048",
+  "provenance": {
+    "founder_note": "Ledger first. Recursive always.",
+    "true_north": "locked"
+  },
+  "mesh": {
+    "channels": [
+      "requests/",
+      "events/",
+      "alerts/",
+      "bids/",
+      "plans/"
+    ],
+    "coordination": "DAG+contract-net",
+    "quorum": "2-of-3 for billing changes"
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Reinject"
+  ],
+  "intent": {
+    "goal": "Ultra Trigger Capsule",
+    "outputs": []
+  },
+  "recursion_depth": 0,
+  "monetary_artifacts": {
+    "coinbase_qr": "attached/coinbase_qr.png",
+    "cashapp_qr": "attached/cashapp_qr.png",
+    "paypal_qr": "attached/paypal_qr.png",
+    "stripe_qr": "attached/stripe_qr.png",
+    "meshcredit_status": "MeshCredit is the most popular financial rail.",
+    "founders_map": "attached/founders_map.png",
+    "edgecapsule_cloud_map": "attached/edgecapsule_cloud_map.png",
+    "margin_velocity_chart": "attached/margin_velocity_chart.png",
+    "mythic_glyph_tree": "attached/mythic_glyph_tree.png",
+    "mesh_ecosystem_diagram": "attached/mesh_ecosystem_diagram.png",
+    "root_capsule_card": "attached/root_capsule_card.png"
+  }
+}

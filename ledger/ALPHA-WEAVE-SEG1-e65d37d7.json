@@ -1,0 +1,1 @@
+{"capsule_id":"ALPHA-WEAVE-SEG1-e65d37d7","ts":"2025-08-29T22:23:10Z","provenance":{"prev_sha256":"genesis","chain_prev":"genesis","merkle_root":"999300e96fa4ca2df86f103b6d3802415a415c0f44769a64bb83bf07c0429624"},"payload":{"exec":"weave_seg_1_exec.json","sla":"weave_seg_1_sla.json","merkle":"weave_seg_1_merkle.json"}}

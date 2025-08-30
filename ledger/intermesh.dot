@@ -1,0 +1,5 @@
+digraph intermesh { rankdir=LR; node [shape=ellipse,fontsize=11,style=filled];
+  "drip:44aa5b99" -> "pulse:4c474357";
+  "pulse:4c474357" -> "weave:5f32fdbd";
+  "weave:5f32fdbd" -> "drip:44aa5b99";
+}
