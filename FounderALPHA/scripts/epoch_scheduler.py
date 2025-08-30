@@ -44,7 +44,7 @@ def load_edges(csv_path):
         reader = csv.DictReader(f)
         for row in reader:
             try:
-                edges.append((int(row["from"]), int(row["to"]))
+                edges.append((int(row["from"]), int(row["to"])))
             except Exception:
                 continue
     return edges
@@ -84,7 +84,15 @@ def policy_gate(record):
             return False, f"blocked_term:{t}"
     return True, "ok"
 
-def run_step(record, phase, intensity, dry_run=True):
+def flash_sync_handler(record, intensity, dry_run):
+    """Handler for flash sync with epochALPHA agent"""
+    return {
+        "sync_type": "flash",
+        "agent": "epochALPHA",
+        "intensity": intensity,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+
 def run_step(record, phase, intensity, dry_run=True, handlers=None, mesh_integration=None, logger=None):
     """
     Advanced performer with handler registry, mesh agent integration, and logging.
@@ -99,6 +107,7 @@ def run_step(record, phase, intensity, dry_run=True, handlers=None, mesh_integra
         "intensity": intensity,
         "status": "dry-run" if dry_run else "ok"
     }
+    
     # Custom phase handler
     if handlers and phase in handlers:
         try:
@@ -106,19 +115,15 @@ def run_step(record, phase, intensity, dry_run=True, handlers=None, mesh_integra
             result["handler_result"] = handler_result
         except Exception as e:
             result["handler_error"] = str(e)
-    # Mesh agent integration (callable)
+            
+    # Mesh agent integration
     if mesh_integration:
         try:
             mesh_result = mesh_integration(record, phase, intensity, dry_run)
             result["mesh_result"] = mesh_result
         except Exception as e:
             result["mesh_error"] = str(e)
-    # External logger hook
-    if logger:
-        try:
-            logger(result)
-        except Exception:
-            pass
+            
     return result
 
 def cycle_phase(index, phase_window):
@@ -139,6 +144,8 @@ def main(argv):
     ap.add_argument("--intensity", type=int, default=1000, help="Tuning knob for compression depth")
     ap.add_argument("--dry-run", action="store_true", help="Log only, do not execute handlers")
     ap.add_argument("--json-log", help="Path to write JSONL run log")
+    ap.add_argument("--dashboard-log", action="store_true", help="Send logs to dashboard")
+    ap.add_argument("--mesh-integration", action="store_true", help="Enable mesh agent integration")
     args = ap.parse_args(argv)
 
     jsonl = Path(args.jsonl)
@@ -153,25 +160,39 @@ def main(argv):
         nodes = {i:r for i,r in nodes.items() if (r.get("family","").upper()==fam or r.get("key","").upper().startswith(fam+"-"))}
 
     order = topo_order(nodes, edges, start=args.start, end=args.end)
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--packdir", default=str(PACKDIR))
-    ap.add_argument("--jsonl", default=str(JSONL))
-    ap.add_argument("--edges", default=str(EDGES))
-    ap.add_argument("--family", help="Only include triggers whose family matches (prefix of key)")
-    ap.add_argument("--start", type=int, help="Min id")
-    ap.add_argument("--end", type=int, help="Max id")
-    ap.add_argument("--limit", type=int, help="Max number of steps to process")
-    ap.add_argument("--phase-window", type=int, default=5, help="How many steps per phase before cycling")
-    ap.add_argument("--intensity", type=int, default=1000, help="Tuning knob for compression depth")
-    ap.add_argument("--dry-run", action="store_true", help="Log only, do not execute handlers")
-    ap.add_argument("--json-log", help="Path to write JSONL run log")
-    ap.add_argument("--dashboard-log", action="store_true", help="Send logs to dashboard")
-    ap.add_argument("--mesh-integration", action="store_true", help="Enable mesh agent integration")
-    args = ap.parse_args(argv)
+    
+    # Setup handlers with flash sync for ignite phase
+    handlers = {
+        "ignite": flash_sync_handler
+    }
+
+    # Process nodes in order
+    processed = 0
+    outfh = open(args.json_log, "w", encoding="utf-8") if args.json_log else None
+    
+    for idx, nid in enumerate(order):
+        if args.limit and processed >= args.limit:
+            break
+
+        rec = nodes[nid]
+        ts = datetime.now(timezone.utc).isoformat()
+
+        ok, msg = policy_gate(rec)
+        if not ok:
+            entry = {"ts": ts, "id": nid, "status": "blocked", "reason": msg}
         else:
             phase = cycle_phase(idx, args.phase_window)
-            result = run_step(rec, phase, args.intensity, dry_run=args.dry_run)
+            # Always use handlers for ignite phase to trigger flash sync
+            use_handlers = handlers if phase == "ignite" else None
+            result = run_step(
+                rec,
+                phase,
+                args.intensity,
+                dry_run=args.dry_run,
+                handlers=use_handlers
+            )
             entry = {"ts": ts, **result}
+
         line = json.dumps(entry, ensure_ascii=False)
         print(line)
         if outfh:
