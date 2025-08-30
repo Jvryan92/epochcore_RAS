@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-004",
+  "title": "Capsule ETFs",
+  "description": "Bundles of SaaS capsules",
+  "timestamp": "2025-08-29T18:28:05Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "d056380dfbde427fd769a54eb7c71727e75f1ad1946c7119b7b7a212cef1ef00",
+    "mesh_seal": "dafff6d4a74cda585587282e504dbfc3c86885fdd0a0e6a6bd9b8f6ea18b41fe",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "b5599aa990bb341495c89c10a4d2387c5b68d489acd8e3cec27b3a2294ed60e0"
+}

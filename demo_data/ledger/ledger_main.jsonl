@@ -1,0 +1,92 @@
+{"ts": "2025-08-29T08:11:25Z", "event": "genesis", "note": "EpochCore RAS Audit System initialized"}
+{"ts": "2025-08-29T08:11:25Z", "event": "audit_scheduled", "note": "Phone Audit Scroll scheduled in 3600 seconds"}
+{"ts": "2025-08-29T08:11:25Z", "event": "child_explanation", "note": "Provided AI explanation for age 4", "agent_id": "IntegratedDemo_kids_friendly", "age": 4, "context_type": null}
+{"ts": "2025-08-29T08:11:25Z", "event": "child_explanation", "note": "Provided AI explanation for age 7", "agent_id": "IntegratedDemo_kids_friendly", "age": 7, "context_type": null}
+{"ts": "2025-08-29T08:11:25Z", "event": "child_explanation", "note": "Provided AI explanation for age 10", "agent_id": "IntegratedDemo_kids_friendly", "age": 10, "context_type": null}
+{"ts": "2025-08-29T08:11:25Z", "event": "child_explanation", "note": "Provided AI explanation for age 12", "agent_id": "IntegratedDemo_kids_friendly", "age": 12, "context_type": null}
+{"ts": "2025-08-29T08:11:25Z", "event": "demo_started", "note": "Demo of audit system started", "agent_id": "demo_agent", "demo_timestamp": "2025-08-29T08:11:25.804176"}
+{"ts": "2025-08-29T08:11:25Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "demo_data/ledger/logs/phone_audit_2025-08-29T08:11:25Z.log", "sha256": "3d48feecf12fa8b15aa82f68cbc338d320874e621277fac1568de533558b11cb", "entries": 7}
+{"ts": "2025-08-29T08:11:25Z", "event": "system_audit", "note": "System-wide audit performed", "agent_id": "IntegratedDemo", "audit_summary": {"timestamp": "2025-08-29T08:11:25.815699+00:00", "total_agents": 1, "total_triggers": 4}}
+{"ts": "2025-08-29T08:15:59Z", "event": "audit_scheduled", "note": "Phone Audit Scroll scheduled in 3600 seconds"}
+{"ts": "2025-08-29T08:15:59Z", "event": "child_explanation", "note": "Provided AI explanation for age 4", "agent_id": "IntegratedDemo_kids_friendly", "age": 4, "context_type": null}
+{"ts": "2025-08-29T08:15:59Z", "event": "child_explanation", "note": "Provided AI explanation for age 7", "agent_id": "IntegratedDemo_kids_friendly", "age": 7, "context_type": null}
+{"ts": "2025-08-29T08:15:59Z", "event": "child_explanation", "note": "Provided AI explanation for age 10", "agent_id": "IntegratedDemo_kids_friendly", "age": 10, "context_type": null}
+{"ts": "2025-08-29T08:15:59Z", "event": "child_explanation", "note": "Provided AI explanation for age 12", "agent_id": "IntegratedDemo_kids_friendly", "age": 12, "context_type": null}
+{"ts": "2025-08-29T08:15:59Z", "event": "demo_started", "note": "Demo of audit system started", "agent_id": "demo_agent", "demo_timestamp": "2025-08-29T08:15:59.296753"}
+{"ts": "2025-08-29T08:15:59Z", "event": "seal_created", "note": "Created seal for agent_demo_agent_1756455359", "seal": "agent_demo_agent_1756455359", "sha256": "d11a8f1600330e81ed6eb6cd7a5b8a4f3c72b663b55106ddb2ced306f6df6a58", "file": "demo_data/ledger/seals/agent_demo_agent_1756455359.2025-08-29T08:15:59Z.sha"}
+{"ts": "2025-08-29T08:15:59Z", "event": "seal_verified", "note": "Verified seal agent_demo_agent_1756455359.2025-08-29T08:15:59Z.sha", "seal_file": "demo_data/ledger/seals/agent_demo_agent_1756455359.2025-08-29T08:15:59Z.sha", "verified": true}
+{"ts": "2025-08-29T08:15:59Z", "event": "alpha_ceiling_enforced", "note": "Value 150 exceeded ceiling 100", "original_value": 150, "capped_value": 100}
+{"ts": "2025-08-29T08:15:59Z", "event": "alpha_ceiling_enforced", "note": "Resource limit enforced on memory", "agent_id": "IntegratedDemo_epoch_audit", "original_value": 150, "capped_value": 100, "resource_type": "memory"}
+{"ts": "2025-08-29T08:15:59Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "demo_data/ledger/logs/phone_audit_2025-08-29T08:15:59Z.log", "sha256": "1ccb1313c4206e9e7135ebe07df2e755482f671d7ef7b3c1cd1dead24955c43e", "entries": 19}
+{"ts": "2025-08-29T08:15:59Z", "event": "audit_alert_broadcast", "note": "Broadcast audit alert: test_alert", "agent_id": "IntegratedDemo_epoch_audit", "alert_details": {"source": "demo", "level": "info"}}
+{"ts": "2025-08-29T08:16:00Z", "event": "system_optimization", "note": "System-wide optimization performed", "agent_id": "IntegratedDemo", "mesh_metrics": {"success_rate": 0.8954682351527576, "resource_utilization": 0.8519901243369501, "mesh_stability": 0.8916362328556973, "ethical_alignment": 0.966302503080271, "cognitive_coherence": 0.7704678869459946}}
+{"ts": "2025-08-29T08:16:00Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "demo_data/ledger/logs/phone_audit_2025-08-29T08:16:00Z.log", "sha256": "17200eb512450d642d25ecbf3936ce8e4aea068dd9448b05eee56bbbdbe485c3", "entries": 22}
+{"ts": "2025-08-29T08:16:00Z", "event": "system_audit", "note": "System-wide audit performed", "agent_id": "IntegratedDemo", "audit_summary": {"timestamp": "2025-08-29T08:16:00.190573+00:00", "total_agents": 1, "total_triggers": 5}}
+{"ts": "2025-08-29T08:16:00Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:00Z", "event": "child_explanation", "note": "Provided AI explanation for age 5", "agent_id": "IntegratedDemo_kids_friendly", "age": 5, "context_type": null}
+{"ts": "2025-08-29T08:16:00Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:00Z", "event": "child_explanation", "note": "Provided AI explanation for age 11", "agent_id": "IntegratedDemo_kids_friendly", "age": 11, "context_type": null}
+{"ts": "2025-08-29T08:16:00Z", "event": "child_explanation", "note": "Provided AI explanation for age 9", "agent_id": "IntegratedDemo_kids_friendly", "age": 9, "context_type": null}
+{"ts": "2025-08-29T08:16:00Z", "event": "child_explanation", "note": "Provided AI explanation for age 5", "agent_id": "IntegratedDemo_kids_friendly", "age": 5, "context_type": null}
+{"ts": "2025-08-29T08:16:01Z", "event": "simulated_event_5", "note": "Simulated workload event", "agent_id": "sim_agent_6", "simulation_id": 9}
+{"ts": "2025-08-29T08:16:01Z", "event": "child_explanation", "note": "Provided AI explanation for age 3", "agent_id": "IntegratedDemo_kids_friendly", "age": 3, "context_type": null}
+{"ts": "2025-08-29T08:16:01Z", "event": "child_explanation", "note": "Provided AI explanation for age 9", "agent_id": "IntegratedDemo_kids_friendly", "age": 9, "context_type": null}
+{"ts": "2025-08-29T08:16:01Z", "event": "simulated_event_2", "note": "Simulated workload event", "agent_id": "sim_agent_4", "simulation_id": 13}
+{"ts": "2025-08-29T08:16:01Z", "event": "simulated_event_2", "note": "Simulated workload event", "agent_id": "sim_agent_6", "simulation_id": 14}
+{"ts": "2025-08-29T08:16:01Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:01Z", "event": "simulated_event_5", "note": "Simulated workload event", "agent_id": "sim_agent_4", "simulation_id": 16}
+{"ts": "2025-08-29T08:16:02Z", "event": "child_explanation", "note": "Provided AI explanation for age 7", "agent_id": "IntegratedDemo_kids_friendly", "age": 7, "context_type": null}
+{"ts": "2025-08-29T08:16:02Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:02Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:02Z", "event": "child_explanation", "note": "Provided AI explanation for age 3", "agent_id": "IntegratedDemo_kids_friendly", "age": 3, "context_type": null}
+{"ts": "2025-08-29T08:16:02Z", "event": "child_explanation", "note": "Provided AI explanation for age 13", "agent_id": "IntegratedDemo_kids_friendly", "age": 13, "context_type": null}
+{"ts": "2025-08-29T08:16:02Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:02Z", "event": "simulated_event_1", "note": "Simulated workload event", "agent_id": "sim_agent_5", "simulation_id": 26}
+{"ts": "2025-08-29T08:16:03Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:03Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:03Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:03Z", "event": "simulated_event_1", "note": "Simulated workload event", "agent_id": "sim_agent_9", "simulation_id": 36}
+{"ts": "2025-08-29T08:16:04Z", "event": "simulated_event_2", "note": "Simulated workload event", "agent_id": "sim_agent_5", "simulation_id": 40}
+{"ts": "2025-08-29T08:16:04Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:04Z", "event": "child_explanation", "note": "Provided AI explanation for age 7", "agent_id": "IntegratedDemo_kids_friendly", "age": 7, "context_type": null}
+{"ts": "2025-08-29T08:16:04Z", "event": "child_explanation", "note": "Provided AI explanation for age 9", "agent_id": "IntegratedDemo_kids_friendly", "age": 9, "context_type": null}
+{"ts": "2025-08-29T08:16:04Z", "event": "simulated_event_2", "note": "Simulated workload event", "agent_id": "sim_agent_9", "simulation_id": 46}
+{"ts": "2025-08-29T08:16:04Z", "event": "simulated_event_4", "note": "Simulated workload event", "agent_id": "sim_agent_9", "simulation_id": 47}
+{"ts": "2025-08-29T08:16:05Z", "event": "child_explanation", "note": "Provided AI explanation for age 13", "agent_id": "IntegratedDemo_kids_friendly", "age": 13, "context_type": null}
+{"ts": "2025-08-29T08:16:05Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:05Z", "event": "simulated_event_2", "note": "Simulated workload event", "agent_id": "sim_agent_10", "simulation_id": 50}
+{"ts": "2025-08-29T08:16:05Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:05Z", "event": "child_explanation", "note": "Provided AI explanation for age 13", "agent_id": "IntegratedDemo_kids_friendly", "age": 13, "context_type": null}
+{"ts": "2025-08-29T08:16:05Z", "event": "child_explanation", "note": "Provided AI explanation for age 3", "agent_id": "IntegratedDemo_kids_friendly", "age": 3, "context_type": null}
+{"ts": "2025-08-29T08:16:05Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:05Z", "event": "simulated_event_4", "note": "Simulated workload event", "agent_id": "sim_agent_1", "simulation_id": 56}
+{"ts": "2025-08-29T08:16:06Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:06Z", "event": "child_explanation", "note": "Provided AI explanation for age 13", "agent_id": "IntegratedDemo_kids_friendly", "age": 13, "context_type": null}
+{"ts": "2025-08-29T08:16:06Z", "event": "simulated_event_1", "note": "Simulated workload event", "agent_id": "sim_agent_3", "simulation_id": 61}
+{"ts": "2025-08-29T08:16:06Z", "event": "simulated_event_3", "note": "Simulated workload event", "agent_id": "sim_agent_8", "simulation_id": 63}
+{"ts": "2025-08-29T08:16:06Z", "event": "simulated_event_5", "note": "Simulated workload event", "agent_id": "sim_agent_9", "simulation_id": 67}
+{"ts": "2025-08-29T08:16:07Z", "event": "child_explanation", "note": "Provided AI explanation for age 13", "agent_id": "IntegratedDemo_kids_friendly", "age": 13, "context_type": null}
+{"ts": "2025-08-29T08:16:07Z", "event": "child_explanation", "note": "Provided AI explanation for age 9", "agent_id": "IntegratedDemo_kids_friendly", "age": 9, "context_type": null}
+{"ts": "2025-08-29T08:16:07Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:07Z", "event": "child_explanation", "note": "Provided AI explanation for age 9", "agent_id": "IntegratedDemo_kids_friendly", "age": 9, "context_type": null}
+{"ts": "2025-08-29T08:16:07Z", "event": "simulated_event_4", "note": "Simulated workload event", "agent_id": "sim_agent_7", "simulation_id": 77}
+{"ts": "2025-08-29T08:16:08Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:08Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:08Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:08Z", "event": "child_explanation", "note": "Provided AI explanation for age 9", "agent_id": "IntegratedDemo_kids_friendly", "age": 9, "context_type": null}
+{"ts": "2025-08-29T08:16:08Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:08Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:09Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:09Z", "event": "trigger_activated", "note": "Activated trigger system_heartbeat", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "system_heartbeat", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:09Z", "event": "child_explanation", "note": "Provided AI explanation for age 7", "agent_id": "IntegratedDemo_kids_friendly", "age": 7, "context_type": null}
+{"ts": "2025-08-29T08:16:09Z", "event": "child_explanation", "note": "Provided AI explanation for age 5", "agent_id": "IntegratedDemo_kids_friendly", "age": 5, "context_type": null}
+{"ts": "2025-08-29T08:16:09Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:09Z", "event": "trigger_activated", "note": "Activated trigger mesh_optimize", "agent_id": "IntegratedDemo_mesh_trigger", "trigger_id": "mesh_optimize", "activation_status": "completed", "error": null}
+{"ts": "2025-08-29T08:16:09Z", "event": "simulated_event_3", "note": "Simulated workload event", "agent_id": "sim_agent_5", "simulation_id": 95}
+{"ts": "2025-08-29T08:16:09Z", "event": "simulated_event_5", "note": "Simulated workload event", "agent_id": "sim_agent_6", "simulation_id": 97}
+{"ts": "2025-08-29T08:16:10Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "demo_data/ledger/logs/phone_audit_2025-08-29T08:16:10Z.log", "sha256": "4462807579fd0168bd5511c3655ae183d874533d81815ca209332a921674da6d", "entries": 86}
+{"ts": "2025-08-29T08:16:10Z", "event": "system_audit", "note": "System-wide audit performed", "agent_id": "IntegratedDemo", "audit_summary": {"timestamp": "2025-08-29T08:16:10.087285+00:00", "total_agents": 1, "total_triggers": 5}}
+{"ts": "2025-08-29T08:16:10Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "demo_data/ledger/logs/phone_audit_2025-08-29T08:16:10Z.log", "sha256": "21ae9c659d01fbd673bde46b0d8b51a201b77233b3b7be0f26546de624a035ac", "entries": 88}
+{"ts": "2025-08-29T08:16:10Z", "event": "system_audit", "note": "System-wide audit performed", "agent_id": "IntegratedDemo", "audit_summary": {"timestamp": "2025-08-29T08:16:10.300285+00:00", "total_agents": 1, "total_triggers": 5}}
+{"ts": "2025-08-29T08:16:10Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "demo_data/ledger/logs/phone_audit_2025-08-29T08:16:10Z.log", "sha256": "ebe1e72e98868477504a9b9340f6bc65248121de52a0fb9bab4eef1533de9574", "entries": 90}
+{"ts": "2025-08-29T08:16:10Z", "event": "system_audit", "note": "System-wide audit performed", "agent_id": "IntegratedDemo", "audit_summary": {"timestamp": "2025-08-29T08:16:10.311644+00:00", "total_agents": 1, "total_triggers": 5}}

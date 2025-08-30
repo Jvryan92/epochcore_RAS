@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-010",
+  "title": "Capsule Singularity Node",
+  "description": "Recursive AI spawns capsules",
+  "timestamp": "2025-08-29T18:28:06Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "541c6de48f76d12686a55112b6a63f0728b42be6bc385b55cf0a1970174f752e",
+    "mesh_seal": "e60bebb340de8977b1820b77f813632992cbd5c48d3dceb75206b14e61868d0b",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "8a2416d2cc183697dafe36d417d084e24291b7d3e5fb19d6face066dfd271a96"
+}

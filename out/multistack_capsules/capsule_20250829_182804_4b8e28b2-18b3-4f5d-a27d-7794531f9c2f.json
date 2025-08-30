@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-002",
+  "title": "Capsule GameFi Multiverse",
+  "description": "Games where capsule ROI = prize pool",
+  "timestamp": "2025-08-29T18:28:04Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "74fcd2dcb8834d921d4299039275fe97711ee3b7062259bd32293106ec175de4",
+    "mesh_seal": "802034b7981582d1b97eabb9dee82f21a263a048fe3ed5b4d1bf086a20b46385",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "cb9e3ab9d2799bcfe806bfe248be09ec2dafa5c35761d2ca25467d124ec80e2f"
+}

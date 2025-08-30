@@ -1,0 +1,12 @@
+{
+  "transaction_id": "005ebcbc2cf22e9f724ae10a162bcb0270deebac840c690451f258171c5feb7f",
+  "account_id": "fd4dbf29a36d90f5d724b50bad829ecfe70b7e86e6d135cd5ec72c9b9f1d169c",
+  "type": "capsule_link",
+  "amount": 2000.0,
+  "fee": 0.0,
+  "net_amount": 2000.0,
+  "asset_class": "compound",
+  "description": "New backed capsule: Strategic-Reserve: MESH-Strategic-Reserve-20250830022228",
+  "timestamp": "2025-08-30T02:22:28.231182",
+  "status": "completed"
+}

@@ -1,0 +1,17 @@
+{
+  "agent_id": "test_integrated_system_epoch_audit",
+  "status": "registered",
+  "last_updated": "2025-08-29T08:29:30.477736+00:00",
+  "current_tasks": [],
+  "capabilities": [
+    "audit_logging",
+    "cryptographic_sealing",
+    "integrity_verification",
+    "alpha_ceiling_enforcement",
+    "gbt_epoch_timestamping",
+    "phone_audit_scroll"
+  ],
+  "metrics": {},
+  "collaboration_status": {},
+  "resources": {}
+}

@@ -1,0 +1,12 @@
+{
+  "transaction_id": "995b92d1f8df30bd9e20c79c22c8404da84f2efe5dc6edac91045313c5cab760",
+  "account_id": "f5d40fd81fa68563f354c741c2b8c2bf96b04f9dcca0dae131dd78547f9fadfc",
+  "type": "capsule_link",
+  "amount": 200.0,
+  "fee": 0.0,
+  "net_amount": 200.0,
+  "asset_class": "compound",
+  "description": "New backed capsule: Safe-Fund-Ethical: MESH-Safe-Fund-Ethical-20250830022228",
+  "timestamp": "2025-08-30T02:22:28.217541",
+  "status": "completed"
+}

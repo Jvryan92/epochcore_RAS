@@ -1,12 +1,13 @@
 """Test configuration and fixtures."""
 
 import os
-import pytest
-import sys
 import shutil
+import sys
 import tempfile
 from pathlib import Path
 from typing import Generator
+
+import pytest
 
 # Add project root to path
 project_root = Path(__file__).parent.parent
@@ -44,5 +45,4 @@ def test_config() -> dict:
                 "colors": ["flat-orange", "burnt-orange", "copper-foil"]
             }
         }
-    }
     }

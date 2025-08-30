@@ -1,0 +1,12 @@
+{
+  "trigger_id": "mesh_optimize",
+  "ts": "2025-08-29T08:16:06Z",
+  "epoch": 1756455366,
+  "context": {
+    "simulation": true,
+    "event_id": 58
+  },
+  "verify_count": 1,
+  "status": "completed",
+  "results": []
+}

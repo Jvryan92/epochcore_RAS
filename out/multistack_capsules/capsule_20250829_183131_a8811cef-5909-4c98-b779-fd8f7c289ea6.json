@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-002",
+  "title": "Cloud Resource Market",
+  "description": "VM/storage as capsule equity",
+  "timestamp": "2025-08-29T18:31:31Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "7142e788bc3740e9bb6fdd50938a583357a4c0f160c4e5bf2ef445e76f713300",
+    "mesh_seal": "878254d887d0ff63f5d8ac5c1af4fb37c1633301ffcfa8fd22fb5203e023ac0d",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "4ee99a4b5d70b81f3ddba1c816490b3f65634c846697f9c4189763856b1e4038"
+}

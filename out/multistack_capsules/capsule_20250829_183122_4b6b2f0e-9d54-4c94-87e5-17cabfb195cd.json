@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-001",
+  "title": "Data Center City Sim",
+  "description": "Capsules = zoning/power laws",
+  "timestamp": "2025-08-29T18:31:22Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "",
+    "mesh_seal": "c50202559d13d184c6fdbe799badf21ba8779eb5c42bec9adecf3286a4b62f17",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "9d21f3450295ec93424d05dfa368f4b4ecb9d05af46df970f4cc4a3c0ec397c5"
+}

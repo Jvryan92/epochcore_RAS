@@ -1,0 +1,20 @@
+{
+  "trigger_id": "data_sync",
+  "ts": "2025-08-29T07:33:31Z",
+  "epoch": 1756452811,
+  "context": {
+    "time": 1756452811,
+    "mode": "full"
+  },
+  "verify_count": 1,
+  "status": "completed",
+  "results": [
+    {
+      "status": "success",
+      "result": {
+        "processed": true,
+        "timestamp": 1756452811
+      }
+    }
+  ]
+}

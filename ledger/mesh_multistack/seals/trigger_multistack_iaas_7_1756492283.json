@@ -1,0 +1,13 @@
+{
+  "trigger_id": "multistack_iaas_7",
+  "fingerprint": "d14c7258d1b6c4af39cb7dbefb97eb90f96b905626f3d7997672a5a43911ac7d",
+  "context": {
+    "capsule_id": "CAP-IAAS-007",
+    "stack": "iaas",
+    "timestamp": "2025-08-29T18:31:23Z"
+  },
+  "ts": "2025-08-29T18:31:23Z",
+  "epoch": 1756492283,
+  "expires": 1756492583,
+  "hash": "af619ccdfe0d7bfaa5a244bfe7a065e4d3001820ab6177981145d0e015306ff9"
+}

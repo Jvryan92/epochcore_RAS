@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-006",
+  "title": "Capsule Universal Ledger",
+  "description": "Anchors all capsules to one tip",
+  "timestamp": "2025-08-29T18:28:05Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "70bdf802474dc0cc1a9de1ccdeca6fe9adce90f88bd0f2db212f09c4157c24a4",
+    "mesh_seal": "f6f7576c289b7d3f4550d61589769e51eabf149aadc3e714f26194c43c3631bf",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "8f76ae9d3a376b157a3f7e60704e7d4e06261168759655829881e34f98a0a9dd"
+}

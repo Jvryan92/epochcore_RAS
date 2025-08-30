@@ -1,0 +1,19 @@
+{
+  "name": "EpochCore MeshCredit Bank",
+  "created_at": "2025-08-30T02:22:28.204929",
+  "interest_rates": {
+    "liquid": 0.005,
+    "staked": 0.025,
+    "compound": 0.04,
+    "governance": 0.03
+  },
+  "transaction_fees": {
+    "transfer": 0.001,
+    "withdraw": 0.002,
+    "compound": 0.005
+  },
+  "total_accounts": 3,
+  "total_assets": 18000.0,
+  "last_interest_payout": null,
+  "bank_id": "268a91a2458967abeecb20260322ff36e629bc755d4ae55bf0332dea196889bb"
+}

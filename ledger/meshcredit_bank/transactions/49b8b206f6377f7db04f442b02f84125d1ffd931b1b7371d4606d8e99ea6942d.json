@@ -1,0 +1,12 @@
+{
+  "transaction_id": "49b8b206f6377f7db04f442b02f84125d1ffd931b1b7371d4606d8e99ea6942d",
+  "account_id": "fd4dbf29a36d90f5d724b50bad829ecfe70b7e86e6d135cd5ec72c9b9f1d169c",
+  "type": "capsule_link",
+  "amount": 750.0,
+  "fee": 0.0,
+  "net_amount": 750.0,
+  "asset_class": "compound",
+  "description": "New backed capsule: Project-Fund-Recursive: MESH-Project-Fund-Recursive-20250830022228",
+  "timestamp": "2025-08-30T02:22:28.222306",
+  "status": "completed"
+}

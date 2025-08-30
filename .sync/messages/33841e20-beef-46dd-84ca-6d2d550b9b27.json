@@ -1,0 +1,17 @@
+{
+  "message_id": "33841e20-beef-46dd-84ca-6d2d550b9b27",
+  "sender_id": "system",
+  "receiver_id": "test_integrated_system_mesh_trigger",
+  "message_type": "sync_request",
+  "content": {
+    "sync_id": "cd8b2137-08d8-4c97-8bbf-9552a704914f",
+    "name": "system_initialization",
+    "timeout": 30.0
+  },
+  "timestamp": "2025-08-29T08:29:25.448669+00:00",
+  "priority": 10,
+  "ttl": 3600,
+  "is_acknowledged": false,
+  "thread_id": null,
+  "parent_id": null
+}

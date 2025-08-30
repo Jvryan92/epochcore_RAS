@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-004",
+  "title": "Access Keys",
+  "description": "Capsules = root access rights",
+  "timestamp": "2025-08-29T18:31:31Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "0b88607536f200a20c7453c4b5a1697f96c667141da5a2ec99115f6f7624c04d",
+    "mesh_seal": "af857d271ea63b4538f08dd9a1c50afb6cec97747de5b667b6dc174c4414b23d",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "3727ca7367584e2acc4287f642149e45ec073e1e3c0e41ef6b6e5da550c0ff4e"
+}

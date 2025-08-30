@@ -1,0 +1,20 @@
+{
+  "message_id": "91127098-8aef-496c-8c7e-99a185bb5f85",
+  "sender_id": "IntegratedDemo_epoch_audit",
+  "receiver_id": "IntegratedDemo_mesh_trigger",
+  "message_type": "audit_alert",
+  "content": {
+    "alert_type": "test_alert",
+    "timestamp": "2025-08-29T08:15:59Z",
+    "details": {
+      "source": "demo",
+      "level": "info"
+    }
+  },
+  "timestamp": "2025-08-29T08:15:59.312878+00:00",
+  "priority": 0,
+  "ttl": 3600,
+  "is_acknowledged": false,
+  "thread_id": null,
+  "parent_id": null
+}

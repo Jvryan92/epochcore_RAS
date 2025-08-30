@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-008",
+  "title": "Capsule IPO",
+  "description": "IPO capsules for SaaS",
+  "timestamp": "2025-08-29T18:28:06Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "67eec6cabe6291740e774e79917120ed3a2fc05a4e27349f00445c2d4434bbf0",
+    "mesh_seal": "3a137e66599420baa598d6babba8a6edd98b3a791f19cad2054ddc70872d6b5f",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "fc76c7e574e6685a8716b688fb88f7fa9af4aa657e7aab38ca72ab8d82d7eb9d"
+}

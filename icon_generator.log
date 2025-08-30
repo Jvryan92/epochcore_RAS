@@ -1,0 +1,62 @@
+2025-08-29 13:23:39,496 - unified_icon_generator - INFO - Loaded 20 variants from CSV
+2025-08-29 13:23:39,496 - unified_icon_generator - INFO - Processing 20 icon variants...
+2025-08-29 13:23:39,931 - unified_icon_generator - INFO - Progress: 2/20 variants processed
+2025-08-29 13:23:39,932 - unified_icon_generator - INFO - Progress: 4/20 variants processed
+2025-08-29 13:23:39,945 - unified_icon_generator - INFO - Progress: 6/20 variants processed
+2025-08-29 13:23:39,957 - unified_icon_generator - INFO - Progress: 8/20 variants processed
+2025-08-29 13:23:39,968 - unified_icon_generator - INFO - Progress: 10/20 variants processed
+2025-08-29 13:23:39,970 - unified_icon_generator - INFO - Progress: 12/20 variants processed
+2025-08-29 13:23:39,983 - unified_icon_generator - INFO - Progress: 14/20 variants processed
+2025-08-29 13:23:39,985 - unified_icon_generator - INFO - Progress: 16/20 variants processed
+2025-08-29 13:23:39,993 - unified_icon_generator - INFO - Progress: 18/20 variants processed
+2025-08-29 13:23:39,995 - unified_icon_generator - INFO - Progress: 20/20 variants processed
+2025-08-29 13:23:39,995 - unified_icon_generator - INFO - All variants generated successfully.
+2025-08-29 13:41:25,008 - unified_icon_generator - INFO - Loaded 20 variants from CSV
+2025-08-29 13:41:25,008 - unified_icon_generator - INFO - Loaded 10 variants from JSON config
+2025-08-29 13:41:25,009 - unified_icon_generator - INFO - Processing 30 icon variants...
+2025-08-29 13:41:25,099 - unified_icon_generator - INFO - Progress: 3/30 variants processed
+2025-08-29 13:41:25,115 - unified_icon_generator - INFO - Progress: 6/30 variants processed
+2025-08-29 13:41:25,130 - unified_icon_generator - INFO - Progress: 9/30 variants processed
+2025-08-29 13:41:25,143 - unified_icon_generator - INFO - Progress: 12/30 variants processed
+2025-08-29 13:41:25,156 - unified_icon_generator - INFO - Progress: 15/30 variants processed
+2025-08-29 13:41:25,165 - unified_icon_generator - INFO - Progress: 18/30 variants processed
+2025-08-29 13:41:25,177 - unified_icon_generator - INFO - Progress: 21/30 variants processed
+2025-08-29 13:41:25,187 - unified_icon_generator - INFO - Progress: 24/30 variants processed
+2025-08-29 13:41:25,201 - unified_icon_generator - INFO - Progress: 27/30 variants processed
+2025-08-29 13:41:25,206 - unified_icon_generator - INFO - Progress: 30/30 variants processed
+2025-08-29 13:41:25,207 - unified_icon_generator - INFO - All variants generated successfully.
+2025-08-29 13:44:03,522 - unified_icon_generator - INFO - Loaded 20 variants from CSV
+2025-08-29 13:44:03,523 - unified_icon_generator - INFO - Loaded 10 variants from JSON config
+2025-08-29 13:44:03,523 - unified_icon_generator - INFO - Processing 30 icon variants...
+2025-08-29 13:44:03,611 - unified_icon_generator - INFO - Progress: 3/30 variants processed
+2025-08-29 13:44:03,627 - unified_icon_generator - INFO - Progress: 6/30 variants processed
+2025-08-29 13:44:03,645 - unified_icon_generator - INFO - Progress: 9/30 variants processed
+2025-08-29 13:44:03,649 - unified_icon_generator - INFO - Progress: 12/30 variants processed
+2025-08-29 13:44:03,667 - unified_icon_generator - INFO - Progress: 15/30 variants processed
+2025-08-29 13:44:03,676 - unified_icon_generator - INFO - Progress: 18/30 variants processed
+2025-08-29 13:44:03,686 - unified_icon_generator - INFO - Progress: 21/30 variants processed
+2025-08-29 13:44:03,697 - unified_icon_generator - INFO - Progress: 24/30 variants processed
+2025-08-29 13:44:03,709 - unified_icon_generator - INFO - Progress: 27/30 variants processed
+2025-08-29 13:44:03,714 - unified_icon_generator - INFO - Progress: 30/30 variants processed
+2025-08-29 13:44:03,714 - unified_icon_generator - INFO - All variants generated successfully.
+2025-08-29 14:11:35,393 - unified_icon_generator - WARNING - CairoSVG not available. PNG export may use fallback methods.
+2025-08-29 14:11:35,393 - unified_icon_generator - WARNING - Pillow not available. Some image operations will be limited.
+2025-08-29 14:11:35,395 - unified_icon_generator - INFO - Loaded 5 variants from CSV
+2025-08-29 14:11:35,395 - unified_icon_generator - INFO - Loaded 10 variants from JSON config
+2025-08-29 14:11:35,395 - unified_icon_generator - INFO - Processing 15 icon variants...
+2025-08-29 14:11:36,645 - unified_icon_generator - INFO - Progress: 1/15 variants processed
+2025-08-29 14:11:36,646 - unified_icon_generator - INFO - Progress: 2/15 variants processed
+2025-08-29 14:11:36,646 - unified_icon_generator - INFO - Progress: 3/15 variants processed
+2025-08-29 14:11:36,646 - unified_icon_generator - INFO - Progress: 4/15 variants processed
+2025-08-29 14:11:36,661 - unified_icon_generator - INFO - Progress: 5/15 variants processed
+2025-08-29 14:11:36,663 - unified_icon_generator - INFO - Progress: 6/15 variants processed
+2025-08-29 14:11:36,665 - unified_icon_generator - INFO - Progress: 7/15 variants processed
+2025-08-29 14:11:36,665 - unified_icon_generator - INFO - Progress: 8/15 variants processed
+2025-08-29 14:11:36,675 - unified_icon_generator - INFO - Progress: 9/15 variants processed
+2025-08-29 14:11:36,679 - unified_icon_generator - INFO - Progress: 10/15 variants processed
+2025-08-29 14:11:36,685 - unified_icon_generator - INFO - Progress: 11/15 variants processed
+2025-08-29 14:11:36,688 - unified_icon_generator - INFO - Progress: 12/15 variants processed
+2025-08-29 14:11:36,693 - unified_icon_generator - INFO - Progress: 13/15 variants processed
+2025-08-29 14:11:36,694 - unified_icon_generator - INFO - Progress: 14/15 variants processed
+2025-08-29 14:11:36,698 - unified_icon_generator - INFO - Progress: 15/15 variants processed
+2025-08-29 14:11:36,699 - unified_icon_generator - INFO - All variants generated successfully.

@@ -1,0 +1,5 @@
+{"ts": "2025-08-29T08:30:49Z", "event": "genesis", "note": "EpochCore RAS Audit System initialized"}
+{"ts": "2025-08-29T08:30:49Z", "event": "audit_scheduled", "note": "Phone Audit Scroll scheduled in 3600 seconds"}
+{"ts": "2025-08-29T08:30:49Z", "event": "child_explanation", "note": "Provided AI explanation for age 8", "agent_id": "IntegratedAgentSystem_kids_friendly", "age": 8, "context_type": null}
+{"ts": "2025-08-29T08:30:49Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "data/ledger/logs/phone_audit_2025-08-29T08:30:49Z.log", "sha256": "f9715e12dc6b193f4e92466999c3a261ebff76bdce43782d7666a0cd119784f6", "entries": 3}
+{"ts": "2025-08-29T08:30:49Z", "event": "system_audit", "note": "System-wide audit performed", "agent_id": "IntegratedAgentSystem", "audit_summary": {"timestamp": "2025-08-29T08:30:49.551758+00:00", "total_agents": 1, "total_triggers": 4}}

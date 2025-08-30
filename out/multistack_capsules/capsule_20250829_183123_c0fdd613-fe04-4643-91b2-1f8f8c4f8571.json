@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-006",
+  "title": "Infra DNA",
+  "description": "Capsules evolve load balancers",
+  "timestamp": "2025-08-29T18:31:23Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "11c6f963fa58a9f20a0a8856a61b8c694d32b9d58d3e29d3993b30b79d9117a4",
+    "mesh_seal": "f27ba1311e1baf713fb7cdb2d4761accf3d89b22ef68427e091326447534f335",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "4fed43a6e24541bf874e78cdabf0a167d9ae7c80d868879665d15825276cd002"
+}

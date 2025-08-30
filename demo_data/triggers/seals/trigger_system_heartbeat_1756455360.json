@@ -1,0 +1,12 @@
+{
+  "trigger_id": "system_heartbeat",
+  "fingerprint": "940807bf935111407c5827a24ceb5970447eb962dec8197ed585114033919c27",
+  "context": {
+    "source": "demo",
+    "timestamp": "2025-08-29T08:16:00.191313"
+  },
+  "ts": "2025-08-29T08:16:00Z",
+  "epoch": 1756455360,
+  "expires": 1756455660,
+  "hash": "78206121bb38c1cb16537427f7a8e078c89816e2b3434e01d3dfc5c91b96543d"
+}

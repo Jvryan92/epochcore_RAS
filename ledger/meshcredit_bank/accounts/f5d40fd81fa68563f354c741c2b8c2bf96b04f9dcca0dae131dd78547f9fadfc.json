@@ -1,0 +1,64 @@
+{
+  "account_id": "f5d40fd81fa68563f354c741c2b8c2bf96b04f9dcca0dae131dd78547f9fadfc",
+  "name": "Bob's MeshCredit",
+  "owner_id": "demo_bob",
+  "type": "standard",
+  "created_at": "2025-08-30T02:22:28.208502",
+  "last_updated": "2025-08-30T02:22:28.221158",
+  "balance": {
+    "total": 3000.0,
+    "liquid": 2200.0,
+    "staked": 0.0,
+    "compound": 800.0,
+    "governance": 0.0
+  },
+  "interest": {
+    "last_accrual": "2025-08-30T02:22:28.208509",
+    "accrued_interest": 0.0
+  },
+  "transactions": [
+    "00985c19fbc4c3660edaa5627dde59d27bc0b67637947da68a6e3dfb05fa214a",
+    "995b92d1f8df30bd9e20c79c22c8404da84f2efe5dc6edac91045313c5cab760",
+    "80b2d4deb026a4d4ac8570b71cb3bad61f92a8fa7f121a335343aa11f9c7de4f",
+    "2c29d3ebe4fdceafe9e51046fee041af54fe204e434f597e96ddd8e589feb9c6",
+    "9810f15a7b8f57e3aa1f3c0373d0ba05c54ebbc371937fbb6d4ba5f335721c22"
+  ],
+  "linked_capsules": [
+    {
+      "capsule_id": "MESH-Safe-Fund-Ledger-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.216311",
+      "initial_amount": 200.0,
+      "current_amount": 200.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Safe-Fund-Ethical-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.217394",
+      "initial_amount": 200.0,
+      "current_amount": 200.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Safe-Fund-Temporal-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.218594",
+      "initial_amount": 160.0,
+      "current_amount": 160.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Safe-Fund-Resilience-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.219743",
+      "initial_amount": 160.0,
+      "current_amount": 160.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Safe-Fund-Collaborative-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.220864",
+      "initial_amount": 80.0,
+      "current_amount": 80.0,
+      "status": "active"
+    }
+  ],
+  "status": "active"
+}

@@ -1,0 +1,7 @@
+{"version":"1.0","capsule_id":"capsule_20250829_163926_89cebac4-2a17-4410-88b7-a78b72f394d7","trigger":"TREASURYFLOW💵","timestamp":"2025-08-29T16:39:26Z",
+ "provenance":{"founder_note":"Ledger first. ROI always. Mesh forever.","true_north":"locked"},
+ "mesh":{"monetary":["Stripe","MeshCredit","ROI Glyphs"],
+         "governance":["Multisig","PR-vote","Rollback-seal"],
+         "expansion":["MeshSpawn","CivilizationBlock","Compound"]},
+ "actions":["Timestamp","Log","Seal","Archive","Reinject"],
+ "intent":"Forge ultra capsule for ROI + Mesh + Governance"}

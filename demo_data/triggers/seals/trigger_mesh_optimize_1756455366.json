@@ -1,0 +1,12 @@
+{
+  "trigger_id": "mesh_optimize",
+  "fingerprint": "8525e92b99ec467f26f4a1e14be8e794d3a3c32483c65dff37813193501484c5",
+  "context": {
+    "simulation": true,
+    "event_id": 58
+  },
+  "ts": "2025-08-29T08:16:06Z",
+  "epoch": 1756455366,
+  "expires": 1756455666,
+  "hash": "62bed52ea8dc175bc8462c34ea9fccc109a4a0f41eee3e95136949ea7e520c75"
+}

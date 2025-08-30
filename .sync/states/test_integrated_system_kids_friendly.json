@@ -1,0 +1,16 @@
+{
+  "agent_id": "test_integrated_system_kids_friendly",
+  "status": "registered",
+  "last_updated": "2025-08-29T08:29:30.476059+00:00",
+  "current_tasks": [],
+  "capabilities": [
+    "ai_explanation",
+    "age_appropriate_content",
+    "educational_storytelling",
+    "interactive_activities",
+    "child_friendly_metaphors"
+  ],
+  "metrics": {},
+  "collaboration_status": {},
+  "resources": {}
+}

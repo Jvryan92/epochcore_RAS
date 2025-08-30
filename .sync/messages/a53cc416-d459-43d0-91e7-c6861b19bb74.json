@@ -1,0 +1,20 @@
+{
+  "message_id": "a53cc416-d459-43d0-91e7-c6861b19bb74",
+  "sender_id": "IntegratedDemo_epoch_audit",
+  "receiver_id": "IntegratedDemo_kids_friendly",
+  "message_type": "audit_alert",
+  "content": {
+    "alert_type": "test_alert",
+    "timestamp": "2025-08-29T08:15:59Z",
+    "details": {
+      "source": "demo",
+      "level": "info"
+    }
+  },
+  "timestamp": "2025-08-29T08:15:59.312634+00:00",
+  "priority": 0,
+  "ttl": 3600,
+  "is_acknowledged": false,
+  "thread_id": null,
+  "parent_id": null
+}

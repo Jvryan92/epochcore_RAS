@@ -1,0 +1,80 @@
+{
+  "account_id": "fd4dbf29a36d90f5d724b50bad829ecfe70b7e86e6d135cd5ec72c9b9f1d169c",
+  "name": "Project Alpha",
+  "owner_id": "demo_project",
+  "type": "project",
+  "created_at": "2025-08-30T02:22:28.209180",
+  "last_updated": "2025-08-30T02:22:28.231355",
+  "balance": {
+    "total": 10000.0,
+    "liquid": 3500.0,
+    "staked": 0.0,
+    "compound": 6500.0,
+    "governance": 0.0
+  },
+  "interest": {
+    "last_accrual": "2025-08-30T02:22:28.209187",
+    "accrued_interest": 0.0
+  },
+  "transactions": [
+    "49b8b206f6377f7db04f442b02f84125d1ffd931b1b7371d4606d8e99ea6942d",
+    "b3a42d083d1100e30696899765565654325f03f2b61e5d3b80128cd9020ffdb2",
+    "8493ace79d6a1f2a35287b4b1343ec41ca2ad1dc3c1f4317cfee24afd2c1c862",
+    "0ce81c88fb2cc710521a6bc8890d34caeb0b38fd2853aab2388490ad27ac4afa",
+    "902beebb5f0c084375325f693843defe66aff73ade394602b158415782aa2a82",
+    "37a08d84f21d295b93ba816b69504c9a624fb6f2cf1aacb23f77eb362a658ccc",
+    "005ebcbc2cf22e9f724ae10a162bcb0270deebac840c690451f258171c5feb7f"
+  ],
+  "linked_capsules": [
+    {
+      "capsule_id": "MESH-Project-Fund-Recursive-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.222158",
+      "initial_amount": 750.0,
+      "current_amount": 750.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Project-Fund-Adaptive-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.223281",
+      "initial_amount": 750.0,
+      "current_amount": 750.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Project-Fund-MeshCredit-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.224304",
+      "initial_amount": 750.0,
+      "current_amount": 750.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Project-Fund-StrategyDeck-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.225302",
+      "initial_amount": 750.0,
+      "current_amount": 750.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Project-Fund-Intelligence-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.226366",
+      "initial_amount": 750.0,
+      "current_amount": 750.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Project-Fund-Multi-Domain-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.227500",
+      "initial_amount": 750.0,
+      "current_amount": 750.0,
+      "status": "active"
+    },
+    {
+      "capsule_id": "MESH-Strategic-Reserve-20250830022228",
+      "linked_at": "2025-08-30T02:22:28.230964",
+      "initial_amount": 2000.0,
+      "current_amount": 2000.0,
+      "status": "active"
+    }
+  ],
+  "status": "active"
+}

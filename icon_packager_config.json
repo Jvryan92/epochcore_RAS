@@ -1,0 +1,13 @@
+{
+  "formats": ["svg", "png"],
+  "variants": [],
+  "plugins": ["manifest"],
+  "output_dir": "dist",
+  "metadata": {
+    "name": "StrategyDECK Icons",
+    "version": "1.0.0",
+    "author": "StrategyDECK Team",
+    "license": "Proprietary",
+    "description": "StrategyDECK brand icons for use across platforms and applications"
+  }
+}

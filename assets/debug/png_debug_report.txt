@@ -1,0 +1,67 @@
+
+============================================================
+========= StrategyDECK PNG Conversion Debug Report =========
+============================================================
+Generated at: 2025-08-29 13:09:10
+System: Linux-6.8.0-1030-azure-x86_64-with-glibc2.36
+Python: 3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]
+
+============================================================
+=============== CairoSVG Installation Check ================
+============================================================
+❌ CairoSVG is not installed (importlib check)
+
+============================================================
+============= Direct CairoSVG Conversion Test ==============
+============================================================
+✅ Created test SVG file: /workspaces/epochcore_RAS/assets/debug/test_direct.svg
+❌ CairoSVG not available for direct conversion
+
+============================================================
+================= BytesIO Conversion Test ==================
+============================================================
+❌ CairoSVG not available for BytesIO conversion
+
+============================================================
+============= Module Function Conversion Test ==============
+============================================================
+✅ Successfully imported maybe_export_png from generate_icons
+❌ maybe_export_png failed but did not raise an exception
+
+============================================================
+================ System Dependencies Check =================
+============================================================
+Operating System: Linux (#35~22.04.1-Ubuntu SMP Mon May 26 18:08:30 UTC 2025)
+✅ Cairo is installed (pkg-config check)
+✅ Cairo version: 1.16.0
+❌ Python development headers not found
+  Suggestion: sudo apt-get install python3.11-dev
+ℹ️ Pillow is not installed (optional for some SVG operations)
+
+============================================================
+==================== System Information ====================
+============================================================
+Python version: 3.11.2 (main, Apr 28 2025, 14:11:48) [GCC 12.2.0]
+Platform: Linux-6.8.0-1030-azure-x86_64-with-glibc2.36
+Processor: 
+
+Relevant environment variables:
+⚠️ Could not get installed packages: Command '['/workspaces/epochcore_RAS/.venv/bin/python', '-m', 'pip', 'list']' returned non-zero exit status 1.
+
+============================================================
+================ Endless Glyph System Test =================
+============================================================
+✅ Found endless glyph system at /workspaces/epochcore_RAS/scripts/endless_glyph_generator.py
+Note: CairoSVG is not installed. PNG export will be disabled.
+To enable PNG export, install CairoSVG: pip install cairosvg
+✅ Successfully imported endless_glyph_generator module
+❌ Error generating glyph: module 'endless_glyph_generator' has no attribute 'generate_glyph'
+
+============================================================
+===================== Issue Diagnosis ======================
+============================================================
+Identified Issues:
+1. CairoSVG is not installed
+
+Suggested Fixes:
+1. Install CairoSVG: pip install cairosvg

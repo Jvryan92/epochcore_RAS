@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-010",
+  "title": "Infra Bundles",
+  "description": "VM+DB+network ETF capsules",
+  "timestamp": "2025-08-29T18:31:33Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "dd680eea8e3c3073b69105ac8a3234dac11ee6f7b850d041da889362d605d03a",
+    "mesh_seal": "05acaf95207936a9dc8b0efde2b26ca9c2907330c88a6948442fd759c6a78ec4",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "cbd41903bad88953f6689971ee75710358fc99174e9b169d9be4fb14ce1a60d5"
+}

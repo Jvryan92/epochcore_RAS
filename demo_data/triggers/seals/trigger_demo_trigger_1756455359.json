@@ -1,0 +1,12 @@
+{
+  "trigger_id": "demo_trigger",
+  "fingerprint": "a88cbafc3f9de4855724b975b9f69a671a691ebec6a6201b5855636a3ebde2c6",
+  "context": {
+    "demo": true,
+    "timestamp": "2025-08-29T08:15:59.314928"
+  },
+  "ts": "2025-08-29T08:15:59Z",
+  "epoch": 1756455359,
+  "expires": 1756455659,
+  "hash": "ca6895221846b4d2ed5fafe2e6fc90c5afeed4bd90cb33806faee3a9109d7d63"
+}

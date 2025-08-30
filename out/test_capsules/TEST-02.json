@@ -1,0 +1,12 @@
+{
+  "capsule_id": "TEST-02",
+  "timestamp": "2025-08-29T20:23:12Z",
+  "domain": "test",
+  "name": "Test Capsule 2",
+  "description": "Test description 2",
+  "provenance": {
+    "prev_hash": "7a2efa4b3b777d7561b316df6f9345a323cbaadd5d7b174a26f040b275106750",
+    "test": true
+  },
+  "self_sha256": "cd3fec1879afdbb448991a0fe2fe420dad8350aefc6cc652b65df5c4da1ed4d0"
+}

@@ -7,7 +7,32 @@ from typing import Dict, Any, List, Optional
 from ..core.base_agent import BaseAgent
 
 
-class SentinelAgent(BaseAgent):
+class SentinelAgent(BaseAgent):Here is your `flash_sync_with_epochALPHA` method, ready to add to your `SentinelAgent` class:
+
+````python
+    def flash_sync_with_epochALPHA(self) -> bool:
+        """Trigger a flash sync with agent epochALPHA."""
+        target_agent = self._connected_agents.get('epochALPHA')
+        if target_agent:
+            self.send_message(
+                target_agent,
+                'agent.sync',
+                {
+                    'action': 'flash_sync',
+                    'timestamp': datetime.now(timezone.utc).isoformat()
+                },
+                priority='high'
+            )
+            self.logger.info("Flash sync triggered with agent epochALPHA.")
+            return True
+        else:
+            self.logger.warning("Agent epochALPHA not found in mesh.")
+            return False
+````
+
+Place this inside your `SentinelAgent` class.  
+You can now call `flash_sync_with_epochAL
+PHA()` to initiate a flash sync with the `epochALPHA` agent.
     """Sentinel Agent responsible for security monitoring and compliance enforcement."""
 
     def __init__(self, name: str = "sentinel", config: Optional[Dict[str, Any]] = None):
@@ -283,3 +308,24 @@ class SentinelAgent(BaseAgent):
                     data['status'] = 'stale'
             else:
                 data['status'] = 'pending'
+
+    def flash_sync_all_agents(self) -> int:
+        """Trigger a flash sync with all connected agents."""
+        count = 0
+        for agent_name, agent in self._connected_agents.items():
+            self.send_message(
+                agent,
+                'agent.sync',
+                {
+                    'action': 'flash_sync',
+                    'timestamp': datetime.now(timezone.utc).isoformat()
+                },
+                priority='high'
+            )
+            self.logger.info(f"Flash sync triggered with agent {agent_name}.")
+            count += 1
+        if count == 0:
+            self.logger.warning("No agents found in mesh for flash sync.")
+        return count
+
+    # Call this from your

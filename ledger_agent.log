@@ -1,0 +1,368 @@
+2025-08-29 16:39:26,455 [INFO] LedgerAgent: LedgerAgent initialized with 10 ledger entries
+2025-08-29 16:39:26,455 [INFO] LedgerAgent: Ledger Agent joining synchronization process...
+2025-08-29 16:39:26,455 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:26,455 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:39:26,456 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:26,456 [INFO] LedgerAgent: Known Capsules: 10
+2025-08-29 16:39:26,456 [INFO] LedgerAgent: Current Value: 7.00
+2025-08-29 16:39:26,456 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:39:26,456 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:39:26,456 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 4
+2025-08-29 16:39:26,456 [INFO] LedgerAgent:   BONUSDROP🎁: 4
+2025-08-29 16:39:26,456 [INFO] LedgerAgent:   MARKETCAP📈: 4
+2025-08-29 16:39:26,456 [INFO] LedgerAgent:   PRICINGFORGE💳: 4
+2025-08-29 16:39:26,457 [INFO] LedgerAgent:   TREASURYFLOW💵: 4
+2025-08-29 16:39:26,457 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:39:26,457 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:39:26,457 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:39:26,457 [INFO] LedgerAgent:   Growth factor: 1.00x
+2025-08-29 16:39:26,457 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:26,457 [INFO] LedgerAgent: Triggering ROI burst...
+2025-08-29 16:39:27,664 [INFO] LedgerAgent: ROI burst successfully triggered
+2025-08-29 16:39:27,664 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:27,664 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:39:27,664 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:27,665 [INFO] LedgerAgent: Known Capsules: 10
+2025-08-29 16:39:27,665 [INFO] LedgerAgent: Current Value: 7.00
+2025-08-29 16:39:27,665 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:39:27,665 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:39:27,665 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 4
+2025-08-29 16:39:27,665 [INFO] LedgerAgent:   BONUSDROP🎁: 4
+2025-08-29 16:39:27,665 [INFO] LedgerAgent:   MARKETCAP📈: 4
+2025-08-29 16:39:27,665 [INFO] LedgerAgent:   PRICINGFORGE💳: 4
+2025-08-29 16:39:27,665 [INFO] LedgerAgent:   TREASURYFLOW💵: 4
+2025-08-29 16:39:27,665 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:39:27,666 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:39:27,666 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:39:27,666 [INFO] LedgerAgent:   Growth factor: 1.00x
+2025-08-29 16:39:27,666 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:31,456 [INFO] LedgerAgent: Detected 5 new ledger entries
+2025-08-29 16:39:31,457 [INFO] LedgerAgent: Processed capsule with trigger: TREASURYFLOW💵
+2025-08-29 16:39:31,457 [INFO] LedgerAgent: Value change: 7.00 → 7.07 (×1.01)
+2025-08-29 16:39:31,457 [INFO] LedgerAgent: Processed capsule with trigger: MARKETCAP📈
+2025-08-29 16:39:31,457 [INFO] LedgerAgent: Value change: 7.07 → 7.18 (×1.02)
+2025-08-29 16:39:31,457 [INFO] LedgerAgent: Processed capsule with trigger: PRICINGFORGE💳
+2025-08-29 16:39:31,457 [INFO] LedgerAgent: Value change: 7.18 → 7.26 (×1.01)
+2025-08-29 16:39:31,458 [INFO] LedgerAgent: Processed capsule with trigger: BONUSDROP🎁
+2025-08-29 16:39:31,458 [INFO] LedgerAgent: Value change: 7.26 → 7.40 (×1.02)
+2025-08-29 16:39:31,458 [INFO] LedgerAgent: Processed capsule with trigger: AUTOCOMPOUND⏩
+2025-08-29 16:39:31,458 [INFO] LedgerAgent: Value change: 7.40 → 73.96 (×10.00)
+2025-08-29 16:39:31,458 [INFO] LedgerAgent: No mesh nodes configured - running in standalone mode
+2025-08-29 16:39:57,666 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:57,666 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:39:57,666 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:39:57,667 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:39:57,667 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:39:57,667 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:39:57,667 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:39:57,667 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 22
+2025-08-29 16:39:57,667 [INFO] LedgerAgent:   BONUSDROP🎁: 22
+2025-08-29 16:39:57,667 [INFO] LedgerAgent:   MARKETCAP📈: 22
+2025-08-29 16:39:57,667 [INFO] LedgerAgent:   PRICINGFORGE💳: 22
+2025-08-29 16:39:57,667 [INFO] LedgerAgent:   TREASURYFLOW💵: 22
+2025-08-29 16:39:57,667 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:39:57,668 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:39:57,668 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:39:57,668 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:39:57,668 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:40:27,668 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:40:27,668 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:40:27,668 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:40:27,669 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:40:27,669 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:40:27,669 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:40:27,669 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:40:27,669 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 40
+2025-08-29 16:40:27,669 [INFO] LedgerAgent:   BONUSDROP🎁: 40
+2025-08-29 16:40:27,669 [INFO] LedgerAgent:   MARKETCAP📈: 40
+2025-08-29 16:40:27,669 [INFO] LedgerAgent:   PRICINGFORGE💳: 40
+2025-08-29 16:40:27,669 [INFO] LedgerAgent:   TREASURYFLOW💵: 40
+2025-08-29 16:40:27,669 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:40:27,670 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:40:27,670 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:40:27,670 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:40:27,670 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:40:57,670 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:40:57,670 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:40:57,670 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:40:57,670 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:40:57,671 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:40:57,671 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:40:57,671 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:40:57,671 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 58
+2025-08-29 16:40:57,671 [INFO] LedgerAgent:   BONUSDROP🎁: 58
+2025-08-29 16:40:57,671 [INFO] LedgerAgent:   MARKETCAP📈: 58
+2025-08-29 16:40:57,671 [INFO] LedgerAgent:   PRICINGFORGE💳: 58
+2025-08-29 16:40:57,671 [INFO] LedgerAgent:   TREASURYFLOW💵: 58
+2025-08-29 16:40:57,671 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:40:57,672 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:40:57,672 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:40:57,672 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:40:57,672 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:41:27,672 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:41:27,672 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:41:27,672 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:41:27,672 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:41:27,672 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:41:27,673 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:41:27,673 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 76
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   BONUSDROP🎁: 76
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   MARKETCAP📈: 76
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   PRICINGFORGE💳: 76
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   TREASURYFLOW💵: 76
+2025-08-29 16:41:27,673 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:41:27,673 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:41:27,673 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:41:57,674 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:41:57,674 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:41:57,674 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:41:57,674 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:41:57,674 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:41:57,674 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:41:57,674 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 94
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   BONUSDROP🎁: 94
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   MARKETCAP📈: 94
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   PRICINGFORGE💳: 94
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   TREASURYFLOW💵: 94
+2025-08-29 16:41:57,675 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:41:57,675 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:41:57,675 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:42:27,676 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:42:27,676 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:42:27,676 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:42:27,676 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:42:27,676 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:42:27,677 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:42:27,677 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:42:27,677 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 112
+2025-08-29 16:42:27,677 [INFO] LedgerAgent:   BONUSDROP🎁: 112
+2025-08-29 16:42:27,677 [INFO] LedgerAgent:   MARKETCAP📈: 112
+2025-08-29 16:42:27,677 [INFO] LedgerAgent:   PRICINGFORGE💳: 112
+2025-08-29 16:42:27,677 [INFO] LedgerAgent:   TREASURYFLOW💵: 112
+2025-08-29 16:42:27,677 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:42:27,677 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:42:27,678 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:42:27,678 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:42:27,678 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:42:57,678 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:42:57,678 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:42:57,678 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:42:57,678 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:42:57,679 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:42:57,679 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:42:57,679 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:42:57,679 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 130
+2025-08-29 16:42:57,679 [INFO] LedgerAgent:   BONUSDROP🎁: 130
+2025-08-29 16:42:57,679 [INFO] LedgerAgent:   MARKETCAP📈: 130
+2025-08-29 16:42:57,679 [INFO] LedgerAgent:   PRICINGFORGE💳: 130
+2025-08-29 16:42:57,679 [INFO] LedgerAgent:   TREASURYFLOW💵: 130
+2025-08-29 16:42:57,679 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:42:57,680 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:42:57,680 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:42:57,680 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:42:57,680 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:43:27,680 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:43:27,680 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 16:43:27,680 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:43:27,680 [INFO] LedgerAgent: Known Capsules: 15
+2025-08-29 16:43:27,680 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 16:43:27,681 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 16:43:27,681 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 148
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   BONUSDROP🎁: 148
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   MARKETCAP📈: 148
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   PRICINGFORGE💳: 148
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   TREASURYFLOW💵: 148
+2025-08-29 16:43:27,681 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 16:43:27,681 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 16:43:27,682 [INFO] LedgerAgent: ==================================================
+2025-08-29 16:43:32,436 [INFO] LedgerAgent: Ledger Agent shutting down...
+2025-08-29 17:05:52,701 [INFO] LedgerAgent: LedgerAgent initialized with 30 ledger entries
+2025-08-29 17:05:52,702 [INFO] LedgerAgent: Ledger Agent joining synchronization process...
+2025-08-29 17:05:52,702 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:05:52,702 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 17:05:52,703 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:05:52,703 [INFO] LedgerAgent: Known Capsules: 30
+2025-08-29 17:05:52,703 [INFO] LedgerAgent: Current Value: 7.00
+2025-08-29 17:05:52,703 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 17:05:52,703 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 17:05:52,703 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 14
+2025-08-29 17:05:52,703 [INFO] LedgerAgent:   BONUSDROP🎁: 6
+2025-08-29 17:05:52,703 [INFO] LedgerAgent:   CIVILIZATIONBLOCK🌍: 2
+2025-08-29 17:05:52,703 [INFO] LedgerAgent:   GOVCOUNCIL⚖️: 6
+2025-08-29 17:05:52,703 [INFO] LedgerAgent:   MARKETCAP📈: 6
+2025-08-29 17:05:52,703 [INFO] LedgerAgent:   MESHSPAWN🌱: 4
+2025-08-29 17:05:52,704 [INFO] LedgerAgent:   PRICINGFORGE💳: 6
+2025-08-29 17:05:52,704 [INFO] LedgerAgent:   PULLREQUESTVOTE🔀: 4
+2025-08-29 17:05:52,704 [INFO] LedgerAgent:   ROLLBACKSEAL⏪: 4
+2025-08-29 17:05:52,704 [INFO] LedgerAgent:   TREASURYFLOW💵: 8
+2025-08-29 17:05:52,704 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 17:05:52,704 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 17:05:52,704 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 17:05:52,704 [INFO] LedgerAgent:   Growth factor: 1.00x
+2025-08-29 17:05:52,704 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:05:52,705 [INFO] LedgerAgent: Triggering ROI burst...
+2025-08-29 17:05:53,908 [INFO] LedgerAgent: ROI burst successfully triggered
+2025-08-29 17:05:53,908 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:05:53,908 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 17:05:53,908 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:05:53,909 [INFO] LedgerAgent: Known Capsules: 30
+2025-08-29 17:05:53,909 [INFO] LedgerAgent: Current Value: 7.00
+2025-08-29 17:05:53,909 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 17:05:53,909 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 17:05:53,909 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 14
+2025-08-29 17:05:53,909 [INFO] LedgerAgent:   BONUSDROP🎁: 6
+2025-08-29 17:05:53,909 [INFO] LedgerAgent:   CIVILIZATIONBLOCK🌍: 2
+2025-08-29 17:05:53,909 [INFO] LedgerAgent:   GOVCOUNCIL⚖️: 6
+2025-08-29 17:05:53,909 [INFO] LedgerAgent:   MARKETCAP📈: 6
+2025-08-29 17:05:53,909 [INFO] LedgerAgent:   MESHSPAWN🌱: 4
+2025-08-29 17:05:53,910 [INFO] LedgerAgent:   PRICINGFORGE💳: 6
+2025-08-29 17:05:53,910 [INFO] LedgerAgent:   PULLREQUESTVOTE🔀: 4
+2025-08-29 17:05:53,910 [INFO] LedgerAgent:   ROLLBACKSEAL⏪: 4
+2025-08-29 17:05:53,910 [INFO] LedgerAgent:   TREASURYFLOW💵: 8
+2025-08-29 17:05:53,910 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 17:05:53,910 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 17:05:53,910 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 17:05:53,910 [INFO] LedgerAgent:   Growth factor: 1.00x
+2025-08-29 17:05:53,911 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:05:57,703 [INFO] LedgerAgent: Detected 5 new ledger entries
+2025-08-29 17:05:57,703 [INFO] LedgerAgent: Processed capsule with trigger: TREASURYFLOW💵
+2025-08-29 17:05:57,704 [INFO] LedgerAgent: Value change: 7.00 → 7.07 (×1.01)
+2025-08-29 17:05:57,704 [INFO] LedgerAgent: Processed capsule with trigger: MARKETCAP📈
+2025-08-29 17:05:57,704 [INFO] LedgerAgent: Value change: 7.07 → 7.18 (×1.02)
+2025-08-29 17:05:57,704 [INFO] LedgerAgent: Processed capsule with trigger: PRICINGFORGE💳
+2025-08-29 17:05:57,704 [INFO] LedgerAgent: Value change: 7.18 → 7.26 (×1.01)
+2025-08-29 17:05:57,704 [INFO] LedgerAgent: Processed capsule with trigger: BONUSDROP🎁
+2025-08-29 17:05:57,704 [INFO] LedgerAgent: Value change: 7.26 → 7.40 (×1.02)
+2025-08-29 17:05:57,705 [INFO] LedgerAgent: Processed capsule with trigger: AUTOCOMPOUND⏩
+2025-08-29 17:05:57,705 [INFO] LedgerAgent: Value change: 7.40 → 73.96 (×10.00)
+2025-08-29 17:05:57,705 [INFO] LedgerAgent: No mesh nodes configured - running in standalone mode
+2025-08-29 17:06:23,911 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:06:23,911 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 17:06:23,911 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:06:23,911 [INFO] LedgerAgent: Known Capsules: 35
+2025-08-29 17:06:23,912 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 17:06:23,912 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 17:06:23,912 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 17:06:23,912 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 62
+2025-08-29 17:06:23,912 [INFO] LedgerAgent:   BONUSDROP🎁: 30
+2025-08-29 17:06:23,912 [INFO] LedgerAgent:   CIVILIZATIONBLOCK🌍: 8
+2025-08-29 17:06:23,912 [INFO] LedgerAgent:   GOVCOUNCIL⚖️: 24
+2025-08-29 17:06:23,912 [INFO] LedgerAgent:   MARKETCAP📈: 30
+2025-08-29 17:06:23,912 [INFO] LedgerAgent:   MESHSPAWN🌱: 16
+2025-08-29 17:06:23,913 [INFO] LedgerAgent:   PRICINGFORGE💳: 30
+2025-08-29 17:06:23,913 [INFO] LedgerAgent:   PULLREQUESTVOTE🔀: 16
+2025-08-29 17:06:23,913 [INFO] LedgerAgent:   ROLLBACKSEAL⏪: 16
+2025-08-29 17:06:23,913 [INFO] LedgerAgent:   TREASURYFLOW💵: 38
+2025-08-29 17:06:23,913 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 17:06:23,913 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 17:06:23,913 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 17:06:23,913 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 17:06:23,913 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:06:53,914 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:06:53,914 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 17:06:53,914 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:06:53,914 [INFO] LedgerAgent: Known Capsules: 35
+2025-08-29 17:06:53,914 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 17:06:53,914 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 17:06:53,915 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 110
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   BONUSDROP🎁: 54
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   CIVILIZATIONBLOCK🌍: 14
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   GOVCOUNCIL⚖️: 42
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   MARKETCAP📈: 54
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   MESHSPAWN🌱: 28
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   PRICINGFORGE💳: 54
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   PULLREQUESTVOTE🔀: 28
+2025-08-29 17:06:53,915 [INFO] LedgerAgent:   ROLLBACKSEAL⏪: 28
+2025-08-29 17:06:53,916 [INFO] LedgerAgent:   TREASURYFLOW💵: 68
+2025-08-29 17:06:53,916 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 17:06:53,916 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 17:06:53,916 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 17:06:53,916 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 17:06:53,916 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:07:23,916 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:07:23,916 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 17:07:23,916 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:07:23,917 [INFO] LedgerAgent: Known Capsules: 35
+2025-08-29 17:07:23,917 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 17:07:23,917 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 17:07:23,917 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 17:07:23,917 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 158
+2025-08-29 17:07:23,917 [INFO] LedgerAgent:   BONUSDROP🎁: 78
+2025-08-29 17:07:23,917 [INFO] LedgerAgent:   CIVILIZATIONBLOCK🌍: 20
+2025-08-29 17:07:23,917 [INFO] LedgerAgent:   GOVCOUNCIL⚖️: 60
+2025-08-29 17:07:23,917 [INFO] LedgerAgent:   MARKETCAP📈: 78
+2025-08-29 17:07:23,917 [INFO] LedgerAgent:   MESHSPAWN🌱: 40
+2025-08-29 17:07:23,918 [INFO] LedgerAgent:   PRICINGFORGE💳: 78
+2025-08-29 17:07:23,918 [INFO] LedgerAgent:   PULLREQUESTVOTE🔀: 40
+2025-08-29 17:07:23,918 [INFO] LedgerAgent:   ROLLBACKSEAL⏪: 40
+2025-08-29 17:07:23,918 [INFO] LedgerAgent:   TREASURYFLOW💵: 98
+2025-08-29 17:07:23,918 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 17:07:23,918 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 17:07:23,918 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 17:07:23,918 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 17:07:23,918 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:07:53,919 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:07:53,919 [INFO] LedgerAgent: Ledger Agent Status
+2025-08-29 17:07:53,919 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:07:53,919 [INFO] LedgerAgent: Known Capsules: 35
+2025-08-29 17:07:53,919 [INFO] LedgerAgent: Current Value: 73.96
+2025-08-29 17:07:53,919 [INFO] LedgerAgent: Last Sync: 0001-01-01T00:00:00
+2025-08-29 17:07:53,919 [INFO] LedgerAgent: 
+Trigger Counts:
+2025-08-29 17:07:53,919 [INFO] LedgerAgent:   AUTOCOMPOUND⏩: 206
+2025-08-29 17:07:53,919 [INFO] LedgerAgent:   BONUSDROP🎁: 102
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   CIVILIZATIONBLOCK🌍: 26
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   GOVCOUNCIL⚖️: 78
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   MARKETCAP📈: 102
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   MESHSPAWN🌱: 52
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   PRICINGFORGE💳: 102
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   PULLREQUESTVOTE🔀: 52
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   ROLLBACKSEAL⏪: 52
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   TREASURYFLOW💵: 128
+2025-08-29 17:07:53,920 [INFO] LedgerAgent: 
+Mathematical Analysis:
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   Base compound rate: 1.0072%
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   Doubling time: 71.5 triggers
+2025-08-29 17:07:53,920 [INFO] LedgerAgent:   Growth factor: 10.57x
+2025-08-29 17:07:53,921 [INFO] LedgerAgent: ==================================================
+2025-08-29 17:07:54,259 [INFO] LedgerAgent: Ledger Agent shutting down...

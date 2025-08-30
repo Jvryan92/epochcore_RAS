@@ -1,0 +1,17 @@
+{
+  "message_id": "58a268d2-8fa2-4ea5-b877-a8aecdb2ad84",
+  "sender_id": "system",
+  "receiver_id": "IntegratedAgentSystem_mesh_trigger",
+  "message_type": "sync_request",
+  "content": {
+    "sync_id": "2e1c9305-1343-4d73-9933-a952c3f5d8a8",
+    "name": "system_initialization",
+    "timeout": 30.0
+  },
+  "timestamp": "2025-08-29T08:30:49.535431+00:00",
+  "priority": 10,
+  "ttl": 3600,
+  "is_acknowledged": false,
+  "thread_id": null,
+  "parent_id": null
+}

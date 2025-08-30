@@ -1,0 +1,68 @@
+[
+  {
+    "title": "AI Drawing Helper",
+    "age_level": "preschool",
+    "description": "Draw a picture together with an AI helper to see how you can create art together!",
+    "steps": [
+      "Get a large piece of paper and some crayons or markers",
+      "The child starts by drawing one part of a picture (like the head of an animal)",
+      "The AI (played by a parent or the app) suggests what to draw next (like adding a body)",
+      "The child decides whether to follow the suggestion or draw something else",
+      "Take turns adding to the drawing",
+      "At the end, discuss how the AI helped with ideas but the child made the decisions"
+    ],
+    "materials": [
+      "Paper",
+      "Crayons or markers"
+    ]
+  },
+  {
+    "title": "Recipe Assistant Game",
+    "age_level": "early_elementary",
+    "description": "Make a pretend meal with the help of an AI cooking assistant!",
+    "steps": [
+      "Set up a pretend kitchen area",
+      "The child decides what meal they want to make",
+      "The AI assistant (played by a parent or the app) suggests ingredients",
+      "The child picks which ingredients to use",
+      "The AI can suggest cooking steps, but the child is the 'chef' who makes all decisions",
+      "Discuss how the AI helped with information but the child was in charge"
+    ],
+    "materials": [
+      "Pretend food items",
+      "Toy cooking tools"
+    ]
+  },
+  {
+    "title": "Treasure Hunt Helper",
+    "age_level": "late_elementary",
+    "description": "Go on a treasure hunt where an AI gives hints but you make the decisions!",
+    "steps": [
+      "Hide a small prize or 'treasure' somewhere in your home or yard",
+      "The AI (played by a parent or the app) provides clues when asked",
+      "The child decides where to look and can ask for hints",
+      "The AI can say 'warmer' or 'colder' but doesn't directly tell the location",
+      "After finding the treasure, discuss how the AI provided helpful information, but the child did the actual searching and decision-making"
+    ],
+    "materials": []
+  },
+  {
+    "title": "AI City Planner",
+    "age_level": "middle_school",
+    "description": "Design a city with the help of an AI assistant who provides information and suggestions!",
+    "steps": [
+      "Get a large piece of paper, markers, and small objects to represent buildings",
+      "The child decides what kind of city they want to create",
+      "The AI (played by a parent or the app) suggests considerations like 'where will people get food?' or 'how will people travel?'",
+      "The child designs the city layout, deciding where to put homes, schools, parks, etc.",
+      "The AI can offer information about real city planning but doesn't make decisions",
+      "Discuss how the AI provided expertise but the child was the actual city planner making the important decisions"
+    ],
+    "materials": [
+      "Large paper",
+      "Markers",
+      "Small objects for buildings",
+      "Optional: craft supplies"
+    ]
+  }
+]

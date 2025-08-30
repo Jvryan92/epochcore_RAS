@@ -1,0 +1,17 @@
+{
+  "message_id": "ebde0271-da77-4d96-a068-c6245a3889ef",
+  "sender_id": "system",
+  "receiver_id": "IntegratedAgentSystem_epoch_audit",
+  "message_type": "sync_request",
+  "content": {
+    "sync_id": "2e1c9305-1343-4d73-9933-a952c3f5d8a8",
+    "name": "system_initialization",
+    "timeout": 30.0
+  },
+  "timestamp": "2025-08-29T08:30:49.535239+00:00",
+  "priority": 10,
+  "ttl": 3600,
+  "is_acknowledged": false,
+  "thread_id": null,
+  "parent_id": null
+}

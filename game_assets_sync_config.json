@@ -1,0 +1,38 @@
+{
+  "sync_targets": [
+    {
+      "name": "unity-game",
+      "path": "/workspaces/epochcore_RAS/dist/game-assets/unity",
+      "icon_types": ["png"],
+      "sizes": [16, 32, 64, 128],
+      "contexts": ["game"],
+      "active": true,
+      "last_sync": null
+    },
+    {
+      "name": "web-dashboard",
+      "path": "/workspaces/epochcore_RAS/dist/game-assets/web",
+      "icon_types": ["svg", "png"],
+      "sizes": [16, 24, 32, 48],
+      "contexts": ["web"],
+      "active": true,
+      "last_sync": null
+    },
+    {
+      "name": "saas-platform",
+      "path": "/workspaces/epochcore_RAS/dist/game-assets/saas",
+      "icon_types": ["svg"],
+      "sizes": [16, 24, 32],
+      "contexts": ["web"],
+      "active": true,
+      "last_sync": null
+    }
+  ],
+  "shared_storage": {
+    "type": "local",
+    "path": "/workspaces/epochcore_RAS/dist/shared"
+  },
+  "auto_sync": true,
+  "sync_on_changes": true,
+  "last_sync": null
+}

@@ -1,0 +1,12 @@
+{
+  "transaction_id": "9810f15a7b8f57e3aa1f3c0373d0ba05c54ebbc371937fbb6d4ba5f335721c22",
+  "account_id": "f5d40fd81fa68563f354c741c2b8c2bf96b04f9dcca0dae131dd78547f9fadfc",
+  "type": "capsule_link",
+  "amount": 80.0,
+  "fee": 0.0,
+  "net_amount": 80.0,
+  "asset_class": "compound",
+  "description": "New backed capsule: Safe-Fund-Collaborative: MESH-Safe-Fund-Collaborative-20250830022228",
+  "timestamp": "2025-08-30T02:22:28.220998",
+  "status": "completed"
+}

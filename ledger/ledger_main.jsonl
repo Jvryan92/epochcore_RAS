@@ -1,0 +1,8 @@
+{"ts": "2025-08-29T07:33:08Z", "event": "genesis", "note": "EpochCore RAS Audit System initialized"}
+{"ts": "2025-08-29T07:33:08Z", "event": "example_event", "note": "Testing the audit system"}
+{"ts": "2025-08-29T07:33:08Z", "event": "alpha_ceiling_enforced", "note": "Value 150 exceeded ceiling 100", "original_value": 150, "capped_value": 100}
+{"ts": "2025-08-29T07:33:08Z", "event": "seal_created", "note": "Created seal for test_seal", "seal": "test_seal", "sha256": "0cee8d161d9d34131bc1b7f7ebaf7e1e62320c8d949204ff53e03eb3510eef98", "file": "ledger/seals/test_seal.2025-08-29T07:33:08Z.sha"}
+{"ts": "2025-08-29T07:33:08Z", "event": "gbt_epoch", "note": "GBTEpoch timestamp captured", "epoch": 1756452788}
+{"ts": "2025-08-29T07:33:08Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "ledger/logs/phone_audit_2025-08-29T07:33:08Z.log", "sha256": "8f4b1df85cc081064eb7c5f6fedd6180cd153577257dc1012956ba5127f0d89e", "entries": 5}
+{"ts": "2025-08-29T07:33:08Z", "event": "audit_scheduled", "note": "Phone Audit Scroll scheduled in 10 seconds"}
+{"ts": "2025-08-29T07:33:18Z", "event": "phone_audit_scroll", "note": "Phone Audit Scroll created", "file": "ledger/logs/phone_audit_2025-08-29T07:33:18Z.log", "sha256": "bf6fb837ba71006cf00ce0e6ae047dea9f9c48b31caf1bc4b1c40bbceb779ce0", "entries": 7}

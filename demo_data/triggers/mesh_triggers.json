@@ -1,0 +1,62 @@
+{
+  "system_heartbeat": {
+    "id": "system_heartbeat",
+    "description": "Regular system heartbeat to verify component health",
+    "resource_requirement": 10,
+    "type": "standard",
+    "created_ts": "2025-08-29T08:15:59Z",
+    "epoch": 1756455359,
+    "status": "registered",
+    "activations": 9,
+    "last_activation": "2025-08-29T08:16:09Z",
+    "fingerprint": "940807bf935111407c5827a24ceb5970447eb962dec8197ed585114033919c27"
+  },
+  "mesh_optimize": {
+    "id": "mesh_optimize",
+    "description": "Optimize mesh configuration and performance",
+    "resource_requirement": 50,
+    "type": "standard",
+    "created_ts": "2025-08-29T08:15:59Z",
+    "epoch": 1756455359,
+    "status": "registered",
+    "activations": 16,
+    "last_activation": "2025-08-29T08:16:09Z",
+    "fingerprint": "8525e92b99ec467f26f4a1e14be8e794d3a3c32483c65dff37813193501484c5"
+  },
+  "system_restart": {
+    "id": "system_restart",
+    "description": "Restart system components after critical failure",
+    "resource_requirement": 80,
+    "type": "critical",
+    "created_ts": "2025-08-29T08:15:59Z",
+    "epoch": 1756455359,
+    "status": "registered",
+    "activations": 0,
+    "last_activation": null,
+    "fingerprint": "8998989a8d4b857673676e8296fdb130d56d0b13bebdc57ef11a72396f49a65a"
+  },
+  "security_alert": {
+    "id": "security_alert",
+    "description": "Handle security breach or anomaly",
+    "resource_requirement": 90,
+    "type": "critical",
+    "created_ts": "2025-08-29T08:15:59Z",
+    "epoch": 1756455359,
+    "status": "registered",
+    "activations": 0,
+    "last_activation": null,
+    "fingerprint": "6ad2ce33edb4b77639a494d2dc53c75caa73316b8df6eb318fddcc0383dbab67"
+  },
+  "demo_trigger": {
+    "id": "demo_trigger",
+    "description": "A demonstration trigger",
+    "resource_requirement": 30,
+    "type": "standard",
+    "created_ts": "2025-08-29T08:15:59Z",
+    "epoch": 1756455359,
+    "status": "registered",
+    "activations": 1,
+    "last_activation": "2025-08-29T08:15:59Z",
+    "fingerprint": "a88cbafc3f9de4855724b975b9f69a671a691ebec6a6201b5855636a3ebde2c6"
+  }
+}

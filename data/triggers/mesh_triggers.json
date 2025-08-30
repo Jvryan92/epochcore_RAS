@@ -1,0 +1,50 @@
+{
+  "system_heartbeat": {
+    "id": "system_heartbeat",
+    "description": "Regular system heartbeat to verify component health",
+    "resource_requirement": 10,
+    "type": "standard",
+    "created_ts": "2025-08-29T08:30:49Z",
+    "epoch": 1756456249,
+    "status": "registered",
+    "activations": 0,
+    "last_activation": null,
+    "fingerprint": "579bdb6657247af84f45e4f41ff46f985c03d7acf66a818cf7f75fe02fe7d94a"
+  },
+  "mesh_optimize": {
+    "id": "mesh_optimize",
+    "description": "Optimize mesh configuration and performance",
+    "resource_requirement": 50,
+    "type": "standard",
+    "created_ts": "2025-08-29T08:30:49Z",
+    "epoch": 1756456249,
+    "status": "registered",
+    "activations": 0,
+    "last_activation": null,
+    "fingerprint": "8e20db44196ae1cdc00ad6999f3c34446323938b0d7e7b9af3f9fd76be94fbcf"
+  },
+  "system_restart": {
+    "id": "system_restart",
+    "description": "Restart system components after critical failure",
+    "resource_requirement": 80,
+    "type": "critical",
+    "created_ts": "2025-08-29T08:30:49Z",
+    "epoch": 1756456249,
+    "status": "registered",
+    "activations": 0,
+    "last_activation": null,
+    "fingerprint": "88911941e88432ffe69883c05ad18497d91ea623456e44ca86a1cb3b8c3c1413"
+  },
+  "security_alert": {
+    "id": "security_alert",
+    "description": "Handle security breach or anomaly",
+    "resource_requirement": 90,
+    "type": "critical",
+    "created_ts": "2025-08-29T08:30:49Z",
+    "epoch": 1756456249,
+    "status": "registered",
+    "activations": 0,
+    "last_activation": null,
+    "fingerprint": "dabb8248e8d3867d0534473603895fcf93c2ed1819a9d9094e9dffc47f62bc68"
+  }
+}

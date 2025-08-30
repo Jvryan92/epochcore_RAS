@@ -1,0 +1,14 @@
+{
+  "trigger_id": "multistack_base_10",
+  "ts": "2025-08-29T18:28:06Z",
+  "epoch": 1756492086,
+  "context": {
+    "capsule_id": "CAP-BASE-010",
+    "stack": "base",
+    "hash": "8a2416d2cc183697dafe36d417d084e24291b7d3e5fb19d6face066dfd271a96",
+    "ledger_entry": "541c6de48f76d12686a55112b6a63f0728b42be6bc385b55cf0a1970174f752e"
+  },
+  "verify_count": 1,
+  "status": "completed",
+  "results": []
+}

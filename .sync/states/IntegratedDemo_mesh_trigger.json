@@ -1,0 +1,17 @@
+{
+  "agent_id": "IntegratedDemo_mesh_trigger",
+  "status": "registered",
+  "last_updated": "2025-08-29T08:15:59.282473+00:00",
+  "current_tasks": [],
+  "capabilities": [
+    "trigger_management",
+    "trigger_activation",
+    "seal_verification",
+    "mesh_coordination",
+    "alpha_ceiling_enforcement",
+    "critical_trigger_verification"
+  ],
+  "metrics": {},
+  "collaboration_status": {},
+  "resources": {}
+}

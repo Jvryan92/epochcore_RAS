@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Robo and the Sand Castle",
+    "age_level": "preschool",
+    "content": "Mia was at the beach trying to build a sand castle. Her friend Robo the Robot came to play. 'Can I help?' asked Robo. 'Yes please!' said Mia. Robo helped carry water and smooth the sand. Mia built the towers and windows. Together they made the biggest, best sand castle on the beach!",
+    "moral": "AI like Robo helps us do things better and faster, but we're still the ones creating and deciding what to build."
+  },
+  {
+    "title": "The Homework Helper",
+    "age_level": "early_elementary",
+    "content": "Sam had a big math homework assignment. His digital assistant Ada offered to help. 'I can show you how to solve these problems,' Ada said. Ada didn't just give Sam the answers - that wouldn't help him learn! Instead, Ada showed examples and gave hints when Sam got stuck. By working together, Sam finished his homework and understood the math much better!",
+    "moral": "AI can teach us and give us tips, but we still need to do the learning ourselves."
+  },
+  {
+    "title": "The Garden Grows",
+    "age_level": "late_elementary",
+    "content": "Li wanted to grow vegetables in the backyard. Their family's garden assistant bot, Terra, helped analyze the soil and suggested which vegetables would grow best. Terra reminded Li when to water the plants and pointed out when bugs appeared. But Li did the planting, watering, and picking. When the vegetables were ready, everyone thanked Li for the delicious food. 'Terra helped,' Li said, 'but growing the garden was still my job!'",
+    "moral": "AI can give us information and reminders, but the important work still depends on us humans."
+  },
+  {
+    "title": "The Bicycle Design Team",
+    "age_level": "middle_school",
+    "content": "Jordan's school had a project to design a better bicycle. Jordan worked with an AI design program called Blueprint. Jordan told Blueprint about their ideas for a safer bike for kids. Blueprint suggested materials and showed simulations of different designs. But Jordan made all the final decisions about how the bike should look and work. When Jordan presented the design, the teacher asked, 'Did you do this yourself?' Jordan replied, 'I used an AI program as my assistant, but the ideas and decisions were all mine. The AI was like having another tool in my toolbox - it helped me create my vision, but didn't create for me.'",
+    "moral": "AI is a powerful tool that can help us create, but humans provide the vision, purpose, and make the important decisions."
+  }
+]

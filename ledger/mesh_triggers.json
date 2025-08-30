@@ -1,0 +1,26 @@
+{
+  "data_sync": {
+    "id": "data_sync",
+    "description": "Synchronize data across mesh nodes",
+    "resource_requirement": 50,
+    "type": "standard",
+    "created_ts": "2025-08-29T07:33:31Z",
+    "epoch": 1756452811,
+    "status": "registered",
+    "activations": 1,
+    "last_activation": "2025-08-29T07:33:31Z",
+    "fingerprint": "2d6b0dca1ddc7d1ed475358860487a7a86cdc09c682ef27f7fa58a5c6a9c792a"
+  },
+  "security_alert": {
+    "id": "security_alert",
+    "description": "Handle security breach detection",
+    "resource_requirement": 100,
+    "type": "critical",
+    "created_ts": "2025-08-29T07:33:31Z",
+    "epoch": 1756452811,
+    "status": "registered",
+    "activations": 1,
+    "last_activation": "2025-08-29T07:33:31Z",
+    "fingerprint": "d40517a42c541347aa70af5d30089dfc2e0e21b44857565d230c2a2b580fb3fd"
+  }
+}

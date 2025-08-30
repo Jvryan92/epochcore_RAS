@@ -1,0 +1,17 @@
+{
+  "message_id": "b2a0c539-f5cd-4ccd-8762-ee9e82142511",
+  "sender_id": "system",
+  "receiver_id": "IntegratedDemo_kids_friendly",
+  "message_type": "sync_request",
+  "content": {
+    "sync_id": "bc096de0-6875-4960-8c9f-5d49d040031d",
+    "name": "system_initialization",
+    "timeout": 30.0
+  },
+  "timestamp": "2025-08-29T08:11:25.793819+00:00",
+  "priority": 10,
+  "ttl": 3600,
+  "is_acknowledged": false,
+  "thread_id": null,
+  "parent_id": null
+}

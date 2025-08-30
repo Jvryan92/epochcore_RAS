@@ -1,0 +1,12 @@
+{
+  "trigger_id": "system_heartbeat",
+  "fingerprint": "940807bf935111407c5827a24ceb5970447eb962dec8197ed585114033919c27",
+  "context": {
+    "simulation": true,
+    "event_id": 54
+  },
+  "ts": "2025-08-29T08:16:05Z",
+  "epoch": 1756455365,
+  "expires": 1756455665,
+  "hash": "e223f9c27bdb6b174dc1881bcb7b918de2ecbde199a556df97e62acc2428405f"
+}

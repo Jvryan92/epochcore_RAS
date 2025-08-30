@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-003",
+  "title": "Infra Epoch Seal",
+  "description": "Annual infra audit capsule",
+  "timestamp": "2025-08-29T18:31:22Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "c56ffadf64c437eed31bd0120a82c104410151e2910181be2dc31f937f2a3030",
+    "mesh_seal": "6905c22b366ee76a50c6989ab0e462e5bcf5339ce867698d75bf67214515e1c8",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "5fdbfec74227f437e1b34f42ba187381a7dd03cd12cc0865d49cf84c9428ac04"
+}

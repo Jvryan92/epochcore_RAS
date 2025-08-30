@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-007",
+  "title": "Capsule Citizenship",
+  "description": "Capsules = digital nation rights",
+  "timestamp": "2025-08-29T18:28:05Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "8f76ae9d3a376b157a3f7e60704e7d4e06261168759655829881e34f98a0a9dd",
+    "mesh_seal": "45443bb13e3cd7ef16cfbe3168c17550a0a1419a311065302be46034e9475148",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "67eec6cabe6291740e774e79917120ed3a2fc05a4e27349f00445c2d4434bbf0"
+}

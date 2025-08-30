@@ -1,0 +1,155 @@
+{
+  "base_config": {
+    "output_directory": "assets/icons",
+    "masters_directory": "assets/masters",
+    "metadata_directory": "assets/metadata"
+  },
+  "color_tokens": {
+    "paper": "#FFFFFF",
+    "slate_950": "#060607",
+    "brand_orange": "#FF6A00",
+    "ink": "#000000",
+    "copper": "#B87333",
+    "burnt_orange": "#CC5500",
+    "matte": "#333333",
+    "embossed": "#F5F5F5",
+    "neon_blue": "#00FFFF",
+    "neon_green": "#39FF14",
+    "neon_pink": "#FF10F0",
+    "forest_green": "#228B22",
+    "royal_purple": "#7851A9",
+    "aqua": "#00FFFF",
+    "navy": "#000080",
+    "crimson": "#DC143C"
+  },
+  "finish_colors": {
+    "flat-orange": "brand_orange",
+    "matte-carbon": "matte",
+    "satin-black": "ink",
+    "burnt-orange": "burnt_orange",
+    "copper-foil": "copper",
+    "embossed-paper": "embossed",
+    "neon-blue": "neon_blue",
+    "neon-green": "neon_green",
+    "neon-pink": "neon_pink",
+    "forest-green": "forest_green",
+    "royal-purple": "royal_purple",
+    "aqua-blue": "aqua",
+    "navy-blue": "navy",
+    "crimson-red": "crimson"
+  },
+  "modes": {
+    "light": {
+      "background": "paper",
+      "text": "ink"
+    },
+    "dark": {
+      "background": "slate_950",
+      "text": "paper"
+    }
+  },
+  "size_thresholds": {
+    "micro": 32,
+    "standard": 256,
+    "high_res": 512
+  },
+  "contexts": {
+    "web": {
+      "formats": ["svg", "png", "webp"],
+      "optimize": true
+    },
+    "print": {
+      "formats": ["svg", "png"],
+      "optimize": true,
+      "high_dpi": true
+    },
+    "game": {
+      "formats": ["png"],
+      "optimize": true,
+      "texture_atlas": true
+    },
+    "saas": {
+      "formats": ["svg", "png"],
+      "optimize": true
+    }
+  },
+  "processing_options": {
+    "parallel": true,
+    "batch_size": 10,
+    "optimize_svg": true,
+    "optimize_png": true,
+    "max_workers": 4
+  },
+  "custom_variants": [
+    {
+      "mode": "light",
+      "finish": "flat-orange",
+      "size": 64,
+      "context": "game",
+      "filename": "strategy_icon-light-flat-orange-64px-game.png"
+    },
+    {
+      "mode": "light",
+      "finish": "flat-orange",
+      "size": 128,
+      "context": "game",
+      "filename": "strategy_icon-light-flat-orange-128px-game.png"
+    },
+    {
+      "mode": "dark",
+      "finish": "flat-orange",
+      "size": 64,
+      "context": "game",
+      "filename": "strategy_icon-dark-flat-orange-64px-game.png"
+    },
+    {
+      "mode": "dark",
+      "finish": "flat-orange",
+      "size": 128,
+      "context": "game",
+      "filename": "strategy_icon-dark-flat-orange-128px-game.png"
+    },
+    {
+      "mode": "light",
+      "finish": "satin-black",
+      "size": 24,
+      "context": "web",
+      "filename": "strategy_icon-light-satin-black-24px.png"
+    },
+    {
+      "mode": "dark",
+      "finish": "satin-black",
+      "size": 24,
+      "context": "web",
+      "filename": "strategy_icon-dark-satin-black-24px.png"
+    },
+    {
+      "mode": "light",
+      "finish": "embossed-paper",
+      "size": 32,
+      "context": "saas",
+      "filename": "strategy_icon-light-embossed-paper-32px-saas.png"
+    },
+    {
+      "mode": "dark",
+      "finish": "embossed-paper",
+      "size": 32,
+      "context": "saas",
+      "filename": "strategy_icon-dark-embossed-paper-32px-saas.png"
+    },
+    {
+      "mode": "light",
+      "finish": "matte-carbon",
+      "size": 64,
+      "context": "game",
+      "filename": "strategy_icon-light-matte-carbon-64px-game.png"
+    },
+    {
+      "mode": "dark",
+      "finish": "matte-carbon",
+      "size": 64,
+      "context": "game",
+      "filename": "strategy_icon-dark-matte-carbon-64px-game.png"
+    }
+  ]
+}

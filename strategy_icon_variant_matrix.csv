@@ -9,3 +9,13 @@ light,matte-carbon,16,print,strategy_icon-light-matte-carbon-16px.png
 light,matte-carbon,32,print,strategy_icon-light-matte-carbon-32px.png
 dark,copper-foil,32,web,strategy_icon-dark-copper-foil-32px.png
 dark,burnt-orange,48,print,strategy_icon-dark-burnt-orange-48px.png
+light,flat-orange,64,game,strategy_icon-light-flat-orange-64px-game.png
+light,flat-orange,128,game,strategy_icon-light-flat-orange-128px-game.png
+dark,flat-orange,64,game,strategy_icon-dark-flat-orange-64px-game.png
+dark,flat-orange,128,game,strategy_icon-dark-flat-orange-128px-game.png
+light,satin-black,24,web,strategy_icon-light-satin-black-24px.png
+dark,satin-black,24,web,strategy_icon-dark-satin-black-24px.png
+light,embossed-paper,32,saas,strategy_icon-light-embossed-paper-32px-saas.png
+dark,embossed-paper,32,saas,strategy_icon-dark-embossed-paper-32px-saas.png
+light,matte-carbon,64,game,strategy_icon-light-matte-carbon-64px-game.png
+dark,matte-carbon,64,game,strategy_icon-dark-matte-carbon-64px-game.png

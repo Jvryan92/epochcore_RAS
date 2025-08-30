@@ -1,0 +1,14 @@
+{
+  "trigger_id": "multistack_iaas_1",
+  "ts": "2025-08-29T18:31:22Z",
+  "epoch": 1756492282,
+  "context": {
+    "capsule_id": "CAP-IAAS-001",
+    "stack": "iaas",
+    "hash": "9d21f3450295ec93424d05dfa368f4b4ecb9d05af46df970f4cc4a3c0ec397c5",
+    "ledger_entry": ""
+  },
+  "verify_count": 1,
+  "status": "completed",
+  "results": []
+}

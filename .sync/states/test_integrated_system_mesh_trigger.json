@@ -1,0 +1,17 @@
+{
+  "agent_id": "test_integrated_system_mesh_trigger",
+  "status": "registered",
+  "last_updated": "2025-08-29T08:29:30.479382+00:00",
+  "current_tasks": [],
+  "capabilities": [
+    "trigger_management",
+    "trigger_activation",
+    "seal_verification",
+    "mesh_coordination",
+    "alpha_ceiling_enforcement",
+    "critical_trigger_verification"
+  ],
+  "metrics": {},
+  "collaboration_status": {},
+  "resources": {}
+}

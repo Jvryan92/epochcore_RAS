@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-007",
+  "title": "Infra Arena",
+  "description": "Earn compute credits via agents",
+  "timestamp": "2025-08-29T18:31:23Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "4fed43a6e24541bf874e78cdabf0a167d9ae7c80d868879665d15825276cd002",
+    "mesh_seal": "af619ccdfe0d7bfaa5a244bfe7a065e4d3001820ab6177981145d0e015306ff9",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "4a6157defc05a71a93008ef5fa87feabaaaba2df1799037613340a8df12223ea"
+}

@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-005",
+  "title": "Data Center IPO",
+  "description": "New region bootstraps via capsule sale",
+  "timestamp": "2025-08-29T18:31:32Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "3727ca7367584e2acc4287f642149e45ec073e1e3c0e41ef6b6e5da550c0ff4e",
+    "mesh_seal": "36cf3ddf5c9868acc71ecafda68c8007c36be3880cd78ddfcb52c6d6e8c50696",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "79782b9a661f9bfc7fd25de4884984ba6c58ceaae1565bb4ad0bd47dd98533b6"
+}

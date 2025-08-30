@@ -90,3 +90,6 @@ def register_high_skill_agents(
     
     synth.subscribe_to_topic('system.health')
     synth.subscribe_to_topic('performance.metrics')
+
+    # Call this from your SentinelAgent instance
+    sentinel_agent.flash_sync_all_agents()

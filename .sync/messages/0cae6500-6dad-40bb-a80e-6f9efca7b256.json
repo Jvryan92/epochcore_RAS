@@ -1,0 +1,25 @@
+{
+  "message_id": "0cae6500-6dad-40bb-a80e-6f9efca7b256",
+  "sender_id": "IntegratedDemo_kids_friendly",
+  "receiver_id": "IntegratedDemo_mesh_trigger",
+  "message_type": "kids_friendly_activity",
+  "content": {
+    "age_range": [
+      6,
+      8
+    ],
+    "activity_type": "story",
+    "content": {
+      "title": "The Homework Helper",
+      "age_level": "early_elementary",
+      "content": "Sam had a big math homework assignment. His digital assistant Ada offered to help. 'I can show you how to solve these problems,' Ada said. Ada didn't just give Sam the answers - that wouldn't help him learn! Instead, Ada showed examples and gave hints when Sam got stuck. By working together, Sam finished his homework and understood the math much better!",
+      "moral": "AI can teach us and give us tips, but we still need to do the learning ourselves."
+    }
+  },
+  "timestamp": "2025-08-29T08:11:25.803710+00:00",
+  "priority": 0,
+  "ttl": 3600,
+  "is_acknowledged": false,
+  "thread_id": null,
+  "parent_id": null
+}

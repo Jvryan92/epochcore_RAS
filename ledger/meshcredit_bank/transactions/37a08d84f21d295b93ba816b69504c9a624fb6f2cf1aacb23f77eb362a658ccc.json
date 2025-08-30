@@ -1,0 +1,12 @@
+{
+  "transaction_id": "37a08d84f21d295b93ba816b69504c9a624fb6f2cf1aacb23f77eb362a658ccc",
+  "account_id": "fd4dbf29a36d90f5d724b50bad829ecfe70b7e86e6d135cd5ec72c9b9f1d169c",
+  "type": "capsule_link",
+  "amount": 750.0,
+  "fee": 0.0,
+  "net_amount": 750.0,
+  "asset_class": "compound",
+  "description": "New backed capsule: Project-Fund-Multi-Domain: MESH-Project-Fund-Multi-Domain-20250830022228",
+  "timestamp": "2025-08-30T02:22:28.227650",
+  "status": "completed"
+}

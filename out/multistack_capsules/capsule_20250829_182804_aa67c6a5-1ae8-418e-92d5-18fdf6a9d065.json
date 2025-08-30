@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-001",
+  "title": "EpochCore Capsule Crown",
+  "description": "Founder-proof yearly crown",
+  "timestamp": "2025-08-29T18:28:04Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "null",
+    "mesh_seal": "94908292e3da83665281953fc0e2f511c078d26a43598dffa9b3784cc8ac0ffd",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "74fcd2dcb8834d921d4299039275fe97711ee3b7062259bd32293106ec175de4"
+}

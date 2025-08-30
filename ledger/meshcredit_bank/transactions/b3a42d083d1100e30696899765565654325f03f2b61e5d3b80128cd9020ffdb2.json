@@ -1,0 +1,12 @@
+{
+  "transaction_id": "b3a42d083d1100e30696899765565654325f03f2b61e5d3b80128cd9020ffdb2",
+  "account_id": "fd4dbf29a36d90f5d724b50bad829ecfe70b7e86e6d135cd5ec72c9b9f1d169c",
+  "type": "capsule_link",
+  "amount": 750.0,
+  "fee": 0.0,
+  "net_amount": 750.0,
+  "asset_class": "compound",
+  "description": "New backed capsule: Project-Fund-Adaptive: MESH-Project-Fund-Adaptive-20250830022228",
+  "timestamp": "2025-08-30T02:22:28.223442",
+  "status": "completed"
+}

@@ -1,0 +1,12 @@
+{
+  "transaction_id": "2c29d3ebe4fdceafe9e51046fee041af54fe204e434f597e96ddd8e589feb9c6",
+  "account_id": "f5d40fd81fa68563f354c741c2b8c2bf96b04f9dcca0dae131dd78547f9fadfc",
+  "type": "capsule_link",
+  "amount": 160.0,
+  "fee": 0.0,
+  "net_amount": 160.0,
+  "asset_class": "compound",
+  "description": "New backed capsule: Safe-Fund-Resilience: MESH-Safe-Fund-Resilience-20250830022228",
+  "timestamp": "2025-08-30T02:22:28.219888",
+  "status": "completed"
+}

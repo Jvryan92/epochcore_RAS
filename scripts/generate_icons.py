@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-import sys
 import csv
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -45,18 +45,44 @@ def bake_svg(master_svg: str, mode: str, finish: str) -> str:
 
 
 def maybe_export_png(svg_bytes: bytes, out_png: Path, size_px: int):
+    # Always use the fallback script - skipping cairosvg due to env issues
     try:
-        import cairosvg
+        import subprocess
+        import tempfile
 
+        # Write the SVG to a temporary file
+        with tempfile.NamedTemporaryFile(suffix=".svg", delete=False) as tmp:
+            tmp.write(svg_bytes)
+            tmp_svg_path = tmp.name
+
+        # Make sure the output directory exists
         out_png.parent.mkdir(parents=True, exist_ok=True)
-        cairosvg.svg2png(
-            bytestring=svg_bytes,
-            write_to=str(out_png),
-            output_width=size_px,
-            output_height=size_px,
-        )
-        return True
-    except Exception:
+
+        # Call our fallback script
+        converter_script = ROOT / "scripts" / "svg_to_png.py"
+        cmd = [
+            sys.executable,
+            str(converter_script),
+            tmp_svg_path,
+            str(out_png),
+            "--size", str(size_px)
+        ]
+
+        print(f"Running converter: {' '.join(cmd)}")
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        if result.returncode != 0:
+            print(f"Conversion failed: {result.stderr}")
+        else:
+            print(f"Conversion succeeded for {out_png}")
+
+        # Clean up the temporary file
+        import os
+        os.unlink(tmp_svg_path)
+
+        return result.returncode == 0
+    except Exception as e:
+        print(f"PNG export failed: {e}")
         return False
 
 

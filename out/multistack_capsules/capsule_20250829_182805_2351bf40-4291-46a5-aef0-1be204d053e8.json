@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-BASE-003",
+  "title": "Capsule DNA",
+  "description": "Capsules recombine into SaaS children",
+  "timestamp": "2025-08-29T18:28:04Z",
+  "stack": "base",
+  "provenance": {
+    "prev_hash": "cb9e3ab9d2799bcfe806bfe248be09ec2dafa5c35761d2ca25467d124ec80e2f",
+    "mesh_seal": "bc24e25e27c03a9dac05cc31ec37895ef4d7593f6ffcc2878ae2d4281231d1fb",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for base ecosystem",
+  "self_sha256": "d056380dfbde427fd769a54eb7c71727e75f1ad1946c7119b7b7a212cef1ef00"
+}

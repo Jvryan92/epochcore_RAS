@@ -1,0 +1,12 @@
+{
+  "transaction_id": "137cdf7f138cdd2a60c36544819f5c021f3ce5c878ce3979dbea6e925647c17e",
+  "account_id": "fd4dbf29a36d90f5d724b50bad829ecfe70b7e86e6d135cd5ec72c9b9f1d169c",
+  "type": "deposit",
+  "amount": 10000.0,
+  "fee": 0.0,
+  "net_amount": 10000.0,
+  "asset_class": "liquid",
+  "description": "Initial deposit",
+  "timestamp": "2025-08-30T02:22:28.209575",
+  "status": "completed"
+}

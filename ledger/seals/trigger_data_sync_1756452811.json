@@ -1,0 +1,12 @@
+{
+  "trigger_id": "data_sync",
+  "fingerprint": "2d6b0dca1ddc7d1ed475358860487a7a86cdc09c682ef27f7fa58a5c6a9c792a",
+  "context": {
+    "source": "node1",
+    "target": "node2"
+  },
+  "ts": "2025-08-29T07:33:31Z",
+  "epoch": 1756452811,
+  "expires": 1756453111,
+  "hash": "3badbe98bb0c6c92e2fce933e2061d626eec76d9500beffbaaf9bae58aa6af1c"
+}

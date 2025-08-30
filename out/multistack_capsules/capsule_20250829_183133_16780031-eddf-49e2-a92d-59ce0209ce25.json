@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "capsule_id": "CAP-IAAS-009",
+  "title": "Infra Auto-Scaler AI",
+  "description": "AI node for recursive infra scaling",
+  "timestamp": "2025-08-29T18:31:33Z",
+  "stack": "iaas",
+  "provenance": {
+    "prev_hash": "4bbc46fd2bba49510d5ec0eb4e99aa79ac5ee023250f54674b973ffe27822c87",
+    "mesh_seal": "49c515df99a4d2c6ad3f228c227340787e0306e1c6b027706437d33d71f5b966",
+    "founder_note": "Multi-Stack Capsule Forge",
+    "true_north": "sealed"
+  },
+  "mesh": {
+    "monetary": [
+      "CapsuleStake",
+      "MeshSync",
+      "ROI"
+    ],
+    "governance": [
+      "MultiStack",
+      "IntegrityCheck",
+      "MeshSeal"
+    ],
+    "expansion": [
+      "Recursion",
+      "Interconnect",
+      "Federation"
+    ]
+  },
+  "actions": [
+    "Timestamp",
+    "Log",
+    "Seal",
+    "Archive",
+    "Mesh"
+  ],
+  "intent": "Forge multi-stack capsule for iaas ecosystem",
+  "self_sha256": "dd680eea8e3c3073b69105ac8a3234dac11ee6f7b850d041da889362d605d03a"
+}
