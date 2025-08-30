@@ -166,6 +166,17 @@ def main(argv):
         "ignite": flash_sync_handler
     }
 
+    # Setup mesh integration if requested
+    mesh_integration = None
+    if args.mesh_integration:
+        def mesh_integration_handler(record, phase, intensity, dry_run):
+            return {
+                "mesh_enabled": True,
+                "mesh_phase": phase,
+                "mesh_record_id": record["id"]
+            }
+        mesh_integration = mesh_integration_handler
+
     # Process nodes in order
     processed = 0
     outfh = open(args.json_log, "w", encoding="utf-8") if args.json_log else None
@@ -184,29 +195,15 @@ def main(argv):
             phase = cycle_phase(idx, args.phase_window)
             # Always use handlers for ignite phase to trigger flash sync
             use_handlers = handlers if phase == "ignite" else None
-            
-            # Simple mesh integration function for demonstration
-            mesh_integration_func = None
-            if args.mesh_integration:
-                def simple_mesh_integration(record, phase, intensity, dry_run):
-                    return {
-                        "mesh_enabled": True,
-                        "mesh_phase": phase,
-                        "mesh_record_id": record["id"],
-                        "mesh_timestamp": datetime.now(timezone.utc).isoformat()
-                    }
-                mesh_integration_func = simple_mesh_integration
-            
             result = run_step(
                 rec,
                 phase,
                 args.intensity,
                 dry_run=args.dry_run,
                 handlers=use_handlers,
-                mesh_integration=mesh_integration_func
+                mesh_integration=mesh_integration
             )
             entry = {"ts": ts, **result}
-
         line = json.dumps(entry, ensure_ascii=False)
         print(line)
         if outfh:
