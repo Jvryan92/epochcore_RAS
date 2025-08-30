@@ -184,12 +184,26 @@ def main(argv):
             phase = cycle_phase(idx, args.phase_window)
             # Always use handlers for ignite phase to trigger flash sync
             use_handlers = handlers if phase == "ignite" else None
+            
+            # Simple mesh integration function for demonstration
+            mesh_integration_func = None
+            if args.mesh_integration:
+                def simple_mesh_integration(record, phase, intensity, dry_run):
+                    return {
+                        "mesh_enabled": True,
+                        "mesh_phase": phase,
+                        "mesh_record_id": record["id"],
+                        "mesh_timestamp": datetime.now(timezone.utc).isoformat()
+                    }
+                mesh_integration_func = simple_mesh_integration
+            
             result = run_step(
                 rec,
                 phase,
                 args.intensity,
                 dry_run=args.dry_run,
-                handlers=use_handlers
+                handlers=use_handlers,
+                mesh_integration=mesh_integration_func
             )
             entry = {"ts": ts, **result}
 
