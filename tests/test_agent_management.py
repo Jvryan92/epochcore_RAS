@@ -133,5 +133,7 @@ class TestAgentManager:
         agent = agent_manager.get_agent(fake_did)
         assert agent is None
 
-        result = agent_manager.update_agent_stats(fake_did, True, 0.5, {"reliability_score": 0.5})
+        result = agent_manager.update_agent_stats(
+            fake_did, True, 0.5, {"reliability_score": 0.5}
+        )
         assert result is False

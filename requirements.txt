@@ -17,6 +17,7 @@ scikit-learn>=1.3.0  # Machine learning
 croniter>=1.4.0  # Cron scheduling
 torch>=2.0.0  # Deep learning
 streamlit>=1.25.0  # Dashboard framework
+matplotlib>=3.5.0  # Plotting library
 qiskit>=0.44.0  # Quantum computing
 qiskit-algorithms>=0.4.0  # Quantum algorithms
 transformers>=4.21.0  # Hugging Face transformers

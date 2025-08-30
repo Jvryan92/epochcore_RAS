@@ -82,14 +82,14 @@ class TestPolicyManager:
     def test_create_grant(self, policy_manager):
         """Test grant creation"""
         grant_id = "test_grant_001"
-        
+
         grant = policy_manager.create_grant(
             grant_id,
             "did:epoch5:user456",
             "resource1",
             ["read", "execute"],
             {"valid_until": "2024-12-31T23:59:59Z"},
-            "2024-12-31T23:59:59Z"
+            "2024-12-31T23:59:59Z",
         )
 
         assert isinstance(grant, dict)
@@ -103,12 +103,7 @@ class TestPolicyManager:
     def test_add_grant(self, policy_manager):
         """Test grant registration"""
         grant = policy_manager.create_grant(
-            "register_test", 
-            "grantee", 
-            "resource1", 
-            ["access"],
-            {},
-            None
+            "register_test", "grantee", "resource1", ["access"], {}, None
         )
 
         result = policy_manager.add_grant(grant)
@@ -121,17 +116,14 @@ class TestPolicyManager:
     def test_check_grant(self, policy_manager):
         """Test grant verification"""
         grant = policy_manager.create_grant(
-            "verify_test", 
-            "grantee", 
-            "resource1", 
-            ["read", "write"],
-            {},
-            None
+            "verify_test", "grantee", "resource1", ["read", "write"], {}, None
         )
         policy_manager.add_grant(grant)
 
         # Test verification
-        result = policy_manager.check_grant("verify_test", "grantee", "resource1", "read")
+        result = policy_manager.check_grant(
+            "verify_test", "grantee", "resource1", "read"
+        )
         assert isinstance(result, bool)
 
     def test_policy_evaluation(self, policy_manager):

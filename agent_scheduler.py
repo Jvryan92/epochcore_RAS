@@ -68,7 +68,7 @@ def save_config(config):
 
 def run_flash_sync():
     """Run the flash sync process"""
-    global SYNC_COUNT, LAST_SYNC_TIME
+    global SYNC_COUNT, LAST_SYNC_TIME, COOLDOWN_UNTIL
 
     # Check cooldown
     if dt.datetime.now() < COOLDOWN_UNTIL:
@@ -93,7 +93,6 @@ def run_flash_sync():
             max_syncs = config["anomaly_response"]["max_consecutive_syncs"]
             if SYNC_COUNT >= max_syncs:
                 cooldown_minutes = config["anomaly_response"]["cooldown_minutes"]
-                global COOLDOWN_UNTIL
                 COOLDOWN_UNTIL = dt.datetime.now() + dt.timedelta(
                     minutes=cooldown_minutes
                 )

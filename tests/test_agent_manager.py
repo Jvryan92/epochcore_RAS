@@ -59,7 +59,7 @@ class TestAgentManagerUnified:
         for agent in agents:
             manager.register_agent(agent)
 
-        assert len(manager.get_all_agents()) >= 5  # Should have at least 5 agents  
+        assert len(manager.get_all_agents()) >= 5  # Should have at least 5 agents
         # Manually deregister agents since no deregister_all_agents method
         for agent in agents:
             manager.deregister_agent(agent.name)
