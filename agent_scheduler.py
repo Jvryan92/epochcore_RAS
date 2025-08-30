@@ -17,11 +17,8 @@ import schedule
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("agent_scheduler.log"),
-        logging.StreamHandler()
-    ]
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    handlers=[logging.FileHandler("agent_scheduler.log"), logging.StreamHandler()],
 )
 logger = logging.getLogger("AgentScheduler")
 
@@ -32,22 +29,16 @@ DEFAULT_CONFIG = {
         "schedule": {
             "interval_minutes": 60,
             "fixed_times": ["06:00", "12:00", "18:00", "00:00"],
-            "use_fixed_times": False
-        }
+            "use_fixed_times": False,
+        },
     },
-    "health_monitor": {
-        "enabled": True,
-        "start_on_boot": True
-    },
-    "dashboard": {
-        "enabled": True,
-        "update_interval_minutes": 15
-    },
+    "health_monitor": {"enabled": True, "start_on_boot": True},
+    "dashboard": {"enabled": True, "update_interval_minutes": 15},
     "anomaly_response": {
         "trigger_sync_on_anomalies": True,
         "max_consecutive_syncs": 3,
-        "cooldown_minutes": 15
-    }
+        "cooldown_minutes": 15,
+    },
 }
 
 # Paths
@@ -61,17 +52,17 @@ COOLDOWN_UNTIL = dt.datetime.min
 def load_config():
     """Load scheduler configuration"""
     if os.path.exists(CONFIG_FILE):
-        with open(CONFIG_FILE, 'r') as f:
+        with open(CONFIG_FILE, "r") as f:
             return json.load(f)
     # Create default config
-    with open(CONFIG_FILE, 'w') as f:
+    with open(CONFIG_FILE, "w") as f:
         json.dump(DEFAULT_CONFIG, f, indent=2)
     return DEFAULT_CONFIG
 
 
 def save_config(config):
     """Save scheduler configuration"""
-    with open(CONFIG_FILE, 'w') as f:
+    with open(CONFIG_FILE, "w") as f:
         json.dump(config, f, indent=2)
 
 
@@ -82,13 +73,15 @@ def run_flash_sync():
     # Check cooldown
     if dt.datetime.now() < COOLDOWN_UNTIL:
         logger.info(
-            f"Flash sync in cooldown until {COOLDOWN_UNTIL.strftime('%H:%M:%S')}")
+            f"Flash sync in cooldown until {COOLDOWN_UNTIL.strftime('%H:%M:%S')}"
+        )
         return
 
     logger.info("Running flash sync...")
     try:
-        result = subprocess.run(["python3", "flash_sync_agents.py"],
-                                capture_output=True, text=True)
+        result = subprocess.run(
+            ["python3", "flash_sync_agents.py"], capture_output=True, text=True
+        )
 
         if result.returncode == 0:
             logger.info("Flash sync completed successfully")
@@ -101,9 +94,12 @@ def run_flash_sync():
             if SYNC_COUNT >= max_syncs:
                 cooldown_minutes = config["anomaly_response"]["cooldown_minutes"]
                 global COOLDOWN_UNTIL
-                COOLDOWN_UNTIL = dt.datetime.now() + dt.timedelta(minutes=cooldown_minutes)
+                COOLDOWN_UNTIL = dt.datetime.now() + dt.timedelta(
+                    minutes=cooldown_minutes
+                )
                 logger.info(
-                    f"Reached {max_syncs} consecutive syncs, entering cooldown for {cooldown_minutes} minutes")
+                    f"Reached {max_syncs} consecutive syncs, entering cooldown for {cooldown_minutes} minutes"
+                )
                 SYNC_COUNT = 0
         else:
             logger.error(f"Flash sync failed: {result.stderr}")
@@ -115,8 +111,11 @@ def update_dashboard():
     """Update the agent dashboard"""
     logger.info("Updating dashboard...")
     try:
-        subprocess.run(["python3", "agent_health_monitor.py", "--dashboard"],
-                       capture_output=True, text=True)
+        subprocess.run(
+            ["python3", "agent_health_monitor.py", "--dashboard"],
+            capture_output=True,
+            text=True,
+        )
         logger.info("Dashboard updated successfully")
     except Exception as e:
         logger.error(f"Error updating dashboard: {e}")
@@ -135,7 +134,7 @@ def start_health_monitor():
         MONITOR_PROCESS = subprocess.Popen(
             ["python3", "agent_health_monitor.py", "--start"],
             stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
+            stderr=subprocess.PIPE,
         )
         logger.info(f"Health monitor started with PID {MONITOR_PROCESS.pid}")
     except Exception as e:
@@ -183,14 +182,14 @@ def check_anomalies():
     # Read last few alerts
     try:
         recent_alerts = []
-        with open(alert_file, 'r') as f:
+        with open(alert_file, "r") as f:
             lines = f.readlines()
             for line in lines[-10:]:  # Check last 10 alerts
                 if not line.strip():
                     continue
                 alert = json.loads(line)
                 # Only consider alerts from the last 5 minutes
-                alert_time = dt.datetime.strptime(alert["ts"], '%Y-%m-%dT%H:%M:%SZ')
+                alert_time = dt.datetime.strptime(alert["ts"], "%Y-%m-%dT%H:%M:%SZ")
                 if (dt.datetime.utcnow() - alert_time).total_seconds() < 300:
                     recent_alerts.append(alert)
 
@@ -198,7 +197,8 @@ def check_anomalies():
         critical_alerts = [a for a in recent_alerts if a.get("severity") == "critical"]
         if critical_alerts:
             logger.info(
-                f"Detected {len(critical_alerts)} critical anomalies, triggering flash sync")
+                f"Detected {len(critical_alerts)} critical anomalies, triggering flash sync"
+            )
             run_flash_sync()
     except Exception as e:
         logger.error(f"Error checking anomalies: {e}")
@@ -240,8 +240,9 @@ def main():
     parser = argparse.ArgumentParser(description="Agent Sync Scheduler")
     parser.add_argument("--start", action="store_true", help="Start scheduler")
     parser.add_argument("--stop", action="store_true", help="Stop scheduler")
-    parser.add_argument("--sync-now", action="store_true",
-                        help="Run flash sync immediately")
+    parser.add_argument(
+        "--sync-now", action="store_true", help="Run flash sync immediately"
+    )
     parser.add_argument("--config", action="store_true", help="Edit configuration")
     parser.add_argument("--status", action="store_true", help="Show scheduler status")
 
@@ -254,7 +255,10 @@ def main():
         config = load_config()
 
         # Start health monitor if enabled
-        if config["health_monitor"]["enabled"] and config["health_monitor"]["start_on_boot"]:
+        if (
+            config["health_monitor"]["enabled"]
+            and config["health_monitor"]["start_on_boot"]
+        ):
             start_health_monitor()
 
         # Set up schedules
@@ -290,8 +294,10 @@ def main():
         # Open config file in default editor
         config = load_config()
         print(json.dumps(config, indent=2))
-        print("\nTo modify the configuration, edit the file:",
-              os.path.abspath(CONFIG_FILE))
+        print(
+            "\nTo modify the configuration, edit the file:",
+            os.path.abspath(CONFIG_FILE),
+        )
 
     elif args.status:
         # Show scheduler status
@@ -299,9 +305,11 @@ def main():
 
         print("=== Agent Scheduler Status ===")
         print(
-            f"Health Monitor: {'Running' if MONITOR_PROCESS and MONITOR_PROCESS.poll() is None else 'Stopped'}")
+            f"Health Monitor: {'Running' if MONITOR_PROCESS and MONITOR_PROCESS.poll() is None else 'Stopped'}"
+        )
         print(
-            f"Flash Sync: {'Enabled' if config['flash_sync']['enabled'] else 'Disabled'}")
+            f"Flash Sync: {'Enabled' if config['flash_sync']['enabled'] else 'Disabled'}"
+        )
 
         if config["flash_sync"]["schedule"]["use_fixed_times"]:
             times = ", ".join(config["flash_sync"]["schedule"]["fixed_times"])
@@ -311,13 +319,15 @@ def main():
             print(f"Sync Schedule: Every {interval} minutes")
 
         print(
-            f"Dashboard Updates: {'Enabled' if config['dashboard']['enabled'] else 'Disabled'}")
-        if config['dashboard']['enabled']:
+            f"Dashboard Updates: {'Enabled' if config['dashboard']['enabled'] else 'Disabled'}"
+        )
+        if config["dashboard"]["enabled"]:
             interval = config["dashboard"]["update_interval_minutes"]
             print(f"Dashboard Update Interval: Every {interval} minutes")
 
         print(
-            f"Last Sync: {LAST_SYNC_TIME.strftime('%Y-%m-%d %H:%M:%S') if LAST_SYNC_TIME > dt.datetime.min else 'Never'}")
+            f"Last Sync: {LAST_SYNC_TIME.strftime('%Y-%m-%d %H:%M:%S') if LAST_SYNC_TIME > dt.datetime.min else 'Never'}"
+        )
 
         if COOLDOWN_UNTIL > dt.datetime.now():
             print(f"Cooldown: Active until {COOLDOWN_UNTIL.strftime('%H:%M:%S')}")

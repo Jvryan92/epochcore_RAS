@@ -60,9 +60,7 @@ for s in range(1, SEG + 1):
         segR += rev
 
         segC += cost
-    cycles.append(
-        {"c": c, "usage": use, "rev": round(rev, 2), "cost": round(cost, 2)}
-    )
+    cycles.append({"c": c, "usage": use, "rev": round(rev, 2), "cost": round(cost, 2)})
     for _ in range(min(12, users)):
         L.append({"key": lic(), "sku": sku, "plan": plan, "ppc": ppc, "issued": U()})
     pack = f"{B}/{sku}.json"

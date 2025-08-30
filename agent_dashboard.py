@@ -85,7 +85,7 @@ def load_agent_states():
                     "state_hash": snapshot.get("state_hash", ""),
                     "skills_active": snapshot.get("skills_active", []),
                     "memory_usage_mb": snapshot.get("memory_usage_mb", 0),
-                    "timestamp": snapshot.get("ts", "")
+                    "timestamp": snapshot.get("ts", ""),
                 }
     except Exception as e:
         print(f"Error loading agent states: {e}")
@@ -110,8 +110,12 @@ def generate_reports():
     if "consensus_achieved" in df.columns:
         plt.figure(figsize=(10, 6))
         df["consensus_int"] = df["consensus_achieved"].astype(int)
-        df.plot(x="timestamp", y="consensus_int", kind="line",
-                title="Consensus Achievement Over Time")
+        df.plot(
+            x="timestamp",
+            y="consensus_int",
+            kind="line",
+            title="Consensus Achievement Over Time",
+        )
         plt.ylabel("Consensus Achieved (1=Yes, 0=No)")
         plt.savefig(REPORTS_DIR / "consensus_trend.png")
         plt.close()
@@ -119,8 +123,12 @@ def generate_reports():
     # Generate anomaly trend
     if "anomalies" in df.columns:
         plt.figure(figsize=(10, 6))
-        df.plot(x="timestamp", y="anomalies", kind="line",
-                title="Anomalies Detected Over Time")
+        df.plot(
+            x="timestamp",
+            y="anomalies",
+            kind="line",
+            title="Anomalies Detected Over Time",
+        )
         plt.ylabel("Number of Anomalies")
         plt.savefig(REPORTS_DIR / "anomaly_trend.png")
         plt.close()
@@ -138,9 +146,15 @@ def generate_reports():
     # Save summary stats
     summary = {
         "total_syncs": len(df),
-        "success_rate": df["consensus_achieved"].mean() if "consensus_achieved" in df.columns else None,
+        "success_rate": (
+            df["consensus_achieved"].mean()
+            if "consensus_achieved" in df.columns
+            else None
+        ),
         "total_anomalies": df["anomalies"].sum() if "anomalies" in df.columns else None,
-        "last_sync": df["timestamp"].max().isoformat() if "timestamp" in df.columns else None,
+        "last_sync": (
+            df["timestamp"].max().isoformat() if "timestamp" in df.columns else None
+        ),
     }
 
     with open(REPORTS_DIR / "summary.json", "w") as f:
@@ -192,7 +206,8 @@ def create_template_directory():
     templates_dir.mkdir(parents=True, exist_ok=True)
 
     with open(templates_dir / "index.html", "w") as f:
-        f.write("""<!DOCTYPE html>
+        f.write(
+            """<!DOCTYPE html>
 <html>
 <head>
     <title>Agent Flash Sync Dashboard</title>
@@ -317,7 +332,8 @@ def create_template_directory():
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>""")
+</html>"""
+        )
 
 
 def main():

@@ -4,11 +4,16 @@ import pytest
 from datetime import datetime, timezone
 from typing import Dict, Any
 
-from ..scripts.ai_agent.core.agent_manager import AgentManager
-from ..scripts.ai_agent.agents.sentinel_agent import SentinelAgent
-from ..scripts.ai_agent.agents.optimizer_agent import OptimizerAgent
-from ..scripts.ai_agent.agents.synth_agent import SynthAgent
-from ..scripts.ai_agent.agents.high_skill_agents import register_high_skill_agents
+import sys
+import os
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+
+from scripts.ai_agent.core.agent_manager import AgentManager
+from scripts.ai_agent.agents.sentinel_agent import SentinelAgent
+from scripts.ai_agent.agents.optimizer_agent import OptimizerAgent
+from scripts.ai_agent.agents.synth_agent import SynthAgent
+from scripts.ai_agent.agents.high_skill_agents import register_high_skill_agents
 
 
 @pytest.fixture

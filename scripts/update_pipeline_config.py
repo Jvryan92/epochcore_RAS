@@ -66,14 +66,14 @@ class PipelineConfigOptimizer:
             if job_name in config["jobs"]:
                 # Add strategy matrix
                 config["jobs"][job_name]["strategy"] = {
-                    "fail-fast": false,
+                    "fail-fast": False,
                     "matrix": {"parallel": [1, 2, 3, 4]},
                 }
 
         for job_name, matrix_config in matrix_configs.items():
             if job_name in config["jobs"]:
                 config["jobs"][job_name]["strategy"] = {
-                    "fail-fast": false,
+                    "fail-fast": False,
                     "max-parallel": matrix_config["max-parallel"],
                     "matrix": {"split": matrix_config["split"]},
                 }

@@ -22,8 +22,8 @@ logging.basicConfig(
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.FileHandler(log_dir / "scheduled_sync.log"),
-        logging.StreamHandler(sys.stdout)
-    ]
+        logging.StreamHandler(sys.stdout),
+    ],
 )
 
 # Configuration
@@ -31,7 +31,7 @@ FLASH_SYNC_SCRIPT = Path("./flash_sync_agents.py")
 SCHEDULE = [
     {"hour": 9, "minute": 0, "name": "morning"},
     {"hour": 14, "minute": 0, "name": "afternoon"},
-    {"hour": 17, "minute": 0, "name": "evening"}
+    {"hour": 17, "minute": 0, "name": "evening"},
 ]
 RESULTS_DIR = Path("./sync_results")
 RESULTS_DIR.mkdir(exist_ok=True)
@@ -44,19 +44,13 @@ def get_next_scheduled_time():
 
     for schedule in SCHEDULE:
         scheduled_time = now.replace(
-            hour=schedule["hour"],
-            minute=schedule["minute"],
-            second=0,
-            microsecond=0
+            hour=schedule["hour"], minute=schedule["minute"], second=0, microsecond=0
         )
         if scheduled_time <= now:
             # If this time has passed today, schedule for tomorrow
             scheduled_time = scheduled_time + datetime.timedelta(days=1)
 
-        today_schedule.append({
-            "time": scheduled_time,
-            "name": schedule["name"]
-        })
+        today_schedule.append({"time": scheduled_time, "name": schedule["name"]})
 
     # Get the next scheduled time (minimum time in the future)
     next_schedule = min(today_schedule, key=lambda x: x["time"])
@@ -76,16 +70,16 @@ def run_flash_sync(schedule_name):
             [sys.executable, str(FLASH_SYNC_SCRIPT)],
             capture_output=True,
             text=True,
-            check=True
+            check=True,
         )
 
         # Parse JSON output from the script
-        output_lines = result.stdout.strip().split('\n')
+        output_lines = result.stdout.strip().split("\n")
         json_output = None
 
         for line in output_lines:
             line = line.strip()
-            if line.startswith('{') and line.endswith('}'):
+            if line.startswith("{") and line.endswith("}"):
                 try:
                     json_output = json.loads(line)
                     break
@@ -93,23 +87,27 @@ def run_flash_sync(schedule_name):
                     pass
 
         # Save the results
-        with open(result_file, 'w') as f:
+        with open(result_file, "w") as f:
             if json_output:
                 json.dump(json_output, f, indent=2)
             else:
                 f.write(result.stdout)
 
         # Log success
-        consensus = "achieved" if json_output and json_output.get(
-            "consensus_achieved", False) else "FAILED"
+        consensus = (
+            "achieved"
+            if json_output and json_output.get("consensus_achieved", False)
+            else "FAILED"
+        )
         anomalies = json_output.get("anomalies", 0) if json_output else "unknown"
         logging.info(
-            f"Flash sync completed. Consensus: {consensus}, Anomalies: {anomalies}")
+            f"Flash sync completed. Consensus: {consensus}, Anomalies: {anomalies}"
+        )
 
         return True
     except Exception as e:
         logging.error(f"Error running flash sync: {str(e)}")
-        with open(result_file, 'w') as f:
+        with open(result_file, "w") as f:
             f.write(f"ERROR: {str(e)}")
         return False
 
@@ -118,7 +116,8 @@ def run_as_daemon():
     """Run as a daemon process, scheduling syncs at specified times"""
     logging.info("Starting scheduled flash sync daemon")
     schedule_str = ", ".join(
-        [f"{s['hour']}:{s['minute']:02d} ({s['name']})" for s in SCHEDULE])
+        [f"{s['hour']}:{s['minute']:02d} ({s['name']})" for s in SCHEDULE]
+    )
     logging.info(f"Scheduled times: {schedule_str}")
 
     while True:
@@ -127,7 +126,8 @@ def run_as_daemon():
         wait_seconds = (next_schedule["time"] - now).total_seconds()
 
         logging.info(
-            f"Next scheduled sync: {next_schedule['name']} at {next_schedule['time'].strftime('%Y-%m-%d %H:%M:%S')} (in {wait_seconds:.0f} seconds)")
+            f"Next scheduled sync: {next_schedule['name']} at {next_schedule['time'].strftime('%Y-%m-%d %H:%M:%S')} (in {wait_seconds:.0f} seconds)"
+        )
 
         if wait_seconds > 0:
             # Sleep at most 60 seconds at a time to allow for clean shutdown

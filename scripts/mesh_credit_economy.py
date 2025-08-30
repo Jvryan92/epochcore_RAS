@@ -8,7 +8,7 @@ import os
 import pathlib
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 # ---------- Constants ----------
@@ -29,7 +29,7 @@ for dir_path in [ECONOMY_DIR, MESH_CREDIT_DIR, WALLETS_DIR, GOVERNANCE_DIR, CAS_
 
 def utc_now() -> str:
     """Get current UTC time in ISO format."""
-    return datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z')
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 def sha256_bytes(b: bytes) -> str:
@@ -39,12 +39,12 @@ def sha256_bytes(b: bytes) -> str:
 
 def sha256_str(s: str) -> str:
     """Get SHA-256 hash of string."""
-    return sha256_bytes(s.encode('utf-8'))
+    return sha256_bytes(s.encode("utf-8"))
 
 
 def sha256_file(path: str) -> str:
     """Get SHA-256 hash of file."""
-    with open(path, 'rb') as f:
+    with open(path, "rb") as f:
         return sha256_bytes(f.read())
 
 
@@ -54,7 +54,7 @@ def cas_store(data: Any) -> str:
     data_hash = sha256_str(data_json)
     cas_path = os.path.join(CAS_DIR, f"{data_hash}.json")
 
-    with open(cas_path, 'w', encoding='utf-8') as f:
+    with open(cas_path, "w", encoding="utf-8") as f:
         f.write(data_json)
 
     return data_hash
@@ -66,16 +66,16 @@ def cas_get(content_hash: str) -> Optional[Any]:
     if not os.path.exists(cas_path):
         return None
 
-    with open(cas_path, 'r', encoding='utf-8') as f:
+    with open(cas_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 
 def ledger_append(event: Dict) -> None:
     """Append event to ledger."""
-    event.setdefault('ts', utc_now())
-    line = json.dumps(event, separators=(',', ':'), ensure_ascii=False)
-    with open(LEDGER, 'a', encoding='utf-8') as f:
-        f.write(line + '\n')
+    event.setdefault("ts", utc_now())
+    line = json.dumps(event, separators=(",", ":"), ensure_ascii=False)
+    with open(LEDGER, "a", encoding="utf-8") as f:
+        f.write(line + "\n")
 
 
 def compute_merkle_root(hashes: List[str]) -> str:
@@ -93,11 +93,12 @@ def compute_merkle_root(hashes: List[str]) -> str:
     # Compute parent nodes
     parents = []
     for i in range(0, len(hashes), 2):
-        combined = hashes[i] + hashes[i+1]
+        combined = hashes[i] + hashes[i + 1]
         parents.append(sha256_str(combined))
 
     # Recurse to compute root
     return compute_merkle_root(parents)
+
 
 # ---------- Mesh Credit Core ----------
 
@@ -123,12 +124,12 @@ class MeshCredit:
         """Load JSON file or return empty dict if not exists."""
         if not os.path.exists(path):
             return {}
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
 
     def _save_json(self, data: Dict, path: str) -> None:
         """Save data to JSON file."""
-        with open(path, 'w', encoding='utf-8') as f:
+        with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
     def _initialize_economy(self) -> None:
@@ -152,8 +153,8 @@ class MeshCredit:
                 "cosmetics_only": True,
                 "time_savers_only": True,
                 "governance_ready": True,
-                "no_pay_to_win": True
-            }
+                "no_pay_to_win": True,
+            },
         }
 
         # Create pricing table
@@ -164,31 +165,27 @@ class MeshCredit:
                     "common": 50,
                     "rare": 100,
                     "epic": 200,
-                    "legendary": 400
+                    "legendary": 400,
                 },
                 "gear_cosmetic": {
                     "common": 30,
                     "rare": 75,
                     "epic": 150,
-                    "legendary": 300
+                    "legendary": 300,
                 },
-                "time_saver": {
-                    "small": 25,
-                    "medium": 50,
-                    "large": 100
-                },
+                "time_saver": {"small": 25, "medium": 50, "large": 100},
                 "governance": {
                     "vote_weight": 1000,  # MESH required for 1 vote weight
-                    "proposal_creation": 5000  # MESH required to create proposal
-                }
+                    "proposal_creation": 5000,  # MESH required to create proposal
+                },
             },
-            "last_updated": utc_now()
+            "last_updated": utc_now(),
         }
 
         # Create yield curve parameters
         yield_curve = {
             "base_apy": 0.05,  # 5% base APY
-            "max_apy": 0.12,   # 12% max APY
+            "max_apy": 0.12,  # 12% max APY
             "stake_tiers": [
                 {"threshold": 0, "bonus": 0.00},
                 {"threshold": 1000, "bonus": 0.01},
@@ -196,40 +193,40 @@ class MeshCredit:
                 {"threshold": 10000, "bonus": 0.03},
                 {"threshold": 25000, "bonus": 0.04},
                 {"threshold": 50000, "bonus": 0.05},
-                {"threshold": 100000, "bonus": 0.07}
+                {"threshold": 100000, "bonus": 0.07},
             ],
             "governance_bonus": 0.02,  # +2% for governance staking
             "lockup_bonus": {
                 "30_days": 0.01,
                 "90_days": 0.02,
                 "180_days": 0.03,
-                "365_days": 0.05
+                "365_days": 0.05,
             },
             "epoch_length_days": 30,
-            "compounding": True
+            "compounding": True,
         }
 
         # Create economic parameters
         params = {
             "mint_triggers": {
-                "new_player": 100,        # Mint 100 MESH for new player
-                "daily_login": 10,        # Mint 10 MESH for daily login
-                "achievement": 25,        # Mint 25 MESH for achievement
+                "new_player": 100,  # Mint 100 MESH for new player
+                "daily_login": 10,  # Mint 10 MESH for daily login
+                "achievement": 25,  # Mint 25 MESH for achievement
                 "season_completion": 500,  # Mint 500 MESH for season completion
-                "raid_completion": 200    # Mint 200 MESH for raid completion
+                "raid_completion": 200,  # Mint 200 MESH for raid completion
             },
             "burn_triggers": {
                 "cosmetic_purchase": True,
                 "time_saver_purchase": True,
-                "governance_proposal": False  # Staked, not burned
+                "governance_proposal": False,  # Staked, not burned
             },
-            "max_daily_mint": 1000,       # Cap daily minting per player
-            "inflation_target": 0.05,     # 5% annual inflation target
+            "max_daily_mint": 1000,  # Cap daily minting per player
+            "inflation_target": 0.05,  # 5% annual inflation target
             "deflation_threshold": 0.75,  # If 75% of supply is staked, reduce mint rates
             "stability_metrics": {
                 "price_volatility_target": 0.10,  # 10% max volatility
-                "liquidity_ratio_target": 0.30    # 30% of supply should be liquid
-            }
+                "liquidity_ratio_target": 0.30,  # 30% of supply should be liquid
+            },
         }
 
         # Save all files
@@ -239,20 +236,22 @@ class MeshCredit:
         self._save_json(params, self.params_path)
 
         # Log initialization
-        ledger_append({
-            "event": "mesh_credit_initialized",
-            "manifest_hash": sha256_file(self.manifest_path),
-            "pricing_hash": sha256_file(self.pricing_path),
-            "yield_curve_hash": sha256_file(self.yield_path),
-            "params_hash": sha256_file(self.params_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_initialized",
+                "manifest_hash": sha256_file(self.manifest_path),
+                "pricing_hash": sha256_file(self.pricing_path),
+                "yield_curve_hash": sha256_file(self.yield_path),
+                "params_hash": sha256_file(self.params_path),
+            }
+        )
 
     def get_epochroot(self) -> str:
         """Compute the EPOCHROOT Merkle hash of all economy files."""
         hashes = []
         for root, _, files in os.walk(MESH_CREDIT_DIR):
             for file in files:
-                if file.endswith('.json'):
+                if file.endswith(".json"):
                     file_path = os.path.join(root, file)
                     file_hash = sha256_file(file_path)
                     hashes.append(file_hash)
@@ -279,14 +278,15 @@ class MeshCredit:
         governance_staked = 0
 
         for wallet_file in os.listdir(WALLETS_DIR):
-            if wallet_file.endswith('.json'):
+            if wallet_file.endswith(".json"):
                 wallet_path = os.path.join(WALLETS_DIR, wallet_file)
-                with open(wallet_path, 'r', encoding='utf-8') as f:
+                with open(wallet_path, "r", encoding="utf-8") as f:
                     wallet = json.load(f)
 
                 total_supply += wallet["balance"]
-                circulating_supply += (wallet["balance"] -
-                                       wallet["staked"] - wallet["governance_staked"])
+                circulating_supply += (
+                    wallet["balance"] - wallet["staked"] - wallet["governance_staked"]
+                )
                 staked_supply += wallet["staked"]
                 governance_staked += wallet["governance_staked"]
 
@@ -304,14 +304,16 @@ class MeshCredit:
         epochroot = self.get_epochroot()
 
         # Log update
-        ledger_append({
-            "event": "mesh_credit_economy_updated",
-            "total_supply": total_supply,
-            "circulating_supply": circulating_supply,
-            "staked_supply": staked_supply,
-            "governance_staked": governance_staked,
-            "epochroot": epochroot
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_economy_updated",
+                "total_supply": total_supply,
+                "circulating_supply": circulating_supply,
+                "staked_supply": staked_supply,
+                "governance_staked": governance_staked,
+                "epochroot": epochroot,
+            }
+        )
 
     def mint(self, wallet_id: str, amount: float, reason: str) -> bool:
         """Mint MESH credits to a wallet."""
@@ -325,7 +327,7 @@ class MeshCredit:
             return False
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Apply mint
@@ -333,7 +335,7 @@ class MeshCredit:
         wallet["last_updated"] = utc_now()
 
         # Save wallet
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Update economy
@@ -342,13 +344,15 @@ class MeshCredit:
         self.update_economy()
 
         # Log mint
-        ledger_append({
-            "event": "mesh_credit_minted",
-            "wallet_id": wallet_id,
-            "amount": amount,
-            "reason": reason,
-            "wallet_hash": sha256_file(wallet_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_minted",
+                "wallet_id": wallet_id,
+                "amount": amount,
+                "reason": reason,
+                "wallet_hash": sha256_file(wallet_path),
+            }
+        )
 
         return True
 
@@ -359,7 +363,7 @@ class MeshCredit:
             return False
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Check if enough balance (not counting staked)
@@ -372,7 +376,7 @@ class MeshCredit:
         wallet["last_updated"] = utc_now()
 
         # Save wallet
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Update economy
@@ -381,17 +385,21 @@ class MeshCredit:
         self.update_economy()
 
         # Log burn
-        ledger_append({
-            "event": "mesh_credit_burned",
-            "wallet_id": wallet_id,
-            "amount": amount,
-            "reason": reason,
-            "wallet_hash": sha256_file(wallet_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_burned",
+                "wallet_id": wallet_id,
+                "amount": amount,
+                "reason": reason,
+                "wallet_hash": sha256_file(wallet_path),
+            }
+        )
 
         return True
 
-    def transfer(self, from_wallet: str, to_wallet: str, amount: float, memo: str = "") -> bool:
+    def transfer(
+        self, from_wallet: str, to_wallet: str, amount: float, memo: str = ""
+    ) -> bool:
         """Transfer MESH credits between wallets."""
         from_path = os.path.join(WALLETS_DIR, f"{from_wallet}.json")
         to_path = os.path.join(WALLETS_DIR, f"{to_wallet}.json")
@@ -400,15 +408,16 @@ class MeshCredit:
             return False
 
         # Load wallets
-        with open(from_path, 'r', encoding='utf-8') as f:
+        with open(from_path, "r", encoding="utf-8") as f:
             from_data = json.load(f)
 
-        with open(to_path, 'r', encoding='utf-8') as f:
+        with open(to_path, "r", encoding="utf-8") as f:
             to_data = json.load(f)
 
         # Check if enough balance (not counting staked)
-        available = from_data["balance"] - \
-            from_data["staked"] - from_data["governance_staked"]
+        available = (
+            from_data["balance"] - from_data["staked"] - from_data["governance_staked"]
+        )
         if available < amount:
             return False
 
@@ -419,25 +428,27 @@ class MeshCredit:
         to_data["last_updated"] = utc_now()
 
         # Save wallets
-        with open(from_path, 'w', encoding='utf-8') as f:
+        with open(from_path, "w", encoding="utf-8") as f:
             json.dump(from_data, f, indent=2, ensure_ascii=False)
 
-        with open(to_path, 'w', encoding='utf-8') as f:
+        with open(to_path, "w", encoding="utf-8") as f:
             json.dump(to_data, f, indent=2, ensure_ascii=False)
 
         # Update economy
         self.update_economy()
 
         # Log transfer
-        ledger_append({
-            "event": "mesh_credit_transferred",
-            "from_wallet": from_wallet,
-            "to_wallet": to_wallet,
-            "amount": amount,
-            "memo": memo,
-            "from_hash": sha256_file(from_path),
-            "to_hash": sha256_file(to_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_transferred",
+                "from_wallet": from_wallet,
+                "to_wallet": to_wallet,
+                "amount": amount,
+                "memo": memo,
+                "from_hash": sha256_file(from_path),
+                "to_hash": sha256_file(to_path),
+            }
+        )
 
         return True
 
@@ -448,7 +459,7 @@ class MeshCredit:
             return False
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Check if enough balance (not counting already staked)
@@ -462,32 +473,42 @@ class MeshCredit:
         # Handle lockup if specified
         if lockup_days > 0:
             now = datetime.now(timezone.utc)
-            unlock_date = (now.replace(hour=0, minute=0, second=0, microsecond=0) +
-                           timedelta(days=lockup_days)).isoformat().replace('+00:00', 'Z')
+            unlock_date = (
+                (
+                    now.replace(hour=0, minute=0, second=0, microsecond=0)
+                    + timedelta(days=lockup_days)
+                )
+                .isoformat()
+                .replace("+00:00", "Z")
+            )
 
-            wallet.setdefault("lockups", []).append({
-                "amount": amount,
-                "unlock_date": unlock_date,
-                "lockup_days": lockup_days
-            })
+            wallet.setdefault("lockups", []).append(
+                {
+                    "amount": amount,
+                    "unlock_date": unlock_date,
+                    "lockup_days": lockup_days,
+                }
+            )
 
         wallet["last_updated"] = utc_now()
 
         # Save wallet
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Update economy
         self.update_economy()
 
         # Log stake
-        ledger_append({
-            "event": "mesh_credit_staked",
-            "wallet_id": wallet_id,
-            "amount": amount,
-            "lockup_days": lockup_days,
-            "wallet_hash": sha256_file(wallet_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_staked",
+                "wallet_id": wallet_id,
+                "amount": amount,
+                "lockup_days": lockup_days,
+                "wallet_hash": sha256_file(wallet_path),
+            }
+        )
 
         return True
 
@@ -498,7 +519,7 @@ class MeshCredit:
             return False
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Check lockups first
@@ -509,7 +530,8 @@ class MeshCredit:
 
             for lockup in wallet["lockups"]:
                 unlock_date = datetime.fromisoformat(
-                    lockup["unlock_date"].replace('Z', '+00:00'))
+                    lockup["unlock_date"].replace("Z", "+00:00")
+                )
                 if now >= unlock_date:
                     unlocked.append(lockup)
                 else:
@@ -517,12 +539,14 @@ class MeshCredit:
 
             # Process unlocked amounts
             for lockup in unlocked:
-                ledger_append({
-                    "event": "mesh_credit_lockup_expired",
-                    "wallet_id": wallet_id,
-                    "amount": lockup["amount"],
-                    "lockup_days": lockup["lockup_days"]
-                })
+                ledger_append(
+                    {
+                        "event": "mesh_credit_lockup_expired",
+                        "wallet_id": wallet_id,
+                        "amount": lockup["amount"],
+                        "lockup_days": lockup["lockup_days"],
+                    }
+                )
 
             wallet["lockups"] = still_locked
 
@@ -535,19 +559,21 @@ class MeshCredit:
         wallet["last_updated"] = utc_now()
 
         # Save wallet
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Update economy
         self.update_economy()
 
         # Log unstake
-        ledger_append({
-            "event": "mesh_credit_unstaked",
-            "wallet_id": wallet_id,
-            "amount": amount,
-            "wallet_hash": sha256_file(wallet_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_unstaked",
+                "wallet_id": wallet_id,
+                "amount": amount,
+                "wallet_hash": sha256_file(wallet_path),
+            }
+        )
 
         return True
 
@@ -558,7 +584,7 @@ class MeshCredit:
             return False
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Check if enough balance (not counting already staked)
@@ -571,26 +597,31 @@ class MeshCredit:
         wallet["last_updated"] = utc_now()
 
         # Calculate vote weight
-        vote_weight = amount / \
-            self.pricing["item_categories"]["governance"]["vote_weight"]
-        wallet["vote_weight"] = wallet["governance_staked"] / \
-            self.pricing["item_categories"]["governance"]["vote_weight"]
+        vote_weight = (
+            amount / self.pricing["item_categories"]["governance"]["vote_weight"]
+        )
+        wallet["vote_weight"] = (
+            wallet["governance_staked"]
+            / self.pricing["item_categories"]["governance"]["vote_weight"]
+        )
 
         # Save wallet
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Update economy
         self.update_economy()
 
         # Log governance stake
-        ledger_append({
-            "event": "mesh_credit_governance_staked",
-            "wallet_id": wallet_id,
-            "amount": amount,
-            "vote_weight": vote_weight,
-            "wallet_hash": sha256_file(wallet_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_governance_staked",
+                "wallet_id": wallet_id,
+                "amount": amount,
+                "vote_weight": vote_weight,
+                "wallet_hash": sha256_file(wallet_path),
+            }
+        )
 
         return True
 
@@ -601,7 +632,7 @@ class MeshCredit:
             return False
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Check if enough governance staked
@@ -613,24 +644,28 @@ class MeshCredit:
         wallet["last_updated"] = utc_now()
 
         # Recalculate vote weight
-        wallet["vote_weight"] = wallet["governance_staked"] / \
-            self.pricing["item_categories"]["governance"]["vote_weight"]
+        wallet["vote_weight"] = (
+            wallet["governance_staked"]
+            / self.pricing["item_categories"]["governance"]["vote_weight"]
+        )
 
         # Save wallet
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Update economy
         self.update_economy()
 
         # Log governance unstake
-        ledger_append({
-            "event": "mesh_credit_governance_unstaked",
-            "wallet_id": wallet_id,
-            "amount": amount,
-            "new_vote_weight": wallet["vote_weight"],
-            "wallet_hash": sha256_file(wallet_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_governance_unstaked",
+                "wallet_id": wallet_id,
+                "amount": amount,
+                "new_vote_weight": wallet["vote_weight"],
+                "wallet_hash": sha256_file(wallet_path),
+            }
+        )
 
         return True
 
@@ -641,7 +676,7 @@ class MeshCredit:
             return {"error": "Wallet not found"}
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Base parameters
@@ -651,7 +686,9 @@ class MeshCredit:
 
         # Calculate tier bonus
         tier_bonus = 0
-        for tier in sorted(self.yield_curve["stake_tiers"], key=lambda x: x["threshold"], reverse=True):
+        for tier in sorted(
+            self.yield_curve["stake_tiers"], key=lambda x: x["threshold"], reverse=True
+        ):
             if wallet["staked"] >= tier["threshold"]:
                 tier_bonus = tier["bonus"]
                 break
@@ -664,16 +701,20 @@ class MeshCredit:
                 days = lockup["lockup_days"]
                 if days >= 365 and "365_days" in self.yield_curve["lockup_bonus"]:
                     lockup_bonus = max(
-                        lockup_bonus, self.yield_curve["lockup_bonus"]["365_days"])
+                        lockup_bonus, self.yield_curve["lockup_bonus"]["365_days"]
+                    )
                 elif days >= 180 and "180_days" in self.yield_curve["lockup_bonus"]:
                     lockup_bonus = max(
-                        lockup_bonus, self.yield_curve["lockup_bonus"]["180_days"])
+                        lockup_bonus, self.yield_curve["lockup_bonus"]["180_days"]
+                    )
                 elif days >= 90 and "90_days" in self.yield_curve["lockup_bonus"]:
                     lockup_bonus = max(
-                        lockup_bonus, self.yield_curve["lockup_bonus"]["90_days"])
+                        lockup_bonus, self.yield_curve["lockup_bonus"]["90_days"]
+                    )
                 elif days >= 30 and "30_days" in self.yield_curve["lockup_bonus"]:
                     lockup_bonus = max(
-                        lockup_bonus, self.yield_curve["lockup_bonus"]["30_days"])
+                        lockup_bonus, self.yield_curve["lockup_bonus"]["30_days"]
+                    )
 
         # Calculate governance bonus if applicable
         gov_bonus = governance_bonus if wallet["governance_staked"] > 0 else 0
@@ -702,7 +743,7 @@ class MeshCredit:
             "total_apy": total_apy,
             "daily_yield": total_daily_yield,
             "epoch_yield": epoch_yield,
-            "next_epoch_date": self._calculate_next_epoch_date()
+            "next_epoch_date": self._calculate_next_epoch_date(),
         }
 
     def _calculate_next_epoch_date(self) -> str:
@@ -712,10 +753,11 @@ class MeshCredit:
 
         # Assuming epochs start from script creation date
         start_date = datetime.fromisoformat(
-            self.manifest["created_at"].replace('Z', '+00:00'))
+            self.manifest["created_at"].replace("Z", "+00:00")
+        )
         next_epoch_date = start_date + timedelta(days=(current_epochs + 1) * epoch_days)
 
-        return next_epoch_date.isoformat().replace('+00:00', 'Z')
+        return next_epoch_date.isoformat().replace("+00:00", "Z")
 
     def process_epoch(self) -> Dict:
         """Process yield for all staked wallets at the end of an epoch."""
@@ -724,13 +766,13 @@ class MeshCredit:
             "processed_at": utc_now(),
             "wallets_processed": 0,
             "total_yield_distributed": 0,
-            "wallet_details": []
+            "wallet_details": [],
         }
 
         # Process each wallet
         for wallet_file in os.listdir(WALLETS_DIR):
-            if wallet_file.endswith('.json'):
-                wallet_id = wallet_file.replace('.json', '')
+            if wallet_file.endswith(".json"):
+                wallet_id = wallet_file.replace(".json", "")
                 wallet_path = os.path.join(WALLETS_DIR, wallet_file)
 
                 # Calculate yield
@@ -739,7 +781,7 @@ class MeshCredit:
                     continue
 
                 # Load wallet
-                with open(wallet_path, 'r', encoding='utf-8') as f:
+                with open(wallet_path, "r", encoding="utf-8") as f:
                     wallet = json.load(f)
 
                 # Apply yield
@@ -747,24 +789,27 @@ class MeshCredit:
                 wallet["balance"] += epoch_yield
                 wallet["last_yield"] = epoch_yield
                 wallet["last_yield_date"] = utc_now()
-                wallet["total_yield_earned"] = wallet.get(
-                    "total_yield_earned", 0) + epoch_yield
+                wallet["total_yield_earned"] = (
+                    wallet.get("total_yield_earned", 0) + epoch_yield
+                )
                 wallet["last_updated"] = utc_now()
 
                 # Save wallet
-                with open(wallet_path, 'w', encoding='utf-8') as f:
+                with open(wallet_path, "w", encoding="utf-8") as f:
                     json.dump(wallet, f, indent=2, ensure_ascii=False)
 
                 # Update epoch results
                 epoch_results["wallets_processed"] += 1
                 epoch_results["total_yield_distributed"] += epoch_yield
-                epoch_results["wallet_details"].append({
-                    "wallet_id": wallet_id,
-                    "yield_earned": epoch_yield,
-                    "new_balance": wallet["balance"],
-                    "staked": wallet["staked"],
-                    "governance_staked": wallet["governance_staked"]
-                })
+                epoch_results["wallet_details"].append(
+                    {
+                        "wallet_id": wallet_id,
+                        "yield_earned": epoch_yield,
+                        "new_balance": wallet["balance"],
+                        "staked": wallet["staked"],
+                        "governance_staked": wallet["governance_staked"],
+                    }
+                )
 
         # Update manifest
         self.manifest["epochs_completed"] += 1
@@ -778,13 +823,15 @@ class MeshCredit:
         self.update_economy()
 
         # Log epoch processing
-        ledger_append({
-            "event": "mesh_credit_epoch_processed",
-            "epoch_number": epoch_results["epoch_number"],
-            "wallets_processed": epoch_results["wallets_processed"],
-            "total_yield_distributed": epoch_results["total_yield_distributed"],
-            "epoch_hash": epoch_hash
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_epoch_processed",
+                "epoch_number": epoch_results["epoch_number"],
+                "wallets_processed": epoch_results["wallets_processed"],
+                "total_yield_distributed": epoch_results["total_yield_distributed"],
+                "epoch_hash": epoch_hash,
+            }
+        )
 
         return epoch_results
 
@@ -799,7 +846,9 @@ class MeshCredit:
 
         return category[rarity]
 
-    def process_purchase(self, wallet_id: str, item_id: str, item_type: str, rarity: str) -> Dict:
+    def process_purchase(
+        self, wallet_id: str, item_id: str, item_type: str, rarity: str
+    ) -> Dict:
         """Process a purchase of an item."""
         wallet_path = os.path.join(WALLETS_DIR, f"{wallet_id}.json")
         if not os.path.exists(wallet_path):
@@ -811,7 +860,7 @@ class MeshCredit:
             return {"error": "Invalid item type or rarity"}
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Check if enough available balance
@@ -827,7 +876,7 @@ class MeshCredit:
             wallet["balance"] -= price
             wallet["last_updated"] = utc_now()
 
-            with open(wallet_path, 'w', encoding='utf-8') as f:
+            with open(wallet_path, "w", encoding="utf-8") as f:
                 json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Record purchase
@@ -837,35 +886,39 @@ class MeshCredit:
             "item_type": item_type,
             "rarity": rarity,
             "price": price,
-            "purchased_at": utc_now()
+            "purchased_at": utc_now(),
         }
 
         purchase_hash = cas_store(purchase_record)
 
         # Add to wallet's purchase history
-        wallet.setdefault("purchases", []).append({
-            "item_id": item_id,
-            "price": price,
-            "date": utc_now(),
-            "record_hash": purchase_hash
-        })
+        wallet.setdefault("purchases", []).append(
+            {
+                "item_id": item_id,
+                "price": price,
+                "date": utc_now(),
+                "record_hash": purchase_hash,
+            }
+        )
 
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Update economy
         self.update_economy()
 
         # Log purchase
-        ledger_append({
-            "event": "mesh_credit_purchase",
-            "wallet_id": wallet_id,
-            "item_id": item_id,
-            "item_type": item_type,
-            "rarity": rarity,
-            "price": price,
-            "purchase_hash": purchase_hash
-        })
+        ledger_append(
+            {
+                "event": "mesh_credit_purchase",
+                "wallet_id": wallet_id,
+                "item_id": item_id,
+                "item_type": item_type,
+                "rarity": rarity,
+                "price": price,
+                "purchase_hash": purchase_hash,
+            }
+        )
 
         return {"success": True, "price": price, "purchase_hash": purchase_hash}
 
@@ -875,11 +928,11 @@ class MeshCredit:
             return {"error": "File not found"}
 
         # Check if it's a JSON file
-        if not file_path.endswith('.json'):
+        if not file_path.endswith(".json"):
             return {"error": "Not a JSON file"}
 
         # Check if seal exists
-        seal_path = file_path.replace('.json', '.seal.json')
+        seal_path = file_path.replace(".json", ".seal.json")
         if not os.path.exists(seal_path):
             return {"error": "Seal file not found"}
 
@@ -887,7 +940,7 @@ class MeshCredit:
         file_hash = sha256_file(file_path)
 
         # Load seal
-        with open(seal_path, 'r', encoding='utf-8') as f:
+        with open(seal_path, "r", encoding="utf-8") as f:
             seal = json.load(f)
 
         # Verify hash
@@ -897,14 +950,14 @@ class MeshCredit:
                 "file": os.path.basename(file_path),
                 "calculated_hash": file_hash,
                 "seal_hash": seal.get("sha256"),
-                "error": "Hash mismatch"
+                "error": "Hash mismatch",
             }
 
         return {
             "verified": True,
             "file": os.path.basename(file_path),
             "hash": file_hash,
-            "seal_date": seal.get("ts")
+            "seal_date": seal.get("ts"),
         }
 
     def reseal_file(self, file_path: str) -> Dict:
@@ -913,7 +966,7 @@ class MeshCredit:
             return {"error": "File not found"}
 
         # Check if it's a JSON file
-        if not file_path.endswith('.json'):
+        if not file_path.endswith(".json"):
             return {"error": "Not a JSON file"}
 
         # Calculate file hash
@@ -923,26 +976,29 @@ class MeshCredit:
         seal = {
             "ts": utc_now(),
             "file": os.path.basename(file_path),
-            "sha256": file_hash
+            "sha256": file_hash,
         }
 
         # Save seal
-        seal_path = file_path.replace('.json', '.seal.json')
-        with open(seal_path, 'w', encoding='utf-8') as f:
+        seal_path = file_path.replace(".json", ".seal.json")
+        with open(seal_path, "w", encoding="utf-8") as f:
             json.dump(seal, f, ensure_ascii=False, indent=2)
 
         # Log reseal
-        ledger_append({
-            "event": "file_resealed",
-            "file": os.path.basename(file_path),
-            "hash": file_hash
-        })
+        ledger_append(
+            {
+                "event": "file_resealed",
+                "file": os.path.basename(file_path),
+                "hash": file_hash,
+            }
+        )
 
         return {
             "resealed": True,
             "file": os.path.basename(file_path),
-            "hash": file_hash
+            "hash": file_hash,
         }
+
 
 # ---------- Wallet Management ----------
 
@@ -951,8 +1007,9 @@ class MeshWallet:
     def __init__(self, wallet_id: str = None):
         self.wallets_dir = WALLETS_DIR
         self.wallet_id = wallet_id
-        self.wallet_path = os.path.join(
-            self.wallets_dir, f"{wallet_id}.json") if wallet_id else None
+        self.wallet_path = (
+            os.path.join(self.wallets_dir, f"{wallet_id}.json") if wallet_id else None
+        )
 
     def create(self, wallet_id: str, initial_balance: float = 0) -> Dict:
         """Create a new wallet."""
@@ -972,20 +1029,22 @@ class MeshWallet:
             "staked": 0,
             "governance_staked": 0,
             "vote_weight": 0,
-            "seed": seed
+            "seed": seed,
         }
 
         # Save wallet
-        with open(wallet_path, 'w', encoding='utf-8') as f:
+        with open(wallet_path, "w", encoding="utf-8") as f:
             json.dump(wallet, f, indent=2, ensure_ascii=False)
 
         # Log creation
-        ledger_append({
-            "event": "mesh_wallet_created",
-            "wallet_id": wallet_id,
-            "initial_balance": initial_balance,
-            "wallet_hash": sha256_file(wallet_path)
-        })
+        ledger_append(
+            {
+                "event": "mesh_wallet_created",
+                "wallet_id": wallet_id,
+                "initial_balance": initial_balance,
+                "wallet_hash": sha256_file(wallet_path),
+            }
+        )
 
         self.wallet_id = wallet_id
         self.wallet_path = wallet_path
@@ -994,7 +1053,7 @@ class MeshWallet:
             "created": True,
             "wallet_id": wallet_id,
             "initial_balance": initial_balance,
-            "seed": seed
+            "seed": seed,
         }
 
     def get(self, wallet_id: str = None) -> Dict:
@@ -1008,7 +1067,7 @@ class MeshWallet:
             return {"error": "Wallet not found"}
 
         # Load wallet
-        with open(wallet_path, 'r', encoding='utf-8') as f:
+        with open(wallet_path, "r", encoding="utf-8") as f:
             wallet = json.load(f)
 
         # Calculate available balance
@@ -1023,18 +1082,20 @@ class MeshWallet:
         """List all wallets."""
         wallets = []
         for wallet_file in os.listdir(self.wallets_dir):
-            if wallet_file.endswith('.json'):
-                wallet_id = wallet_file.replace('.json', '')
+            if wallet_file.endswith(".json"):
+                wallet_id = wallet_file.replace(".json", "")
                 wallet_data = self.get(wallet_id)
                 if "error" not in wallet_data:
-                    wallets.append({
-                        "id": wallet_id,
-                        "balance": wallet_data["balance"],
-                        "available": wallet_data["available_balance"],
-                        "staked": wallet_data["staked"],
-                        "governance_staked": wallet_data["governance_staked"],
-                        "vote_weight": wallet_data.get("vote_weight", 0)
-                    })
+                    wallets.append(
+                        {
+                            "id": wallet_id,
+                            "balance": wallet_data["balance"],
+                            "available": wallet_data["available_balance"],
+                            "staked": wallet_data["staked"],
+                            "governance_staked": wallet_data["governance_staked"],
+                            "vote_weight": wallet_data.get("vote_weight", 0),
+                        }
+                    )
 
         return wallets
 
@@ -1061,8 +1122,9 @@ class MeshWallet:
             "usd_amount": usd_amount,
             "mesh_amount": mesh_amount,
             "rate": rate,
-            "wallet_id": wid
+            "wallet_id": wid,
         }
+
 
 # ---------- Main Functions ----------
 
@@ -1326,12 +1388,14 @@ if __name__ == "__main__":
     # Wallet commands
     wallet_parser = subparsers.add_parser("wallet", help="Wallet management")
     wallet_subparsers = wallet_parser.add_subparsers(
-        dest="wallet_command", help="Wallet command")
+        dest="wallet_command", help="Wallet command"
+    )
 
     create_parser = wallet_subparsers.add_parser("create", help="Create a new wallet")
     create_parser.add_argument("wallet_id", help="Wallet ID")
-    create_parser.add_argument("--balance", type=float,
-                               default=0, help="Initial balance")
+    create_parser.add_argument(
+        "--balance", type=float, default=0, help="Initial balance"
+    )
 
     get_parser = wallet_subparsers.add_parser("get", help="Get wallet details")
     get_parser.add_argument("wallet_id", help="Wallet ID")
@@ -1339,12 +1403,14 @@ if __name__ == "__main__":
     list_parser = wallet_subparsers.add_parser("list", help="List all wallets")
 
     deposit_parser = wallet_subparsers.add_parser(
-        "deposit", help="Deposit USD to wallet")
+        "deposit", help="Deposit USD to wallet"
+    )
     deposit_parser.add_argument("wallet_id", help="Wallet ID")
     deposit_parser.add_argument("amount", type=float, help="USD amount")
 
     transfer_parser = wallet_subparsers.add_parser(
-        "transfer", help="Transfer MESH between wallets")
+        "transfer", help="Transfer MESH between wallets"
+    )
     transfer_parser.add_argument("from_wallet", help="Source wallet ID")
     transfer_parser.add_argument("to_wallet", help="Destination wallet ID")
     transfer_parser.add_argument("amount", type=float, help="MESH amount")
@@ -1353,13 +1419,15 @@ if __name__ == "__main__":
     # Staking commands
     stake_parser = subparsers.add_parser("stake", help="Staking management")
     stake_subparsers = stake_parser.add_subparsers(
-        dest="stake_command", help="Stake command")
+        dest="stake_command", help="Stake command"
+    )
 
     stake_mesh_parser = stake_subparsers.add_parser("add", help="Stake MESH")
     stake_mesh_parser.add_argument("wallet_id", help="Wallet ID")
     stake_mesh_parser.add_argument("amount", type=float, help="MESH amount")
     stake_mesh_parser.add_argument(
-        "--lockup", type=int, default=0, help="Lockup period in days")
+        "--lockup", type=int, default=0, help="Lockup period in days"
+    )
 
     unstake_mesh_parser = stake_subparsers.add_parser("remove", help="Unstake MESH")
     unstake_mesh_parser.add_argument("wallet_id", help="Wallet ID")
@@ -1373,36 +1441,44 @@ if __name__ == "__main__":
     # Governance commands
     gov_parser = subparsers.add_parser("governance", help="Governance management")
     gov_subparsers = gov_parser.add_subparsers(
-        dest="gov_command", help="Governance command")
+        dest="gov_command", help="Governance command"
+    )
 
     gov_stake_parser = gov_subparsers.add_parser("stake", help="Stake for governance")
     gov_stake_parser.add_argument("wallet_id", help="Wallet ID")
     gov_stake_parser.add_argument("amount", type=float, help="MESH amount")
 
     gov_unstake_parser = gov_subparsers.add_parser(
-        "unstake", help="Unstake from governance")
+        "unstake", help="Unstake from governance"
+    )
     gov_unstake_parser.add_argument("wallet_id", help="Wallet ID")
     gov_unstake_parser.add_argument("amount", type=float, help="MESH amount")
 
     # Shop commands
     shop_parser = subparsers.add_parser("shop", help="Shop management")
     shop_subparsers = shop_parser.add_subparsers(
-        dest="shop_command", help="Shop command")
+        dest="shop_command", help="Shop command"
+    )
 
     buy_parser = shop_subparsers.add_parser("buy", help="Buy item")
     buy_parser.add_argument("wallet_id", help="Wallet ID")
     buy_parser.add_argument("item_id", help="Item ID")
-    buy_parser.add_argument("item_type", choices=["character_cosmetic", "gear_cosmetic", "time_saver"],
-                            help="Item type")
+    buy_parser.add_argument(
+        "item_type",
+        choices=["character_cosmetic", "gear_cosmetic", "time_saver"],
+        help="Item type",
+    )
     buy_parser.add_argument("rarity", help="Item rarity")
 
     # Verification commands
     verify_parser = subparsers.add_parser("verify", help="Verification tools")
     verify_subparsers = verify_parser.add_subparsers(
-        dest="verify_command", help="Verify command")
+        dest="verify_command", help="Verify command"
+    )
 
     file_verify_parser = verify_subparsers.add_parser(
-        "file", help="Verify file integrity")
+        "file", help="Verify file integrity"
+    )
     file_verify_parser.add_argument("file_path", help="Path to file")
 
     reseal_parser = verify_subparsers.add_parser("reseal", help="Reseal a file")
@@ -1411,7 +1487,8 @@ if __name__ == "__main__":
     # Economy commands
     economy_parser = subparsers.add_parser("economy", help="Economy management")
     economy_subparsers = economy_parser.add_subparsers(
-        dest="economy_command", help="Economy command")
+        dest="economy_command", help="Economy command"
+    )
 
     update_parser = economy_subparsers.add_parser("update", help="Update economy state")
 

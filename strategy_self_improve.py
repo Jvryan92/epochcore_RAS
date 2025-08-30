@@ -366,7 +366,7 @@ class EvolutionaryMetaLearner:
         count = 0
 
         for i, s1 in enumerate(self.strategies):
-            for s2 in self.strategies[i + 1:]:
+            for s2 in self.strategies[i + 1 :]:
                 diff = sum(
                     abs(s1.parameters[p] - s2.parameters[p]) for p in s1.parameters
                 )

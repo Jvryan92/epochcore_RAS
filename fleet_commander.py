@@ -19,27 +19,33 @@ try:
     import matplotlib
     import numpy as np
     import pandas as pd
-    matplotlib.use('Agg')  # Use non-interactive backend
+
+    matplotlib.use("Agg")  # Use non-interactive backend
     import base64
     from io import BytesIO
 
     import matplotlib.pyplot as plt
     from flask import Flask, jsonify, render_template, request, send_from_directory
+
     HAS_DEPENDENCIES = True
 except ImportError:
     print("WARNING: Some dependencies are missing. Installing required packages...")
     try:
-        subprocess.run([sys.executable, "-m", "pip", "install",
-                       "flask", "matplotlib", "pandas"], check=True)
+        subprocess.run(
+            [sys.executable, "-m", "pip", "install", "flask", "matplotlib", "pandas"],
+            check=True,
+        )
         import matplotlib
         import numpy as np
         import pandas as pd
-        matplotlib.use('Agg')  # Use non-interactive backend
+
+        matplotlib.use("Agg")  # Use non-interactive backend
         import base64
         from io import BytesIO
 
         import matplotlib.pyplot as plt
         from flask import Flask, jsonify, render_template, request, send_from_directory
+
         HAS_DEPENDENCIES = True
         print("Dependencies installed successfully!")
     except Exception as e:
@@ -71,9 +77,11 @@ def get_timestamp():
 
 
 # Flask app
-app = Flask(__name__,
-            static_folder=str(DASHBOARD_DIR / "static"),
-            template_folder=str(DASHBOARD_DIR / "templates"))
+app = Flask(
+    __name__,
+    static_folder=str(DASHBOARD_DIR / "static"),
+    template_folder=str(DASHBOARD_DIR / "templates"),
+)
 
 # Generate CSS
 
@@ -84,7 +92,8 @@ def generate_css():
     css_dir.mkdir(exist_ok=True, parents=True)
 
     with open(css_dir / "styles.css", "w") as f:
-        f.write("""
+        f.write(
+            """
 :root {
     --primary: #2d3748;
     --secondary: #4a5568;
@@ -413,7 +422,9 @@ body {
         margin-bottom: 1rem;
     }
 }
-        """)
+        """
+        )
+
 
 # Generate HTML
 
@@ -424,7 +435,8 @@ def generate_html():
     templates_dir.mkdir(exist_ok=True, parents=True)
 
     with open(templates_dir / "index.html", "w") as f:
-        f.write("""<!DOCTYPE html>
+        f.write(
+            """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -801,7 +813,9 @@ def generate_html():
         });
     </script>
 </body>
-</html>""")
+</html>"""
+        )
+
 
 # Load or simulate epochALPHA data
 
@@ -822,23 +836,29 @@ def load_alpha_agent():
                 return {
                     "id": data.get("agent", {}).get("id", "agent://epochALPHA"),
                     "version": data.get("agent", {}).get("version", "6.3.2"),
-                    "codename": data.get("agent", {}).get("codename", "Quantum Horizon"),
+                    "codename": data.get("agent", {}).get(
+                        "codename", "Quantum Horizon"
+                    ),
                     "health_score": data.get("metrics", {}).get("health_score", 0.95),
                     "latency_ms": data.get("metrics", {}).get("network_latency_ms", 75),
-                    "sync_success_rate": data.get("metrics", {}).get("sync_success_rate", 0.9),
+                    "sync_success_rate": data.get("metrics", {}).get(
+                        "sync_success_rate", 0.9
+                    ),
                     "anomalies": data.get("metrics", {}).get("anomalies_detected", 0),
-                    "quantum_bridge": data.get("quantum_bridge", {
-                        "bridge_status": "operational",
-                        "entanglement_quality": 0.92,
-                        "decoherence_estimate_us": 100000,
-                        "quantum_states": []
-                    }),
-                    "strategic_directives": data.get("strategic_directives", {
-                        "priorities": [],
-                        "directives": [],
-                        "contingency_plans": []
-                    }),
-                    "last_updated": data.get("timestamp", get_timestamp())
+                    "quantum_bridge": data.get(
+                        "quantum_bridge",
+                        {
+                            "bridge_status": "operational",
+                            "entanglement_quality": 0.92,
+                            "decoherence_estimate_us": 100000,
+                            "quantum_states": [],
+                        },
+                    ),
+                    "strategic_directives": data.get(
+                        "strategic_directives",
+                        {"priorities": [], "directives": [], "contingency_plans": []},
+                    ),
+                    "last_updated": data.get("timestamp", get_timestamp()),
                 }
         except Exception as e:
             print(f"Error loading alpha agent data: {e}")
@@ -861,8 +881,8 @@ def load_alpha_agent():
                 {"q_id": "q1", "entangled_with": "q0", "coherence": 0.95},
                 {"q_id": "q2", "entangled_with": None, "coherence": 0.88},
                 {"q_id": "q3", "entangled_with": "q4", "coherence": 0.91},
-                {"q_id": "q4", "entangled_with": "q3", "coherence": 0.91}
-            ]
+                {"q_id": "q4", "entangled_with": "q3", "coherence": 0.91},
+            ],
         },
         "strategic_directives": {
             "priorities": [
@@ -870,7 +890,7 @@ def load_alpha_agent():
                 {"name": "data_consistency", "weight": 0.25},
                 {"name": "anomaly_detection", "weight": 0.20},
                 {"name": "resource_optimization", "weight": 0.15},
-                {"name": "quantum_readiness", "weight": 0.05}
+                {"name": "quantum_readiness", "weight": 0.05},
             ],
             "directives": [
                 {
@@ -879,7 +899,9 @@ def load_alpha_agent():
                     "description": "Improve fault tolerance and recovery mechanisms",
                     "assigned_to": ["agent://bravo", "agent://delta"],
                     "priority": "high",
-                    "deadline": (datetime.datetime.now() + datetime.timedelta(days=2)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                    "deadline": (
+                        datetime.datetime.now() + datetime.timedelta(days=2)
+                    ).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 },
                 {
                     "id": "d2",
@@ -887,7 +909,9 @@ def load_alpha_agent():
                     "description": "Fine-tune PBFT parameters for faster convergence",
                     "assigned_to": ["agent://gamma"],
                     "priority": "medium",
-                    "deadline": (datetime.datetime.now() + datetime.timedelta(days=5)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                    "deadline": (
+                        datetime.datetime.now() + datetime.timedelta(days=5)
+                    ).strftime("%Y-%m-%dT%H:%M:%SZ"),
                 },
                 {
                     "id": "d3",
@@ -895,24 +919,27 @@ def load_alpha_agent():
                     "description": "Prepare secure quantum channels for next-gen protocols",
                     "assigned_to": ["agent://alpha", "agent://epsilon"],
                     "priority": "low",
-                    "deadline": (datetime.datetime.now() + datetime.timedelta(days=14)).strftime("%Y-%m-%dT%H:%M:%SZ")
-                }
+                    "deadline": (
+                        datetime.datetime.now() + datetime.timedelta(days=14)
+                    ).strftime("%Y-%m-%dT%H:%M:%SZ"),
+                },
             ],
             "contingency_plans": [
                 {
                     "trigger": "reliability_below_90",
                     "action": "activate_backup_nodes",
-                    "authorized_by": "agent://epochALPHA"
+                    "authorized_by": "agent://epochALPHA",
                 },
                 {
                     "trigger": "anomalies_exceed_5",
                     "action": "initiate_security_audit",
-                    "authorized_by": "agent://epochALPHA"
-                }
-            ]
+                    "authorized_by": "agent://epochALPHA",
+                },
+            ],
         },
-        "last_updated": get_timestamp()
+        "last_updated": get_timestamp(),
     }
+
 
 # Load fleet agents
 
@@ -947,14 +974,16 @@ def load_fleet_agents():
                         status = "Active"
                         status_class = "status-active"
 
-                    agents.append({
-                        "id": agent_id,
-                        "status": status,
-                        "status_class": status_class,
-                        "reliability": reliability,
-                        "latency_ms": latency,
-                        "last_updated": snapshot.get("ts", get_timestamp())
-                    })
+                    agents.append(
+                        {
+                            "id": agent_id,
+                            "status": status,
+                            "status_class": status_class,
+                            "reliability": reliability,
+                            "latency_ms": latency,
+                            "last_updated": snapshot.get("ts", get_timestamp()),
+                        }
+                    )
 
                 return agents
         except Exception as e:
@@ -962,17 +991,43 @@ def load_fleet_agents():
 
     # Fallback to default agents
     return [
-        {"id": "agent://alpha", "status": "Active", "status_class": "status-active",
-            "reliability": 0.94, "latency_ms": 210},
-        {"id": "agent://bravo", "status": "Active", "status_class": "status-active",
-            "reliability": 0.92, "latency_ms": 250},
-        {"id": "agent://gamma", "status": "Active", "status_class": "status-active",
-            "reliability": 0.90, "latency_ms": 300},
-        {"id": "agent://delta", "status": "Active", "status_class": "status-active",
-            "reliability": 0.91, "latency_ms": 230},
-        {"id": "agent://epsilon", "status": "Active",
-            "status_class": "status-active", "reliability": 0.89, "latency_ms": 275}
+        {
+            "id": "agent://alpha",
+            "status": "Active",
+            "status_class": "status-active",
+            "reliability": 0.94,
+            "latency_ms": 210,
+        },
+        {
+            "id": "agent://bravo",
+            "status": "Active",
+            "status_class": "status-active",
+            "reliability": 0.92,
+            "latency_ms": 250,
+        },
+        {
+            "id": "agent://gamma",
+            "status": "Active",
+            "status_class": "status-active",
+            "reliability": 0.90,
+            "latency_ms": 300,
+        },
+        {
+            "id": "agent://delta",
+            "status": "Active",
+            "status_class": "status-active",
+            "reliability": 0.91,
+            "latency_ms": 230,
+        },
+        {
+            "id": "agent://epsilon",
+            "status": "Active",
+            "status_class": "status-active",
+            "reliability": 0.89,
+            "latency_ms": 275,
+        },
     ]
+
 
 # Generate metrics for charts
 
@@ -985,35 +1040,40 @@ def generate_metrics():
     fleet_metrics = {
         "labels": [agent["id"].replace("agent://", "") for agent in fleet_agents],
         "reliability": [agent["reliability"] * 100 for agent in fleet_agents],
-        "latency": [agent["latency_ms"] for agent in fleet_agents]
+        "latency": [agent["latency_ms"] for agent in fleet_agents],
     }
 
     # Sync history
     sync_history = {
         "labels": ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5"],
         "success_rate": [92, 95, 89, 94, 97],
-        "anomalies": [3, 1, 5, 2, 0]
+        "anomalies": [3, 1, 5, 2, 0],
     }
 
     # Priorities
     alpha_agent = load_alpha_agent()
     priorities = {
-        "labels": [p["name"] for p in alpha_agent["strategic_directives"]["priorities"]],
-        "values": [p["weight"] * 100 for p in alpha_agent["strategic_directives"]["priorities"]]
+        "labels": [
+            p["name"] for p in alpha_agent["strategic_directives"]["priorities"]
+        ],
+        "values": [
+            p["weight"] * 100 for p in alpha_agent["strategic_directives"]["priorities"]
+        ],
     }
 
     # System health over time
     system_health = {
         "labels": ["Week 1", "Week 2", "Week 3", "Week 4", "Current"],
-        "values": [88, 92, 86, 91, 95]
+        "values": [88, 92, 86, 91, 95],
     }
 
     return {
         "fleet_metrics": fleet_metrics,
         "sync_history": sync_history,
         "priorities": priorities,
-        "system_health": system_health
+        "system_health": system_health,
     }
+
 
 # Generate anomalies
 
@@ -1026,41 +1086,50 @@ def generate_anomalies():
     alpha_agent = load_alpha_agent()
     if alpha_agent["anomalies"] > 0:
         for i in range(alpha_agent["anomalies"]):
-            anomalies.append({
-                "agent_id": alpha_agent["id"],
-                "timestamp": get_timestamp(),
-                "description": random.choice([
-                    "Quantum decoherence rate exceeded threshold",
-                    "Unexpected latency spike during fleet coordination",
-                    "Security audit failed for mesh topology verification"
-                ]),
-                "severity": random.choice(["low", "medium", "high"]),
-                "status": "Investigating"
-            })
+            anomalies.append(
+                {
+                    "agent_id": alpha_agent["id"],
+                    "timestamp": get_timestamp(),
+                    "description": random.choice(
+                        [
+                            "Quantum decoherence rate exceeded threshold",
+                            "Unexpected latency spike during fleet coordination",
+                            "Security audit failed for mesh topology verification",
+                        ]
+                    ),
+                    "severity": random.choice(["low", "medium", "high"]),
+                    "status": "Investigating",
+                }
+            )
 
     # Add some fleet anomalies if any agent has warning/error status
     fleet_agents = load_fleet_agents()
     for agent in fleet_agents:
         if agent["status"] in ["Warning", "Error"]:
-            anomalies.append({
-                "agent_id": agent["id"],
-                "timestamp": get_timestamp(),
-                "description": random.choice([
-                    f"Agent reliability dropped below threshold ({agent['reliability']*100:.1f}%)",
-                    f"Latency spike detected ({agent['latency_ms']} ms)",
-                    "Failed to complete assigned tasks",
-                    "Communication interruption detected"
-                ]),
-                "severity": "medium" if agent["status"] == "Warning" else "high",
-                "status": "Active"
-            })
+            anomalies.append(
+                {
+                    "agent_id": agent["id"],
+                    "timestamp": get_timestamp(),
+                    "description": random.choice(
+                        [
+                            f"Agent reliability dropped below threshold ({agent['reliability']*100:.1f}%)",
+                            f"Latency spike detected ({agent['latency_ms']} ms)",
+                            "Failed to complete assigned tasks",
+                            "Communication interruption detected",
+                        ]
+                    ),
+                    "severity": "medium" if agent["status"] == "Warning" else "high",
+                    "status": "Active",
+                }
+            )
 
     return anomalies
+
 
 # Routes
 
 
-@app.route('/')
+@app.route("/")
 def index():
     """Main dashboard page"""
     alpha_agent = load_alpha_agent()
@@ -1069,7 +1138,7 @@ def index():
     anomalies = generate_anomalies()
 
     return render_template(
-        'index.html',
+        "index.html",
         alpha_agent=alpha_agent,
         fleet_agents=fleet_agents,
         fleet_metrics=metrics["fleet_metrics"],
@@ -1078,11 +1147,11 @@ def index():
         system_health=metrics["system_health"],
         anomalies=anomalies,
         last_updated=get_timestamp(),
-        version="v1.0.0"
+        version="v1.0.0",
     )
 
 
-@app.route('/sync/alpha')
+@app.route("/sync/alpha")
 def sync_alpha():
     """Trigger epochALPHA sync"""
     try:
@@ -1090,14 +1159,22 @@ def sync_alpha():
             [sys.executable, "sync_epochALPHA.py"],
             capture_output=True,
             text=True,
-            check=True
+            check=True,
         )
-        return jsonify({"success": True, "message": "epochALPHA sync completed", "output": result.stdout})
+        return jsonify(
+            {
+                "success": True,
+                "message": "epochALPHA sync completed",
+                "output": result.stdout,
+            }
+        )
     except Exception as e:
-        return jsonify({"success": False, "message": f"Error syncing epochALPHA: {str(e)}"})
+        return jsonify(
+            {"success": False, "message": f"Error syncing epochALPHA: {str(e)}"}
+        )
 
 
-@app.route('/sync/fleet')
+@app.route("/sync/fleet")
 def sync_fleet():
     """Trigger fleet sync"""
     try:
@@ -1105,17 +1182,24 @@ def sync_fleet():
             [sys.executable, "flash_sync_agents.py"],
             capture_output=True,
             text=True,
-            check=True
+            check=True,
         )
-        return jsonify({"success": True, "message": "Fleet sync completed", "output": result.stdout})
+        return jsonify(
+            {
+                "success": True,
+                "message": "Fleet sync completed",
+                "output": result.stdout,
+            }
+        )
     except Exception as e:
         return jsonify({"success": False, "message": f"Error syncing fleet: {str(e)}"})
 
 
-@app.route('/static/<path:path>')
+@app.route("/static/<path:path>")
 def serve_static(path):
     """Serve static files"""
     return send_from_directory(DASHBOARD_DIR / "static", path)
+
 
 # Main function
 

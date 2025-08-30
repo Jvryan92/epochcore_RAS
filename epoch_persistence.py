@@ -43,7 +43,7 @@ class EpochAlphaPersistence:
             "health_score": 1.0,
             "mesh_networks": ["drip", "pulse", "weave"],
             "managed_agents": ["alpha", "bravo", "gamma", "delta", "epsilon"],
-            "persistence_active": True
+            "persistence_active": True,
         }
 
         with open(self.state_file, "w") as f:
@@ -71,7 +71,7 @@ class EpochAlphaPersistence:
             "started_at": datetime.datetime.now().isoformat(),
             "state_at_start": state,
             "platform": os.environ.get("PLATFORM", "github-codespace"),
-            "active": True
+            "active": True,
         }
 
         with open(self.session_file, "w") as f:
@@ -126,8 +126,9 @@ class EpochAlphaPersistence:
         with open(self.state_file, "w") as f:
             json.dump(state, f, indent=2)
 
-        self._log_event("state", "update",
-                        f"Updated state keys: {', '.join(kwargs.keys())}")
+        self._log_event(
+            "state", "update", f"Updated state keys: {', '.join(kwargs.keys())}"
+        )
         return state
 
     def _backup_current_state(self):
@@ -148,7 +149,7 @@ class EpochAlphaPersistence:
             "category": category,
             "action": action,
             "description": description,
-            "signature": ""
+            "signature": "",
         }
 
         # Add signature
@@ -176,12 +177,15 @@ class EpochAlphaPersistence:
         state["platform_syncs"][platform] = {
             "identifier": identifier,
             "synced_at": datetime.datetime.now().isoformat(),
-            "merkle_root": hashlib.sha256(f"{platform}:{identifier}".encode()).hexdigest()
+            "merkle_root": hashlib.sha256(
+                f"{platform}:{identifier}".encode()
+            ).hexdigest(),
         }
 
         self.update_state(platform_syncs=state["platform_syncs"])
-        self._log_event("sync", "platform",
-                        f"Registered sync with {platform}: {identifier}")
+        self._log_event(
+            "sync", "platform", f"Registered sync with {platform}: {identifier}"
+        )
 
         return state["platform_syncs"][platform]
 
@@ -205,4 +209,5 @@ if __name__ == "__main__":
     print(f"  - Mesh Networks: {', '.join(state['mesh_networks'])}")
     print(f"  - Managed Agents: {', '.join(state['managed_agents'])}")
     print(
-        f"  - Merkle Root: {state['merkle_root'][:16]}...{state['merkle_root'][-16:]}")
+        f"  - Merkle Root: {state['merkle_root'][:16]}...{state['merkle_root'][-16:]}"
+    )

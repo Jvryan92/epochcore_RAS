@@ -3,6 +3,7 @@ import json
 import pandas as pd
 from glob import glob
 import os
+import subprocess
 
 st.sidebar.markdown("---")
 st.sidebar.title("Asset Glyphs by Rank")
