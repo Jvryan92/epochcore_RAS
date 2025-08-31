@@ -3,7 +3,7 @@
 
 set -euo pipefail
 
-# --- CONFIG ------------------------------------------------------------------
+# --- CONFIG ---
 GIT_REMOTE_SSH="git@github.com:EpochCore5/epoch5-template.git"
 GIT_REMOTE_HTTPS="https://github.com/EpochCore5/epoch5-template.git"
 CLONE_DIR="${HOME}/src/epoch5-template"
@@ -14,11 +14,11 @@ DATE_UTC="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
 # sha256
 if command -v sha256sum >/dev/null 2>&1; then SHACMD=(sha256sum); else SHACMD=(shasum -a 256); fi
 
-# --- choose remote (SSH if agent loaded; else HTTPS) -------------------------
+# --- choose remote (SSH if agent loaded; else HTTPS) ---
 REMOTE="$GIT_REMOTE_SSH"
 ssh-add -l >/dev/null 2>&1 || REMOTE="$GIT_REMOTE_HTTPS"
 
-# --- clone or enter repo -----------------------------------------------------
+# --- clone or enter repo ---
 mkdir -p "$(dirname "$CLONE_DIR")"
 if [ ! -d "$CLONE_DIR/.git" ]; then
   echo "📦 Cloning $REMOTE → $CLONE_DIR"
@@ -44,13 +44,13 @@ else
   git checkout -b "$BRANCH"
 fi
 
-# --- layout ------------------------------------------------------------------
+# --- layout ---
 PACK_DIR="$CLONE_DIR/$PACK_DIR_REL"
 LEDGER="$PACK_DIR/ledger_main.jsonl"
 mkdir -p "$PACK_DIR"/{game/characters,game/meshgear,export,bin,ledger}
 touch "$LEDGER"
 
-# --- helper: seal + log ------------------------------------------------------
+# --- helper: seal + log ---
 seal_and_log(){
   local file="$1" event="$2"
   local sha="$("${SHACMD[@]}" "$file" | awk '{print $1}')"
@@ -58,17 +58,17 @@ seal_and_log(){
     "$DATE_UTC" "$event" "${file#"$CLONE_DIR/"}" "$sha" >> "$LEDGER"
 }
 
-# --- .gitignore hardening ----------------------------------------------------
+# --- .gitignore hardening ---
 ensure_ignore(){ local pat="$1"; grep -qxF "$pat" .gitignore 2>/dev/null || echo "$pat" >> .gitignore; }
 ensure_ignore "$PACK_DIR_REL/export/"
 ensure_ignore "$PACK_DIR_REL/bin/"
 ensure_ignore "$PACK_DIR_REL/ledger/"
 ensure_ignore ".DS_Store"
 
-# --- optional PayPal QR (safe) ----------------------------------------------
+# --- optional PayPal QR (safe) ---
 [ -f "./paypal_qr.png" ] && cp ./paypal_qr.png "$PACK_DIR/bin/paypal_qr.png"
 
-# --- Characters (Eli) --------------------------------------------------------
+# --- Characters (Eli) ---
 ELI="$PACK_DIR/game/characters/eli_inheritor.json"
 cat >"$ELI"<<'JSON'
 {
@@ -86,7 +86,7 @@ cat >"$ELI"<<'JSON'
 JSON
 seal_and_log "$ELI" "characters_pack_eli"
 
-# --- MeshGear DLC (sample item) ---------------------------------------------
+# --- MeshGear DLC (sample item) ---
 GEAR="$PACK_DIR/game/meshgear/tn_compass_crown.json"
 cat >"$GEAR"<<'JSON'
 {
@@ -102,7 +102,7 @@ cat >"$GEAR"<<'JSON'
 JSON
 seal_and_log "$GEAR" "dlc_meshgear_item"
 
-# --- README ------------------------------------------------------------------
+# --- README ---
 README="$PACK_DIR/README.md"
 cat >"$README"<<EOF
 # Founder Pack (EpochCore™)
@@ -117,12 +117,12 @@ Fair-by-design: cosmetics/time-savers only. No pay-to-win.
 EOF
 seal_and_log "$README" "founder_readme"
 
-# --- Founder run seal --------------------------------------------------------
+# --- Founder run seal ---
 RUN_SEAL="$PACK_DIR/export/founder_seal_$(date -u +%Y%m%dT%H%M%SZ).sha"
 echo "$DATE_UTC|Founder:JohnRyan|EpochCore🪾" | "${SHACMD[@]}" | awk '{print $1}' > "$RUN_SEAL"
 seal_and_log "$RUN_SEAL" "founder_run_seal"
 
-# --- Commit & push -----------------------------------------------------------
+# --- Commit & push ---
 git add -A
 git commit -m "feat(founder-pack): seed Eli + MeshGear sample, sealed ledger" || echo "Nothing to commit."
 git push -u origin "$BRANCH"
