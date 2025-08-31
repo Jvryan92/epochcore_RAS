@@ -1,0 +1,17 @@
+{
+  "session_uuid": "499fb4d1-b5e0-41bb-9785-d1ba3e5a7bd1",
+  "date_utc": "2025-08-31T23:13:36Z",
+  "manifest_hash": "8e7f8b60a9ea57f5a072b539e13d0255eaa0e874124d7b497351f99f2d99bfa6",
+  "capsules": [
+    {"id":"01-locker-drop","title":"LockerCode Dropper","prehash":"7a0b927c48a438eb943ab22294b28f16c1e16d243a4192df0c660097b18d6878"},
+    {"id":"02-poap-stub","title":"POAP Claim Stub","prehash":"50a5821584f1f0ea6693e9e5b27a640e4fccd93fb5c079992085f14edf418695"},
+    {"id":"03-echo-replay","title":"Echo-Theatre Replay Pack","prehash":"27b9556de4cd94afe27b31c091156e358020ffd0a095bef135c139f7bdce6e12"},
+    {"id":"04-meshcredit-kiosk","title":"MeshCredit Kiosk","prehash":"8f1d187c4a59eab4bf0c4ce588ad7de9b167c7940ad9df93aff9dd7a5210c9c1"},
+    {"id":"05-creator-splits","title":"Creator Split Planner","prehash":"c5dd6913f70ca0911962590c9f46758c1233a990560d4eeeb7e4e40b4939cc1c"},
+    {"id":"06-gov-commit","title":"Governance Commit Capsule","prehash":"085eb57c056294b25f6905d2f8020b41e2436be04e4737c1639339ddb5f3e291"},
+    {"id":"07-fair-balancer","title":"A/B Balancer Capsule","prehash":"3b9c38f6f853279a90c833cbe79ce0279fb2a70fcd94be6abcfe72011187e616"},
+    {"id":"08-drop-scheduler","title":"Drop-Window Scheduler","prehash":"cab07db4890fccca3546d4c156366ef3fee768706e7d159f29585d5782d26b5f"},
+    {"id":"09-telemetry-harv","title":"Telemetry Harvester","prehash":"aecb7bb15cb7ee691a973b81a67a558395746da7457b3b9ef4cb9ed6c672ce47"},
+    {"id":"10-storefront-snap","title":"Storefront Snapshot","prehash":"e55f2bc58a363ef3e2a1ba0ae72589636a7d5c4c4fb89a6f51495988c2143e9c"}
+  ]
+}
