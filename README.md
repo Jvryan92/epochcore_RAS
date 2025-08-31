@@ -2,12 +2,38 @@
   🧙‍♂️                  🦿                      🤖
 A comprehensive autonomous software system that combines the capabilities of StrategyDECK's intelligent asset management with EpochCore5's advanced agent architecture. This system features recursive self-improvement, ethical decision-making, and adaptive learning capabilities.
 
+## 📁 Repository Structure
+
+This repository includes the following integrated projects as subdirectories:
+
+### `epoch5-template/`
+EpochCore5's advanced agent architecture template featuring:
+- Agent management and DID registry systems
+- Ethical decision-making and reflection capabilities  
+- Dynamic resource management (ceiling manager)
+- Autonomous task execution and consensus
+- Advanced testing and CI/CD infrastructure
+
+### `StategyDECK/`
+Comprehensive icon generation and asset management system featuring:
+- Automated SVG/PNG icon generation with multiple variants
+- AI agent system for project automation and optimization
+- Multi-variant color schemes and finishes
+- Context-specific outputs for web and print applications
+
+### Main Repository
+Core RAS (Recursive Autonomous Software) system with:
+- Integration layer connecting all subsystems
+- Unified agent coordination and management
+- Cross-system ethical reflection and self-improvement
+- Comprehensive monitoring and performance optimization
+
 ## 🛠️ Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/StategyDECK.git
-cd StategyDECK
+git clone https://github.com/Jvryan92/epochcore_RAS.git
+cd epochcore_RAS
 
 # Create and activate virtual environment
 python -m venv .venv
@@ -44,11 +70,15 @@ The system generates icon variants with:
 # Install dependencies
 pip install -r requirements.txt
 
-# Generate all icon variants
-python scripts/generate_icons.py
+# Generate StrategyDECK icon variants
+python StategyDECK/scripts/generate_icons.py
 
-# Run AI agents for project automation
-python scripts/run_agents.py
+# Run StrategyDECK AI agents for project automation
+python StategyDECK/scripts/run_agents.py
+
+# Run EpochCore5 integration and demos
+python epoch5-template/integration.py setup-demo
+python epoch5-template/integration.py run-workflow
 ```
 
 ### AI Agent System
@@ -56,14 +86,14 @@ python scripts/run_agents.py
 The StrategyDECK AI Agent System provides intelligent automation:
 
 ```bash
-# Run all agents
-python scripts/run_agents.py
+# Run all StrategyDECK agents
+python StategyDECK/scripts/run_agents.py
 
 # Run specific agent
-python scripts/run_agents.py --agent project_monitor
+python StategyDECK/scripts/run_agents.py --agent project_monitor
 
 # List available agents
-python scripts/run_agents.py --list
+python StategyDECK/scripts/run_agents.py --list
 ```
 
 Available agents:
