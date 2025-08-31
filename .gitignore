@@ -68,6 +68,9 @@ reports/
 logs/
 archive/
 
+# Generated market packs (created by epoch5_capsule_forge.sh)
+market/
+
 # Archives and temporary files
 *.zip
 *.tar
