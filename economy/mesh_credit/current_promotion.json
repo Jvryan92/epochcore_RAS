@@ -1,0 +1,20 @@
+{
+  "type": "flash_sale_activated",
+  "multiplier": 2.5,
+  "duration_hours": 1,
+  "start_time": "2025-08-31T11:32:09.272860Z",
+  "end_time": "2025-08-31T12:32:09.272877Z",
+  "message": "🎉 FLASH SALE ACTIVE: 2.5x MESH credits for 1 hours!",
+  "broadcast_time": "2025-08-31T11:32:09.273926Z",
+  "qr_codes": {
+    "payment_method_1": "QR_CODE_DATA_1",
+    "payment_method_2": "QR_CODE_DATA_2",
+    "payment_method_3": "QR_CODE_DATA_3"
+  },
+  "instructions": [
+    "Flash sale active: All MESH credit transactions are multiplied",
+    "Promotion applies to achievements, daily logins, raid completions",
+    "Valid for all agents and transactions during promotion period",
+    "Use reference QR codes for transactions if needed"
+  ]
+}

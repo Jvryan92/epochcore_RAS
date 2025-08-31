@@ -1,63 +1,27 @@
 {
-    "version": "1.0",
-    "last_updated": "2025-08-30T00:00:00Z",
-    "exchange_rates": {
-        "usd_to_mesh": 100,
-        "mesh_to_usd": 0.01
+  "usd_to_mesh_rate": 10.0,
+  "item_categories": {
+    "character_cosmetic": {
+      "common": 50,
+      "rare": 100,
+      "epic": 200,
+      "legendary": 400
     },
-    "categories": {
-        "characters": {
-            "base_price": 5000,
-            "price_modifiers": {
-                "legendary": 2.0,
-                "epic": 1.5,
-                "rare": 1.0,
-                "cosmetic_variants": 0.5
-            }
-        },
-        "meshgear": {
-            "rarity_pricing": {
-                "Legendary": 3000,
-                "Epic": 1500,
-                "Rare": 800
-            },
-            "set_completion_discount": 0.15,
-            "time_limited_markup": 1.25
-        },
-        "origin_game": {
-            "base_game": 0,
-            "save_slots": 500,
-            "run_statistics": 300,
-            "ghost_replay": 800
-        },
-        "services": {
-            "ledger_audit": 100,
-            "run_validation": 50,
-            "governance_proposal": 1000,
-            "validator_stake_min": 10000
-        }
+    "gear_cosmetic": {
+      "common": 30,
+      "rare": 75,
+      "epic": 150,
+      "legendary": 300
     },
-    "special_offers": {
-        "founder_pack": {
-            "price": 15000,
-            "contents": [
-                "all_characters",
-                "two_legendary_gear",
-                "exclusive_cosmetics"
-            ]
-        },
-        "season_pass": {
-            "price": 8000,
-            "contents": [
-                "seasonal_cosmetics",
-                "priority_queue",
-                "extra_save_slots"
-            ]
-        }
+    "time_saver": {
+      "small": 25,
+      "medium": 50,
+      "large": 100
     },
-    "time_savers": {
-        "inventory_sort": 200,
-        "build_templates": 500,
-        "quick_travel": 300
+    "governance": {
+      "vote_weight": 1000,
+      "proposal_creation": 5000
     }
+  },
+  "last_updated": "2025-08-31T11:24:08.937477Z"
 }
