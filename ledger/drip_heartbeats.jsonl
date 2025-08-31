@@ -1,3 +1,3 @@
-{"ts": "2025-08-31T05:03:27Z", "agent_id": "agent://alpha", "latency": 199, "status": "healthy"}
-{"ts": "2025-08-31T05:03:27Z", "agent_id": "agent://bravo", "latency": 295, "status": "healthy"}
-{"ts": "2025-08-31T05:03:27Z", "agent_id": "agent://gamma", "latency": 290, "status": "healthy"}
+{"ts": "2025-08-31T05:12:01Z", "agent_id": "agent://alpha", "latency": 269, "status": "healthy"}
+{"ts": "2025-08-31T05:12:01Z", "agent_id": "agent://bravo", "latency": 236, "status": "healthy"}
+{"ts": "2025-08-31T05:12:01Z", "agent_id": "agent://gamma", "latency": 273, "status": "healthy"}

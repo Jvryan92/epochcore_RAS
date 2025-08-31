@@ -29,6 +29,25 @@ python sync_epochALPHA.py --mesh-goal weave.bind
 echo -e "\n🎨 Generating StrategyDECK icons..."
 python scripts/generate_icons.py
 
+# epochMESHOPERATER operations
+echo -e "\n🤖 epochMESHOPERATER - Advanced Mesh Operations..."
+
+# Single goal execution with enhanced tracking
+echo -e "\n🎯 epochMESHOPERATER single goal execution..."
+python epochMESHOPERATER.py --goal drip.signal
+
+# Batch goal execution with parallel processing
+echo -e "\n🚀 epochMESHOPERATER batch execution..."
+python epochMESHOPERATER.py --batch-goals drip.signal pulse.sync weave.bind --parallel
+
+# Mesh health monitoring
+echo -e "\n🩺 epochMESHOPERATER health check..."
+python epochMESHOPERATER.py --health
+
+# Mesh topology optimization
+echo -e "\n🔧 epochMESHOPERATER optimization..."
+python epochMESHOPERATER.py --optimize
+
 # Autonomous mode (commented out by default - uncomment to use)
 # echo -e "\n🤖 Running in autonomous mode (5 minutes)..."
 # python sync_epochALPHA.py --autonomous --duration 5 --interval 30
