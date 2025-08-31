@@ -1,0 +1,93 @@
+# Configuration for issue labeling
+# Format: label-name: ["keyword1", "keyword2"]
+
+bug:
+  - "bug"
+  - "error"
+  - "issue"
+  - "problem"
+  - "broken"
+  - "not working"
+  - "fails"
+  - "crash"
+
+enhancement:
+  - "feature"
+  - "enhancement"
+  - "improve"
+  - "add"
+  - "request"
+  - "suggest"
+  - "new"
+  - "better"
+
+documentation:
+  - "docs"
+  - "documentation"
+  - "readme"
+  - "guide"
+  - "tutorial"
+  - "example"
+  - "help"
+
+question:
+  - "question"
+  - "how"
+  - "why"
+  - "what"
+  - "when"
+  - "where"
+  - "help"
+
+design:
+  - "design"
+  - "ui"
+  - "ux"
+  - "interface"
+  - "layout"
+  - "style"
+  - "theme"
+  - "color"
+
+icon:
+  - "icon"
+  - "svg"
+  - "png"
+  - "logo"
+  - "symbol"
+  - "graphic"
+
+asset:
+  - "asset"
+  - "image"
+  - "resource"
+  - "file"
+  - "brand"
+
+script:
+  - "script"
+  - "automation"
+  - "generate"
+  - "build"
+  - "tool"
+
+python:
+  - "python"
+  - "py"
+  - "script"
+  - "code"
+
+workflow:
+  - "workflow"
+  - "action"
+  - "ci"
+  - "cd"
+  - "deploy"
+  - "github"
+
+urgent:
+  - "urgent"
+  - "critical"
+  - "high priority"
+  - "asap"
+  - "immediately"
