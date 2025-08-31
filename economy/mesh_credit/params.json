@@ -1,0 +1,29 @@
+{
+  "mint_triggers": {
+    "new_player": 100,
+    "daily_login": 10,
+    "achievement": 25,
+    "season_completion": 500,
+    "raid_completion": 200
+  },
+  "burn_triggers": {
+    "cosmetic_purchase": true,
+    "time_saver_purchase": true,
+    "governance_proposal": false
+  },
+  "max_daily_mint": 1000,
+  "inflation_target": 0.05,
+  "deflation_threshold": 0.75,
+  "stability_metrics": {
+    "price_volatility_target": 0.1,
+    "liquidity_ratio_target": 0.3
+  },
+  "flash_sale": {
+    "active": false,
+    "start_time": null,
+    "end_time": null,
+    "multiplier": 1.0,
+    "total_bonus_minted": 0.0,
+    "transactions_affected": 0
+  }
+}

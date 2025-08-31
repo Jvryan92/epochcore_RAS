@@ -1,0 +1,18 @@
+{
+  "type": "flash_sale_deactivated",
+  "total_bonus_minted": 35.0,
+  "transactions_affected": 2,
+  "message": "🏁 Flash sale ended. Thanks for participating!",
+  "broadcast_time": "2025-08-31T11:33:52.414241Z",
+  "qr_codes": {
+    "payment_method_1": "QR_CODE_DATA_1",
+    "payment_method_2": "QR_CODE_DATA_2",
+    "payment_method_3": "QR_CODE_DATA_3"
+  },
+  "instructions": [
+    "Flash sale active: All MESH credit transactions are multiplied",
+    "Promotion applies to achievements, daily logins, raid completions",
+    "Valid for all agents and transactions during promotion period",
+    "Use reference QR codes for transactions if needed"
+  ]
+}

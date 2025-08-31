@@ -8,7 +8,7 @@ import os
 import pathlib
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 # ---------- Constants ----------
@@ -270,6 +270,160 @@ class MeshCredit:
 
         return merkle_root
 
+    def is_flash_sale_active(self) -> bool:
+        """Check if a flash sale is currently active."""
+        flash_sale = self.params.get("flash_sale", {})
+        if not flash_sale.get("active", False):
+            return False
+        
+        # Check if sale has expired
+        end_time = flash_sale.get("end_time")
+        if end_time and datetime.now(timezone.utc).isoformat().replace('+00:00', 'Z') > end_time:
+            # Sale has expired, deactivate it
+            self.deactivate_flash_sale()
+            return False
+            
+        return True
+
+    def activate_flash_sale(self, duration_hours: int = 24, multiplier: float = 2.0) -> Dict:
+        """Activate a flash sale for the specified duration."""
+        start_time = utc_now()
+        end_time = datetime.now(timezone.utc) + timedelta(hours=duration_hours)
+        end_time_str = end_time.isoformat().replace('+00:00', 'Z')
+        
+        # Update params
+        self.params["flash_sale"] = {
+            "active": True,
+            "start_time": start_time,
+            "end_time": end_time_str,
+            "multiplier": multiplier,
+            "total_bonus_minted": 0.0,
+            "transactions_affected": 0
+        }
+        
+        # Save params
+        self._save_json(self.params, self.params_path)
+        
+        # Update economy
+        self.update_economy()
+        
+        # Log activation
+        ledger_append({
+            "event": "flash_sale_activated",
+            "start_time": start_time,
+            "end_time": end_time_str,
+            "duration_hours": duration_hours,
+            "multiplier": multiplier
+        })
+        
+        # Broadcast promotion details to mesh
+        self._broadcast_promotion_details({
+            "type": "flash_sale_activated",
+            "multiplier": multiplier,
+            "duration_hours": duration_hours,
+            "start_time": start_time,
+            "end_time": end_time_str,
+            "message": f"🎉 FLASH SALE ACTIVE: {multiplier}x MESH credits for {duration_hours} hours!"
+        })
+        
+        return {
+            "success": True,
+            "start_time": start_time,
+            "end_time": end_time_str,
+            "duration_hours": duration_hours,
+            "multiplier": multiplier
+        }
+
+    def deactivate_flash_sale(self) -> Dict:
+        """Deactivate the current flash sale."""
+        flash_sale = self.params.get("flash_sale", {})
+        
+        # Get stats before deactivating
+        total_bonus = flash_sale.get("total_bonus_minted", 0.0)
+        transactions = flash_sale.get("transactions_affected", 0)
+        
+        # Deactivate
+        self.params["flash_sale"] = {
+            "active": False,
+            "start_time": None,
+            "end_time": None,
+            "multiplier": 1.0,
+            "total_bonus_minted": 0.0,
+            "transactions_affected": 0
+        }
+        
+        # Save params
+        self._save_json(self.params, self.params_path)
+        
+        # Update economy
+        self.update_economy()
+        
+        # Log deactivation
+        ledger_append({
+            "event": "flash_sale_deactivated",
+            "total_bonus_minted": total_bonus,
+            "transactions_affected": transactions
+        })
+        
+        # Broadcast deactivation to mesh
+        self._broadcast_promotion_details({
+            "type": "flash_sale_deactivated", 
+            "total_bonus_minted": total_bonus,
+            "transactions_affected": transactions,
+            "message": "🏁 Flash sale ended. Thanks for participating!"
+        })
+        
+        return {
+            "success": True,
+            "total_bonus_minted": total_bonus,
+            "transactions_affected": transactions
+        }
+
+    def get_flash_sale_status(self) -> Dict:
+        """Get current flash sale status."""
+        flash_sale = self.params.get("flash_sale", {})
+        active = self.is_flash_sale_active()
+        
+        return {
+            "active": active,
+            "start_time": flash_sale.get("start_time"),
+            "end_time": flash_sale.get("end_time"), 
+            "multiplier": flash_sale.get("multiplier", 1.0),
+            "total_bonus_minted": flash_sale.get("total_bonus_minted", 0.0),
+            "transactions_affected": flash_sale.get("transactions_affected", 0)
+        }
+
+    def _broadcast_promotion_details(self, promo_data: Dict) -> None:
+        """Broadcast promotion details to mesh network and save notification file."""
+        # Create broadcast message for mesh network
+        broadcast_file = os.path.join(MESH_CREDIT_DIR, "current_promotion.json")
+        
+        # Save current promotion details for agents and systems to read
+        with open(broadcast_file, 'w', encoding='utf-8') as f:
+            json.dump({
+                **promo_data,
+                "broadcast_time": utc_now(),
+                "qr_codes": {
+                    "payment_method_1": "QR_CODE_DATA_1", 
+                    "payment_method_2": "QR_CODE_DATA_2",
+                    "payment_method_3": "QR_CODE_DATA_3"
+                },
+                "instructions": [
+                    "Flash sale active: All MESH credit transactions are multiplied",
+                    "Promotion applies to achievements, daily logins, raid completions",
+                    "Valid for all agents and transactions during promotion period",
+                    "Use reference QR codes for transactions if needed"
+                ]
+            }, f, indent=2, ensure_ascii=False)
+            
+        # Log the broadcast
+        ledger_append({
+            "event": "promotion_broadcast",
+            "type": promo_data["type"],
+            "broadcast_file": broadcast_file,
+            "file_hash": sha256_file(broadcast_file)
+        })
+
     def update_economy(self) -> None:
         """Update economy state, compute new EPOCHROOT, and append to ledger."""
         # Get all wallet balances
@@ -324,6 +478,21 @@ class MeshCredit:
         if reason not in triggers and reason != "deposit_usd":
             return False
 
+        # Check if flash sale is active and apply multiplier
+        original_amount = amount
+        bonus_amount = 0.0
+        flash_sale_active = self.is_flash_sale_active()
+        
+        if flash_sale_active and reason != "deposit_usd":  # Don't apply flash sale to USD deposits
+            multiplier = self.params["flash_sale"]["multiplier"]
+            bonus_amount = amount * (multiplier - 1.0)  # Calculate bonus amount
+            amount = original_amount + bonus_amount  # Apply total amount
+            
+            # Update flash sale stats
+            self.params["flash_sale"]["total_bonus_minted"] += bonus_amount
+            self.params["flash_sale"]["transactions_affected"] += 1
+            self._save_json(self.params, self.params_path)
+
         # Load wallet
         with open(wallet_path, 'r', encoding='utf-8') as f:
             wallet = json.load(f)
@@ -342,13 +511,22 @@ class MeshCredit:
         self.update_economy()
 
         # Log mint
-        ledger_append({
+        mint_event = {
             "event": "mesh_credit_minted",
             "wallet_id": wallet_id,
             "amount": amount,
+            "original_amount": original_amount,
             "reason": reason,
             "wallet_hash": sha256_file(wallet_path)
-        })
+        }
+        
+        if flash_sale_active and bonus_amount > 0:
+            mint_event.update({
+                "flash_sale_bonus": bonus_amount,
+                "multiplier": self.params["flash_sale"]["multiplier"]
+            })
+            
+        ledger_append(mint_event)
 
         return True
 
@@ -1313,6 +1491,61 @@ def update_economy():
     return epochroot
 
 
+def activate_flash_sale(duration_hours: int = 24, multiplier: float = 2.0):
+    """Activate a flash sale."""
+    mesh_credit = MeshCredit()
+    result = mesh_credit.activate_flash_sale(duration_hours, multiplier)
+    
+    if result.get("success"):
+        print(f"🎉 Flash Sale Activated!")
+        print(f"📅 Start Time: {result['start_time']}")
+        print(f"⏰ End Time: {result['end_time']}")
+        print(f"🔥 Duration: {result['duration_hours']} hours") 
+        print(f"💰 Multiplier: {result['multiplier']}x MESH credits")
+        print(f"🎯 Promotion: Double mesh credit for all agents and transactions!")
+    else:
+        print("Failed to activate flash sale")
+        
+    return result
+
+
+def deactivate_flash_sale():
+    """Deactivate the current flash sale."""
+    mesh_credit = MeshCredit()
+    result = mesh_credit.deactivate_flash_sale()
+    
+    if result.get("success"):
+        print(f"🏁 Flash Sale Deactivated!")
+        print(f"💎 Total Bonus Minted: {result['total_bonus_minted']} MESH")
+        print(f"📊 Transactions Affected: {result['transactions_affected']}")
+    else:
+        print("Failed to deactivate flash sale")
+        
+    return result
+
+
+def flash_sale_status():
+    """Get current flash sale status."""
+    mesh_credit = MeshCredit()
+    status = mesh_credit.get_flash_sale_status()
+    
+    if status["active"]:
+        print(f"🔥 Flash Sale ACTIVE!")
+        print(f"📅 Start Time: {status['start_time']}")
+        print(f"⏰ End Time: {status['end_time']}")
+        print(f"💰 Multiplier: {status['multiplier']}x MESH credits")
+        print(f"💎 Total Bonus Minted: {status['total_bonus_minted']} MESH")
+        print(f"📊 Transactions Affected: {status['transactions_affected']}")
+    else:
+        print(f"💤 No Flash Sale Active")
+        if status.get('total_bonus_minted', 0) > 0:
+            print(f"📊 Last Sale Stats:")
+            print(f"   💎 Total Bonus Minted: {status['total_bonus_minted']} MESH") 
+            print(f"   📊 Transactions Affected: {status['transactions_affected']}")
+    
+    return status
+
+
 if __name__ == "__main__":
     # Command-line interface
     import argparse
@@ -1415,6 +1648,21 @@ if __name__ == "__main__":
 
     update_parser = economy_subparsers.add_parser("update", help="Update economy state")
 
+    # Promotion/Flash Sale commands
+    promo_parser = subparsers.add_parser("promotion", help="Flash sale/promotion management")
+    promo_subparsers = promo_parser.add_subparsers(
+        dest="promo_command", help="Promotion command")
+
+    activate_parser = promo_subparsers.add_parser("activate", help="Activate flash sale")
+    activate_parser.add_argument("--duration", type=int, default=24, 
+                                help="Duration in hours (default: 24)")
+    activate_parser.add_argument("--multiplier", type=float, default=2.0,
+                                help="Credit multiplier (default: 2.0)")
+
+    deactivate_parser = promo_subparsers.add_parser("deactivate", help="Deactivate flash sale")
+
+    status_parser = promo_subparsers.add_parser("status", help="Check flash sale status")
+
     args = parser.parse_args()
 
     # Process commands
@@ -1471,6 +1719,14 @@ if __name__ == "__main__":
     elif args.command == "economy":
         if args.economy_command == "update":
             update_economy()
+
+    elif args.command == "promotion":
+        if args.promo_command == "activate":
+            activate_flash_sale(args.duration, args.multiplier)
+        elif args.promo_command == "deactivate":
+            deactivate_flash_sale()
+        elif args.promo_command == "status":
+            flash_sale_status()
 
     else:
         parser.print_help()
