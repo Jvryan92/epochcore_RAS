@@ -4,12 +4,12 @@
   "description": "Universal fair-by-design currency for EpochCore",
   "version": "1.0.0",
   "created_at": "2025-08-31T11:24:08.937459Z",
-  "updated_at": "2025-08-31T11:32:28.285176Z",
-  "total_supply": 2432.5,
-  "circulating_supply": 2432.5,
+  "updated_at": "2025-08-31T11:33:52.413942Z",
+  "total_supply": 2502.5,
+  "circulating_supply": 2502.5,
   "staked_supply": 0,
   "governance_staked": 0,
-  "mint_events": 9,
+  "mint_events": 11,
   "burn_events": 0,
   "epochs_completed": 0,
   "fair_by_design": {
@@ -18,5 +18,5 @@
     "governance_ready": true,
     "no_pay_to_win": true
   },
-  "epochroot": "cd5ce40bb7475b3155ff7d3f495386bf307bb9581dadfc22ef447dfa96981363"
+  "epochroot": "9dc69aa0e325b1126e93b259c736930e80d7765c6ab7bb6eeae542ecfb24666c"
 }

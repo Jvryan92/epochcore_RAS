@@ -19,11 +19,11 @@
     "liquidity_ratio_target": 0.3
   },
   "flash_sale": {
-    "active": true,
-    "start_time": "2025-08-31T11:32:09.272860Z",
-    "end_time": "2025-08-31T12:32:09.272877Z",
-    "multiplier": 2.5,
-    "total_bonus_minted": 352.5,
-    "transactions_affected": 3
+    "active": false,
+    "start_time": null,
+    "end_time": null,
+    "multiplier": 1.0,
+    "total_bonus_minted": 0.0,
+    "transactions_affected": 0
   }
 }

@@ -1,11 +1,9 @@
 {
-  "type": "flash_sale_activated",
-  "multiplier": 2.5,
-  "duration_hours": 1,
-  "start_time": "2025-08-31T11:32:09.272860Z",
-  "end_time": "2025-08-31T12:32:09.272877Z",
-  "message": "🎉 FLASH SALE ACTIVE: 2.5x MESH credits for 1 hours!",
-  "broadcast_time": "2025-08-31T11:32:09.273926Z",
+  "type": "flash_sale_deactivated",
+  "total_bonus_minted": 35.0,
+  "transactions_affected": 2,
+  "message": "🏁 Flash sale ended. Thanks for participating!",
+  "broadcast_time": "2025-08-31T11:33:52.414241Z",
   "qr_codes": {
     "payment_method_1": "QR_CODE_DATA_1",
     "payment_method_2": "QR_CODE_DATA_2",
