@@ -1,1 +1,0 @@
-{"version":"1.4","allow":{"agent://alpha":["scrape.web","vector.store"],"agent://bravo":["risk.scan","review.policies"],"agent://gamma":["publish.codex","blackboard.merge"]},"multisig":{">=50USD":["agent://bravo","agent://gamma"]}}

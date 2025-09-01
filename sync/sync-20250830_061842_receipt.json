@@ -1,1 +1,0 @@
-{"sync_id":"sync-20250830_061842","ts":"2025-08-30T06:18:42Z","agent_count":5,"merkle_root":"6924ec465c2542521199d052141711838e49f735e84126e48f4e5be9ef219120","stats":{"mean_latency_ms":257.2,"p95_latency_ms":328,"mean_reliability":0.898},"consensus_achieved":true,"anomalies":[{"agent_id":"agent://gamma","metric":"latency","value":328,"z_score":1.6,"action":"monitor"}]}

@@ -1,1 +1,0 @@
-{"rules":[{"if":"cap==\"publish.codex\"","require":["quorum==2","evidence"]},{"if":"usd>=50","require":["quorum==2"]},{"if":"risk!=\"low\"","require":["backup"]}]}

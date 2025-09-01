@@ -1,7 +1,0 @@
-# Flash sync cron job to run at 9 AM, 2 PM, and 5 PM daily
-# Add this to your crontab with: crontab -e
-
-# Minute Hour Day Month Day-of-week Command
-0 9 * * * cd /workspaces/epochcore_RAS && python3 schedule_flash_sync.py --now >> /workspaces/epochcore_RAS/logs/cron.log 2>&1
-0 14 * * * cd /workspaces/epochcore_RAS && python3 schedule_flash_sync.py --now >> /workspaces/epochcore_RAS/logs/cron.log 2>&1
-0 17 * * * cd /workspaces/epochcore_RAS && python3 schedule_flash_sync.py --now >> /workspaces/epochcore_RAS/logs/cron.log 2>&1

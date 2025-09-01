@@ -1,1 +1,0 @@
-{"ts": "2025-08-30T21:01:00Z", "graph": {"edges": {"weave.bind": ["stitch.docs", "index.graph", "publish.codex", "sign.proof"], "stitch.docs": ["encode.index"], "index.graph": ["blackboard.merge", "schedule.weave"], "publish.codex": ["replenish.cache"], "sign.proof": [], "encode.index": [], "blackboard.merge": [], "schedule.weave": [], "replenish.cache": []}}}

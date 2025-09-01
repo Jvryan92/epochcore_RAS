@@ -1,4 +1,0 @@
-{"operation_id": "MESHBATCH-9b500e4d", "operation_type": "batch_goals", "params": {"goals": ["drip.signal", "pulse.sync"], "parallel": true}, "status": "pending", "start_time": "2025-08-31T05:06:54.589164", "cancelled": false}
-{"operation_id": "MESHOP-bdcd926f", "operation_type": "single_goal", "params": {"goal": "weave.bind", "options": null}, "status": "pending", "start_time": "2025-08-31T05:12:01.325505", "cancelled": false}
-{"operation_id": "MESHBATCH-d6ed2dd1", "operation_type": "batch_goals", "params": {"goals": ["risk.scan", "vector.store"], "parallel": true}, "status": "pending", "start_time": "2025-08-31T05:12:01.412292", "cancelled": false}
-{"operation_id": "MESHOP-be2375ff", "operation_type": "single_goal", "params": {"goal": "publish.codex", "options": null}, "status": "pending", "start_time": "2025-08-31T05:12:42.106358", "cancelled": false}

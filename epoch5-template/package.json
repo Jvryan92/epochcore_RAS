@@ -1,1 +1,0 @@
-{"name":"epoch5-template","version":"1.0.0","description":"One-shot Bash capsule for EPOCH 5 — sealed payloads, manifest logging, and Unity Seal","scripts":{"test":"echo \"Info: No tests specified yet\" && exit 0"}}
