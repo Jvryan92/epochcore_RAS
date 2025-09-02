@@ -15,7 +15,8 @@ class TestIntegration(unittest.TestCase):
         from integration import setup_demo
         result = setup_demo()
         self.assertEqual(result["status"], "success")
-        self.assertEqual(result["components_initialized"], 4)
+        self.assertEqual(result["components_initialized"], 5)  # Updated to 5 components
+        self.assertIn("improvement_hooks", result)  # New field
 
     def test_get_status(self):
         """Test get_status function."""
