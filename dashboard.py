@@ -18,6 +18,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_status_json()
         elif self.path == '/api/agents':
             self.send_agents_json()
+        elif self.path == '/api/improvements':
+            self.send_improvements_json()
         else:
             super().do_GET()
 
@@ -75,10 +77,29 @@ class DashboardHandler(SimpleHTTPRequestHandler):
     </div>
 
     <div class="status-card">
+        <h3>Autonomous Improvements</h3>
+        <div class="metric">
+            <div>Improvement Cycles</div>
+            <div class="metric-value">0</div>
+        </div>
+        <div class="metric">
+            <div>Total Improvements</div>
+            <div class="metric-value">0</div>
+        </div>
+        <ul>
+            <li>→ Genetic optimization ready</li>
+            <li>→ RL agent monitoring</li>
+            <li>→ Auto refactor enabled</li>
+            <li>→ Self-healing active</li>
+        </ul>
+    </div>
+
+    <div class="status-card">
         <h3>Quick Actions</h3>
         <button class="refresh-btn" onclick="location.reload()">Refresh Status</button>
         <button class="refresh-btn" onclick="alert('Feature not implemented in demo')">Run Validation</button>
         <button class="refresh-btn" onclick="alert('Feature not implemented in demo')">Create Capsule</button>
+        <button class="refresh-btn" onclick="alert('Run: python integration.py auto-improve')">Auto Improve</button>
     </div>
 
     <p><em>Last updated: """ + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + """</em></p>
@@ -118,6 +139,32 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         self.wfile.write(json.dumps(data).encode())
+
+    def send_improvements_json(self):
+        """Send autonomous improvements data as JSON."""
+        try:
+            # Try to get improvement status
+            from autonomous_improvement import AutonomousImprovement
+            improvement_system = AutonomousImprovement()
+            status = improvement_system.get_improvement_status()
+            
+            improvements_data = {
+                "autonomous_improvements": status,
+                "timestamp": datetime.now().isoformat()
+            }
+        except Exception as e:
+            improvements_data = {
+                "autonomous_improvements": {
+                    "current_cycle": 0,
+                    "total_cycles": 0,
+                    "total_improvements": 0,
+                    "system_status": "not_initialized",
+                    "error": str(e)
+                },
+                "timestamp": datetime.now().isoformat()
+            }
+        
+        self.send_json_response(improvements_data)
 
 
 def start_dashboard(port=8000):
