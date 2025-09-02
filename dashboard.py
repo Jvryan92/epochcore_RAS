@@ -29,6 +29,12 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_recursive_json()
         elif self.path == '/api/recursive/trigger':
             self.trigger_recursive_improvement()
+        elif self.path == '/api/pr-status':
+            self.send_pr_status_json()
+        elif self.path == '/api/pr-conflicts':
+            self.send_pr_conflicts_json()
+        elif self.path == '/api/pr-integration-plan':
+            self.send_pr_integration_plan_json()
         else:
             super().do_GET()
 
@@ -139,6 +145,107 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             <li>✓ Compounding logic operational</li>
         </ul>
     </div>
+
+    <div class="status-card">
+        <h3>📋 Pull Request Management</h3>
+        <div class="metric">
+            <div>Open PRs</div>
+            <div class="metric-value" id="total-prs">Loading...</div>
+        </div>
+        <div class="metric">
+            <div>Ready to Merge</div>
+            <div class="metric-value" id="ready-prs">Loading...</div>
+        </div>
+        <div class="metric">
+            <div>High Conflicts</div>
+            <div class="metric-value" id="high-conflicts" style="color: #dc3545;">Loading...</div>
+        </div>
+        <div class="metric">
+            <div>Timeline (Days)</div>
+            <div class="metric-value" id="integration-timeline">Loading...</div>
+        </div>
+        
+        <div style="margin-top: 15px;">
+            <button class="refresh-btn" onclick="handleAllPRs()">Handle All PRs</button>
+            <button class="refresh-btn" onclick="showPRConflicts()">Show Conflicts</button>
+            <button class="refresh-btn" onclick="refreshPRData()">Refresh PR Data</button>
+        </div>
+        
+        <div id="pr-integration-plan" style="margin-top: 15px; display: none;">
+            <h4>Integration Plan</h4>
+            <div id="integration-phases">Loading phases...</div>
+        </div>
+    </div>
+    
+    <script>
+        // PR Management functions
+        function handleAllPRs() {
+            alert('PR Handling Process initiated. Check console for detailed logs.');
+            // In a real implementation, this would trigger the comprehensive PR handling
+            console.log('Triggering comprehensive PR handling...');
+        }
+        
+        function showPRConflicts() {
+            fetch('/api/pr-conflicts')
+                .then(response => response.json())
+                .then(data => {
+                    let conflictInfo = `High Conflicts: ${data.high_conflicts.length}\\n`;
+                    conflictInfo += `Medium Conflicts: ${data.medium_conflicts.length}\\n`;
+                    conflictInfo += `Low Conflicts: ${data.low_conflicts.length}\\n\\n`;
+                    
+                    if (data.high_conflicts.length > 0) {
+                        conflictInfo += 'High Priority Conflicts:\\n';
+                        data.high_conflicts.forEach(conflict => {
+                            conflictInfo += `• PR #${conflict.pr1} ↔ PR #${conflict.pr2}: ${conflict.reason}\\n`;
+                        });
+                    }
+                    
+                    alert(conflictInfo);
+                })
+                .catch(error => alert('Error loading conflicts: ' + error));
+        }
+        
+        function refreshPRData() {
+            loadPRData();
+        }
+        
+        function loadPRData() {
+            fetch('/api/pr-status')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('total-prs').textContent = data.total_prs || 0;
+                    document.getElementById('ready-prs').textContent = data.ready_to_merge || 0;
+                    document.getElementById('high-conflicts').textContent = data.high_conflicts || 0;
+                    document.getElementById('integration-timeline').textContent = data.timeline || 'N/A';
+                })
+                .catch(error => {
+                    console.error('Error loading PR data:', error);
+                    document.getElementById('total-prs').textContent = 'Error';
+                });
+            
+            // Load integration plan
+            fetch('/api/pr-integration-plan')
+                .then(response => response.json())
+                .then(data => {
+                    const phasesDiv = document.getElementById('integration-phases');
+                    let phasesHtml = '';
+                    
+                    Object.entries(data.phases).forEach(([phaseName, phaseInfo]) => {
+                        phasesHtml += `
+                            <div style="margin: 5px 0; padding: 5px; background: #f8f9fa; border-radius: 3px;">
+                                <strong>${phaseName}</strong> (${phaseInfo.duration})<br>
+                                PRs: ${phaseInfo.prs.join(', ')}<br>
+                                <small>${phaseInfo.description}</small>
+                            </div>
+                        `;
+                    });
+                    
+                    phasesDiv.innerHTML = phasesHtml;
+                })
+                .catch(error => {
+                    console.error('Error loading integration plan:', error);
+                });
+        }
     
     <script>
         // Load recursive improvement data
@@ -174,6 +281,9 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 console.error('Error loading recursive data:', error);
                 document.getElementById('recursive-status').textContent = 'Error';
             });
+        
+        // Load PR data on page load
+        loadPRData();
     </script>
 </body>
 </html>
@@ -274,6 +384,81 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 response = {"error": f"Error triggering improvements: {e}"}
         
         self.send_json_response(response)
+
+    def send_pr_status_json(self):
+        """Send PR status data."""
+        try:
+            from pr_manager import PRManager
+            manager = PRManager()
+            report = manager.generate_consolidation_report()
+            
+            pr_data = {
+                "total_prs": report["total_prs"],
+                "ready_to_merge": report["prs_ready_to_merge"],
+                "high_conflicts": len(report["conflict_analysis"]["high_conflicts"]),
+                "medium_conflicts": len(report["conflict_analysis"]["medium_conflicts"]),
+                "low_conflicts": len(report["conflict_analysis"]["low_conflicts"]),
+                "timeline": report["integration_plan"]["timeline"]["parallel_execution_days"],
+                "total_lines_added": report["total_lines_added"],
+                "total_lines_deleted": report["total_lines_deleted"]
+            }
+        except Exception as e:
+            pr_data = {
+                "error": f"Error loading PR data: {e}",
+                "total_prs": 0,
+                "ready_to_merge": 0,
+                "high_conflicts": 0,
+                "timeline": "N/A"
+            }
+        
+        self.send_json_response(pr_data)
+    
+    def send_pr_conflicts_json(self):
+        """Send PR conflicts data."""
+        try:
+            from pr_manager import PRManager
+            manager = PRManager()
+            conflicts = manager.analyze_conflicts()
+            
+            # Simplify conflict data for frontend
+            simplified_conflicts = {
+                "high_conflicts": conflicts["high_conflicts"],
+                "medium_conflicts": conflicts["medium_conflicts"],
+                "low_conflicts": conflicts["low_conflicts"],
+                "resolution_strategies": conflicts["resolution_strategies"]
+            }
+        except Exception as e:
+            simplified_conflicts = {
+                "error": f"Error loading conflict data: {e}",
+                "high_conflicts": [],
+                "medium_conflicts": [],
+                "low_conflicts": []
+            }
+        
+        self.send_json_response(simplified_conflicts)
+    
+    def send_pr_integration_plan_json(self):
+        """Send PR integration plan data."""
+        try:
+            from pr_manager import PRManager
+            manager = PRManager()
+            plan = manager.create_integration_plan()
+            
+            # Include phases, timeline, and integration order
+            plan_data = {
+                "integration_order": plan["integration_order"],
+                "phases": plan["phases"],
+                "timeline": plan["timeline"],
+                "risks": plan["risks"]
+            }
+        except Exception as e:
+            plan_data = {
+                "error": f"Error loading integration plan: {e}",
+                "phases": {},
+                "timeline": {}
+            }
+        
+        self.send_json_response(plan_data)
 
     def send_json_response(self, data):
         self.send_response(200)
