@@ -1,0 +1,17 @@
+name: Preview – n8n Smoke
+on:
+  pull_request:
+jobs:
+  n8n-smoke:
+    runs-on: ubuntu-latest
+    services:
+      n8n:
+        image: n8nio/n8n:latest
+        ports:
+          - 5678:5678
+        options: >-
+          --health-cmd="curl -fsS http://localhost:5678/ || exit 1"
+          --health-interval=5s --health-timeout=5s --health-retries=20
+    steps:
+      - uses: actions/checkout@v4
+      - run: curl -fsS http://localhost:5678/ || (echo "n8n not responding" && exit 1)
