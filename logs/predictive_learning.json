@@ -1,0 +1,33 @@
+{
+  "notifications": [],
+  "prediction_models": {
+    "error": {
+      "threshold": 0.7,
+      "confidence": 0.0,
+      "accuracy": 0.0
+    },
+    "warning": {
+      "threshold": 0.6,
+      "confidence": 0.0,
+      "accuracy": 0.0
+    },
+    "performance": {
+      "threshold": 0.8,
+      "confidence": 0.0,
+      "accuracy": 0.0
+    },
+    "security": {
+      "threshold": 0.9,
+      "confidence": 0.0,
+      "accuracy": 0.0
+    },
+    "system": {
+      "threshold": 0.75,
+      "confidence": 0.0,
+      "accuracy": 0.0
+    }
+  },
+  "prediction_history": [],
+  "system_metrics": [],
+  "saved_at": "2025-09-02T22:07:43.447836"
+}

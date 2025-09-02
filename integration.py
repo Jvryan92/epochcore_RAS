@@ -27,7 +27,12 @@ from recursive_improvement.engines import (
     AutoRefactorEngine,
     DependencyHealthEngine,
     WorkflowAuditorEngine,
-    DocUpdaterEngine
+    DocUpdaterEngine,
+    # Complex Autonomy Innovation Engines
+    NotificationIntelligenceEngine,
+    AutonomousNotificationResolver,
+    ResolutionValidator,
+    PredictiveImprovementEngine
 )
 
 # Global orchestrator instance
@@ -49,7 +54,7 @@ def initialize_recursive_improvement_system():
         if not _orchestrator.initialize():
             raise Exception("Failed to initialize orchestrator")
         
-        # Register all 15 recursive improvement engines (10 original + 5 recursive autonomy)
+        # Register all 19 recursive improvement engines (10 original + 5 recursive autonomy + 4 complex autonomy)
         engines = [
             RecursiveFeedbackLoopEngine(),
             AutonomousExperimentationTreeEngine(),
@@ -66,7 +71,12 @@ def initialize_recursive_improvement_system():
             AutoRefactorEngine(),
             DependencyHealthEngine(),
             WorkflowAuditorEngine(),
-            DocUpdaterEngine()
+            DocUpdaterEngine(),
+            # Complex Autonomy Innovation Engines
+            NotificationIntelligenceEngine(),
+            AutonomousNotificationResolver(),
+            ResolutionValidator(),
+            PredictiveImprovementEngine()
         ]
         
         registered_count = 0
@@ -260,6 +270,76 @@ def get_recursive_status():
         return {"status": "not_initialized"}
 
 
+def trigger_autonomous_resolution_test():
+    """Test autonomous notification resolution with sample notifications."""
+    global _orchestrator
+    
+    if _orchestrator is None:
+        _orchestrator = initialize_recursive_improvement_system()
+    
+    if _orchestrator:
+        print("Testing autonomous notification resolution...")
+        
+        # Test notifications of different types
+        test_notifications = [
+            {
+                "id": "test_error_001",
+                "category": "error", 
+                "severity": "high",
+                "content": "Critical application error detected",
+                "source": "application_log",
+                "timestamp": datetime.now().isoformat()
+            },
+            {
+                "id": "test_perf_002", 
+                "category": "performance",
+                "severity": "medium",
+                "content": "High CPU usage detected: 85%",
+                "source": "system_monitor",
+                "timestamp": datetime.now().isoformat()
+            },
+            {
+                "id": "test_security_003",
+                "category": "security",
+                "severity": "critical", 
+                "content": "Unauthorized access attempt detected",
+                "source": "security_log",
+                "timestamp": datetime.now().isoformat()
+            }
+        ]
+        
+        results = []
+        for notification in test_notifications:
+            print(f"  Testing autonomous resolution for: {notification['category']} - {notification['severity']}")
+            
+            result = _orchestrator.trigger_autonomous_notification_resolution(notification)
+            results.append(result)
+        
+        # Get autonomous status
+        autonomous_status = _orchestrator.get_autonomous_status()
+        print(f"✓ Autonomous resolution test completed")
+        print(f"  - Autonomous resolutions: {autonomous_status.get('autonomous_resolutions', 0)}")
+        print(f"  - Prevented notifications: {autonomous_status.get('prevented_notifications', 0)}")
+        
+        return {"status": "success", "results": results, "autonomous_status": autonomous_status}
+    else:
+        print("✗ Failed to test autonomous resolution - system not initialized")
+        return {"status": "error", "message": "System not initialized"}
+
+
+def get_complex_autonomy_status():
+    """Get comprehensive status of complex autonomy innovations."""
+    global _orchestrator
+    
+    if _orchestrator is None:
+        _orchestrator = initialize_recursive_improvement_system()
+    
+    if _orchestrator:
+        return _orchestrator.get_complex_autonomy_summary()
+    else:
+        return {"status": "error", "message": "System not initialized"}
+
+
 def trigger_manual_improvement():
     """Manually trigger recursive improvements."""
     global _orchestrator
@@ -283,6 +363,60 @@ def trigger_manual_improvement():
     else:
         print("✗ Failed to trigger improvements - system not initialized")
         return {"status": "error", "message": "System not initialized"}
+
+
+def main():
+    """Main entry point for the integration system with complex autonomy innovations."""
+    import sys
+    
+    if len(sys.argv) != 2:
+        print("Usage: python integration.py <command>")
+        print("Commands: setup-demo, run-workflow, status, validate, recursive-status, trigger-improvement, init-recursive, test-autonomous, autonomy-status, cleanup")
+        sys.exit(1)
+    
+    command = sys.argv[1]
+    
+    try:
+        if command == "setup-demo":
+            setup_demo()
+        elif command == "run-workflow":
+            run_workflow()
+        elif command == "status":
+            get_status()
+        elif command == "validate":
+            validate_system()
+        elif command == "recursive-status":
+            get_recursive_status()
+        elif command == "trigger-improvement":
+            trigger_manual_improvement()
+        elif command == "init-recursive":
+            initialize_recursive_improvement_system()
+            print("✓ Recursive improvement system initialized")
+        elif command == "test-autonomous":
+            trigger_autonomous_resolution_test()
+        elif command == "autonomy-status":
+            status = get_complex_autonomy_status()
+            print("Complex Autonomy Innovation Status:")
+            print("=" * 50)
+            print(f"Total Engines: {status.get('total_engines', 0)}")
+            print(f"Complex Autonomy Engines: {status.get('complex_autonomy_engines', 0)}")
+            print(f"Autonomous Resolutions: {status['innovation_summary'].get('autonomous_resolutions', 0)}")
+            print(f"Prevented Notifications: {status['innovation_summary'].get('prevented_notifications', 0)}")
+            print(f"Total Improvements: {status['innovation_summary'].get('total_improvements', 0)}")
+        elif command == "cleanup":
+            cleanup_recursive_system()
+        else:
+            print(f"Unknown command: {command}")
+            sys.exit(1)
+    
+    except KeyboardInterrupt:
+        print("\n✗ Operation cancelled by user")
+        cleanup_recursive_system()
+        sys.exit(1)
+    except Exception as e:
+        print(f"✗ Error: {e}")
+        cleanup_recursive_system()
+        sys.exit(1)
 
 
 # Cleanup function for graceful shutdown
