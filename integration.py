@@ -21,7 +21,10 @@ from recursive_improvement.engines import (
     AutonomousEscalationLogicEngine,
     RecursiveWorkflowAutomationEngine,
     ContentStackTreeEngine,
-    SelfImprovingPlaybookGeneratorEngine
+    SelfImprovingPlaybookGeneratorEngine,
+    AutonomousSubscriptionResolutionEngine,
+    PredictiveFailurePreventionEngine,
+    CrossEngineCoordinationOptimizer
 )
 
 # Global orchestrator instance
@@ -43,7 +46,7 @@ def initialize_recursive_improvement_system():
         if not _orchestrator.initialize():
             raise Exception("Failed to initialize orchestrator")
         
-        # Register all 10 recursive improvement engines
+        # Register all 13 recursive improvement engines (including new complex autonomy innovations)
         engines = [
             RecursiveFeedbackLoopEngine(),
             AutonomousExperimentationTreeEngine(),
@@ -54,7 +57,11 @@ def initialize_recursive_improvement_system():
             AutonomousEscalationLogicEngine(),
             RecursiveWorkflowAutomationEngine(),
             ContentStackTreeEngine(),
-            SelfImprovingPlaybookGeneratorEngine()
+            SelfImprovingPlaybookGeneratorEngine(),
+            # New complex autonomy innovations for forever-embedded recursive improvement
+            AutonomousSubscriptionResolutionEngine(),
+            PredictiveFailurePreventionEngine(),
+            CrossEngineCoordinationOptimizer()
         ]
         
         registered_count = 0

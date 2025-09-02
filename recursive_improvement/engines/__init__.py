@@ -12,6 +12,9 @@ from .escalation_logic_engine import AutonomousEscalationLogicEngine
 from .workflow_automation_engine import RecursiveWorkflowAutomationEngine
 from .content_stack_engine import ContentStackTreeEngine
 from .playbook_generator_engine import SelfImprovingPlaybookGeneratorEngine
+from .subscription_resolution_engine import AutonomousSubscriptionResolutionEngine
+from .predictive_failure_prevention_engine import PredictiveFailurePreventionEngine
+from .cross_engine_coordination_optimizer import CrossEngineCoordinationOptimizer
 
 __all__ = [
     'RecursiveFeedbackLoopEngine',
@@ -23,5 +26,8 @@ __all__ = [
     'AutonomousEscalationLogicEngine',
     'RecursiveWorkflowAutomationEngine',
     'ContentStackTreeEngine',
-    'SelfImprovingPlaybookGeneratorEngine'
+    'SelfImprovingPlaybookGeneratorEngine',
+    'AutonomousSubscriptionResolutionEngine',
+    'PredictiveFailurePreventionEngine', 
+    'CrossEngineCoordinationOptimizer'
 ]
