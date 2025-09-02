@@ -9,6 +9,13 @@ from datetime import datetime
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import urllib.parse
 
+# Import monetization pipeline for metrics
+try:
+    from monetization_pipeline import create_monetization_workflow
+    MONETIZATION_AVAILABLE = True
+except ImportError:
+    MONETIZATION_AVAILABLE = False
+
 
 class DashboardHandler(SimpleHTTPRequestHandler):
     def do_GET(self):
@@ -18,23 +25,65 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             self.send_status_json()
         elif self.path == '/api/agents':
             self.send_agents_json()
+        elif self.path == '/api/monetization':
+            self.send_monetization_json()
         else:
             super().do_GET()
 
     def send_dashboard_html(self):
-        html_content = """
+        # Get monetization metrics if available
+        monetization_section = ""
+        if MONETIZATION_AVAILABLE:
+            try:
+                pipeline = create_monetization_workflow()
+                metrics = pipeline.get_pipeline_metrics()
+                monetization_section = f"""
+    <div class="status-card monetization-card">
+        <h3>💰 Monetization Pipeline</h3>
+        <div class="metric">
+            <div>Monthly Revenue</div>
+            <div class="metric-value">${metrics['total_monetary_value']:,.2f}</div>
+        </div>
+        <div class="metric">
+            <div>Compounding Factor</div>
+            <div class="metric-value">{metrics['compounding_factor']:.3f}x</div>
+        </div>
+        <div class="metric">
+            <div>Steps Completed</div>
+            <div class="metric-value">{metrics['steps_completed']}/10</div>
+        </div>
+        <div class="metric">
+            <div>Automation Level</div>
+            <div class="metric-value">{metrics['automation_level']:.1%}</div>
+        </div>
+        <div class="metric">
+            <div>ROI</div>
+            <div class="metric-value">{metrics['roi_percentage']:.1f}%</div>
+        </div>
+    </div>"""
+            except:
+                monetization_section = """
+    <div class="status-card">
+        <h3>💰 Monetization Pipeline</h3>
+        <p>Pipeline not initialized. Run <code>python integration.py monetize</code> to activate.</p>
+    </div>"""
+        
+        html_content = f"""
 <!DOCTYPE html>
 <html>
 <head>
     <title>EpochCore RAS Dashboard</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; }
-        .status-card { border: 1px solid #ccc; padding: 15px; margin: 10px; border-radius: 5px; }
-        .status-ok { border-color: #28a745; background-color: #d4edda; }
-        .metric { display: inline-block; margin: 10px 20px 10px 0; }
-        .metric-value { font-weight: bold; font-size: 1.2em; color: #28a745; }
-        h1 { color: #343a40; }
-        .refresh-btn { background: #007bff; color: white; border: none; padding: 8px 16px; cursor: pointer; }
+        body {{ font-family: Arial, sans-serif; margin: 20px; }}
+        .status-card {{ border: 1px solid #ccc; padding: 15px; margin: 10px; border-radius: 5px; }}
+        .status-ok {{ border-color: #28a745; background-color: #d4edda; }}
+        .monetization-card {{ border-color: #ffc107; background-color: #fff3cd; }}
+        .metric {{ display: inline-block; margin: 10px 20px 10px 0; }}
+        .metric-value {{ font-weight: bold; font-size: 1.2em; color: #28a745; }}
+        h1 {{ color: #343a40; }}
+        .refresh-btn {{ background: #007bff; color: white; border: none; padding: 8px 16px; cursor: pointer; margin: 5px; }}
+        .monetize-btn {{ background: #ffc107; color: #212529; border: none; padding: 8px 16px; cursor: pointer; margin: 5px; }}
+        code {{ background: #f8f9fa; padding: 2px 4px; border-radius: 3px; }}
     </style>
 </head>
 <body>
@@ -64,6 +113,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         </div>
     </div>
 
+{monetization_section}
+
     <div class="status-card">
         <h3>Recent Activity</h3>
         <ul>
@@ -79,6 +130,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         <button class="refresh-btn" onclick="location.reload()">Refresh Status</button>
         <button class="refresh-btn" onclick="alert('Feature not implemented in demo')">Run Validation</button>
         <button class="refresh-btn" onclick="alert('Feature not implemented in demo')">Create Capsule</button>
+        <button class="monetize-btn" onclick="alert('Run: python integration.py monetize')">Execute Monetization Pipeline</button>
     </div>
 
     <p><em>Last updated: """ + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + """</em></p>
@@ -112,6 +164,26 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             ]
         }
         self.send_json_response(agents_data)
+
+    def send_monetization_json(self):
+        if MONETIZATION_AVAILABLE:
+            try:
+                pipeline = create_monetization_workflow()
+                metrics = pipeline.get_pipeline_metrics()
+                self.send_json_response(metrics)
+            except Exception as e:
+                error_data = {
+                    "error": "Monetization pipeline not available",
+                    "message": str(e),
+                    "status": "inactive"
+                }
+                self.send_json_response(error_data)
+        else:
+            error_data = {
+                "error": "Monetization module not imported",
+                "status": "unavailable"
+            }
+            self.send_json_response(error_data)
 
     def send_json_response(self, data):
         self.send_response(200)

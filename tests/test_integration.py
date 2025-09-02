@@ -1,5 +1,6 @@
 """Basic test for integration.py"""
 import unittest
+from unittest.mock import patch
 
 
 class TestIntegration(unittest.TestCase):
@@ -29,6 +30,29 @@ class TestIntegration(unittest.TestCase):
         result = validate_system()
         self.assertEqual(result["status"], "valid")
         self.assertEqual(result["errors"], 0)
+
+    def test_run_workflow(self):
+        """Test run_workflow function."""
+        from integration import run_workflow
+        result = run_workflow()
+        self.assertEqual(result["status"], "success")
+        self.assertEqual(result["tasks_completed"], 4)
+
+    def test_monetization_status(self):
+        """Test get_monetization_status function."""
+        from integration import get_monetization_status
+        result = get_monetization_status()
+        self.assertEqual(result["status"], "operational")
+        self.assertIn("metrics", result)
+
+    @patch('builtins.print')  # Suppress print output during test
+    def test_run_monetization_pipeline(self, mock_print):
+        """Test run_monetization_pipeline function."""
+        from integration import run_monetization_pipeline
+        result = run_monetization_pipeline()
+        self.assertEqual(result["status"], "success")
+        self.assertEqual(result["steps_completed"], 10)
+        self.assertGreater(result["final_monetary_value"], 0)
 
 
 if __name__ == '__main__':
