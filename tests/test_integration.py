@@ -15,7 +15,7 @@ class TestIntegration(unittest.TestCase):
         from integration import setup_demo
         result = setup_demo()
         self.assertEqual(result["status"], "success")
-        self.assertEqual(result["components_initialized"], 4)
+        self.assertEqual(result["components_initialized"], 8)  # Updated for monetization systems
 
     def test_get_status(self):
         """Test get_status function."""
