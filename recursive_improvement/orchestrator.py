@@ -220,6 +220,88 @@ class RecursiveOrchestrator:
         
         return self.scheduler.execute_engine_now(engine_name)
     
+    def run_all(self) -> Dict[str, Any]:
+        """Run all registered engines with compounding logic."""
+        self.logger.info("Running all registered engines with compounding logic")
+        
+        results = {
+            "timestamp": datetime.now().isoformat(),
+            "engines_executed": [],
+            "total_improvements": 0,
+            "errors": []
+        }
+        
+        if not self.is_initialized:
+            error_msg = "Orchestrator not initialized"
+            self.logger.error(error_msg)
+            results["errors"].append(error_msg)
+            return results
+        
+        # Start all engines if not already running
+        for engine_name, engine in self.engines.items():
+            if not engine.is_running:
+                if engine.start():
+                    self.logger.info(f"Started engine: {engine_name}")
+                else:
+                    error_msg = f"Failed to start engine: {engine_name}"
+                    self.logger.error(error_msg)
+                    results["errors"].append(error_msg)
+        
+        # Execute all engines with compounding logic
+        for engine_name, engine in self.engines.items():
+            try:
+                self.logger.info(f"Executing engine: {engine_name}")
+                result = engine.execute_with_compounding()
+                
+                engine_result = {
+                    "engine": engine_name,
+                    "result": result,
+                    "status": "success" if "error" not in result else "error"
+                }
+                
+                results["engines_executed"].append(engine_result)
+                
+                # Count improvements
+                if result.get("actions_executed"):
+                    results["total_improvements"] += len(result["actions_executed"])
+                
+                # Track errors
+                if "error" in result:
+                    results["errors"].append(f"{engine_name}: {result['error']}")
+                
+            except Exception as e:
+                error_msg = f"Exception in engine {engine_name}: {str(e)}"
+                self.logger.error(error_msg)
+                results["errors"].append(error_msg)
+                
+                # Still add to executed list with error status
+                results["engines_executed"].append({
+                    "engine": engine_name,
+                    "result": {"error": str(e)},
+                    "status": "exception"
+                })
+        
+        # Update orchestrator metrics
+        self.total_improvements += results["total_improvements"]
+        
+        # Log completion
+        self.recursive_logger.log_action(
+            "orchestrator",
+            "run_all_complete",
+            results,
+            {
+                "engines_count": len(self.engines),
+                "success_count": len([r for r in results["engines_executed"] if r["status"] == "success"]),
+                "error_count": len(results["errors"])
+            }
+        )
+        
+        success_count = len([r for r in results["engines_executed"] if r["status"] == "success"])
+        self.logger.info(f"Run all complete: {success_count}/{len(self.engines)} engines successful, "
+                        f"{results['total_improvements']} total improvements")
+        
+        return results
+    
     def shutdown(self):
         """Gracefully shutdown the orchestrator."""
         self.logger.info("Shutting down Recursive Orchestrator")

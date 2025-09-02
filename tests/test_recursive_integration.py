@@ -48,7 +48,7 @@ class TestIntegrationWithRecursive(unittest.TestCase):
         status = orchestrator.get_system_status()
         self.assertIn("orchestrator", status)
         self.assertIn("engines", status)
-        self.assertEqual(len(status["engines"]), 10)
+        self.assertEqual(len(status["engines"]), 16)  # Updated to match the 16 engines from requirements
 
     def test_recursive_trigger(self):
         """Test manual recursive improvement triggering."""

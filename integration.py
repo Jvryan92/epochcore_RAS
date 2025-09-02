@@ -12,16 +12,23 @@ import logging
 # Import recursive improvement framework
 from recursive_improvement import RecursiveOrchestrator
 from recursive_improvement.engines import (
+    # The 16 engines specified in the problem statement
+    AutonomousIssueAnalyzerEngine,
+    SelfGeneratingTestSuiteEngine,
+    RecursiveDependencyGraphUpdater,
+    AutonomousDocumentationEnhancer,
     RecursiveFeedbackLoopEngine,
-    AutonomousExperimentationTreeEngine,
-    SelfCloningMVPAgentEngine,
-    AssetLibraryEngine,
-    WeeklyAutoDebriefBotEngine,
-    KPIMutationEngine,
-    AutonomousEscalationLogicEngine,
-    RecursiveWorkflowAutomationEngine,
-    ContentStackTreeEngine,
-    SelfImprovingPlaybookGeneratorEngine
+    SelfTuningPrioritizationEngine,
+    AutomatedReferenceImplementationEngine,
+    AutonomousPlaybookGeneratorEngine,
+    ContinuousEngineHealthMonitor,
+    CrossEngineTriggerSystem,
+    CompoundingMetaIssueTracker,
+    CompoundingRootCauseExtractor,
+    RecursiveImpactPropagationEngine,
+    SelfEvolvingTestMatrixEngine,
+    AutonomousKnowledgeBaseBuilder,
+    RecursiveSelfDocumentingEngine
 )
 
 # Global orchestrator instance
@@ -43,18 +50,24 @@ def initialize_recursive_improvement_system():
         if not _orchestrator.initialize():
             raise Exception("Failed to initialize orchestrator")
         
-        # Register all 10 recursive improvement engines
+        # Register all 16 recursive improvement engines as specified in requirements
         engines = [
+            AutonomousIssueAnalyzerEngine(),
+            SelfGeneratingTestSuiteEngine(),
+            RecursiveDependencyGraphUpdater(),
+            AutonomousDocumentationEnhancer(),
             RecursiveFeedbackLoopEngine(),
-            AutonomousExperimentationTreeEngine(),
-            SelfCloningMVPAgentEngine(),
-            AssetLibraryEngine(),
-            WeeklyAutoDebriefBotEngine(),
-            KPIMutationEngine(),
-            AutonomousEscalationLogicEngine(),
-            RecursiveWorkflowAutomationEngine(),
-            ContentStackTreeEngine(),
-            SelfImprovingPlaybookGeneratorEngine()
+            SelfTuningPrioritizationEngine(),
+            AutomatedReferenceImplementationEngine(),
+            AutonomousPlaybookGeneratorEngine(),
+            ContinuousEngineHealthMonitor(),
+            CrossEngineTriggerSystem(),
+            CompoundingMetaIssueTracker(),
+            CompoundingRootCauseExtractor(),
+            RecursiveImpactPropagationEngine(),
+            SelfEvolvingTestMatrixEngine(),
+            AutonomousKnowledgeBaseBuilder(),
+            RecursiveSelfDocumentingEngine()
         ]
         
         registered_count = 0
