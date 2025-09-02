@@ -1,0 +1,19 @@
+{
+  "pattern_counts": {
+    "error.*?:": 10,
+    "error:high": 0,
+    "system.*?down": 1,
+    "system:high": 0,
+    "service.*?unavailable": 1,
+    "timeout.*?:": 5,
+    "performance:medium": 0,
+    "warning.*?:": 2,
+    "warning:high": 0,
+    "memory.*?usage": 1,
+    "warning:medium": 0,
+    "performance:high": 0,
+    "exception.*?:": 1
+  },
+  "resolution_history": {},
+  "updated_at": "2025-09-02T22:07:42.825958"
+}
