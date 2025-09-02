@@ -4,7 +4,7 @@ EpochCore RAS is a comprehensive autonomous software system that combines multi-
 
 ## 🔄 Recursive Improvement Framework
 
-The system now integrates **10 Recursive, Compounding Autonomous Improvement Algorithms** across every major module, workflow, and documentation. Each engine operates with recursive hooks, compounding logic, and overlapping action intervals to accelerate throughput.
+The system now integrates **15 Recursive, Compounding Autonomous Improvement Algorithms** across every major module, workflow, and documentation. Each engine operates with recursive hooks, compounding logic, and overlapping action intervals to accelerate throughput.
 
 ### Core Features
 
@@ -14,7 +14,7 @@ The system now integrates **10 Recursive, Compounding Autonomous Improvement Alg
 - **Real-time Monitoring**: Advanced dashboard with recursive improvement tracking
 - **Automated Scheduling**: Weekly cycles with intelligent triggering based on system state
 
-## 🧬 The 10 Recursive Improvement Engines
+## 🧬 The 10 Core Recursive Improvement Engines
 
 ### 1. Recursive Feedback Loop Engine
 - **Schedule**: Weekly audits with GPT pre-scanning at +0.25 intervals
@@ -66,6 +66,65 @@ The system now integrates **10 Recursive, Compounding Autonomous Improvement Alg
 - **Function**: Updates SOPs based on failed experiments and KPI misses
 - **Compounding**: Failure analysis runs continuously while playbooks are updated
 
+## 🤖 The 5 Recursive Autonomy Modules
+
+The system includes advanced recursive autonomy modules for cross-repository code improvement and maintenance:
+
+### 11. AI Code Review Bot Engine
+- **Schedule**: Continuous PR analysis with ML model updates
+- **Function**: Self-evolving code review bot that learns from merged PRs and updates review logic recursively
+- **Features**:
+  - Pattern learning from successful code reviews
+  - ML model updates based on review feedback
+  - Automated PR comment generation
+  - Security vulnerability detection
+  - Code quality assessment
+- **Compounding**: Pre-scanning for new PRs while learning from completed reviews
+
+### 12. Auto Refactor Engine  
+- **Schedule**: Weekly comprehensive code analysis with quick smell detection
+- **Function**: Autonomous refactoring engine that suggests and applies recursive code improvements
+- **Features**:
+  - Duplicate code detection and extraction
+  - Long method and class breakdown
+  - Magic number extraction to constants
+  - Unused import cleanup
+  - Code complexity analysis
+- **Compounding**: Quick code smell detection overlaps with comprehensive refactoring analysis
+
+### 13. Dependency Health Engine
+- **Schedule**: Weekly dependency audit with continuous vulnerability monitoring
+- **Function**: Recursive dependency health check for outdated, vulnerable, or deprecated dependencies
+- **Features**:
+  - Security vulnerability scanning
+  - Automated security update application
+  - Dependency update PR creation
+  - Deprecation detection and replacement suggestions
+  - Health score calculation
+- **Compounding**: Quick vulnerability scans during comprehensive dependency analysis
+
+### 14. Workflow Auditor Engine
+- **Schedule**: Weekly workflow optimization with continuous security monitoring
+- **Function**: Meta-workflow auditor for CI/CD pipeline optimization and security improvements
+- **Features**:
+  - Security vulnerability detection in workflows
+  - Performance optimization suggestions
+  - Resource usage optimization
+  - Workflow complexity analysis
+  - Best practices enforcement
+- **Compounding**: Quick security scans during comprehensive workflow analysis
+
+### 15. Documentation Updater Engine
+- **Schedule**: Weekly documentation sync with drift detection
+- **Function**: Autonomous documentation updater that keeps docs in sync with code changes
+- **Features**:
+  - Code-documentation alignment detection
+  - Missing documentation identification
+  - Automatic documentation generation
+  - Documentation quality scoring
+  - Cross-reference validation
+- **Compounding**: Quick drift detection during comprehensive documentation analysis
+
 ## 🚀 Quick Start
 
 ### Bootstrap Environment
@@ -81,7 +140,7 @@ pip install -r requirements.txt
 
 ### Initialize Recursive Improvement System
 ```bash
-# Initialize all 10 recursive engines
+# Initialize all 15 recursive engines (10 core + 5 autonomy modules)
 python integration.py init-recursive
 
 # Check system status
@@ -113,6 +172,72 @@ python dashboard.py 8000
 
 # Access dashboard with recursive controls
 # Navigate to http://localhost:8000
+```
+
+## 🔗 Recursive Autonomy Workflow
+
+The system includes a comprehensive GitHub Actions workflow that orchestrates all 15 recursive engines:
+
+### Workflow File: `.github/workflows/recursive-autonomy.yml`
+
+**Triggers:**
+- Pull request events (opened, synchronized, reopened)
+- Push to main/develop branches
+- Weekly schedule (Mondays at 2:00 AM UTC)
+- Manual dispatch with module selection
+
+**Workflow Jobs:**
+
+#### 1. Setup and Initialization
+- Determines which modules to run based on trigger type
+- Initializes the recursive improvement system
+- Validates system integrity
+
+#### 2. AI Code Review Job
+- Runs AI Code Review Bot on PR events
+- Analyzes code changes and learns from patterns
+- Posts automated review comments with insights
+
+#### 3. Auto Refactor Job
+- Performs comprehensive code analysis
+- Identifies refactoring opportunities
+- Applies safe refactorings automatically
+- Creates PRs for complex refactoring suggestions
+
+#### 4. Dependency Health Job
+- Scans all dependency files for vulnerabilities
+- Applies critical security updates automatically
+- Creates PRs for non-critical updates
+- Tracks dependency health metrics
+
+#### 5. Workflow Auditor Job
+- Analyzes CI/CD pipelines for optimization opportunities
+- Detects security vulnerabilities in workflows
+- Suggests performance and cost optimizations
+- Generates workflow audit reports
+
+#### 6. Documentation Updater Job
+- Checks for documentation drift (docs behind code changes)
+- Creates missing documentation automatically
+- Updates existing documentation for code changes
+- Maintains code-documentation synchronization
+
+#### 7. Consolidation and Reporting
+- Generates comprehensive analysis reports
+- Updates system metrics
+- Creates summary comments on PRs
+- Archives reports as workflow artifacts
+
+**Usage Examples:**
+```bash
+# Manual workflow dispatch with specific modules
+gh workflow run recursive-autonomy.yml -f modules=ai_review,dependency_health -f priority=high
+
+# All modules on schedule (automatic)
+# Runs every Monday at 2:00 AM UTC
+
+# Selective modules on PR (automatic)
+# Runs ai_review, dependency_health, doc_updater on PR events
 ```
 
 ## 🔧 Development Commands
@@ -276,6 +401,80 @@ class CustomEngine(RecursiveEngine):
 
 orchestrator.register_engine(CustomEngine())
 ```
+
+## 🌐 Cross-Repository Propagation
+
+The recursive autonomy modules are designed for easy propagation across multiple repositories:
+
+### Setup for New Repository
+
+1. **Copy Core Files:**
+```bash
+# Copy recursive autonomy modules
+cp -r recursive_improvement/engines/ai_code_review_bot.py /target/repo/
+cp -r recursive_improvement/engines/auto_refactor.py /target/repo/
+cp -r recursive_improvement/engines/dependency_health.py /target/repo/
+cp -r recursive_improvement/engines/workflow_auditor.py /target/repo/
+cp -r recursive_improvement/engines/doc_updater.py /target/repo/
+
+# Copy GitHub workflow
+cp .github/workflows/recursive-autonomy.yml /target/repo/.github/workflows/
+```
+
+2. **Update Configuration:**
+```bash
+# Add to requirements.txt
+echo "pyyaml>=6.0.2" >> requirements.txt
+echo "psutil>=5.9.5" >> requirements.txt
+
+# Update integration imports
+# (Add new engines to integration.py)
+```
+
+3. **Initialize in New Repository:**
+```bash
+# Setup and test
+python integration.py init-recursive
+python integration.py validate
+
+# Trigger first run
+gh workflow run recursive-autonomy.yml -f modules=all -f priority=high
+```
+
+### Module-Specific Propagation
+
+#### AI Code Review Bot
+- Adapts to repository coding standards
+- Learns from existing PR review patterns
+- Customizes review rules based on project type
+
+#### Auto Refactor Engine
+- Language-agnostic refactoring rules
+- Adapts to project-specific patterns
+- Respects existing code style guidelines
+
+#### Dependency Health Engine
+- Supports multiple package managers (pip, npm, composer, etc.)
+- Adapts to project-specific update policies
+- Integrates with existing security scanning tools
+
+#### Workflow Auditor Engine
+- Analyzes repository-specific CI/CD patterns
+- Adapts to existing workflow complexity
+- Provides optimization suggestions relevant to project type
+
+#### Documentation Updater Engine
+- Adapts to existing documentation structure
+- Learns from project-specific documentation patterns
+- Maintains consistency with established documentation style
+
+### Propagation Benefits
+
+- **Rapid Deployment**: Setup takes <30 minutes per repository
+- **Automatic Adaptation**: Modules learn repository-specific patterns
+- **Cross-Pollination**: Improvements learned in one repo benefit others
+- **Consistent Quality**: Maintains coding standards across all repositories
+- **Reduced Maintenance**: Automated updates and improvements
 
 ## 📋 Troubleshooting
 

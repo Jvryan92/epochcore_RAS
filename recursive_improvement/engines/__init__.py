@@ -1,5 +1,5 @@
 """
-All recursive improvement engines
+All recursive improvement engines including recursive autonomy modules
 """
 
 from .feedback_loop_engine import RecursiveFeedbackLoopEngine
@@ -13,6 +13,13 @@ from .workflow_automation_engine import RecursiveWorkflowAutomationEngine
 from .content_stack_engine import ContentStackTreeEngine
 from .playbook_generator_engine import SelfImprovingPlaybookGeneratorEngine
 
+# Recursive Autonomy Modules
+from .ai_code_review_bot import AICodeReviewBotEngine
+from .auto_refactor import AutoRefactorEngine
+from .dependency_health import DependencyHealthEngine
+from .workflow_auditor import WorkflowAuditorEngine
+from .doc_updater import DocUpdaterEngine
+
 __all__ = [
     'RecursiveFeedbackLoopEngine',
     'AutonomousExperimentationTreeEngine',
@@ -23,5 +30,11 @@ __all__ = [
     'AutonomousEscalationLogicEngine',
     'RecursiveWorkflowAutomationEngine',
     'ContentStackTreeEngine',
-    'SelfImprovingPlaybookGeneratorEngine'
+    'SelfImprovingPlaybookGeneratorEngine',
+    # Recursive Autonomy Modules
+    'AICodeReviewBotEngine',
+    'AutoRefactorEngine',
+    'DependencyHealthEngine',
+    'WorkflowAuditorEngine',
+    'DocUpdaterEngine'
 ]
