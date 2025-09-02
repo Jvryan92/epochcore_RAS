@@ -13,7 +13,21 @@ from .workflow_automation_engine import RecursiveWorkflowAutomationEngine
 from .content_stack_engine import ContentStackTreeEngine
 from .playbook_generator_engine import SelfImprovingPlaybookGeneratorEngine
 
+# New autonomous engines
+from .issue_analyzer_engine import AutonomousIssueAnalyzerEngine
+from .test_suite_engine import SelfGeneratingTestSuiteEngine
+from .dependency_graph_engine import RecursiveDependencyGraphUpdater
+from .documentation_enhancer_engine import AutonomousDocumentationEnhancer
+from .health_monitor_engine import ContinuousEngineHealthMonitor
+from .additional_engines import (
+    CrossEngineTriggerSystem,
+    CompoundingMetaIssueTracker,
+    RecursiveImpactPropagationEngine,
+    AutonomousKnowledgeBaseBuilder
+)
+
 __all__ = [
+    # Existing engines
     'RecursiveFeedbackLoopEngine',
     'AutonomousExperimentationTreeEngine',
     'SelfCloningMVPAgentEngine',
@@ -23,5 +37,15 @@ __all__ = [
     'AutonomousEscalationLogicEngine',
     'RecursiveWorkflowAutomationEngine',
     'ContentStackTreeEngine',
-    'SelfImprovingPlaybookGeneratorEngine'
+    'SelfImprovingPlaybookGeneratorEngine',
+    # New autonomous engines
+    'AutonomousIssueAnalyzerEngine',
+    'SelfGeneratingTestSuiteEngine',
+    'RecursiveDependencyGraphUpdater',
+    'AutonomousDocumentationEnhancer',
+    'ContinuousEngineHealthMonitor',
+    'CrossEngineTriggerSystem',
+    'CompoundingMetaIssueTracker',
+    'RecursiveImpactPropagationEngine',
+    'AutonomousKnowledgeBaseBuilder'
 ]
