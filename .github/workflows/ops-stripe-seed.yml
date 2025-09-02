@@ -1,0 +1,21 @@
+name: Ops – Stripe Seed
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: Type "seed" to confirm
+        required: true
+        default: "seed"
+jobs:
+  seed:
+    if: ${{ github.event.inputs.confirm == 'seed' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 18, cache: 'npm' }
+      - run: npm ci
+      - name: Run seeder
+        env:
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+        run: node scripts/stripe_seed.mjs

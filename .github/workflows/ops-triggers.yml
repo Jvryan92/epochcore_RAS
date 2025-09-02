@@ -1,0 +1,24 @@
+name: Ops – Triggers Runner
+on:
+  schedule:
+    - cron: "0 13 * * *"   # 13:00 UTC daily
+  workflow_dispatch:
+jobs:
+  run-triggers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 18, cache: 'npm' }
+      - run: npm ci
+      - name: Prepare triggers
+        run: |
+          mkdir -p data/triggers
+          # If triggers are tracked in-repo, they'll already be present.
+          # If you sync from elsewhere, add that step here (e.g., curl/gh release).
+      - name: Execute (dry-run)
+        run: TRIGGER_LIMIT=25 node scripts/triggers_executor.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: trigger-run-${{ github.run_id }}
+          path: ops/trigger_runs
