@@ -7,6 +7,7 @@ Minimal integration script for testing purposes
 import sys
 import argparse
 from datetime import datetime
+from monetization_pipeline import execute_monetization_pipeline, create_monetization_workflow
 
 def setup_demo():
     """Setup demo environment"""
@@ -48,6 +49,28 @@ def validate_system():
     print("✓ System validation complete - All checks passed!")
     return {"status": "valid", "errors": 0}
 
+def run_monetization_pipeline():
+    """Execute the complete 10-step monetization pipeline"""
+    print(f"[{datetime.now()}] Initializing EpochCore RAS Monetization Pipeline...")
+    result = execute_monetization_pipeline()
+    return result
+
+def get_monetization_status():
+    """Get current monetization pipeline status"""
+    pipeline = create_monetization_workflow()
+    metrics = pipeline.get_pipeline_metrics()
+    
+    print(f"EpochCore RAS Monetization Status (as of {datetime.now()}):")
+    print(f"  PIPELINE: {metrics['pipeline_status'].upper()}")
+    print(f"  MONETARY VALUE: ${metrics['total_monetary_value']:,.2f}")
+    print(f"  COMPOUNDING FACTOR: {metrics['compounding_factor']:.3f}x")
+    print(f"  STEPS COMPLETED: {metrics['steps_completed']}/10")
+    print(f"  AUTOMATION LEVEL: {metrics['automation_level']:.1%}")
+    print(f"  ROI: {metrics['roi_percentage']:.1f}%")
+    print(f"  MONTHLY GROWTH: {metrics['monthly_growth_rate']:.1%}")
+    
+    return {"status": "operational", "metrics": metrics}
+
 def main():
     parser = argparse.ArgumentParser(description="EpochCore RAS Integration System")
     subparsers = parser.add_subparsers(dest="command", help="Available commands")
@@ -56,6 +79,8 @@ def main():
     subparsers.add_parser("run-workflow", help="Run complete integrated workflow")
     subparsers.add_parser("status", help="Get system status")
     subparsers.add_parser("validate", help="Validate system integrity")
+    subparsers.add_parser("monetize", help="Execute complete monetization pipeline")
+    subparsers.add_parser("monetization-status", help="Get monetization pipeline status")
     
     args = parser.parse_args()
     
@@ -71,6 +96,12 @@ def main():
     elif args.command == "validate":
         result = validate_system()
         return 0 if result["status"] == "valid" else 1
+    elif args.command == "monetize":
+        result = run_monetization_pipeline()
+        return 0 if result["status"] == "success" else 1
+    elif args.command == "monetization-status":
+        result = get_monetization_status()
+        return 0 if result["status"] == "operational" else 1
     else:
         parser.print_help()
         return 1
