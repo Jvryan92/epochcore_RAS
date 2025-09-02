@@ -134,6 +134,72 @@ class RecursiveOrchestrator:
         for event, callback in engine_hooks.items():
             self.hook_system.register_hook(event, callback)
     
+    def run_all(self) -> Dict[str, Any]:
+        """Run all registered engines with full recursive improvement cycle."""
+        self.logger.info("Running all engines with full recursive improvement cycle")
+        
+        run_results = {
+            "action": "run_all_engines",
+            "timestamp": datetime.now().isoformat(),
+            "engines_executed": [],
+            "total_improvements": 0,
+            "execution_summary": {}
+        }
+        
+        # Execute all registered engines
+        for engine_name, engine in self.engines.items():
+            try:
+                self.logger.info(f"Executing engine: {engine_name}")
+                result = engine.execute_with_compounding()
+                
+                engine_result = {
+                    "engine": engine_name,
+                    "result": result,
+                    "status": "success"
+                }
+                
+                if result.get("actions_executed"):
+                    engine_result["actions_count"] = len(result["actions_executed"])
+                    run_results["total_improvements"] += len(result["actions_executed"])
+                
+                run_results["engines_executed"].append(engine_result)
+                
+            except Exception as e:
+                self.logger.error(f"Engine {engine_name} failed during run_all: {e}")
+                run_results["engines_executed"].append({
+                    "engine": engine_name,
+                    "status": "error",
+                    "error": str(e)
+                })
+        
+        # Update global counter
+        self.total_improvements += run_results["total_improvements"]
+        
+        # Generate execution summary
+        successful_engines = [e for e in run_results["engines_executed"] if e.get("status") == "success"]
+        failed_engines = [e for e in run_results["engines_executed"] if e.get("status") == "error"]
+        
+        run_results["execution_summary"] = {
+            "total_engines": len(self.engines),
+            "successful_engines": len(successful_engines),
+            "failed_engines": len(failed_engines),
+            "success_rate": len(successful_engines) / len(self.engines) * 100 if self.engines else 0
+        }
+        
+        # Log the run_all event
+        self.recursive_logger.log_action(
+            "orchestrator",
+            "run_all_engines",
+            run_results,
+            {"total_engines": len(self.engines), "compounding": True}
+        )
+        
+        # Trigger hooks
+        self.hook_system.trigger_hook("run_all_complete", run_results)
+        
+        self.logger.info(f"Run all complete: {len(successful_engines)}/{len(self.engines)} engines successful")
+        return run_results
+
     def trigger_recursive_improvement(self, context: str, metadata: Dict[str, Any] = None) -> Dict[str, Any]:
         """Trigger recursive improvements based on context."""
         self.logger.info(f"Triggering recursive improvements for context: {context}")

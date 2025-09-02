@@ -2,52 +2,100 @@
 
 EpochCore RAS is a comprehensive autonomous software system that combines multi-agent orchestration, ethical decision-making, DAG workflow management, and capsule-based asset management with **recursive self-improvement capabilities**.
 
-## 🔄 Recursive Improvement Framework
+## 🚀 Unified Autonomous Engines System
 
-The system now integrates **10 Recursive, Compounding Autonomous Improvement Algorithms** across every major module, workflow, and documentation. Each engine operates with recursive hooks, compounding logic, and overlapping action intervals to accelerate throughput.
+The system now integrates **16 Recursive, Compounding Autonomous Improvement Engines** that work together as a unified orchestrator module. Each engine operates with recursive hooks, compounding logic, and overlapping action intervals to accelerate throughput and create exponential improvements.
 
-### Core Features
+### 🎯 Key Features
 
-- **Compounding Logic**: Each recursive improvement action overlaps and triggers sub-steps before the main process completes
-- **+0.25 Interval Pre-Actions**: All engines execute preparatory actions at +0.25 intervals while main actions are running
-- **Comprehensive Integration**: Hooks embedded in every core module and workflow
-- **Real-time Monitoring**: Advanced dashboard with recursive improvement tracking
-- **Automated Scheduling**: Weekly cycles with intelligent triggering based on system state
+- **16 Autonomous Engines**: Complete coverage of all system improvement aspects
+- **Unified Orchestrator**: Coordinates all engines with recursive triggers
+- **Compounding Logic**: Each action overlaps with pre-actions for accelerated execution  
+- **+0.25 Interval Pre-Actions**: All engines execute preparatory actions during main execution
+- **Cross-Engine Coordination**: Engines trigger and influence each other recursively
+- **Health Monitoring**: Continuous engine health monitoring with self-healing
+- **Real-time Status**: Advanced monitoring and reporting across all engines
 
-## 🧬 The 10 Recursive Improvement Engines
+## 🧬 The 16 Autonomous Engines
 
-### 1. Recursive Feedback Loop Engine
-- **Schedule**: Weekly audits with GPT pre-scanning at +0.25 intervals
-- **Function**: Analyzes system feedback, proposes mutations, implements recursive improvements
-- **Compounding**: Pre-scan overlaps with audit execution for accelerated mutation proposals
+### Core Analysis Engines
+1. **AutonomousIssueAnalyzerEngine** - Recursively analyzes issues and identifies improvement patterns
+2. **SelfGeneratingTestSuiteEngine** - Autonomously generates and evolves test suites with recursive optimization
+3. **RecursiveDependencyGraphUpdater** - Continuously optimizes dependency graphs with cycle detection
+4. **AutonomousDocumentationEnhancer** - Enhances documentation with recursive content generation
 
-### 2. Autonomous Experimentation Tree Engine
-- **Schedule**: Branch expansion with +0.25 interval pruning of underperforming branches
-- **Function**: Creates experiment branches, prunes poor performers, optimizes high performers
-- **Compounding**: Parallel pruning occurs during expansion for continuous optimization
+### Intelligence & Optimization Engines  
+5. **RecursiveFeedbackLoopEngine** - Weekly audits with GPT pre-scanning and mutation proposals
+6. **SelfTuningPrioritizationEngine** - Auto-tunes system priorities with recursive optimization
+7. **AutomatedReferenceImplementationEngine** - Generates reference implementations autonomously
+8. **AutonomousPlaybookGeneratorEngine** - Creates and maintains operational playbooks
 
-### 3. Self-Cloning MVP Agent Engine
-- **Schedule**: KPI monitoring with +0.25 pre-loading for instant cloning
-- **Function**: Monitors agent performance, triggers cloning based on KPIs, pre-loads environments
-- **Compounding**: Environment pre-loading ensures sub-30-second cloning when triggered
+### Monitoring & Coordination Engines
+9. **ContinuousEngineHealthMonitor** - Monitors all engine health with predictive healing
+10. **CrossEngineTriggerSystem** - Coordinates triggers and cascades across engines
+11. **CompoundingMetaIssueTracker** - Tracks meta-issues that compound across systems
+12. **CompoundingRootCauseExtractor** - Extracts root causes with compounding analysis depth
 
-### 4. Asset Library with Embedding Deduplication Engine
-- **Schedule**: Continuous asset monitoring with semantic similarity checking
-- **Function**: Manages asset library, prevents duplicates using embedding similarity
-- **Compounding**: Pre-checks semantic similarity before content creation
+### Advanced Intelligence Engines
+13. **RecursiveImpactPropagationEngine** - Propagates impact analysis recursively across systems
+14. **SelfEvolvingTestMatrixEngine** - Evolves test matrices with recursive optimization
+15. **AutonomousKnowledgeBaseBuilder** - Builds and maintains knowledge base with autonomous learning
+16. **RecursiveSelfDocumentingEngine** - Self-documents its own operations recursively
 
-### 5. Weekly Auto-Debrief Bot Engine
-- **Schedule**: Weekly KPI scans with recursive prompt tuning
-- **Function**: Generates system summaries, launches new experiments, tunes prompts
-- **Compounding**: Prompt optimization runs parallel to debrief generation
+## 🔧 Quick Start Guide
 
-### 6. KPI Mutation Engine
-- **Schedule**: Continuous monitoring with mutation when improvement stalls
-- **Function**: Auto-mutates metrics, recursively refines measurement logic
-- **Compounding**: Stall detection runs continuously while mutations are applied
+### Using the Unified Autonomous Orchestrator
 
-### 7. Autonomous Escalation Logic Engine
-- **Schedule**: State machine monitoring with performance tuning
+```python
+from unified_autonomous_engines import UnifiedAutonomousOrchestrator
+
+# Create and initialize orchestrator
+orchestrator = UnifiedAutonomousOrchestrator({
+    "log_level": "INFO",
+    "recursive_depth": 3,
+    "compounding_factor": 1.1
+})
+
+# Initialize all 16 engines
+if orchestrator.initialize():
+    print("✅ All 16 engines initialized successfully")
+    
+    # Run all engines
+    results = orchestrator.run_all()
+    print(f"Engines executed: {len(results['engines_executed'])}")
+    
+    # Trigger recursive improvements
+    improvements = orchestrator.trigger_recursive_improvement(
+        "system_optimization", 
+        {"optimization_level": "high"}
+    )
+    
+    # Get system status
+    status = orchestrator.get_system_status()
+    
+    # Get health report
+    health = orchestrator.get_health_report()
+    
+    # Graceful shutdown
+    orchestrator.shutdown()
+```
+
+### Individual Engine Usage
+
+```python
+from recursive_improvement.engines.issue_analyzer_engine import AutonomousIssueAnalyzerEngine
+
+# Create and initialize individual engine
+engine = AutonomousIssueAnalyzerEngine()
+engine.initialize()
+engine.start()
+
+# Execute with compounding logic
+result = engine.execute_with_compounding()
+
+# Get engine status
+status = engine.get_status()
+```
 - **Function**: Manages role-switching, tunes mode transitions based on performance
 - **Compounding**: Performance analysis overlaps with mode switching for seamless transitions
 
@@ -99,11 +147,30 @@ python integration.py setup-demo
 # Run workflow with recursive optimization
 python integration.py run-workflow
 
-# Manually trigger recursive improvements
-python integration.py trigger-improvement
+### Testing the Unified System
 
-# Validate system with recursive checks
+```bash
+# Run unified autonomous engines tests
+python -m unittest test_unified_autonomous_engines -v
+
+# Run full test suite (all 26 tests)
+python -m unittest discover tests/ -v
+
+# Test individual engines
+python -c "from unified_autonomous_engines import main; main()"
+```
+
+### System Validation
+
+```bash
+# Complete system validation with all engines
+make validate
+
+# Validate unified orchestrator
 python integration.py validate
+
+# Check system status with new engines
+python integration.py status
 ```
 
 ### Start Enhanced Dashboard
@@ -135,10 +202,16 @@ make clean && make format
 make lint
 ```
 
-### Testing
+### Testing and Validation
 ```bash
 # Run full test suite (NEVER CANCEL - may take 5 minutes)
 python -m unittest discover tests/ -v
+
+# Test unified autonomous engines specifically  
+python -m unittest test_unified_autonomous_engines -v
+
+# Run integration tests with recursive improvements
+python -m unittest test_recursive_integration -v
 
 # Run with coverage
 pytest --cov=. --cov-report=html --cov-report=term-missing
