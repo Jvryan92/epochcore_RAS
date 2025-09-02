@@ -1,23 +1,17 @@
 #!/usr/bin/env python3
 """
 EpochCore RAS Integration System
-Enhanced integration script with recursive autonomy innovations
+Enhanced integration script with complete recursive autonomy innovations
 """
 
 import sys
 import argparse
 from datetime import datetime
 from recursive_autonomy import recursive_framework
-from innovations.recursive_agent_networks import create_recursive_agent_network
-from innovations.meta_recursive_auditing import create_meta_recursive_auditor
-from innovations.recursive_data_pipeline_optimization import create_recursive_data_pipeline_optimizer
+from innovations import get_all_innovations
 
 # Global instances of innovations
-recursive_systems = {
-    'agent_network': None,
-    'meta_auditor': None,
-    'pipeline_optimizer': None
-}
+recursive_systems = {}
 
 def setup_demo():
     """Setup demo environment with recursive autonomy innovations"""
@@ -27,26 +21,32 @@ def setup_demo():
         # Initialize recursive framework
         print("→ Initializing recursive autonomy framework...")
         
-        # Create recursive agent network
-        print("→ Creating recursive agent network...")
-        recursive_systems['agent_network'] = create_recursive_agent_network()
+        # Get all available innovations
+        available_innovations = get_all_innovations()
+        print(f"→ Found {len(available_innovations)} available innovations...")
         
-        # Create meta-recursive auditor
-        print("→ Creating meta-recursive auditor...")
-        recursive_systems['meta_auditor'] = create_meta_recursive_auditor()
+        # Initialize all innovations
+        innovation_count = 0
+        for innovation_name, creator_func in available_innovations.items():
+            try:
+                print(f"→ Creating {innovation_name}...")
+                recursive_systems[innovation_name] = creator_func()
+                innovation_count += 1
+            except Exception as e:
+                print(f"  ⚠️  Failed to create {innovation_name}: {e}")
         
-        # Create recursive data pipeline optimizer
-        print("→ Creating recursive data pipeline optimizer...")
-        recursive_systems['pipeline_optimizer'] = create_recursive_data_pipeline_optimizer()
-        
-        print("✓ Recursive autonomy innovations initialized!")
+        print(f"✓ {innovation_count} recursive autonomy innovations initialized!")
         print("✓ Creating agent registry...")
         print("✓ Initializing policy framework...")
         print("✓ Setting up DAG management...")
         print("✓ Creating capsule storage...")
         print("✓ Demo environment setup complete!")
         
-        return {"status": "success", "components_initialized": 7, "recursive_systems": 3}
+        return {
+            "status": "success", 
+            "components_initialized": 4 + innovation_count, 
+            "recursive_systems": innovation_count
+        }
         
     except Exception as e:
         print(f"✗ Error during setup: {e}")
@@ -57,21 +57,28 @@ def run_workflow():
     print(f"[{datetime.now()}] Running EpochCore RAS workflow with recursive autonomy...")
     
     try:
-        print("→ Executing recursive agent network cycle...")
-        if recursive_systems['agent_network']:
-            agent_result = recursive_systems['agent_network'].execute_recursive_cycle()
-            print(f"  • Agent network processed {agent_result.get('network_metrics', {}).get('active_agents', 0)} active agents")
+        cycles_executed = 0
         
-        print("→ Running meta-recursive audit cycle...")
-        if recursive_systems['meta_auditor']:
-            audit_result = recursive_systems['meta_auditor'].execute_recursive_cycle()
-            print(f"  • Generated {audit_result.get('findings_generated', 0)} audit findings")
-        
-        print("→ Executing recursive pipeline optimization...")
-        if recursive_systems['pipeline_optimizer']:
-            pipeline_result = recursive_systems['pipeline_optimizer'].execute_recursive_cycle()
-            optimizations = len(pipeline_result.get('optimizations_applied', []))
-            print(f"  • Applied {optimizations} pipeline optimizations")
+        # Execute cycles for all initialized systems
+        for system_name, system in recursive_systems.items():
+            if system is not None:
+                try:
+                    print(f"→ Executing {system_name} cycle...")
+                    result = system.execute_recursive_cycle()
+                    cycles_executed += 1
+                    
+                    # Display key metrics from the cycle
+                    if isinstance(result, dict):
+                        if 'improvements_applied' in result:
+                            improvements = len(result['improvements_applied']) if isinstance(result['improvements_applied'], list) else result['improvements_applied']
+                            print(f"  • Applied {improvements} improvements")
+                        if 'findings_generated' in result:
+                            print(f"  • Generated {result['findings_generated']} audit findings")
+                        if 'optimizations_applied' in result:
+                            optimizations = len(result['optimizations_applied']) if isinstance(result['optimizations_applied'], list) else result['optimizations_applied']
+                            print(f"  • Applied {optimizations} optimizations")
+                except Exception as e:
+                    print(f"  ⚠️  {system_name} cycle failed: {e}")
         
         print("→ Processing traditional DAG components...")
         print("→ Creating capsules...")
@@ -80,9 +87,9 @@ def run_workflow():
         
         return {
             "status": "success", 
-            "tasks_completed": 6,
-            "recursive_cycles_executed": 3,
-            "innovations_active": sum(1 for sys in recursive_systems.values() if sys is not None)
+            "tasks_completed": 3 + cycles_executed,
+            "recursive_cycles_executed": cycles_executed,
+            "innovations_active": len([s for s in recursive_systems.values() if s is not None])
         }
         
     except Exception as e:
@@ -104,26 +111,39 @@ def get_status():
     print(f"  RECURSIVE FRAMEWORK: {framework_state['total_components']} components, "
           f"level {framework_state['max_recursion_level']} recursion")
     
-    if recursive_systems['agent_network']:
-        network_status = recursive_systems['agent_network'].get_network_status()
-        print(f"  AGENT NETWORK: {network_status['total_agents']} recursive agents, "
-              f"{len(network_status['recent_spawns'])} recent spawns")
+    # Dynamic system status based on what's available
+    active_systems = len([s for s in recursive_systems.values() if s is not None])
+    print(f"  RECURSIVE SYSTEMS: {active_systems} active innovations")
     
-    if recursive_systems['meta_auditor']:
-        audit_status = recursive_systems['meta_auditor'].get_audit_status()
-        print(f"  META AUDITOR: {audit_status['total_procedures']} procedures, "
-              f"depth {audit_status['current_recursive_depth']}")
-    
-    if recursive_systems['pipeline_optimizer']:
-        pipeline_status = recursive_systems['pipeline_optimizer'].get_pipeline_status()
-        print(f"  PIPELINE OPTIMIZER: {pipeline_status['total_nodes']} nodes, "
-              f"{pipeline_status['optimization_strategies']} strategies")
+    # Individual system status
+    for system_name, system in recursive_systems.items():
+        if system is not None:
+            try:
+                if hasattr(system, 'get_network_status'):
+                    status = system.get_network_status()
+                    print(f"  AGENT NETWORK: {status['total_agents']} agents, {len(status['recent_spawns'])} recent spawns")
+                elif hasattr(system, 'get_audit_status'):
+                    status = system.get_audit_status()
+                    print(f"  META AUDITOR: {status['total_procedures']} procedures, depth {status['current_recursive_depth']}")
+                elif hasattr(system, 'get_pipeline_status'):
+                    status = system.get_pipeline_status()
+                    print(f"  PIPELINE OPTIMIZER: {status['total_nodes']} nodes, {status['optimization_strategies']} strategies")
+                elif hasattr(system, 'get_governance_status'):
+                    status = system.get_governance_status()
+                    print(f"  GOVERNANCE: {status['total_governance_nodes']} nodes, {status['total_proposals']} proposals")
+                elif hasattr(system, 'get_knowledge_status'):
+                    status = system.get_knowledge_status()
+                    print(f"  KNOWLEDGE GRAPH: {status['total_nodes']} nodes, {status['total_edges']} edges")
+                else:
+                    print(f"  {system_name.upper()}: Active")
+            except Exception as e:
+                print(f"  {system_name.upper()}: Status unavailable ({e})")
     
     print("  SYSTEM: Operational with recursive autonomy")
     
     return {
         "status": "operational", 
-        "recursive_systems_active": sum(1 for sys in recursive_systems.values() if sys is not None),
+        "recursive_systems_active": active_systems,
         "framework_components": framework_state['total_components'],
         "max_recursion_level": framework_state['max_recursion_level']
     }
@@ -205,78 +225,74 @@ def demonstrate_recursive_innovations():
     print("=" * 70)
     
     # Initialize systems if not already done
-    if not recursive_systems['agent_network']:
+    if not recursive_systems:
         print("→ Initializing recursive systems...")
         try:
-            recursive_systems['agent_network'] = create_recursive_agent_network()
-            recursive_systems['meta_auditor'] = create_meta_recursive_auditor() 
-            recursive_systems['pipeline_optimizer'] = create_recursive_data_pipeline_optimizer()
+            available_innovations = get_all_innovations()
+            for innovation_name, creator_func in available_innovations.items():
+                recursive_systems[innovation_name] = creator_func()
             print("✓ Recursive systems initialized!")
         except Exception as e:
             print(f"✗ Failed to initialize systems: {e}")
             return {"status": "error", "message": f"Initialization failed: {e}"}
     
-    # Demonstrate Agent Network
-    print("\n🤖 RECURSIVE AUTONOMOUS AGENT NETWORKS")
-    print("-" * 40)
-    try:
-        network_status = recursive_systems['agent_network'].get_network_status()
-        print(f"Active Agents: {network_status['total_agents']}")
-        print("Top Performers:")
-        for performer in network_status['top_performers'][:3]:
-            print(f"  • {performer['name']}: {performer['efficiency']:.3f} efficiency, "
-                  f"{performer['tasks_completed']} tasks, level {performer['specialization_level']}")
-        
-        if network_status['recent_spawns']:
-            print(f"Recent Spawns: {', '.join(network_status['recent_spawns'][:3])}")
-        
-        # Execute agent cycle
-        agent_cycle = recursive_systems['agent_network'].execute_recursive_cycle()
-        print(f"Cycle Result: {len(agent_cycle['improvements_applied'])} improvements applied")
-    except Exception as e:
-        print(f"Error demonstrating agent network: {e}")
+    demonstrations_completed = 0
     
-    # Demonstrate Meta Auditor
-    print("\n🔍 META-RECURSIVE SYSTEM AUDITING")
-    print("-" * 40)
-    try:
-        audit_status = recursive_systems['meta_auditor'].get_audit_status()
-        print(f"Audit Procedures: {audit_status['total_procedures']}")
-        print(f"Findings: {audit_status['total_findings']}")
-        print("Findings by Severity:")
-        for severity, count in audit_status['findings_by_severity'].items():
-            if count > 0:
-                print(f"  • {severity.title()}: {count}")
-        
-        print(f"Recursive Depth: {audit_status['current_recursive_depth']}/{audit_status['max_recursive_depth']}")
-        
-        # Execute audit cycle
-        audit_cycle = recursive_systems['meta_auditor'].execute_recursive_cycle()
-        print(f"Cycle Result: {audit_cycle['findings_generated']} findings generated")
-    except Exception as e:
-        print(f"Error demonstrating meta auditor: {e}")
-    
-    # Demonstrate Pipeline Optimizer
-    print("\n⚡ RECURSIVE DATA PIPELINE OPTIMIZATION")
-    print("-" * 40)
-    try:
-        pipeline_status = recursive_systems['pipeline_optimizer'].get_pipeline_status()
-        print(f"Pipeline Nodes: {pipeline_status['total_nodes']}")
-        print(f"Optimization Strategies: {pipeline_status['optimization_strategies']}")
-        print(f"Total Executions: {pipeline_status['total_executions']}")
-        
-        recent_perf = pipeline_status.get('recent_performance', {})
-        if recent_perf:
-            print(f"Recent Performance:")
-            print(f"  • Avg Duration: {recent_perf.get('average_duration', 0):.3f}s")
-            print(f"  • Avg Throughput: {recent_perf.get('average_throughput', 0):.1f} records/s")
-            print(f"  • Success Rate: {recent_perf.get('success_rate', 0):.3f}")
-        
-        # Execute pipeline cycle
-        pipeline_cycle = recursive_systems['pipeline_optimizer'].execute_recursive_cycle()
-        print(f"Cycle Result: {len(pipeline_cycle['optimizations_applied'])} optimizations applied")
-    except Exception as e:
-        print(f"Error demonstrating pipeline optimizer: {e}")
+    # Demonstrate each active system
+    for system_name, system in recursive_systems.items():
+        if system is not None:
+            print(f"\n🔧 {system_name.replace('_', ' ').upper()}")
+            print("-" * 40)
+            
+            try:
+                # Get system status
+                if hasattr(system, 'get_network_status'):
+                    status = system.get_network_status()
+                    print(f"Active Agents: {status['total_agents']}")
+                    print("Top Performers:")
+                    for performer in status['top_performers'][:3]:
+                        print(f"  • {performer['name']}: {performer['efficiency']:.3f} efficiency")
+                elif hasattr(system, 'get_audit_status'):
+                    status = system.get_audit_status()
+                    print(f"Audit Procedures: {status['total_procedures']}")
+                    print(f"Findings: {status['total_findings']}")
+                    print(f"Recursive Depth: {status['current_recursive_depth']}/{status['max_recursive_depth']}")
+                elif hasattr(system, 'get_pipeline_status'):
+                    status = system.get_pipeline_status()
+                    print(f"Pipeline Nodes: {status['total_nodes']}")
+                    print(f"Optimization Strategies: {status['optimization_strategies']}")
+                    print(f"Total Executions: {status['total_executions']}")
+                elif hasattr(system, 'get_governance_status'):
+                    status = system.get_governance_status()
+                    print(f"Governance Nodes: {status['total_governance_nodes']}")
+                    print(f"Total Proposals: {status['total_proposals']}")
+                    system_performance = status.get('system_performance', {})
+                    print(f"Avg Effectiveness: {system_performance.get('avg_effectiveness', 0):.3f}")
+                elif hasattr(system, 'get_knowledge_status'):
+                    status = system.get_knowledge_status()
+                    print(f"Knowledge Nodes: {status['total_nodes']}")
+                    print(f"Knowledge Edges: {status['total_edges']}")
+                    analysis = status.get('system_analysis', {})
+                    print(f"Avg Confidence: {analysis.get('avg_confidence', 0):.3f}")
+                else:
+                    print(f"System Type: {type(system).__name__}")
+                    print("Status: Active")
+                
+                # Execute system cycle
+                cycle_result = system.execute_recursive_cycle()
+                if isinstance(cycle_result, dict):
+                    duration = cycle_result.get('cycle_duration', 0)
+                    print(f"Cycle Duration: {duration:.3f}s")
+                    
+                    if 'improvements_applied' in cycle_result:
+                        improvements = cycle_result['improvements_applied']
+                        improvement_count = len(improvements) if isinstance(improvements, list) else improvements
+                        print(f"Improvements Applied: {improvement_count}")
+                    
+                demonstrations_completed += 1
+                
+            except Exception as e:
+                print(f"Error demonstrating {system_name}: {e}")
     
     # Framework Summary
     print("\n🔄 RECURSIVE AUTONOMY FRAMEWORK SUMMARY")
@@ -297,7 +313,7 @@ def demonstrate_recursive_innovations():
     
     return {
         "status": "success",
-        "innovations_demonstrated": 3,
+        "innovations_demonstrated": demonstrations_completed,
         "framework_components": framework_state.get('total_components', 0)
     }
 

@@ -1,0 +1,72 @@
+name: Recursive Autonomy Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_repos:
+        description: 'Comma-separated list of target repositories'
+        required: false
+        default: ''
+      deployment_mode:
+        description: 'Deployment mode'
+        required: true
+        default: 'validation'
+        type: choice
+        options:
+        - validation
+        - full_deployment
+        - cross_repo_sync
+
+jobs:
+  deploy-recursive-autonomy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install gitpython
+    
+    - name: Run pre-deployment validation
+      run: |
+        python integration.py setup-demo
+        python integration.py validate
+    
+    - name: Execute deployment
+      run: |
+        python recursive_autonomy_setup.py \
+          --mode ${{ github.event.inputs.deployment_mode }} \
+          --target-repos "${{ github.event.inputs.target_repos }}"
+    
+    - name: Verify deployment
+      run: |
+        python integration.py status
+        python integration.py demonstrate
+    
+    - name: Create deployment report
+      run: |
+        echo "# Recursive Autonomy Deployment Report" > deployment_report.md
+        echo "- **Timestamp:** $(date)" >> deployment_report.md
+        echo "- **Mode:** ${{ github.event.inputs.deployment_mode }}" >> deployment_report.md
+        echo "- **Target Repos:** ${{ github.event.inputs.target_repos }}" >> deployment_report.md
+        python -c "
+        from recursive_autonomy import recursive_framework
+        state = recursive_framework.get_system_state()
+        print(f'- **Components Deployed:** {state["total_components"]}')
+        print(f'- **Recursion Level:** {state["max_recursion_level"]}')
+        " >> deployment_report.md
+    
+    - name: Upload deployment report
+      uses: actions/upload-artifact@v3
+      with:
+        name: deployment-report
+        path: deployment_report.md
