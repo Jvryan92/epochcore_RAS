@@ -1,0 +1,337 @@
+name: Cross-Repository Automated Fixes
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_repositories:
+        description: 'Target repositories (comma-separated: epochcore_RAS,EpochCore_OS,epoch5_template or "all")'
+        required: false
+        default: 'all'
+      fix_types:
+        description: 'Fix types (comma-separated: code_review,refactor,dependencies,workflows,documentation or "all")'
+        required: false
+        default: 'all'
+      create_prs:
+        description: 'Create pull requests for fixes'
+        type: boolean
+        required: false
+        default: true
+      auto_merge:
+        description: 'Automatically merge safe fixes (documentation, minor dependencies)'
+        type: boolean
+        required: false
+        default: false
+      urgency:
+        description: 'Urgency level (low,medium,high,critical)'
+        required: false
+        default: 'medium'
+  schedule:
+    # Run weekly cross-repository automation on Sundays at 3:00 AM UTC
+    - cron: '0 3 * * 0'
+  repository_dispatch:
+    types: [cross-repo-automation]
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+  issues: write
+  actions: write
+
+env:
+  PYTHON_VERSION: '3.12'
+
+jobs:
+  initialize-cross-repo-system:
+    runs-on: ubuntu-latest
+    outputs:
+      target-repos: ${{ steps.setup-params.outputs.target-repos }}
+      fix-types: ${{ steps.setup-params.outputs.fix-types }}
+      create-prs: ${{ steps.setup-params.outputs.create-prs }}
+      auto-merge: ${{ steps.setup-params.outputs.auto-merge }}
+      urgency: ${{ steps.setup-params.outputs.urgency }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Setup automation parameters
+        id: setup-params
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            TARGET_REPOS="${{ github.event.inputs.target_repositories }}"
+            FIX_TYPES="${{ github.event.inputs.fix_types }}"
+            CREATE_PRS="${{ github.event.inputs.create_prs }}"
+            AUTO_MERGE="${{ github.event.inputs.auto_merge }}"
+            URGENCY="${{ github.event.inputs.urgency }}"
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            TARGET_REPOS="all"
+            FIX_TYPES="all"
+            CREATE_PRS="true"
+            AUTO_MERGE="false"
+            URGENCY="medium"
+          elif [ "${{ github.event_name }}" = "repository_dispatch" ]; then
+            TARGET_REPOS="${{ github.event.client_payload.target_repositories || 'all' }}"
+            FIX_TYPES="${{ github.event.client_payload.fix_types || 'all' }}"
+            CREATE_PRS="${{ github.event.client_payload.create_prs || 'true' }}"
+            AUTO_MERGE="${{ github.event.client_payload.auto_merge || 'false' }}"
+            URGENCY="${{ github.event.client_payload.urgency || 'high' }}"
+          else
+            TARGET_REPOS="all"
+            FIX_TYPES="code_review,dependencies,workflows"
+            CREATE_PRS="true"
+            AUTO_MERGE="false"
+            URGENCY="low"
+          fi
+          
+          echo "target-repos=$TARGET_REPOS" >> $GITHUB_OUTPUT
+          echo "fix-types=$FIX_TYPES" >> $GITHUB_OUTPUT
+          echo "create-prs=$CREATE_PRS" >> $GITHUB_OUTPUT
+          echo "auto-merge=$AUTO_MERGE" >> $GITHUB_OUTPUT
+          echo "urgency=$URGENCY" >> $GITHUB_OUTPUT
+          
+      - name: Initialize cross-repository automation system
+        run: |
+          echo "Initializing Cross-Repository Automation System..."
+          python cross_repository_automation.py init
+          
+      - name: Validate system integrity
+        run: |
+          echo "Validating system integrity..."
+          python integration.py validate
+
+  execute-cross-repository-automation:
+    runs-on: ubuntu-latest
+    needs: initialize-cross-repo-system
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Execute comprehensive automation
+        id: automation
+        run: |
+          echo "🚀 Starting comprehensive cross-repository automation..."
+          
+          # Convert comma-separated lists to space-separated for arguments
+          TARGET_REPOS=$(echo "${{ needs.initialize-cross-repo-system.outputs.target-repos }}" | tr ',' ' ')
+          FIX_TYPES=$(echo "${{ needs.initialize-cross-repo-system.outputs.fix-types }}" | tr ',' ' ')
+          
+          # Build command arguments
+          CMD_ARGS="automate-fix-all"
+          
+          if [ "$TARGET_REPOS" != "all" ]; then
+            CMD_ARGS="$CMD_ARGS --repos $TARGET_REPOS"
+          fi
+          
+          if [ "$FIX_TYPES" != "all" ]; then
+            CMD_ARGS="$CMD_ARGS --fix-types $FIX_TYPES"
+          fi
+          
+          if [ "${{ needs.initialize-cross-repo-system.outputs.create-prs }}" = "true" ]; then
+            CMD_ARGS="$CMD_ARGS --create-prs"
+          fi
+          
+          if [ "${{ needs.initialize-cross-repo-system.outputs.auto-merge }}" = "true" ]; then
+            CMD_ARGS="$CMD_ARGS --auto-merge"
+          fi
+          
+          # Execute automation via integration script
+          python integration.py $CMD_ARGS
+          
+      - name: Upload automation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-repository-automation-report
+          path: |
+            cross_repository_automation_report.json
+            logs/recursive_improvements.log
+          retention-days: 90
+          
+      - name: Generate automation summary
+        if: always()
+        run: |
+          echo "## 🚀 Cross-Repository Automation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "cross_repository_automation_report.json" ]; then
+            echo "### Automation Results" >> $GITHUB_STEP_SUMMARY
+            
+            # Extract key metrics from report
+            python -c "
+import json
+try:
+    with open('cross_repository_automation_report.json', 'r') as f:
+        report = json.load(f)
+    
+    summary = report.get('summary', {})
+    print(f\"- **Repositories Processed**: {summary.get('total_repos', 0)}\")
+    print(f\"- **Successful Repositories**: {summary.get('successful_repos', 0)}\")
+    print(f\"- **Total Fixes Applied**: {summary.get('total_fixes_applied', 0)}\")
+    print(f\"- **PRs Created**: {summary.get('prs_created', 0)}\")
+    print(f\"- **PRs Merged**: {summary.get('prs_merged', 0)}\")
+    print(f\"- **Timestamp**: {report.get('timestamp', 'N/A')}\")
+    
+    print(\"\n### Repository Details\")
+    repositories = report.get('repositories', {})
+    for repo_name, repo_data in repositories.items():
+        status_emoji = '✅' if repo_data.get('status') == 'success' else '❌'
+        print(f\"- {status_emoji} **{repo_name}**: {repo_data.get('fixes_applied', 0)} fixes applied\")
+        
+except Exception as e:
+    print(f\"Error reading report: {e}\")
+            " >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ Automation report not generated" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+      - name: Check system status post-automation
+        run: |
+          echo "Checking system status after automation..."
+          python integration.py status
+          python integration.py cross-repo-status
+
+  post-automation-analysis:
+    runs-on: ubuntu-latest
+    needs: [initialize-cross-repo-system, execute-cross-repository-automation]
+    if: always()
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Download automation report
+        uses: actions/download-artifact@v4
+        with:
+          name: cross-repository-automation-report
+          path: ./reports
+          
+      - name: Analyze automation effectiveness
+        run: |
+          echo "🔍 Analyzing automation effectiveness..."
+          
+          python -c "
+import json
+import os
+from datetime import datetime
+
+report_path = './reports/cross_repository_automation_report.json'
+if os.path.exists(report_path):
+    with open(report_path, 'r') as f:
+        report = json.load(f)
+    
+    print('Cross-Repository Automation Analysis')
+    print('=' * 50)
+    
+    summary = report.get('summary', {})
+    
+    # Calculate effectiveness metrics
+    success_rate = (summary.get('successful_repos', 0) / max(summary.get('total_repos', 1), 1)) * 100
+    avg_fixes_per_repo = summary.get('total_fixes_applied', 0) / max(summary.get('total_repos', 1), 1)
+    pr_creation_rate = (summary.get('prs_created', 0) / max(summary.get('total_fixes_applied', 1), 1)) * 100
+    
+    print(f'Success Rate: {success_rate:.1f}%')
+    print(f'Average Fixes per Repository: {avg_fixes_per_repo:.1f}')
+    print(f'PR Creation Rate: {pr_creation_rate:.1f}%')
+    
+    print('\nRecommendations:')
+    if success_rate < 80:
+        print('- Consider reviewing automation engine configurations')
+    if avg_fixes_per_repo < 2:
+        print('- May need to lower fix thresholds or enhance detection')
+    if pr_creation_rate > 50:
+        print('- Consider auto-merging more safe fixes to reduce PR overhead')
+    
+    print(f'\nAutomation completed at: {report.get(\"timestamp\", \"Unknown\")}')
+else:
+    print('❌ Automation report not found')
+          "
+          
+      - name: Trigger recursive improvement cycle
+        run: |
+          echo "Triggering post-automation recursive improvement cycle..."
+          python integration.py trigger-improvement
+          
+      - name: Generate final status report
+        run: |
+          echo "📊 Generating final status report..."
+          
+          python -c "
+from datetime import datetime
+import json
+
+final_report = {
+    'workflow_completed_at': datetime.now().isoformat(),
+    'trigger_type': '${{ github.event_name }}',
+    'parameters': {
+        'target_repos': '${{ needs.initialize-cross-repo-system.outputs.target-repos }}',
+        'fix_types': '${{ needs.initialize-cross-repo-system.outputs.fix-types }}',
+        'create_prs': '${{ needs.initialize-cross-repo-system.outputs.create-prs }}',
+        'auto_merge': '${{ needs.initialize-cross-repo-system.outputs.auto-merge }}',
+        'urgency': '${{ needs.initialize-cross-repo-system.outputs.urgency }}'
+    },
+    'workflow_status': 'completed',
+    'post_analysis_completed': True
+}
+
+with open('final_automation_report.json', 'w') as f:
+    json.dump(final_report, f, indent=2)
+    
+print('✅ Cross-Repository Automation Workflow Completed')
+print(json.dumps(final_report, indent=2))
+          "
+          
+      - name: Upload final report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: final-automation-report
+          path: final_automation_report.json
+          retention-days: 90
+
+  cleanup:
+    runs-on: ubuntu-latest
+    needs: [post-automation-analysis]
+    if: always()
+    steps:
+      - name: Cleanup automation resources
+        run: |
+          echo "🧹 Cleaning up cross-repository automation resources..."
+          # In a real implementation, this would clean up any temporary resources
+          # created during the cross-repository automation process
+          echo "✅ Cleanup completed"

@@ -260,10 +260,28 @@ make clean && make format
 make lint
 ```
 
+### Cross-Repository Automation
+```bash
+# Execute comprehensive automated fixes across all repositories
+python integration.py automate-fix-all
+
+# Target specific repositories and fix types
+python integration.py automate-fix-all --repos epochcore_RAS EpochCore_OS --fix-types code_review refactor
+
+# Check status of all monitored repositories
+python integration.py cross-repo-status
+
+# Direct automation script usage
+python cross_repository_automation.py automate-fix-all --create-prs --auto-merge
+```
+
 ### Testing
 ```bash
 # Run full test suite (NEVER CANCEL - may take 5 minutes)
 python -m unittest discover tests/ -v
+
+# Run cross-repository automation tests
+python test_cross_repository_automation.py
 
 # Run with coverage
 pytest --cov=. --cov-report=html --cov-report=term-missing
@@ -281,6 +299,13 @@ pytest -x -v
 - **Auto-refresh**: 30-second automatic updates
 - **Engine Grid**: Visual status of each improvement engine
 
+### Cross-Repository Automation
+- **Multi-Repository Fixes**: Automate fixes across epochcore_RAS, EpochCore_OS, and epoch5-template
+- **Comprehensive Fix Types**: AI code review, refactoring, dependency health, workflow optimization, documentation sync
+- **Automated PR Management**: Create, review, and optionally auto-merge pull requests
+- **Safety Controls**: Configurable safety thresholds and auto-merge criteria
+- **Real-time Reporting**: Detailed automation reports and status tracking
+
 ### API Endpoints
 - `GET /api/status` - System status including recursive metrics
 - `GET /api/recursive` - Detailed recursive improvement status
@@ -291,6 +316,8 @@ pytest -x -v
 - `python integration.py recursive-status` - Detailed engine status
 - `python integration.py trigger-improvement` - Manual improvement trigger
 - `python integration.py init-recursive` - Initialize recursive system
+- `python integration.py automate-fix-all` - Execute cross-repository automation
+- `python integration.py cross-repo-status` - Monitor all repositories
 
 ## 🏗️ Architecture
 

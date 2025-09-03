@@ -1,0 +1,25 @@
+{
+  "timestamp": "2025-09-03T13:06:46.982572",
+  "target_repositories": [
+    "test_repo"
+  ],
+  "fix_types": [
+    "test_fix"
+  ],
+  "repositories": {
+    "test_repo": {
+      "status": "success",
+      "fixes_applied": 5,
+      "prs_created": [
+        "https://github.com/test/repo/pull/1"
+      ]
+    }
+  },
+  "summary": {
+    "total_repos": 1,
+    "successful_repos": 1,
+    "total_fixes_applied": 5,
+    "prs_created": 1,
+    "prs_merged": 0
+  }
+}
