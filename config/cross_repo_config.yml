@@ -1,0 +1,147 @@
+# EpochCore RAS Cross-Repository Configuration
+
+# Core files that must be propagated for basic functionality
+core_files:
+  - "recursive_improvement/"
+  - "integration.py"
+  - ".github/workflows/recursive-autonomy.yml"
+  - "config/"
+  - "templates/"
+
+# Optional files that enhance functionality
+optional_files:
+  - "dashboard.py"
+  - "tests/test_recursive_integration.py"
+  - "docs/ARCHITECTURE.md"
+  - "continuity_ritual.py"
+  - "agent_register_sync.py"
+  - "zip_vault_creator.py"
+
+# Language-specific adaptation rules
+adaptation_rules:
+  python:
+    dependency_file: "requirements.txt"
+    test_command: "python -m pytest"
+    setup_script: "setup_python.sh"
+    package_manager: "pip"
+    min_version: "3.8"
+    
+  javascript:
+    dependency_file: "package.json"
+    test_command: "npm test"
+    setup_script: "setup_node.sh" 
+    package_manager: "npm"
+    min_version: "16"
+    
+  typescript:
+    dependency_file: "package.json"
+    test_command: "npm test"
+    setup_script: "setup_node.sh"
+    package_manager: "npm"
+    min_version: "16"
+    
+  java:
+    dependency_file: "pom.xml"
+    test_command: "mvn test"
+    setup_script: "setup_java.sh"
+    package_manager: "maven"
+    min_version: "11"
+    
+  go:
+    dependency_file: "go.mod"
+    test_command: "go test"
+    setup_script: "setup_go.sh"
+    package_manager: "go"
+    min_version: "1.19"
+    
+  rust:
+    dependency_file: "Cargo.toml"
+    test_command: "cargo test"
+    setup_script: "setup_rust.sh"
+    package_manager: "cargo"
+    min_version: "1.70"
+
+# Repository type compatibility matrix
+repository_types:
+  web_application:
+    score_weight: 1.0
+    required_modules: ["core", "workflows", "integration"]
+    optional_modules: ["documentation", "dashboard"]
+    
+  api_service:
+    score_weight: 1.2
+    required_modules: ["core", "workflows", "integration"]
+    optional_modules: ["documentation", "monitoring"]
+    
+  library:
+    score_weight: 0.8
+    required_modules: ["core", "workflows"]
+    optional_modules: ["integration", "documentation"]
+    
+  mobile_app:
+    score_weight: 0.6
+    required_modules: ["workflows"]
+    optional_modules: ["core", "integration"]
+    
+  desktop_app:
+    score_weight: 0.7
+    required_modules: ["core", "workflows"]
+    optional_modules: ["integration", "documentation"]
+
+# Validation checks to perform
+validation_checks:
+  - check_git_repo
+  - check_language_support
+  - check_existing_ci
+  - check_dependencies
+  - check_permissions
+  - check_branch_protection
+  - check_secrets_availability
+
+# Module-specific propagation settings
+modules:
+  core:
+    always_propagate: true
+    dependencies: []
+    size_limit_mb: 50
+    
+  workflows:
+    always_propagate: true
+    dependencies: ["core"]
+    requires_github: true
+    
+  integration:
+    always_propagate: false
+    dependencies: ["core"]
+    requires_permissions: ["contents:write"]
+    
+  documentation:
+    always_propagate: false
+    dependencies: []
+    size_limit_mb: 10
+    
+  dashboard:
+    always_propagate: false
+    dependencies: ["core", "integration"]
+    requires_network: true
+
+# Cross-repository coordination settings
+coordination:
+  update_frequency: "weekly"
+  sync_branches: ["main", "develop"]
+  conflict_resolution: "manual"
+  notification_channels: ["github_issues", "slack"]
+  
+# Security and compliance settings
+security:
+  scan_secrets: true
+  check_vulnerabilities: true
+  require_signed_commits: false
+  enforce_branch_protection: true
+  
+# Performance and resource limits
+limits:
+  max_file_size_mb: 100
+  max_total_size_mb: 500
+  propagation_timeout_minutes: 30
+  concurrent_propagations: 3
