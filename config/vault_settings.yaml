@@ -1,0 +1,53 @@
+# Zip Vault Configuration
+# EpochCore RAS Snapshot System
+
+profiles:
+  full_system:
+    description: "Complete system snapshot"
+    include:
+      - "**/*.py"
+      - "**/*.yaml"
+      - "**/*.yml" 
+      - "**/*.json"
+      - "**/*.md"
+      - "config/**"
+      - "data/**"
+      - "docs/**"
+    exclude:
+      - "**/__pycache__/**"
+      - "**/node_modules/**"
+      - "**/.git/**"
+      - "**/venv/**"
+      - "logs/**"
+      
+  code_only:
+    description: "Code and configuration only"
+    include:
+      - "**/*.py"
+      - "**/*.yaml"
+      - "**/*.yml"
+      - "config/**"
+    exclude:
+      - "**/__pycache__/**"
+      - "logs/**"
+      - "backups/**"
+      
+  config_only:
+    description: "Configuration files only"
+    include:
+      - "config/**"
+      - "*.yaml"
+      - "*.yml"
+      - "requirements.txt"
+      - "pyproject.toml"
+
+vault:
+  compression_level: 6
+  integrity_check: true
+  encryption: false  # Enable if needed
+  retention_days: 90
+  
+schedule:
+  full_system: "0 1 * * *"  # Daily at 1:00 AM
+  code_only: "0 */6 * * *"  # Every 6 hours
+  config_only: "0 */3 * * *"  # Every 3 hours

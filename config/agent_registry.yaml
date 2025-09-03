@@ -1,0 +1,23 @@
+# Agent Registry Configuration
+# EpochCore RAS Agent Management
+
+registry:
+  auto_discovery: true
+  health_monitoring: true
+  backup_enabled: true
+  retention_days: 30
+
+agents:
+  recursive_engines:
+    count: 15
+    health_check_interval: 300  # 5 minutes
+    
+monitoring:
+  enabled: true
+  log_level: INFO
+  metrics_collection: true
+  
+backup:
+  enabled: true
+  schedule: "0 */6 * * *"  # Every 6 hours
+  retention: 30
