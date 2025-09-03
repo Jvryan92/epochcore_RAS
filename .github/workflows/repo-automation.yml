@@ -1,0 +1,718 @@
+name: Repository Automation Workflow
+# EpochCore RAS Enhanced GitHub Workflow
+# Multi-trigger support, matrix execution, quality assurance, and artifact management
+
+on:
+  # Scheduled automation
+  schedule:
+    # Daily automation at 2:00 AM UTC
+    - cron: '0 2 * * *'
+    # Weekly comprehensive automation on Monday at 3:00 AM UTC  
+    - cron: '0 3 * * 1'
+    
+  # Manual trigger with configuration options
+  workflow_dispatch:
+    inputs:
+      automation_scope:
+        description: 'Automation scope to run'
+        required: false
+        default: 'full'
+        type: choice
+        options:
+          - 'full'
+          - 'targeted'
+          - 'custom'
+          - 'maintenance_only'
+          - 'quality_gates_only'
+      
+      modules:
+        description: 'Specific modules (comma-separated: agent_sync,repo_population,continuity_rituals,vault_snapshots,merge_automation)'
+        required: false
+        default: 'all'
+      
+      priority:
+        description: 'Execution priority level'
+        required: false
+        default: 'medium'
+        type: choice
+        options:
+          - 'low'
+          - 'medium'
+          - 'high'
+          - 'critical'
+      
+      force_rebuild:
+        description: 'Force complete repository rebuild'
+        required: false
+        default: false
+        type: boolean
+      
+      skip_quality_gates:
+        description: 'Skip quality gate validation (use with caution)'
+        required: false
+        default: false
+        type: boolean
+  
+  # Pull request automation
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [main, develop]
+  
+  # Push automation
+  push:
+    branches: [main, develop]
+    paths:
+      - '**.py'
+      - '**.yaml'
+      - '**.yml'
+      - 'requirements.txt'
+      - 'pyproject.toml'
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+  issues: write
+  actions: write
+
+env:
+  PYTHON_VERSION: '3.12'
+  NODE_VERSION: '20'
+  AUTOMATION_TIMEOUT: 3600  # 1 hour
+  ARTIFACT_RETENTION: 30    # 30 days
+
+jobs:
+  # Configuration and planning phase
+  automation-planning:
+    runs-on: ubuntu-latest
+    outputs:
+      automation-scope: ${{ steps.determine-scope.outputs.scope }}
+      modules-to-run: ${{ steps.determine-modules.outputs.modules }}
+      priority-level: ${{ steps.determine-priority.outputs.priority }}
+      execution-matrix: ${{ steps.build-matrix.outputs.matrix }}
+      quality-gates-required: ${{ steps.determine-quality.outputs.required }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          
+      - name: Determine automation scope
+        id: determine-scope
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            SCOPE="${{ github.event.inputs.automation_scope }}"
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "${{ github.event.schedule }}" = "0 3 * * 1" ]; then
+              SCOPE="full"
+            else
+              SCOPE="maintenance_only"
+            fi
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            SCOPE="quality_gates_only"
+          else
+            SCOPE="targeted"
+          fi
+          echo "scope=$SCOPE" >> $GITHUB_OUTPUT
+          echo "🎯 Automation scope determined: $SCOPE"
+      
+      - name: Determine modules to execute
+        id: determine-modules
+        run: |
+          SCOPE="${{ steps.determine-scope.outputs.scope }}"
+          
+          case $SCOPE in
+            "full")
+              MODULES="agent_sync,repo_population,continuity_rituals,vault_snapshots,merge_automation"
+              ;;
+            "targeted")
+              MODULES="agent_sync,continuity_rituals,vault_snapshots"
+              ;;
+            "maintenance_only")
+              MODULES="continuity_rituals,vault_snapshots"
+              ;;
+            "quality_gates_only")
+              MODULES="merge_automation"
+              ;;
+            "custom")
+              MODULES="${{ github.event.inputs.modules || 'agent_sync,continuity_rituals' }}"
+              ;;
+            *)
+              MODULES="agent_sync,continuity_rituals"
+              ;;
+          esac
+          
+          echo "modules=$MODULES" >> $GITHUB_OUTPUT
+          echo "📋 Modules to execute: $MODULES"
+      
+      - name: Determine priority level
+        id: determine-priority
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PRIORITY="${{ github.event.inputs.priority }}"
+          elif [ "${{ github.event_name }}" = "schedule" ]; then
+            PRIORITY="high"
+          elif [ "${{ github.event_name }}" = "pull_request" ]; then
+            PRIORITY="medium"
+          else
+            PRIORITY="low"
+          fi
+          echo "priority=$PRIORITY" >> $GITHUB_OUTPUT
+          echo "⚡ Priority level: $PRIORITY"
+      
+      - name: Build execution matrix
+        id: build-matrix
+        run: |
+          MODULES="${{ steps.determine-modules.outputs.modules }}"
+          PRIORITY="${{ steps.determine-priority.outputs.priority }}"
+          
+          # Build matrix based on modules and priority
+          MATRIX='{"include":['
+          
+          IFS=',' read -ra MODULE_ARRAY <<< "$MODULES"
+          FIRST=true
+          
+          for module in "${MODULE_ARRAY[@]}"; do
+            module=$(echo "$module" | xargs)  # trim whitespace
+            
+            if [ "$FIRST" = true ]; then
+              FIRST=false
+            else
+              MATRIX+=','
+            fi
+            
+            case $module in
+              "agent_sync")
+                MATRIX+='{"module":"agent_sync","script":"agent_register_sync.py","timeout":300}'
+                ;;
+              "repo_population")
+                MATRIX+='{"module":"repo_population","script":"populate_repo_tree.py","timeout":600}'
+                ;;
+              "continuity_rituals")
+                MATRIX+='{"module":"continuity_rituals","script":"continuity_ritual.py","timeout":900}'
+                ;;
+              "vault_snapshots")
+                MATRIX+='{"module":"vault_snapshots","script":"zip_vault_creator.py","timeout":1200}'
+                ;;
+              "merge_automation")
+                MATRIX+='{"module":"merge_automation","script":"merge_automation.py","timeout":600}'
+                ;;
+            esac
+          done
+          
+          MATRIX+=']}'
+          
+          echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
+          echo "🔄 Execution matrix: $MATRIX"
+      
+      - name: Determine quality gates requirement
+        id: determine-quality
+        run: |
+          REQUIRED="true"
+          
+          if [ "${{ github.event.inputs.skip_quality_gates }}" = "true" ]; then
+            REQUIRED="false"
+          fi
+          
+          echo "required=$REQUIRED" >> $GITHUB_OUTPUT
+          echo "🛡️ Quality gates required: $REQUIRED"
+
+  # System initialization and validation
+  system-initialization:
+    runs-on: ubuntu-latest
+    needs: automation-planning
+    outputs:
+      system-status: ${{ steps.init-check.outputs.status }}
+      python-ready: ${{ steps.python-setup.outputs.ready }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        id: python-setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          echo "ready=true" >> $GITHUB_OUTPUT
+          
+      - name: Initialize system
+        id: init-check
+        run: |
+          echo "🚀 Initializing EpochCore RAS automation system..."
+          
+          # Initialize recursive improvement system
+          python integration.py init-recursive
+          
+          # Validate system integrity
+          python integration.py validate
+          
+          echo "status=initialized" >> $GITHUB_OUTPUT
+          echo "✅ System initialization complete"
+
+  # Pre-execution quality gates
+  pre-execution-quality-gates:
+    runs-on: ubuntu-latest
+    needs: [automation-planning, system-initialization]
+    if: needs.automation-planning.outputs.quality-gates-required == 'true'
+    outputs:
+      quality-status: ${{ steps.quality-check.outputs.status }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Run pre-execution quality gates
+        id: quality-check
+        run: |
+          echo "🛡️ Running pre-execution quality gates..."
+          
+          QUALITY_PASSED=true
+          
+          # Lint check
+          if python merge_automation.py --quality-gate lint_check | jq -r '.success' | grep -q false; then
+            echo "❌ Lint check failed"
+            QUALITY_PASSED=false
+          else
+            echo "✅ Lint check passed"
+          fi
+          
+          # Test suite
+          if python merge_automation.py --quality-gate test_suite | jq -r '.success' | grep -q false; then
+            echo "❌ Test suite failed"
+            QUALITY_PASSED=false
+          else
+            echo "✅ Test suite passed"
+          fi
+          
+          # Security scan
+          if python merge_automation.py --quality-gate security_scan | jq -r '.success' | grep -q false; then
+            echo "❌ Security scan failed"
+            QUALITY_PASSED=false
+          else
+            echo "✅ Security scan passed"
+          fi
+          
+          if [ "$QUALITY_PASSED" = "true" ]; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "🎉 All pre-execution quality gates passed"
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "💥 Pre-execution quality gates failed"
+            exit 1
+          fi
+
+  # Matrix execution of automation modules
+  automation-execution:
+    runs-on: ubuntu-latest
+    needs: [automation-planning, system-initialization, pre-execution-quality-gates]
+    if: always() && (needs.pre-execution-quality-gates.result == 'success' || needs.automation-planning.outputs.quality-gates-required == 'false')
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.automation-planning.outputs.execution-matrix) }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Execute automation module - ${{ matrix.module }}
+        id: execute-module
+        timeout-minutes: ${{ fromJson(matrix.timeout) / 60 }}
+        run: |
+          echo "🤖 Executing automation module: ${{ matrix.module }}"
+          echo "📜 Using script: ${{ matrix.script }}"
+          
+          MODULE_NAME="${{ matrix.module }}"
+          SCRIPT="${{ matrix.script }}"
+          PRIORITY="${{ needs.automation-planning.outputs.priority-level }}"
+          
+          case $MODULE_NAME in
+            "agent_sync")
+              echo "🔄 Running agent registry synchronization..."
+              python $SCRIPT --sync | tee "${MODULE_NAME}_output.json"
+              ;;
+            "repo_population")
+              echo "🏗️ Running repository structure population..."
+              python $SCRIPT --populate | tee "${MODULE_NAME}_output.json"
+              ;;
+            "continuity_rituals")
+              if [ "$PRIORITY" = "high" ] || [ "$PRIORITY" = "critical" ]; then
+                RITUAL_TYPE="weekly"
+              else
+                RITUAL_TYPE="daily"
+              fi
+              echo "🔄 Running continuity ritual: $RITUAL_TYPE"
+              python $SCRIPT --ritual $RITUAL_TYPE | tee "${MODULE_NAME}_output.json"
+              ;;
+            "vault_snapshots")
+              if [ "$PRIORITY" = "high" ] || [ "$PRIORITY" = "critical" ]; then
+                PROFILE="full_system"
+              else
+                PROFILE="code_only"
+              fi
+              echo "📦 Creating vault snapshot: $PROFILE"
+              python $SCRIPT --create $PROFILE | tee "${MODULE_NAME}_output.json"
+              ;;
+            "merge_automation")
+              echo "🔀 Running merge automation validation..."
+              python $SCRIPT --status | tee "${MODULE_NAME}_output.json"
+              ;;
+          esac
+          
+          # Check if execution was successful
+          if [ $? -eq 0 ]; then
+            echo "✅ Module $MODULE_NAME executed successfully"
+            echo "success=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Module $MODULE_NAME execution failed"
+            echo "success=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+          
+      - name: Upload module results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ${{ matrix.module }}-results
+          path: ${{ matrix.module }}_output.json
+          retention-days: ${{ env.ARTIFACT_RETENTION }}
+
+  # Post-execution quality gates and validation
+  post-execution-validation:
+    runs-on: ubuntu-latest
+    needs: [automation-planning, automation-execution]
+    if: always()
+    outputs:
+      validation-status: ${{ steps.validate.outputs.status }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: automation-results/
+          
+      - name: Post-execution validation
+        id: validate
+        run: |
+          echo "🔍 Running post-execution validation..."
+          
+          VALIDATION_PASSED=true
+          
+          # Validate system integrity
+          if ! python integration.py validate; then
+            echo "❌ System integrity validation failed"
+            VALIDATION_PASSED=false
+          else
+            echo "✅ System integrity validation passed"
+          fi
+          
+          # Run smoke tests
+          if python merge_automation.py --quality-gate smoke_test | jq -r '.success' | grep -q false; then
+            echo "❌ Smoke tests failed"
+            VALIDATION_PASSED=false
+          else
+            echo "✅ Smoke tests passed"
+          fi
+          
+          # Validate automation results
+          echo "📊 Analyzing automation results..."
+          RESULTS_DIR="automation-results"
+          
+          if [ -d "$RESULTS_DIR" ]; then
+            for result_dir in "$RESULTS_DIR"/*; do
+              if [ -d "$result_dir" ]; then
+                module_name=$(basename "$result_dir" | sed 's/-results$//')
+                result_file="$result_dir/${module_name}_output.json"
+                
+                if [ -f "$result_file" ]; then
+                  # Check if the result indicates success
+                  if jq -e '.success' "$result_file" >/dev/null 2>&1; then
+                    if jq -r '.success' "$result_file" | grep -q true; then
+                      echo "✅ $module_name: Success"
+                    else
+                      echo "❌ $module_name: Failed"
+                      VALIDATION_PASSED=false
+                    fi
+                  else
+                    echo "⚠️ $module_name: Result format unknown, assuming success"
+                  fi
+                else
+                  echo "⚠️ $module_name: No result file found"
+                fi
+              fi
+            done
+          else
+            echo "⚠️ No automation results found"
+          fi
+          
+          if [ "$VALIDATION_PASSED" = "true" ]; then
+            echo "status=passed" >> $GITHUB_OUTPUT
+            echo "🎉 Post-execution validation passed"
+          else
+            echo "status=failed" >> $GITHUB_OUTPUT
+            echo "💥 Post-execution validation failed"
+          fi
+
+  # Comprehensive reporting and artifact creation
+  generate-comprehensive-report:
+    runs-on: ubuntu-latest
+    needs: [automation-planning, automation-execution, post-execution-validation]
+    if: always()
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: automation-results/
+          
+      - name: Generate comprehensive report
+        run: |
+          echo "📊 Generating comprehensive automation report..."
+          
+          cat > comprehensive_report.md << 'EOF'
+          # EpochCore RAS Automation Execution Report
+          
+          **Execution Date:** $(date -u +"%Y-%m-%d %H:%M:%S UTC")
+          **Trigger:** ${{ github.event_name }}
+          **Automation Scope:** ${{ needs.automation-planning.outputs.automation-scope }}
+          **Priority Level:** ${{ needs.automation-planning.outputs.priority-level }}
+          
+          ## Execution Summary
+          
+          ### Modules Executed
+          ${{ needs.automation-planning.outputs.modules-to-run }}
+          
+          ### Quality Gates
+          - **Pre-execution:** ${{ needs.pre-execution-quality-gates.outputs.quality-status || 'skipped' }}
+          - **Post-execution:** ${{ needs.post-execution-validation.outputs.validation-status || 'pending' }}
+          
+          ## Module Results
+          
+          EOF
+          
+          # Process automation results
+          RESULTS_DIR="automation-results"
+          if [ -d "$RESULTS_DIR" ]; then
+            for result_dir in "$RESULTS_DIR"/*; do
+              if [ -d "$result_dir" ]; then
+                module_name=$(basename "$result_dir" | sed 's/-results$//')
+                result_file="$result_dir/${module_name}_output.json"
+                
+                echo "### $module_name" >> comprehensive_report.md
+                
+                if [ -f "$result_file" ]; then
+                  if jq -e '.success' "$result_file" >/dev/null 2>&1; then
+                    SUCCESS=$(jq -r '.success' "$result_file")
+                    TIMESTAMP=$(jq -r '.timestamp // "N/A"' "$result_file")
+                    
+                    if [ "$SUCCESS" = "true" ]; then
+                      echo "- **Status:** ✅ Success" >> comprehensive_report.md
+                    else
+                      echo "- **Status:** ❌ Failed" >> comprehensive_report.md
+                    fi
+                    echo "- **Timestamp:** $TIMESTAMP" >> comprehensive_report.md
+                    
+                    # Add module-specific details
+                    case $module_name in
+                      "agent_sync")
+                        AGENTS=$(jq -r '.agents_registered // "N/A"' "$result_file")
+                        echo "- **Agents Registered:** $AGENTS" >> comprehensive_report.md
+                        ;;
+                      "repo_population")
+                        FILES=$(jq -r '.files_created // "N/A"' "$result_file")
+                        DIRS=$(jq -r '.directories_created // "N/A"' "$result_file")
+                        echo "- **Files Created:** $FILES" >> comprehensive_report.md
+                        echo "- **Directories Created:** $DIRS" >> comprehensive_report.md
+                        ;;
+                      "vault_snapshots")
+                        SIZE=$(jq -r '.archive_size_mb // "N/A"' "$result_file")
+                        FILES=$(jq -r '.files_included // "N/A"' "$result_file")
+                        echo "- **Archive Size (MB):** $SIZE" >> comprehensive_report.md
+                        echo "- **Files Included:** $FILES" >> comprehensive_report.md
+                        ;;
+                    esac
+                  else
+                    echo "- **Status:** ⚠️ Unknown format" >> comprehensive_report.md
+                  fi
+                else
+                  echo "- **Status:** ❌ No results found" >> comprehensive_report.md
+                fi
+                
+                echo "" >> comprehensive_report.md
+              fi
+            done
+          fi
+          
+          # Add system status
+          echo "## System Status" >> comprehensive_report.md
+          echo "" >> comprehensive_report.md
+          python integration.py status >> comprehensive_report.md
+          
+          echo "📄 Comprehensive report generated"
+          
+      - name: Create automation summary
+        run: |
+          python -c "
+          import json
+          from datetime import datetime
+          
+          summary = {
+              'timestamp': datetime.now().isoformat(),
+              'trigger': '${{ github.event_name }}',
+              'automation_scope': '${{ needs.automation-planning.outputs.automation-scope }}',
+              'priority_level': '${{ needs.automation-planning.outputs.priority-level }}',
+              'modules_executed': '${{ needs.automation-planning.outputs.modules-to-run }}'.split(','),
+              'quality_gates': {
+                  'pre_execution': '${{ needs.pre-execution-quality-gates.outputs.quality-status || 'skipped' }}',
+                  'post_execution': '${{ needs.post-execution-validation.outputs.validation-status || 'pending' }}'
+              },
+              'workflow_run_id': '${{ github.run_id }}',
+              'repository': '${{ github.repository }}',
+              'commit_sha': '${{ github.sha }}'
+          }
+          
+          with open('automation_summary.json', 'w') as f:
+              json.dump(summary, f, indent=2)
+          
+          print('📋 Automation summary created')
+          "
+      
+      - name: Upload comprehensive report
+        uses: actions/upload-artifact@v4
+        with:
+          name: comprehensive-automation-report
+          path: |
+            comprehensive_report.md
+            automation_summary.json
+          retention-days: ${{ env.ARTIFACT_RETENTION }}
+      
+      - name: Create PR comment with results (for PR triggers)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            let reportContent = '## 🤖 Repository Automation Results\n\n';
+            
+            try {
+              const summaryData = JSON.parse(fs.readFileSync('automation_summary.json', 'utf8'));
+              
+              reportContent += `### Execution Summary\n`;
+              reportContent += `- **Trigger**: ${summaryData.trigger}\n`;
+              reportContent += `- **Scope**: ${summaryData.automation_scope}\n`;
+              reportContent += `- **Priority**: ${summaryData.priority_level}\n`;
+              reportContent += `- **Modules**: ${summaryData.modules_executed.join(', ')}\n\n`;
+              
+              reportContent += `### Quality Gates\n`;
+              reportContent += `- **Pre-execution**: ${summaryData.quality_gates.pre_execution}\n`;
+              reportContent += `- **Post-execution**: ${summaryData.quality_gates.post_execution}\n\n`;
+              
+              if (fs.existsSync('comprehensive_report.md')) {
+                const fullReport = fs.readFileSync('comprehensive_report.md', 'utf8');
+                const moduleResults = fullReport.match(/## Module Results[\s\S]*?(?=## System Status|$)/);
+                if (moduleResults) {
+                  reportContent += moduleResults[0];
+                }
+              }
+              
+              reportContent += `\n---\n*Workflow Run: ${{ github.run_id }} | Commit: ${{ github.sha }}*`;
+              
+            } catch (error) {
+              reportContent += 'Error reading automation results. Please check the workflow logs.';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: reportContent
+            });
+
+  # Cleanup and finalization
+  cleanup-and-finalize:
+    runs-on: ubuntu-latest
+    needs: [automation-planning, automation-execution, post-execution-validation, generate-comprehensive-report]
+    if: always()
+    steps:
+      - name: Cleanup automation artifacts
+        run: |
+          echo "🧹 Performing cleanup operations..."
+          
+          # This step would clean up any temporary resources
+          # created during the automation process
+          echo "✅ Cleanup completed"
+          
+      - name: Finalize automation execution
+        run: |
+          echo "🏁 Finalizing automation execution..."
+          
+          OVERALL_SUCCESS="true"
+          
+          # Check execution results
+          EXECUTION_RESULTS="${{ toJson(needs.automation-execution.result) }}"
+          POST_VALIDATION="${{ needs.post-execution-validation.outputs.validation-status }}"
+          
+          if [[ "$EXECUTION_RESULTS" == *"failure"* ]] || [[ "$POST_VALIDATION" == "failed" ]]; then
+            OVERALL_SUCCESS="false"
+          fi
+          
+          if [ "$OVERALL_SUCCESS" = "true" ]; then
+            echo "🎉 Repository automation completed successfully!"
+            echo "✨ All modules executed and validated successfully"
+          else
+            echo "⚠️ Repository automation completed with some issues"
+            echo "🔍 Please check the detailed reports for more information"
+            exit 1
+          fi

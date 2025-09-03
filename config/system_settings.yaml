@@ -1,0 +1,30 @@
+# System Settings
+# EpochCore RAS Core Configuration
+
+system:
+  name: "EpochCore RAS"
+  version: "1.0.0"
+  environment: "production"
+  
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/system.log"
+  rotation:
+    max_size: "10MB"
+    backup_count: 5
+    
+performance:
+  monitoring: true
+  metrics_collection: true
+  profiling: false
+  
+security:
+  audit_logging: true
+  input_validation: true
+  rate_limiting: true
+  
+integration:
+  recursive_improvement: true
+  agent_registry: true
+  automation: true

@@ -1,0 +1,344 @@
+{
+  "agents": {
+    "feedback_loop_engine": {
+      "id": "feedback_loop_engine",
+      "name": "feedback_loop_engine",
+      "type": "recursive_engine",
+      "class_name": "RecursiveFeedbackLoopEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237541",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "feedback_analysis",
+        "system_auditing"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "experimentation_tree_engine": {
+      "id": "experimentation_tree_engine",
+      "name": "experimentation_tree_engine",
+      "type": "recursive_engine",
+      "class_name": "AutonomousExperimentationTreeEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237563",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "branch_management",
+        "experiment_pruning"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "self_cloning_mvp_agent": {
+      "id": "self_cloning_mvp_agent",
+      "name": "self_cloning_mvp_agent",
+      "type": "recursive_engine",
+      "class_name": "SelfCloningMVPAgentEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237577",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "agent_cloning",
+        "kpi_monitoring"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "asset_library_engine": {
+      "id": "asset_library_engine",
+      "name": "asset_library_engine",
+      "type": "recursive_engine",
+      "class_name": "AssetLibraryEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237585",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "weekly_auto_debrief_bot": {
+      "id": "weekly_auto_debrief_bot",
+      "name": "weekly_auto_debrief_bot",
+      "type": "recursive_engine",
+      "class_name": "WeeklyAutoDebriefBotEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237590",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "kpi_mutation_engine": {
+      "id": "kpi_mutation_engine",
+      "name": "kpi_mutation_engine",
+      "type": "recursive_engine",
+      "class_name": "KPIMutationEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237595",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "autonomous_escalation_logic": {
+      "id": "autonomous_escalation_logic",
+      "name": "autonomous_escalation_logic",
+      "type": "recursive_engine",
+      "class_name": "AutonomousEscalationLogicEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237599",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "recursive_workflow_automation": {
+      "id": "recursive_workflow_automation",
+      "name": "recursive_workflow_automation",
+      "type": "recursive_engine",
+      "class_name": "RecursiveWorkflowAutomationEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237604",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "workflow_analysis",
+        "optimization"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "content_stack_tree": {
+      "id": "content_stack_tree",
+      "name": "content_stack_tree",
+      "type": "recursive_engine",
+      "class_name": "ContentStackTreeEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237608",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "self_improving_playbook_generator": {
+      "id": "self_improving_playbook_generator",
+      "name": "self_improving_playbook_generator",
+      "type": "recursive_engine",
+      "class_name": "SelfImprovingPlaybookGeneratorEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237612",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "ai_code_review_bot": {
+      "id": "ai_code_review_bot",
+      "name": "ai_code_review_bot",
+      "type": "recursive_engine",
+      "class_name": "AICodeReviewBotEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237617",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "code_analysis",
+        "pattern_learning"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "auto_refactor": {
+      "id": "auto_refactor",
+      "name": "auto_refactor",
+      "type": "recursive_engine",
+      "class_name": "AutoRefactorEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237627",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "code_optimization",
+        "refactoring"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "dependency_health": {
+      "id": "dependency_health",
+      "name": "dependency_health",
+      "type": "recursive_engine",
+      "class_name": "DependencyHealthEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237633",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "security_scanning",
+        "update_management"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "workflow_auditor": {
+      "id": "workflow_auditor",
+      "name": "workflow_auditor",
+      "type": "recursive_engine",
+      "class_name": "WorkflowAuditorEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237639",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "workflow_analysis",
+        "optimization"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    },
+    "doc_updater": {
+      "id": "doc_updater",
+      "name": "doc_updater",
+      "type": "recursive_engine",
+      "class_name": "DocUpdaterEngine",
+      "status": "inactive",
+      "discovered_at": "2025-09-03T12:30:25.237647",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "documentation_sync",
+        "content_management"
+      ],
+      "health_score": 0.6,
+      "kpi_metrics": {
+        "total_executions": 0,
+        "last_execution": {},
+        "running": true,
+        "uptime": 0
+      }
+    }
+  },
+  "metadata": {
+    "last_sync": "2025-09-03T12:30:25.259300",
+    "total_agents": 15,
+    "active_agents": 0,
+    "health_status": "warning",
+    "backup_count": 1
+  }
+}

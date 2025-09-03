@@ -1,0 +1,19 @@
+{
+  "archives": {
+    "config_only_20250903_123635": {
+      "profile": "config_only",
+      "created_at": "2025-09-03T12:36:35.662746",
+      "archive_path": "backups/snapshots/config_only_20250903_123635.zip",
+      "manifest_path": "backups/manifests/config_only_20250903_123635_manifest.json",
+      "size_mb": 0.001010894775390625,
+      "files_count": 2,
+      "compression_ratio": 31.213497728747562,
+      "integrity_verified": true
+    }
+  },
+  "metadata": {
+    "total_archives": 1,
+    "total_size_mb": 0.001010894775390625,
+    "last_updated": "2025-09-03T12:36:35.665261"
+  }
+}

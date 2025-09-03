@@ -1,0 +1,38 @@
+{
+  "timestamp": "2025-09-03T12:36:35.663594",
+  "profile": "config_only",
+  "profile_description": "Configuration files only",
+  "total_files": 2,
+  "files": {
+    "pyproject.toml": {
+      "size": 1387,
+      "modified": "2025-09-03T12:32:34.481981",
+      "checksum": "ab6cc39988632a4858b951b6127d108a550fb77420329eded1a9dce85ec74344"
+    },
+    "requirements.txt": {
+      "size": 154,
+      "modified": "2025-09-03T12:26:10.969723",
+      "checksum": "df9e9feba1b227f7e86b76850f39b3823a1f060de980f13bd5bc9d54822261cf"
+    }
+  },
+  "checksums": {
+    "pyproject.toml": "ab6cc39988632a4858b951b6127d108a550fb77420329eded1a9dce85ec74344",
+    "requirements.txt": "df9e9feba1b227f7e86b76850f39b3823a1f060de980f13bd5bc9d54822261cf"
+  },
+  "statistics": {
+    "total_size_bytes": 1541,
+    "total_size_mb": 0.0014696121215820312,
+    "file_types": {
+      ".toml": 1,
+      ".txt": 1
+    },
+    "largest_file": {
+      "name": "pyproject.toml",
+      "size": 1387
+    },
+    "smallest_file": {
+      "name": "requirements.txt",
+      "size": 154
+    }
+  }
+}
