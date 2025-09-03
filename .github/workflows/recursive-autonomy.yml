@@ -100,10 +100,10 @@ jobs:
         id: init-system
         run: |
           echo "Initializing EpochCore RAS recursive improvement system..."
-          python integration.py init-recursive
+          python integration.py init-recursive > /dev/null
           
           echo "Getting system status..."
-          STATUS=$(python integration.py recursive-status)
+          STATUS=$(python integration.py recursive-status 2>/dev/null | grep -E "^Initialized:|^Active Engines:|^Total Improvements:" | head -1 | cut -d: -f2 | xargs || echo "initialized")
           echo "status=$STATUS" >> $GITHUB_OUTPUT
           
       - name: Validate system integrity
@@ -144,17 +144,17 @@ jobs:
           # Initialize and run AI code review
           engine = AICodeReviewBotEngine()
           if engine.initialize():
-              print('AI Code Review Bot initialized successfully')
+              print('AI Code Review Bot initialized successfully', file=sys.stderr)
               result = engine.execute_main_action()
-              print(f'Review completed: {result}')
+              print(f'Review completed: {result}', file=sys.stderr)
               
               # Get status for reporting
               status = engine.get_status()
-              print(f'Engine status: {status}')
+              print(f'Engine status: {status}', file=sys.stderr)
           else:
-              print('Failed to initialize AI Code Review Bot')
+              print('Failed to initialize AI Code Review Bot', file=sys.stderr)
               sys.exit(1)
-          "
+          " 2>&1
           
       - name: Create review summary
         if: github.event_name == 'pull_request'
@@ -219,17 +219,17 @@ jobs:
           # Initialize and run auto refactor
           engine = AutoRefactorEngine()
           if engine.initialize():
-              print('Auto Refactor Engine initialized successfully')
+              print('Auto Refactor Engine initialized successfully', file=sys.stderr)
               result = engine.execute_main_action()
-              print(f'Refactoring analysis completed: {result}')
+              print(f'Refactoring analysis completed: {result}', file=sys.stderr)
               
               # Get status for reporting
               status = engine.get_status()
-              print(f'Engine status: {status}')
+              print(f'Engine status: {status}', file=sys.stderr)
           else:
-              print('Failed to initialize Auto Refactor Engine')
+              print('Failed to initialize Auto Refactor Engine', file=sys.stderr)
               sys.exit(1)
-          "
+          " 2>&1
           
       - name: Create refactoring PR
         if: needs.setup.outputs.priority == 'high'
@@ -289,17 +289,17 @@ jobs:
           # Initialize and run dependency health check
           engine = DependencyHealthEngine()
           if engine.initialize():
-              print('Dependency Health Engine initialized successfully')
+              print('Dependency Health Engine initialized successfully', file=sys.stderr)
               result = engine.execute_main_action()
-              print(f'Health check completed: {result}')
+              print(f'Health check completed: {result}', file=sys.stderr)
               
               # Get status for reporting
               status = engine.get_status()
-              print(f'Engine status: {status}')
+              print(f'Engine status: {status}', file=sys.stderr)
           else:
-              print('Failed to initialize Dependency Health Engine')
+              print('Failed to initialize Dependency Health Engine', file=sys.stderr)
               sys.exit(1)
-          "
+          " 2>&1
           
       - name: Create security update PR
         if: needs.setup.outputs.priority == 'high'
@@ -365,17 +365,17 @@ jobs:
           # Initialize and run workflow auditor
           engine = WorkflowAuditorEngine()
           if engine.initialize():
-              print('Workflow Auditor Engine initialized successfully')
+              print('Workflow Auditor Engine initialized successfully', file=sys.stderr)
               result = engine.execute_main_action()
-              print(f'Workflow audit completed: {result}')
+              print(f'Workflow audit completed: {result}', file=sys.stderr)
               
               # Get status for reporting
               status = engine.get_status()
-              print(f'Engine status: {status}')
+              print(f'Engine status: {status}', file=sys.stderr)
           else:
-              print('Failed to initialize Workflow Auditor Engine')
+              print('Failed to initialize Workflow Auditor Engine', file=sys.stderr)
               sys.exit(1)
-          "
+          " 2>&1
           
       - name: Generate workflow optimization report
         run: |
@@ -431,17 +431,17 @@ jobs:
           # Initialize and run documentation updater
           engine = DocUpdaterEngine()
           if engine.initialize():
-              print('Documentation Updater Engine initialized successfully')
+              print('Documentation Updater Engine initialized successfully', file=sys.stderr)
               result = engine.execute_main_action()
-              print(f'Documentation sync completed: {result}')
+              print(f'Documentation sync completed: {result}', file=sys.stderr)
               
               # Get status for reporting
               status = engine.get_status()
-              print(f'Engine status: {status}')
+              print(f'Engine status: {status}', file=sys.stderr)
           else:
-              print('Failed to initialize Documentation Updater Engine')
+              print('Failed to initialize Documentation Updater Engine', file=sys.stderr)
               sys.exit(1)
-          "
+          " 2>&1
           
       - name: Check documentation drift
         run: |
