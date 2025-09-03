@@ -1,0 +1,221 @@
+# EpochCore RAS Batch Propagation Configuration
+# This file defines multiple repositories for batch propagation
+
+repositories:
+  # Web application repositories
+  - path: "/path/to/saas-hub"
+    type: "web_application"
+    priority: "high"
+    modules: ["core", "workflows", "integration", "documentation"]
+    adaptations:
+      language_override: "javascript"
+      custom_ci: true
+      
+  - path: "/path/to/epochcore-os" 
+    type: "api_service"
+    priority: "high"
+    modules: ["core", "workflows", "integration", "dashboard"]
+    adaptations:
+      language_override: "python"
+      monitoring_required: true
+      
+  # Library repositories  
+  - path: "/path/to/utility-lib"
+    type: "library"
+    priority: "medium"
+    modules: ["core", "workflows", "documentation"]
+    adaptations:
+      minimal_footprint: true
+      
+  # Development/testing repositories
+  - path: "/path/to/test-repo"
+    type: "development"
+    priority: "low" 
+    modules: ["core", "workflows"]
+    adaptations:
+      development_mode: true
+
+# Global settings for batch propagation
+global_settings:
+  # Modules to propagate by default
+  default_modules: ["core", "workflows"]
+  
+  # Create backups before propagation
+  create_backups: true
+  
+  # Validation settings
+  validate_before: true
+  validate_after: true
+  
+  # Error handling
+  continue_on_error: false
+  rollback_on_failure: true
+  
+  # Concurrency
+  max_concurrent: 3
+  timeout_minutes: 30
+  
+  # Notifications
+  notify_on_completion: true
+  notify_on_error: true
+  
+# Adaptation rules for different repository types
+adaptation_rules:
+  web_application:
+    required_files:
+      - ".github/workflows/recursive-autonomy.yml"
+      - "recursive_improvement/"
+      - "integration.py"
+    optional_files:
+      - "dashboard.py"
+      - "templates/"
+    custom_setup:
+      - "setup_web_monitoring"
+      - "configure_deployment_hooks"
+      
+  api_service:
+    required_files:
+      - ".github/workflows/recursive-autonomy.yml"
+      - "recursive_improvement/"
+      - "integration.py"
+      - "config/"
+    optional_files:
+      - "dashboard.py"
+      - "monitoring/"
+    custom_setup:
+      - "setup_api_monitoring" 
+      - "configure_health_checks"
+      
+  library:
+    required_files:
+      - ".github/workflows/recursive-autonomy.yml"
+      - "recursive_improvement/"
+    optional_files:
+      - "integration.py"
+    custom_setup:
+      - "setup_library_specific_tests"
+      - "configure_package_publishing"
+      
+  development:
+    required_files:
+      - "recursive_improvement/"
+    optional_files:
+      - ".github/workflows/recursive-autonomy.yml"
+      - "integration.py"
+    custom_setup:
+      - "setup_development_tools"
+      - "configure_git_hooks"
+
+# Language-specific adaptations
+language_adaptations:
+  python:
+    setup_script: "templates/setup_python.sh"
+    test_command: "python -m pytest"
+    dependency_file: "requirements.txt"
+    additional_files:
+      - "pytest.ini"
+      - ".flake8"
+      
+  javascript:
+    setup_script: "templates/setup_node.sh" 
+    test_command: "npm test"
+    dependency_file: "package.json"
+    additional_files:
+      - "jest.config.js"
+      - ".eslintrc.js"
+      
+  typescript:
+    setup_script: "templates/setup_node.sh"
+    test_command: "npm test"
+    dependency_file: "package.json"
+    additional_files:
+      - "tsconfig.json"
+      - "jest.config.js"
+      
+  java:
+    setup_script: "templates/setup_java.sh"
+    test_command: "mvn test"
+    dependency_file: "pom.xml"
+    additional_files:
+      - "junit.xml"
+      
+  go:
+    setup_script: "templates/setup_go.sh"
+    test_command: "go test"
+    dependency_file: "go.mod"
+    
+  rust:
+    setup_script: "templates/setup_rust.sh"
+    test_command: "cargo test"
+    dependency_file: "Cargo.toml"
+
+# Quality gates and validation checks
+validation_checks:
+  pre_propagation:
+    - check_git_repo
+    - check_language_support
+    - check_write_permissions
+    - check_branch_protection
+    - check_existing_automation
+    
+  post_propagation:
+    - validate_file_integrity
+    - test_basic_functionality
+    - verify_workflow_syntax
+    - check_integration_status
+    - run_sample_execution
+
+# Reporting and monitoring
+reporting:
+  # Generate detailed report after batch operation
+  generate_report: true
+  
+  # Report format (markdown, json, html)
+  report_format: "markdown"
+  
+  # Include performance metrics
+  include_metrics: true
+  
+  # Include screenshots/artifacts
+  include_artifacts: false
+  
+  # Email notifications (if configured)
+  email_notifications:
+    enabled: false
+    recipients: []
+    
+  # Slack notifications (if configured)  
+  slack_notifications:
+    enabled: false
+    webhook_url: ""
+    
+  # GitHub issue creation for failures
+  github_issues:
+    enabled: true
+    create_on_failure: true
+    repository: "Jvryan92/epochcore_RAS"
+    
+# Rollback configuration
+rollback:
+  # Automatic rollback on critical failures
+  auto_rollback: true
+  
+  # Keep rollback data for this many days
+  retention_days: 7
+  
+  # Rollback validation
+  validate_rollback: true
+  
+# Security settings
+security:
+  # Scan for secrets before propagation
+  scan_secrets: true
+  
+  # Validate file permissions
+  check_permissions: true
+  
+  # Verify GPG signatures (if available)
+  verify_signatures: false
+  
+  # Skip repositories with security issues
+  skip_insecure: true
