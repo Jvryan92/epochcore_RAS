@@ -19,6 +19,7 @@ from .auto_refactor import AutoRefactorEngine
 from .dependency_health import DependencyHealthEngine
 from .workflow_auditor import WorkflowAuditorEngine
 from .doc_updater import DocUpdaterEngine
+from .pr_automation_engine import PRAutomationEngine
 
 __all__ = [
     'RecursiveFeedbackLoopEngine',
@@ -36,5 +37,6 @@ __all__ = [
     'AutoRefactorEngine',
     'DependencyHealthEngine',
     'WorkflowAuditorEngine',
-    'DocUpdaterEngine'
+    'DocUpdaterEngine',
+    'PRAutomationEngine'
 ]

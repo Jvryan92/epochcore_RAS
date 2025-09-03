@@ -27,7 +27,8 @@ from recursive_improvement.engines import (
     AutoRefactorEngine,
     DependencyHealthEngine,
     WorkflowAuditorEngine,
-    DocUpdaterEngine
+    DocUpdaterEngine,
+    PRAutomationEngine
 )
 
 # Global orchestrator instance
@@ -49,7 +50,7 @@ def initialize_recursive_improvement_system():
         if not _orchestrator.initialize():
             raise Exception("Failed to initialize orchestrator")
         
-        # Register all 15 recursive improvement engines (10 original + 5 recursive autonomy)
+        # Register all 16 recursive improvement engines (10 original + 6 recursive autonomy)
         engines = [
             RecursiveFeedbackLoopEngine(),
             AutonomousExperimentationTreeEngine(),
@@ -66,7 +67,8 @@ def initialize_recursive_improvement_system():
             AutoRefactorEngine(),
             DependencyHealthEngine(),
             WorkflowAuditorEngine(),
-            DocUpdaterEngine()
+            DocUpdaterEngine(),
+            PRAutomationEngine()
         ]
         
         registered_count = 0
@@ -77,7 +79,7 @@ def initialize_recursive_improvement_system():
             else:
                 print(f"✗ Failed to register {engine.name}")
         
-        print(f"✓ Recursive Improvement System initialized with {registered_count}/15 engines")
+        print(f"✓ Recursive Improvement System initialized with {registered_count}/16 engines")
         return _orchestrator
         
     except Exception as e:
