@@ -1,0 +1,16 @@
+# merge_config.yaml - EpochCore RAS Configuration
+# Generated: 2025-09-03T07:10:10.810048
+
+merge:
+  enabled: true
+  version: "1.0"
+  
+  settings:
+    auto_update: true
+    log_level: "INFO"
+    
+  metadata:
+    generated_by: "populate_repo_tree.py"
+    created_at: "2025-09-03T07:10:10.810053"
+    
+  # Add configuration specific to merge here

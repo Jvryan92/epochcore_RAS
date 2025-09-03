@@ -1,0 +1,395 @@
+{
+  "agents": {
+    "feedback_loop_engine": {
+      "agent_id": "feedback_loop_engine",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979742",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979747",
+      "last_seen": "2025-09-03T07:10:17.979748",
+      "capabilities": [
+        "analysis",
+        "mutation",
+        "feedback"
+      ],
+      "health_score": 1.0
+    },
+    "experimentation_tree_engine": {
+      "agent_id": "experimentation_tree_engine",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979753",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979755",
+      "last_seen": "2025-09-03T07:10:17.979756",
+      "capabilities": [
+        "experimentation",
+        "branch_management",
+        "optimization"
+      ],
+      "health_score": 1.0
+    },
+    "self_cloning_mvp_agent": {
+      "agent_id": "self_cloning_mvp_agent",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979759",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979760",
+      "last_seen": "2025-09-03T07:10:17.979761",
+      "capabilities": [
+        "cloning",
+        "kpi_monitoring",
+        "scaling"
+      ],
+      "health_score": 1.0
+    },
+    "asset_library_engine": {
+      "agent_id": "asset_library_engine",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979763",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979764",
+      "last_seen": "2025-09-03T07:10:17.979765",
+      "capabilities": [
+        "general_processing"
+      ],
+      "health_score": 1.0
+    },
+    "weekly_auto_debrief_bot": {
+      "agent_id": "weekly_auto_debrief_bot",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979767",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979769",
+      "last_seen": "2025-09-03T07:10:17.979770",
+      "capabilities": [
+        "general_processing"
+      ],
+      "health_score": 1.0
+    },
+    "kpi_mutation_engine": {
+      "agent_id": "kpi_mutation_engine",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979772",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979773",
+      "last_seen": "2025-09-03T07:10:17.979774",
+      "capabilities": [
+        "general_processing"
+      ],
+      "health_score": 1.0
+    },
+    "autonomous_escalation_logic": {
+      "agent_id": "autonomous_escalation_logic",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979776",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979777",
+      "last_seen": "2025-09-03T07:10:17.979777",
+      "capabilities": [
+        "general_processing"
+      ],
+      "health_score": 1.0
+    },
+    "recursive_workflow_automation": {
+      "agent_id": "recursive_workflow_automation",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979779",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979781",
+      "last_seen": "2025-09-03T07:10:17.979781",
+      "capabilities": [
+        "general_processing"
+      ],
+      "health_score": 1.0
+    },
+    "content_stack_tree": {
+      "agent_id": "content_stack_tree",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979783",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979784",
+      "last_seen": "2025-09-03T07:10:17.979788",
+      "capabilities": [
+        "general_processing"
+      ],
+      "health_score": 1.0
+    },
+    "self_improving_playbook_generator": {
+      "agent_id": "self_improving_playbook_generator",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979790",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979791",
+      "last_seen": "2025-09-03T07:10:17.979792",
+      "capabilities": [
+        "general_processing"
+      ],
+      "health_score": 1.0
+    },
+    "ai_code_review_bot": {
+      "agent_id": "ai_code_review_bot",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979793",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979796",
+      "last_seen": "2025-09-03T07:10:17.979797",
+      "capabilities": [
+        "code_review",
+        "pattern_learning",
+        "security_analysis"
+      ],
+      "health_score": 1.0
+    },
+    "auto_refactor": {
+      "agent_id": "auto_refactor",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979799",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979800",
+      "last_seen": "2025-09-03T07:10:17.979801",
+      "capabilities": [
+        "code_refactoring",
+        "smell_detection",
+        "improvement"
+      ],
+      "health_score": 1.0
+    },
+    "dependency_health": {
+      "agent_id": "dependency_health",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979803",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979804",
+      "last_seen": "2025-09-03T07:10:17.979805",
+      "capabilities": [
+        "security_scanning",
+        "update_management",
+        "health_monitoring"
+      ],
+      "health_score": 1.0
+    },
+    "workflow_auditor": {
+      "agent_id": "workflow_auditor",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979807",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979808",
+      "last_seen": "2025-09-03T07:10:17.979809",
+      "capabilities": [
+        "workflow_analysis",
+        "optimization",
+        "security_auditing"
+      ],
+      "health_score": 1.0
+    },
+    "doc_updater": {
+      "agent_id": "doc_updater",
+      "type": "recursive_engine",
+      "status": "active",
+      "kpis": {
+        "tasks_completed": 0,
+        "success_rate": 1.0,
+        "efficiency_score": 0.8,
+        "last_activity": "2025-09-03T07:10:17.979811",
+        "improvement_count": 0
+      },
+      "created_at": "2025-09-03T07:10:17.979812",
+      "last_seen": "2025-09-03T07:10:17.979813",
+      "capabilities": [
+        "documentation",
+        "synchronization",
+        "drift_detection"
+      ],
+      "health_score": 1.0
+    },
+    "process_agent_323": {
+      "agent_id": "process_agent_323",
+      "type": "process_agent",
+      "status": "active",
+      "kpis": {
+        "uptime": 1756882353.19
+      },
+      "created_at": "2025-09-03T06:52:33.190000",
+      "last_seen": "2025-09-03T07:10:17.989266",
+      "process_info": {
+        "pid": 323,
+        "name": "hv_kvp_daemon",
+        "cmdline": [
+          "/usr/lib/linux-tools/6.11.0-1018-azure/hv_kvp_daemon",
+          "-n"
+        ]
+      }
+    },
+    "process_agent_696": {
+      "agent_id": "process_agent_696",
+      "type": "process_agent",
+      "status": "active",
+      "kpis": {
+        "uptime": 1756882359.72
+      },
+      "created_at": "2025-09-03T06:52:39.720000",
+      "last_seen": "2025-09-03T07:10:17.989873",
+      "process_info": {
+        "pid": 696,
+        "name": "dbus-daemon",
+        "cmdline": [
+          "@dbus-daemon",
+          "--system",
+          "--address=systemd:",
+          "--nofork",
+          "--nopidfile",
+          "--systemd-activation",
+          "--syslog-only"
+        ]
+      }
+    },
+    "process_agent_730": {
+      "agent_id": "process_agent_730",
+      "type": "process_agent",
+      "status": "active",
+      "kpis": {
+        "uptime": 1756882359.92
+      },
+      "created_at": "2025-09-03T06:52:39.920000",
+      "last_seen": "2025-09-03T07:10:17.990450",
+      "process_info": {
+        "pid": 730,
+        "name": "python3",
+        "cmdline": [
+          "/usr/bin/python3",
+          "-u",
+          "/usr/sbin/waagent",
+          "-daemon"
+        ]
+      }
+    },
+    "process_agent_1750": {
+      "agent_id": "process_agent_1750",
+      "type": "process_agent",
+      "status": "active",
+      "kpis": {
+        "uptime": 1756882383.03
+      },
+      "created_at": "2025-09-03T06:53:03.030000",
+      "last_seen": "2025-09-03T07:10:17.992077",
+      "process_info": {
+        "pid": 1750,
+        "name": "hosted-compute-agent",
+        "cmdline": [
+          "/opt/hca/hosted-compute-agent"
+        ]
+      }
+    },
+    "process_agent_3574": {
+      "agent_id": "process_agent_3574",
+      "type": "process_agent",
+      "status": "active",
+      "kpis": {
+        "uptime": 1756883417.79
+      },
+      "created_at": "2025-09-03T07:10:17.790000",
+      "last_seen": "2025-09-03T07:10:17.994796",
+      "process_info": {
+        "pid": 3574,
+        "name": "python",
+        "cmdline": [
+          "python",
+          "agent_register_sync.py",
+          "--sync"
+        ]
+      }
+    }
+  },
+  "last_sync": null,
+  "version": "1.0",
+  "metadata": {
+    "created_at": "2025-09-03T07:10:17.956781",
+    "total_agents": 20,
+    "active_agents": 20,
+    "last_sync": "2025-09-03T07:10:17.994814"
+  }
+}
