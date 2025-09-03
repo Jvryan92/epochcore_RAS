@@ -200,6 +200,17 @@ def main():
     subparsers.add_parser("recursive-status", help="Get detailed recursive improvement status")
     subparsers.add_parser("trigger-improvement", help="Manually trigger recursive improvements")
     
+    # Add cross-repository automation commands
+    automate_parser = subparsers.add_parser("automate-fix-all", help="Execute comprehensive automated fixes across repositories")
+    automate_parser.add_argument("--repos", nargs="+", help="Target repositories (default: all)")
+    automate_parser.add_argument("--fix-types", nargs="+", 
+                                choices=['code_review', 'refactor', 'dependencies', 'workflows', 'documentation'],
+                                help="Types of fixes to apply (default: all)")
+    automate_parser.add_argument("--create-prs", action="store_true", default=True, help="Create pull requests for fixes")
+    automate_parser.add_argument("--auto-merge", action="store_true", default=False, help="Automatically merge safe fixes")
+    
+    subparsers.add_parser("cross-repo-status", help="Get status of all monitored repositories")
+    
     args = parser.parse_args()
     
     if args.command == "setup-demo":
@@ -222,6 +233,12 @@ def main():
         return 0 if result.get("status") == "operational" else 1
     elif args.command == "trigger-improvement":
         result = trigger_manual_improvement()
+        return 0 if result.get("status") == "success" else 1
+    elif args.command == "automate-fix-all":
+        result = execute_cross_repository_automation(args)
+        return 0 if result.get("status") == "success" else 1
+    elif args.command == "cross-repo-status":
+        result = get_cross_repository_status()
         return 0 if result.get("status") == "success" else 1
     else:
         parser.print_help()
@@ -283,6 +300,75 @@ def trigger_manual_improvement():
     else:
         print("✗ Failed to trigger improvements - system not initialized")
         return {"status": "error", "message": "System not initialized"}
+
+
+def execute_cross_repository_automation(args):
+    """Execute cross-repository automation with the given arguments."""
+    try:
+        from cross_repository_automation import CrossRepositoryAutomator
+        
+        print(f"[{datetime.now()}] Starting Cross-Repository Automation...")
+        
+        # Initialize automator
+        automator = CrossRepositoryAutomator()
+        if not automator.initialize():
+            return {"status": "error", "message": "Failed to initialize automation system"}
+        
+        # Execute automation
+        results = automator.automate_fix_all(
+            target_repos=args.repos,
+            fix_types=args.fix_types,
+            create_prs=args.create_prs,
+            auto_merge=args.auto_merge
+        )
+        
+        # Trigger recursive improvements based on automation results
+        global _orchestrator
+        if _orchestrator is None:
+            _orchestrator = initialize_recursive_improvement_system()
+            
+        if _orchestrator:
+            _orchestrator.trigger_recursive_improvement("cross_repo_automation", {
+                "context": "automated_fixes",
+                "repositories_processed": results.get("summary", {}).get("total_repos", 0),
+                "fixes_applied": results.get("summary", {}).get("total_fixes_applied", 0),
+                "timestamp": datetime.now().isoformat()
+            })
+        
+        print("✓ Cross-repository automation completed!")
+        return {"status": "success", "results": results}
+        
+    except Exception as e:
+        print(f"✗ Cross-repository automation failed: {e}")
+        return {"status": "error", "message": str(e)}
+
+
+def get_cross_repository_status():
+    """Get status of all monitored repositories."""
+    try:
+        from cross_repository_automation import CrossRepositoryAutomator
+        
+        print(f"[{datetime.now()}] Checking cross-repository status...")
+        
+        automator = CrossRepositoryAutomator()
+        status = automator.get_repository_status()
+        
+        print("Cross-Repository Status:")
+        print("=" * 40)
+        print(f"Total Repositories: {status.get('total_repositories', 0)}")
+        
+        for repo_name, repo_info in status.get("repositories", {}).items():
+            print(f"  {repo_name}:")
+            print(f"    Full Name: {repo_info.get('full_name', 'Unknown')}")
+            print(f"    Status: {repo_info.get('status', 'Unknown')}")
+            print(f"    Pending Fixes: {repo_info.get('pending_fixes', 0)}")
+            print(f"    Open PRs: {repo_info.get('open_prs', 0)}")
+        
+        return {"status": "success", "data": status}
+        
+    except Exception as e:
+        print(f"✗ Failed to get cross-repository status: {e}")
+        return {"status": "error", "message": str(e)}
 
 
 # Cleanup function for graceful shutdown
