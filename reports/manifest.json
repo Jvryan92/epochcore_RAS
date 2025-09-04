@@ -1,0 +1,338 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2025-09-04T02:45:20.280463",
+  "repository": "Jvryan92/epochcore_RAS",
+  "system": "EpochCore RAS",
+  "agents": {
+    "feedback_loop_engine": {
+      "id": "feedback_loop_engine",
+      "name": "Recursive Feedback Loop Engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "active",
+      "capabilities": [
+        "audit",
+        "feedback_analysis",
+        "improvement_generation"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280428",
+      "health_score": 1.0
+    },
+    "experimentation_tree_engine": {
+      "id": "experimentation_tree_engine",
+      "name": "Autonomous Experimentation Tree Engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "active",
+      "capabilities": [
+        "experimentation",
+        "branch_expansion",
+        "autonomous_testing"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280431",
+      "health_score": 1.0
+    },
+    "self_cloning_mvp_agent": {
+      "id": "self_cloning_mvp_agent",
+      "name": "self_cloning_mvp_agent",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "agent_cloning",
+        "kpi_monitoring"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280432",
+      "health_score": 0.6
+    },
+    "asset_library_engine": {
+      "id": "asset_library_engine",
+      "name": "asset_library_engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280434",
+      "health_score": 0.6
+    },
+    "weekly_auto_debrief_bot": {
+      "id": "weekly_auto_debrief_bot",
+      "name": "weekly_auto_debrief_bot",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280435",
+      "health_score": 0.6
+    },
+    "kpi_mutation_engine": {
+      "id": "kpi_mutation_engine",
+      "name": "kpi_mutation_engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280437",
+      "health_score": 0.6
+    },
+    "autonomous_escalation_logic": {
+      "id": "autonomous_escalation_logic",
+      "name": "autonomous_escalation_logic",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280438",
+      "health_score": 0.6
+    },
+    "recursive_workflow_automation": {
+      "id": "recursive_workflow_automation",
+      "name": "recursive_workflow_automation",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "workflow_analysis",
+        "optimization"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280440",
+      "health_score": 0.6
+    },
+    "content_stack_tree": {
+      "id": "content_stack_tree",
+      "name": "content_stack_tree",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280441",
+      "health_score": 0.6
+    },
+    "self_improving_playbook_generator": {
+      "id": "self_improving_playbook_generator",
+      "name": "self_improving_playbook_generator",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280442",
+      "health_score": 0.6
+    },
+    "ai_code_review_bot": {
+      "id": "ai_code_review_bot",
+      "name": "AI Code Review Bot Engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "active",
+      "capabilities": [
+        "code_review",
+        "pattern_learning",
+        "pr_analysis"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280444",
+      "health_score": 1.0
+    },
+    "auto_refactor": {
+      "id": "auto_refactor",
+      "name": "auto_refactor",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "code_optimization",
+        "refactoring"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280445",
+      "health_score": 0.6
+    },
+    "dependency_health": {
+      "id": "dependency_health",
+      "name": "dependency_health",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "security_scanning",
+        "update_management"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280447",
+      "health_score": 0.6
+    },
+    "workflow_auditor": {
+      "id": "workflow_auditor",
+      "name": "workflow_auditor",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "workflow_analysis",
+        "optimization"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280448",
+      "health_score": 0.6
+    },
+    "doc_updater": {
+      "id": "doc_updater",
+      "name": "doc_updater",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "inactive",
+      "capabilities": [
+        "main_execution",
+        "pre_action",
+        "compounding",
+        "status_reporting",
+        "documentation_sync",
+        "content_management"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280450",
+      "health_score": 0.6
+    },
+    "process_3543": {
+      "id": "process_3543",
+      "name": "python",
+      "version": "1.0.0",
+      "type": "system_process",
+      "status": "active",
+      "capabilities": [
+        "system_process"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280451",
+      "health_score": 1.0
+    },
+    "auto_refactor_engine": {
+      "id": "auto_refactor_engine",
+      "name": "Auto Refactor Engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "active",
+      "capabilities": [
+        "code_refactoring",
+        "quality_improvement",
+        "pattern_detection"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280453",
+      "health_score": 1.0
+    },
+    "dependency_health_engine": {
+      "id": "dependency_health_engine",
+      "name": "Dependency Health Engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "active",
+      "capabilities": [
+        "security_scanning",
+        "dependency_updates",
+        "vulnerability_management"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280454",
+      "health_score": 1.0
+    },
+    "workflow_auditor_engine": {
+      "id": "workflow_auditor_engine",
+      "name": "Workflow Auditor Engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "active",
+      "capabilities": [
+        "workflow_analysis",
+        "security_audit",
+        "optimization_detection"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280456",
+      "health_score": 1.0
+    },
+    "doc_updater_engine": {
+      "id": "doc_updater_engine",
+      "name": "Documentation Updater Engine",
+      "version": "1.0.0",
+      "type": "recursive_engine",
+      "status": "active",
+      "capabilities": [
+        "documentation_sync",
+        "drift_detection",
+        "content_generation"
+      ],
+      "last_sync": "2025-09-04T02:45:20.280457",
+      "health_score": 1.0
+    }
+  },
+  "governance": {
+    "compliance_rules": [
+      "all_prs_require_audit_log",
+      "security_scan_required",
+      "governance_report_included",
+      "explainability_documented"
+    ],
+    "audit_trail": [],
+    "governance_score": 1.0,
+    "last_audit": "2025-09-04T02:35:00Z"
+  },
+  "ledger": {
+    "total_actions": 0,
+    "successful_prs": 0,
+    "failed_operations": 0,
+    "last_sync": "2025-09-04T02:35:00Z",
+    "sync_history": []
+  },
+  "repositories": [
+    "Jvryan92/epochcore_RAS"
+  ],
+  "metadata": {
+    "total_agents": 35,
+    "active_agents": 8,
+    "system_health": "operational",
+    "recursive_depth": 0,
+    "last_improvement": "2025-09-04T02:45:20.280461"
+  }
+}
