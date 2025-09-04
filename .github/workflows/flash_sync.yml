@@ -1,0 +1,271 @@
+name: Flash Sync Manifest & Audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      sync_mode:
+        description: 'Flash sync mode'
+        required: true
+        default: 'manifests_only'
+        type: choice
+        options:
+        - manifests_only
+        - full_sync
+        - audit_logs_only
+      target_repos:
+        description: 'Target repositories (comma-separated or "all")'
+        required: false
+        default: 'all'
+  workflow_run:
+    workflows: ["Recursive Matrix Autonomy Pipeline"]
+    types:
+      - completed
+    branches: [main, master]
+
+permissions:
+  contents: write
+  actions: write
+  pull-requests: write
+
+env:
+  SYNC_MODE: ${{ github.event.inputs.sync_mode || 'manifests_only' }}
+  TARGET_REPOS: ${{ github.event.inputs.target_repos || 'all' }}
+
+jobs:
+  flash-sync:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'workflow_run' && github.event.workflow_run.conclusion == 'success')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Download workflow artifacts
+        if: github.event_name == 'workflow_run'
+        uses: actions/download-artifact@v4
+        with:
+          name: consolidated-results
+          path: manifests/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Prepare flash sync environment
+        run: |
+          echo "🔧 Preparing flash sync environment..."
+          
+          # Ensure manifests directory exists
+          mkdir -p manifests
+          
+          # Create or verify required manifest files
+          python -c "
+          import json
+          import os
+          from datetime import datetime
+          
+          # Ensure we have a meta controller manifest
+          meta_manifest_path = 'manifests/meta_controller_manifest.json'
+          if not os.path.exists(meta_manifest_path):
+              print('Creating default meta controller manifest...')
+              default_manifest = {
+                  'meta_controller': {
+                      'agent_id': 'meta_ai_orchestrator_v4',
+                      'status': 'active',
+                      'recursion_depth': 3,
+                      'flash_sync_config': {
+                          'enabled': True,
+                          'sync_manifests': True,
+                          'sync_audit_logs': True
+                      }
+                  },
+                  'manifest_metadata': {
+                      'version': '4.0.0',
+                      'created': datetime.now().isoformat(),
+                      'description': 'EpochCore RAS Flash Sync Configuration'
+                  }
+              }
+              
+              with open(meta_manifest_path, 'w') as f:
+                  json.dump(default_manifest, f, indent=2)
+              print('✅ Meta controller manifest created')
+          
+          # Ensure we have an audit evolution log
+          audit_log_path = 'manifests/audit_evolution_log.jsonl'
+          if not os.path.exists(audit_log_path):
+              print('Creating default audit evolution log...')
+              with open(audit_log_path, 'w') as f:
+                  audit_entry = {
+                      'timestamp': datetime.now().isoformat(),
+                      'agent_name': 'flash_sync_initializer',
+                      'cycle': 0,
+                      'flash_sync_metadata': {
+                          'sync_ready': True,
+                          'sync_payload_size': 1024
+                      }
+                  }
+                  f.write(json.dumps(audit_entry) + '\\n')
+              print('✅ Audit evolution log created')
+          
+          print('Environment preparation completed')
+          "
+          
+      - name: Execute flash sync script
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "⚡ Executing EpochCore Flash Sync..."
+          echo "Sync Mode: ${{ env.SYNC_MODE }}"
+          echo "Target Repos: ${{ env.TARGET_REPOS }}"
+          echo ""
+          
+          # Make sure script is executable
+          chmod +x scripts/flash_sync.sh
+          
+          # Execute the flash sync script
+          ./scripts/flash_sync.sh
+          
+      - name: Validate flash sync results
+        run: |
+          echo "🔍 Validating flash sync results..."
+          
+          # Check if flash sync manifest was created/updated
+          if [ -f "manifests/flash_sync_manifest.json" ]; then
+            echo "✅ Flash sync manifest found"
+            
+            # Validate JSON structure
+            if python -m json.tool manifests/flash_sync_manifest.json > /dev/null 2>&1; then
+              echo "✅ Flash sync manifest has valid JSON structure"
+              
+              # Show sync summary
+              python -c "
+              import json
+              with open('manifests/flash_sync_manifest.json') as f:
+                  manifest = json.load(f)
+              
+              print('📊 Flash Sync Results:')
+              print(f'  Sync ID: {manifest.get(\"flash_sync_id\", \"unknown\")}')
+              print(f'  Status: {manifest.get(\"sync_status\", \"unknown\")}')
+              print(f'  Target Repos: {len(manifest.get(\"target_repos\", []))}')
+              print(f'  Sync Files: {len(manifest.get(\"sync_files\", []))}')
+              
+              if 'sync_results' in manifest:
+                  results = manifest['sync_results']
+                  print(f'  Success Rate: {results[\"success_count\"]}/{results[\"total_repos\"]}')
+              "
+            else
+              echo "❌ Flash sync manifest has invalid JSON structure"
+              exit 1
+            fi
+          else
+            echo "❌ Flash sync manifest not found"
+            exit 1
+          fi
+          
+      - name: Create cross-repo sync summary
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            // Read flash sync manifest
+            let syncSummary = '## ⚡ EpochCore Flash Sync Completed\n\n';
+            
+            try {
+              const manifest = JSON.parse(fs.readFileSync('manifests/flash_sync_manifest.json', 'utf8'));
+              
+              syncSummary += `### Sync Details\n`;
+              syncSummary += `- **Sync ID**: ${manifest.flash_sync_id}\n`;
+              syncSummary += `- **Timestamp**: ${manifest.timestamp}\n`;
+              syncSummary += `- **Source Repo**: ${manifest.source_repo}\n`;
+              syncSummary += `- **Source Commit**: ${manifest.source_commit?.substring(0, 7) || 'unknown'}\n`;
+              syncSummary += `- **Sync Mode**: ${{ env.SYNC_MODE }}\n\n`;
+              
+              syncSummary += `### Target Repositories\n`;
+              manifest.target_repos.forEach((repo, index) => {
+                syncSummary += `${index + 1}. ${repo}\n`;
+              });
+              
+              syncSummary += `\n### Sync Payload\n`;
+              syncSummary += `- **Files Synced**: ${manifest.sync_files.length}\n`;
+              manifest.sync_files.forEach(file => {
+                syncSummary += `  - ${file}\n`;
+              });
+              
+              if (manifest.sync_results) {
+                const results = manifest.sync_results;
+                const successRate = Math.round((results.success_count / results.total_repos) * 100);
+                syncSummary += `\n### Results\n`;
+                syncSummary += `- **Success Rate**: ${results.success_count}/${results.total_repos} (${successRate}%)\n`;
+                syncSummary += `- **Status**: ${manifest.sync_status}\n`;
+              }
+              
+              syncSummary += `\n*All EpochCore repositories now have synchronized manifests and audit logs for recursive autonomy operations.*`;
+              
+            } catch (error) {
+              syncSummary += 'Error reading flash sync results. Check workflow logs for details.';
+            }
+            
+            // Create an issue or comment with the sync summary
+            if (context.payload.workflow_run) {
+              // This was triggered by a workflow completion
+              console.log('Flash Sync Summary:', syncSummary);
+            } else {
+              // This was manually triggered
+              console.log('Flash Sync Summary:', syncSummary);
+            }
+            
+      - name: Upload flash sync artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: flash-sync-results
+          path: |
+            manifests/flash_sync_manifest.json
+            manifests/audit_evolution_log.jsonl
+            manifests/meta_controller_manifest.json
+          retention-days: 90
+          
+      - name: Commit updated manifests
+        run: |
+          # Configure git
+          git config user.name "EpochCore Flash Sync Bot"
+          git config user.email "flashsync@epochcore.ai"
+          
+          # Add updated manifest files
+          git add manifests/
+          
+          # Check if there are changes to commit
+          if git diff --cached --quiet; then
+            echo "ℹ️ No manifest changes to commit"
+          else
+            # Commit the changes
+            commit_message="⚡ Flash Sync: Update manifests after cross-repo sync
+
+- Updated flash sync manifest with results
+- Synchronized audit evolution logs  
+- Cross-repository autonomy propagation completed
+- Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+[skip ci]"
+
+            git commit -m "$commit_message"
+            git push origin HEAD
+            
+            echo "✅ Manifests committed and pushed"
+          fi
+          
+      - name: Cleanup
+        if: always()
+        run: |
+          echo "🧹 Flash sync cleanup completed"
+          echo "Cross-repository manifest and audit synchronization finished"

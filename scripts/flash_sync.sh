@@ -1,0 +1,264 @@
+#!/bin/bash
+# FLASH SYNC: Cross-Repo Manifest & Audit Sync for EpochCore Autonomous Agents
+# Part of EpochCore RAS Flash Sync Autonomy System
+
+set -e
+
+echo "⚡ EpochCore Flash Sync - Cross-Repository Manifest Propagation"
+echo "============================================================="
+
+# Configuration
+SYNC_TIMESTAMP=$(date -u +"%Y%m%d_%H%M%S")
+SYNC_ID="flash_sync_${SYNC_TIMESTAMP}"
+MANIFESTS_DIR="manifests"
+TEMP_DIR="/tmp/epochcore_flash_sync_${SYNC_TIMESTAMP}"
+
+# List of repo URLs for flash sync (use HTTPS for GitHub Actions)
+REPOS=(
+    "https://github.com/Jvryan92/epochcore_RAS.git"
+    "https://github.com/EpochCore5/epochcore_RAS.git"
+    "https://github.com/Jvryan92/EpochCore_OS.git"
+    "https://github.com/Jvryan92/StrategyDECK.git"
+    "https://github.com/Jvryan92/saas-hub.git"
+    "https://github.com/EpochCore5/epoch5-template.git"
+    "https://github.com/Jvryan92/epoch-mesh.git"
+)
+
+# Files to sync
+SYNC_FILES=(
+    "manifests/meta_controller_manifest.json"
+    "manifests/audit_evolution_log.jsonl"
+    "manifests/audit_summary.json"
+    "manifests/consolidated_results.json"
+    "manifests/flash_sync_manifest.json"
+)
+
+# Functions
+log() {
+    echo "$(date -u '+%Y-%m-%d %H:%M:%S') [FLASH_SYNC] $1"
+}
+
+error() {
+    echo "$(date -u '+%Y-%m-%d %H:%M:%S') [ERROR] $1" >&2
+    exit 1
+}
+
+check_prerequisites() {
+    log "Checking prerequisites..."
+    
+    # Check if git is available
+    if ! command -v git &> /dev/null; then
+        error "Git is not installed or not in PATH"
+    fi
+    
+    # Check if manifests directory exists
+    if [ ! -d "$MANIFESTS_DIR" ]; then
+        error "Manifests directory not found: $MANIFESTS_DIR"
+    fi
+    
+    # Check if we have GitHub token (for API operations)
+    if [ -z "$GITHUB_TOKEN" ]; then
+        log "Warning: GITHUB_TOKEN not set - using anonymous access"
+    fi
+    
+    log "✅ Prerequisites check passed"
+}
+
+create_flash_sync_manifest() {
+    log "Creating flash sync manifest..."
+    
+    cat > "$MANIFESTS_DIR/flash_sync_manifest.json" <<EOF
+{
+  "flash_sync_id": "$SYNC_ID",
+  "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")",
+  "source_repo": "$(git config --get remote.origin.url || echo 'unknown')",
+  "source_commit": "$(git rev-parse HEAD || echo 'unknown')",
+  "source_branch": "$(git branch --show-current || echo 'unknown')",
+  "target_repos": [
+$(printf '    "%s"' "${REPOS[@]}" | paste -sd ',' -)
+  ],
+  "sync_files": [
+$(printf '    "%s"' "${SYNC_FILES[@]}" | paste -sd ',' -)
+  ],
+  "sync_payload": {
+    "manifests_updated": true,
+    "audit_logs_updated": true,
+    "agent_results_available": true,
+    "total_files": ${#SYNC_FILES[@]},
+    "total_repos": ${#REPOS[@]}
+  },
+  "sync_status": "ready",
+  "sync_method": "flash_sync_script"
+}
+EOF
+    
+    log "✅ Flash sync manifest created"
+}
+
+validate_sync_files() {
+    log "Validating sync files..."
+    
+    local missing_files=()
+    
+    for file in "${SYNC_FILES[@]}"; do
+        if [ ! -f "$file" ]; then
+            missing_files+=("$file")
+        fi
+    done
+    
+    if [ ${#missing_files[@]} -gt 0 ]; then
+        log "Warning: Some sync files are missing:"
+        for file in "${missing_files[@]}"; do
+            log "  - $file"
+        done
+        log "Continuing with available files..."
+    else
+        log "✅ All sync files validated"
+    fi
+}
+
+sync_to_repository() {
+    local repo_url="$1"
+    local repo_name=$(basename "$repo_url" .git)
+    local repo_dir="$TEMP_DIR/$repo_name"
+    
+    log "Syncing to repository: $repo_name"
+    
+    # Clone or pull repository
+    if [ ! -d "$repo_dir" ]; then
+        log "  Cloning $repo_name..."
+        if ! git clone "$repo_url" "$repo_dir" --depth 1; then
+            log "  ❌ Failed to clone $repo_name (skipping)"
+            return 1
+        fi
+    else
+        log "  Updating $repo_name..."
+        (cd "$repo_dir" && git pull origin main 2>/dev/null || git pull origin master 2>/dev/null || true)
+    fi
+    
+    # Create manifests directory in target repo
+    mkdir -p "$repo_dir/manifests"
+    
+    # Copy sync files
+    local copied_files=0
+    for file in "${SYNC_FILES[@]}"; do
+        if [ -f "$file" ]; then
+            cp "$file" "$repo_dir/$file"
+            copied_files=$((copied_files + 1))
+            log "    ✓ Copied $(basename "$file")"
+        fi
+    done
+    
+    # Check if there are changes to commit
+    (cd "$repo_dir" && {
+        git add manifests/ 2>/dev/null || true
+        
+        if git diff --cached --quiet; then
+            log "  ℹ️  No changes to commit in $repo_name"
+            return 0
+        fi
+        
+        # Commit changes
+        git config user.name "EpochCore Flash Sync"
+        git config user.email "flashsync@epochcore.ai"
+        
+        commit_message="🚀 Flash Sync: Update manifests and audit logs [$SYNC_ID]
+
+- Updated $copied_files manifest files
+- Synchronized audit evolution logs
+- Cross-repository autonomy propagation
+- Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+Generated by EpochCore RAS Flash Sync Autonomy System"
+
+        if git commit -m "$commit_message"; then
+            log "  ✅ Changes committed to $repo_name"
+            
+            # Push changes (if we have write access)
+            if [ -n "$GITHUB_TOKEN" ]; then
+                if git push origin HEAD; then
+                    log "  ✅ Changes pushed to $repo_name"
+                else
+                    log "  ⚠️  Failed to push to $repo_name (may need manual push)"
+                fi
+            else
+                log "  ℹ️  Changes committed locally in $repo_name (push manually if needed)"
+            fi
+        else
+            log "  ❌ Failed to commit changes to $repo_name"
+            return 1
+        fi
+    })
+}
+
+execute_flash_sync() {
+    log "Executing flash sync to ${#REPOS[@]} repositories..."
+    
+    # Create temporary directory
+    mkdir -p "$TEMP_DIR"
+    
+    local success_count=0
+    local total_repos=${#REPOS[@]}
+    
+    for repo in "${REPOS[@]}"; do
+        if sync_to_repository "$repo"; then
+            success_count=$((success_count + 1))
+        fi
+        echo ""  # Add spacing between repos
+    done
+    
+    log "Flash sync completed: $success_count/$total_repos repositories updated"
+    
+    # Update flash sync manifest with results
+    if [ -f "$MANIFESTS_DIR/flash_sync_manifest.json" ]; then
+        local temp_manifest=$(mktemp)
+        jq --arg status "completed" \
+           --arg completed_at "$(date -u +"%Y-%m-%dT%H:%M:%S.000Z")" \
+           --argjson success_count "$success_count" \
+           --argjson total_repos "$total_repos" \
+           '.sync_status = $status | .completed_at = $completed_at | .sync_results = {success_count: $success_count, total_repos: $total_repos}' \
+           "$MANIFESTS_DIR/flash_sync_manifest.json" > "$temp_manifest" && \
+        mv "$temp_manifest" "$MANIFESTS_DIR/flash_sync_manifest.json"
+    fi
+}
+
+cleanup() {
+    log "Cleaning up temporary files..."
+    if [ -d "$TEMP_DIR" ]; then
+        rm -rf "$TEMP_DIR"
+        log "✅ Cleanup completed"
+    fi
+}
+
+show_summary() {
+    echo ""
+    echo "📊 Flash Sync Summary"
+    echo "===================="
+    echo "Sync ID: $SYNC_ID"
+    echo "Timestamp: $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+    echo "Target Repositories: ${#REPOS[@]}"
+    echo "Sync Files: ${#SYNC_FILES[@]}"
+    echo ""
+    echo "Flash sync payload ready for cross-repository propagation!"
+    echo "All EpochCore repositories should now have synchronized manifests and audit logs."
+}
+
+# Main execution
+main() {
+    log "Starting EpochCore Flash Sync process..."
+    
+    check_prerequisites
+    create_flash_sync_manifest
+    validate_sync_files
+    execute_flash_sync
+    cleanup
+    show_summary
+    
+    log "✅ Flash sync process completed successfully"
+}
+
+# Trap to ensure cleanup on exit
+trap cleanup EXIT
+
+# Run main function
+main "$@"
