@@ -9,15 +9,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
-        with: { node-version: 18, cache: 'npm' }
-      - run: npm ci
+        with: { node-version: 18 }
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.12'
+      - name: Install Node.js dependencies
+        run: npm install
+      - name: Setup Python environment
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install --upgrade pip
+          pip install -r requirements.txt
       - name: Prepare triggers
         run: |
-          mkdir -p data/triggers
-          # If triggers are tracked in-repo, they'll already be present.
-          # If you sync from elsewhere, add that step here (e.g., curl/gh release).
-      - name: Execute (dry-run)
-        run: TRIGGER_LIMIT=25 node scripts/triggers_executor.mjs
+          mkdir -p data/triggers ops/trigger_runs
+          # Generate sample trigger files if none exist
+          echo '{"triggers": ["system_health", "performance_check"]}' > data/triggers/sample.json
+      - name: Validate Python system
+        run: |
+          source venv/bin/activate
+          python integration.py status
+      - name: Execute triggers (dry-run)
+        run: TRIGGER_LIMIT=25 DRY_RUN=true node scripts/triggers_executor.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: trigger-run-${{ github.run_id }}

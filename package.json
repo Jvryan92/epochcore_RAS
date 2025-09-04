@@ -1,0 +1,12 @@
+{
+  "name": "epochcore-ras",
+  "version": "1.0.0", 
+  "description": "EpochCore RAS - Recursive Autonomous Software",
+  "type": "module",
+  "scripts": {
+    "triggers": "node scripts/triggers_executor.mjs"
+  },
+  "keywords": ["automation", "ai", "ras", "workflows"],
+  "author": "EpochCore Team",
+  "license": "MIT"
+}
