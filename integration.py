@@ -199,6 +199,9 @@ def main():
     subparsers.add_parser("init-recursive", help="Initialize recursive improvement system")
     subparsers.add_parser("recursive-status", help="Get detailed recursive improvement status")
     subparsers.add_parser("trigger-improvement", help="Manually trigger recursive improvements")
+    subparsers.add_parser("epochmastery-sync", help="Run full EPOCHMASTERY AGENTIC SYNC")
+    subparsers.add_parser("epochmastery-status", help="Get EPOCHMASTERY sync system status")
+    subparsers.add_parser("epochmastery-discover", help="Discover all agents and modules")
     
     args = parser.parse_args()
     
@@ -222,6 +225,15 @@ def main():
         return 0 if result.get("status") == "operational" else 1
     elif args.command == "trigger-improvement":
         result = trigger_manual_improvement()
+        return 0 if result.get("status") == "success" else 1
+    elif args.command == "epochmastery-sync":
+        result = run_epochmastery_sync()
+        return 0 if result.get("overall_status") == "completed" else 1
+    elif args.command == "epochmastery-status":
+        result = get_epochmastery_status()
+        return 0 if result.get("status") == "operational" else 1
+    elif args.command == "epochmastery-discover":
+        result = discover_epochmastery_agents()
         return 0 if result.get("status") == "success" else 1
     else:
         parser.print_help()
@@ -292,6 +304,159 @@ def cleanup_recursive_system():
     if _orchestrator:
         _orchestrator.shutdown()
         _orchestrator = None
+
+
+def run_epochmastery_sync():
+    """Run full EPOCHMASTERY AGENTIC SYNC & AUTO-PR workflow."""
+    try:
+        from epochmastery_sync import EpochmasteryAgentSync
+        
+        print("🚀 STARTING EPOCHMASTERY AGENTIC SYNC & AUTO-PR")
+        print("=" * 50)
+        
+        sync_system = EpochmasteryAgentSync()
+        result = sync_system.run_full_epochmastery_sync()
+        
+        print(f"\n✅ EPOCHMASTERY Sync Session: {result['session_id']}")
+        print(f"📊 Overall Status: {result['overall_status'].upper()}")
+        
+        if result.get('phases'):
+            print("\n📋 Phase Results:")
+            for phase, data in result['phases'].items():
+                status_icon = "✅" if data['status'] == 'completed' else "⚠️" if data['status'] == 'partial' else "❌"
+                print(f"  {status_icon} {phase.replace('_', ' ').title()}: {data['status']}")
+                
+                # Show key metrics for each phase
+                if 'agents_found' in data:
+                    print(f"    - Agents Found: {data['agents_found']}")
+                if 'agents_synced' in data:
+                    print(f"    - Agents Synced: {data['agents_synced']}")
+                if 'prs_created' in data:
+                    print(f"    - PRs Created: {data['prs_created']}")
+                if 'compliance_score' in data:
+                    print(f"    - Compliance Score: {data['compliance_score']}")
+                if 'agents_notified' in data:
+                    print(f"    - Agents Notified: {data['agents_notified']}")
+        
+        if result['overall_status'] == 'completed':
+            print("\n🎉 EPOCHMASTERY SYNC COMPLETED SUCCESSFULLY!")
+            print("All agents synchronized, PRs generated, and feedback cycles activated.")
+        else:
+            print(f"\n⚠️ EPOCHMASTERY SYNC COMPLETED WITH ISSUES:")
+            if 'error' in result:
+                print(f"Error: {result['error']}")
+        
+        return result
+        
+    except Exception as e:
+        print(f"❌ EPOCHMASTERY Sync failed: {e}")
+        return {"overall_status": "failed", "error": str(e)}
+
+
+def get_epochmastery_status():
+    """Get EPOCHMASTERY sync system status."""
+    try:
+        from epochmastery_sync import EpochmasteryAgentSync
+        
+        sync_system = EpochmasteryAgentSync()
+        manifest = sync_system._load_manifest()
+        
+        print("EPOCHMASTERY AGENTIC SYNC System Status:")
+        print("=" * 45)
+        
+        # System metadata
+        metadata = manifest.get('metadata', {})
+        print(f"📊 Total Agents: {metadata.get('total_agents', 0)}")
+        print(f"🟢 Active Agents: {metadata.get('active_agents', 0)}")
+        print(f"💚 System Health: {metadata.get('system_health', 'Unknown')}")
+        print(f"📅 Last Update: {metadata.get('last_improvement', 'Unknown')}")
+        
+        # Governance status
+        governance = manifest.get('governance', {})
+        print(f"\n🛡️ Governance:")
+        print(f"   Compliance Score: {governance.get('governance_score', 'Unknown')}")
+        print(f"   Last Audit: {governance.get('last_audit', 'Unknown')}")
+        print(f"   Rules: {len(governance.get('compliance_rules', []))}")
+        
+        # Ledger status  
+        ledger = manifest.get('ledger', {})
+        print(f"\n📔 Ledger:")
+        print(f"   Total Actions: {ledger.get('total_actions', 0)}")
+        print(f"   Successful PRs: {ledger.get('successful_prs', 0)}")
+        print(f"   Failed Operations: {ledger.get('failed_operations', 0)}")
+        print(f"   Last Sync: {ledger.get('last_sync', 'Unknown')}")
+        
+        # Agent details
+        agents = manifest.get('agents', {})
+        if agents:
+            print(f"\n🤖 Active Agents ({len(agents)}):")
+            for agent_id, agent_data in agents.items():
+                status_icon = "🟢" if agent_data.get('status') == 'active' else "🔴"
+                health = agent_data.get('health_score', 'Unknown')
+                print(f"   {status_icon} {agent_data.get('name', agent_id)} (Health: {health})")
+        
+        return {
+            "status": "operational" if metadata.get('system_health') == 'operational' else "unknown",
+            "details": manifest
+        }
+        
+    except Exception as e:
+        print(f"❌ Failed to get EPOCHMASTERY status: {e}")
+        return {"status": "error", "error": str(e)}
+
+
+def discover_epochmastery_agents():
+    """Discover all EPOCHMASTERY agents and modules."""
+    try:
+        from epochmastery_sync import EpochmasteryAgentSync
+        
+        print("🔍 DISCOVERING EPOCHMASTERY AGENTS & MODULES")
+        print("=" * 45)
+        
+        sync_system = EpochmasteryAgentSync()
+        agents = sync_system.discover_all_agents()
+        
+        print(f"📊 Total Agents Discovered: {len(agents)}")
+        print("\n🤖 Agent Registry:")
+        
+        # Group agents by type
+        agent_types = {}
+        for agent in agents:
+            agent_type = agent.get('type', 'unknown')
+            if agent_type not in agent_types:
+                agent_types[agent_type] = []
+            agent_types[agent_type].append(agent)
+        
+        for agent_type, type_agents in agent_types.items():
+            print(f"\n  📂 {agent_type.replace('_', ' ').title()} ({len(type_agents)}):")
+            for agent in type_agents:
+                name = agent.get('name', agent.get('id', 'Unknown'))
+                status = agent.get('status', 'unknown')
+                health = agent.get('health_score', 'N/A')
+                status_icon = "🟢" if status == 'active' else "🟡" if status == 'inactive' else "🔴"
+                
+                print(f"    {status_icon} {name}")
+                print(f"       ID: {agent.get('id', 'Unknown')}")
+                print(f"       Status: {status}")
+                print(f"       Health: {health}")
+                
+                capabilities = agent.get('capabilities', [])
+                if capabilities:
+                    print(f"       Capabilities: {', '.join(capabilities[:3])}")
+                    if len(capabilities) > 3:
+                        print(f"                     + {len(capabilities) - 3} more...")
+        
+        print(f"\n✅ Agent discovery completed successfully!")
+        return {
+            "status": "success",
+            "agents_found": len(agents),
+            "agent_types": len(agent_types),
+            "details": agents
+        }
+        
+    except Exception as e:
+        print(f"❌ Agent discovery failed: {e}")
+        return {"status": "error", "error": str(e)}
 
 if __name__ == "__main__":
     try:

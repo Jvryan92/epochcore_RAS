@@ -6,7 +6,7 @@
       "type": "recursive_engine",
       "class_name": "RecursiveFeedbackLoopEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251101",
+      "discovered_at": "2025-09-03T12:30:25.237541",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -29,7 +29,7 @@
       "type": "recursive_engine",
       "class_name": "AutonomousExperimentationTreeEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251119",
+      "discovered_at": "2025-09-03T12:30:25.237563",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -52,7 +52,7 @@
       "type": "recursive_engine",
       "class_name": "SelfCloningMVPAgentEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251133",
+      "discovered_at": "2025-09-03T12:30:25.237577",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -75,7 +75,7 @@
       "type": "recursive_engine",
       "class_name": "AssetLibraryEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251143",
+      "discovered_at": "2025-09-03T12:30:25.237585",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -96,7 +96,7 @@
       "type": "recursive_engine",
       "class_name": "WeeklyAutoDebriefBotEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251152",
+      "discovered_at": "2025-09-03T12:30:25.237590",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -117,7 +117,7 @@
       "type": "recursive_engine",
       "class_name": "KPIMutationEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251162",
+      "discovered_at": "2025-09-03T12:30:25.237595",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -138,7 +138,7 @@
       "type": "recursive_engine",
       "class_name": "AutonomousEscalationLogicEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251167",
+      "discovered_at": "2025-09-03T12:30:25.237599",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -159,7 +159,7 @@
       "type": "recursive_engine",
       "class_name": "RecursiveWorkflowAutomationEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251171",
+      "discovered_at": "2025-09-03T12:30:25.237604",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -182,7 +182,7 @@
       "type": "recursive_engine",
       "class_name": "ContentStackTreeEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251176",
+      "discovered_at": "2025-09-03T12:30:25.237608",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -203,7 +203,7 @@
       "type": "recursive_engine",
       "class_name": "SelfImprovingPlaybookGeneratorEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251181",
+      "discovered_at": "2025-09-03T12:30:25.237612",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -224,7 +224,7 @@
       "type": "recursive_engine",
       "class_name": "AICodeReviewBotEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251186",
+      "discovered_at": "2025-09-03T12:30:25.237617",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -247,7 +247,7 @@
       "type": "recursive_engine",
       "class_name": "AutoRefactorEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251196",
+      "discovered_at": "2025-09-03T12:30:25.237627",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -270,7 +270,7 @@
       "type": "recursive_engine",
       "class_name": "DependencyHealthEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251202",
+      "discovered_at": "2025-09-03T12:30:25.237633",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -293,7 +293,7 @@
       "type": "recursive_engine",
       "class_name": "WorkflowAuditorEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251208",
+      "discovered_at": "2025-09-03T12:30:25.237639",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -316,7 +316,7 @@
       "type": "recursive_engine",
       "class_name": "DocUpdaterEngine",
       "status": "inactive",
-      "discovered_at": "2025-09-04T02:42:44.251216",
+      "discovered_at": "2025-09-03T12:30:25.237647",
       "capabilities": [
         "main_execution",
         "pre_action",
@@ -332,29 +332,13 @@
         "running": true,
         "uptime": 0
       }
-    },
-    "process_3543": {
-      "id": "process_3543",
-      "name": "python",
-      "type": "system_process",
-      "class_name": "SystemProcess",
-      "status": "active",
-      "discovered_at": "2025-09-04T02:42:44.263509",
-      "capabilities": [
-        "system_process"
-      ],
-      "health_score": 1.0,
-      "kpi_metrics": {
-        "pid": 3543,
-        "cmdline": "python integration.py epochmastery-sync"
-      }
     }
   },
   "metadata": {
-    "last_sync": "2025-09-04T02:42:44.264180",
-    "total_agents": 16,
-    "active_agents": 1,
+    "last_sync": "2025-09-03T12:30:25.259300",
+    "total_agents": 15,
+    "active_agents": 0,
     "health_status": "warning",
-    "backup_count": 2
+    "backup_count": 1
   }
 }
