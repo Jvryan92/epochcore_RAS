@@ -1,0 +1,318 @@
+name: Recursive Matrix Autonomy Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      agents:
+        description: 'Specific agents to run (comma-separated, or "all")'
+        required: false
+        default: 'all'
+      recursion_depth:
+        description: 'Recursion depth (1-5)'
+        required: false
+        default: '3'
+      sync_repos:
+        description: 'Enable cross-repo sync'
+        required: false
+        default: 'true'
+        type: boolean
+
+env:
+  RECURSION_DEPTH: ${{ github.event.inputs.recursion_depth || '3' }}
+  SYNC_ENABLED: ${{ github.event.inputs.sync_repos || 'true' }}
+
+jobs:
+  matrix-setup:
+    runs-on: ubuntu-latest
+    outputs:
+      agents: ${{ steps.setup.outputs.agents }}
+      manifest-path: ${{ steps.setup.outputs.manifest-path }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup agent matrix
+        id: setup
+        run: |
+          # Determine which agents to run
+          AGENT_INPUT="${{ github.event.inputs.agents || 'all' }}"
+          
+          if [ "$AGENT_INPUT" = "all" ]; then
+            AGENTS='[
+              "kpi_prediction_agent",
+              "failure_remediation_agent", 
+              "portfolio_optimizer",
+              "meta_experiment_cascade",
+              "resource_allocation_agent",
+              "compliance_auditor",
+              "innovation_diffuser",
+              "user_feedback_engine",
+              "explainability_agent",
+              "agent_registry",
+              "audit_evolution_manager"
+            ]'
+          else
+            # Convert comma-separated input to JSON array
+            AGENTS=$(echo "$AGENT_INPUT" | jq -R -s -c 'split(",") | map(select(length > 0) | gsub("^\\s+|\\s+$";""))')
+          fi
+          
+          echo "agents=$AGENTS" >> $GITHUB_OUTPUT
+          echo "manifest-path=manifests/meta_controller_manifest.json" >> $GITHUB_OUTPUT
+          
+          echo "Agent matrix configured: $AGENTS"
+
+  recursive-agent-execution:
+    needs: matrix-setup
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        agent: ${{ fromJson(needs.matrix-setup.outputs.agents) }}
+      fail-fast: false
+      max-parallel: 11  # Run all agents in parallel
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create manifests directory
+        run: mkdir -p manifests
+
+      - name: Execute recursive agent
+        id: execute
+        run: |
+          echo "Executing agent: ${{ matrix.agent }}"
+          echo "Recursion depth: ${{ env.RECURSION_DEPTH }}"
+          
+          # Run the specific agent
+          cd agents
+          python ${{ matrix.agent }}.py
+          
+          # Verify manifest was created
+          MANIFEST_FILE="manifests/${{ matrix.agent }}_results.json"
+          if [ -f "../$MANIFEST_FILE" ]; then
+            echo "✅ Agent ${{ matrix.agent }} executed successfully"
+            echo "manifest-created=true" >> $GITHUB_OUTPUT
+          else
+            echo "❌ Agent ${{ matrix.agent }} failed to create manifest"
+            echo "manifest-created=false" >> $GITHUB_OUTPUT
+            exit 1
+          fi
+
+      - name: Validate agent output
+        run: |
+          MANIFEST_FILE="manifests/${{ matrix.agent }}_results.json"
+          if [ -f "$MANIFEST_FILE" ]; then
+            echo "Validating $MANIFEST_FILE..."
+            python -c "
+import json
+import sys
+
+try:
+    with open('$MANIFEST_FILE', 'r') as f:
+        data = json.load(f)
+    
+    # Validate required fields
+    required_fields = ['agent_id', 'execution_time', 'status', 'cycles_completed']
+    for field in required_fields:
+        if field not in data:
+            print(f'❌ Missing required field: {field}')
+            sys.exit(1)
+    
+    if data['status'] != 'success':
+        print(f'❌ Agent execution status: {data[\"status\"]}')
+        sys.exit(1)
+        
+    print('✅ Manifest validation passed')
+    print(f'Agent: {data[\"agent_id\"]}')
+    print(f'Cycles: {data[\"cycles_completed\"]}')
+    print(f'Status: {data[\"status\"]}')
+    
+except Exception as e:
+    print(f'❌ Manifest validation failed: {e}')
+    sys.exit(1)
+"
+          fi
+
+      - name: Upload agent artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: agent-${{ matrix.agent }}-results
+          path: |
+            manifests/${{ matrix.agent }}_results.json
+            manifests/audit_evolution_log.jsonl
+          retention-days: 30
+
+  orchestration-summary:
+    needs: [matrix-setup, recursive-agent-execution]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: ./artifacts
+
+      - name: Aggregate results
+        run: |
+          echo "Aggregating recursive autonomy results..."
+          python -c "
+import json
+import os
+import glob
+from datetime import datetime
+
+# Collect all agent results
+results = []
+artifacts_dir = './artifacts'
+
+for agent_dir in glob.glob(f'{artifacts_dir}/agent-*-results'):
+    for manifest_file in glob.glob(f'{agent_dir}/*_results.json'):
+        try:
+            with open(manifest_file, 'r') as f:
+                result = json.load(f)
+                results.append(result)
+        except Exception as e:
+            print(f'Error reading {manifest_file}: {e}')
+
+# Create orchestration summary
+summary = {
+    'meta_orchestrator': {
+        'execution_time': datetime.utcnow().isoformat(),
+        'pipeline_id': '${{ github.run_id }}',
+        'agents_executed': len(results),
+        'total_cycles': sum(r.get('cycles_completed', 0) for r in results),
+        'success_rate': len([r for r in results if r.get('status') == 'success']) / len(results) if results else 0,
+        'recursion_depth': ${{ env.RECURSION_DEPTH }},
+        'parallel_execution': True,
+        'agent_results': results
+    }
+}
+
+# Save orchestration summary
+os.makedirs('manifests', exist_ok=True)
+with open('manifests/orchestration_summary.json', 'w') as f:
+    json.dump(summary, f, indent=2)
+
+print(f'✅ Orchestration complete: {len(results)} agents executed')
+print(f'Success rate: {summary[\"meta_orchestrator\"][\"success_rate\"]:.1%}')
+print(f'Total cycles: {summary[\"meta_orchestrator\"][\"total_cycles\"]}')
+"
+
+      - name: Flash sync preparation
+        if: env.SYNC_ENABLED == 'true'
+        run: |
+          echo "Preparing flash sync artifacts..."
+          
+          # Create sync package
+          mkdir -p sync-package
+          cp -r manifests sync-package/
+          cp -r agents sync-package/
+          
+          # Create sync metadata
+          cat > sync-package/sync_metadata.json << EOF
+          {
+            "sync_timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "source_repo": "${{ github.repository }}",
+            "workflow_run": "${{ github.run_id }}",
+            "agents_synced": $(cat manifests/orchestration_summary.json | jq '.meta_orchestrator.agents_executed'),
+            "sync_strategy": "flash_propagation",
+            "target_repos": [
+              "Jvryan92/epochcore_RAS",
+              "EpochCore5/epochcore_RAS", 
+              "Jvryan92/EpochCore_OS",
+              "Jvryan92/StategyDECK",
+              "Jvryan92/saas-hub",
+              "EpochCore5/epoch5-template",
+              "Jvryan92/epoch-mesh"
+            ]
+          }
+          EOF
+
+      - name: Upload orchestration artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: orchestration-summary
+          path: |
+            manifests/orchestration_summary.json
+            sync-package/
+          retention-days: 90
+
+      - name: Integration validation
+        run: |
+          echo "Running integration validation..."
+          python integration.py setup-demo
+          python integration.py validate
+          echo "✅ Integration validation complete"
+
+  cross-repo-sync:
+    needs: [orchestration-summary]
+    runs-on: ubuntu-latest
+    if: github.event.inputs.sync_repos == 'true' || github.event_name == 'push'
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Download orchestration artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: orchestration-summary
+          path: ./sync-artifacts
+
+      - name: Flash sync execution
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "🚀 FLASH SYNC: Cross-repo manifest propagation"
+          
+          # Note: In a real implementation, this would use the GitHub API
+          # to create PRs or direct commits to target repositories
+          # For now, we'll just prepare the sync data
+          
+          echo "Sync artifacts prepared:"
+          find sync-artifacts -type f -name "*.json" | head -10
+          
+          echo "✅ Flash sync preparation complete"
+          echo "📦 Ready for portfolio-wide deployment"
+
+      - name: Sync status report
+        run: |
+          echo "📊 SYNC RITUAL COMPLETE"
+          echo "================================"
+          echo "Execution timestamp: $(date -u)"
+          echo "Workflow run: ${{ github.run_id }}"
+          echo "Repository: ${{ github.repository }}"
+          echo "Manifests ready for cross-repo propagation"
+          echo "Audit logs appended to manifests/audit_evolution_log.jsonl"
+          echo "Portfolio-wide flash sync artifacts available"
+          echo "🎯 Ready for autonomous recursive operation!"
