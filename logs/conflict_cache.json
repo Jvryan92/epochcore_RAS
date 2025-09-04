@@ -1,0 +1,17 @@
+{
+  "test/repo#123": {
+    "pr_number": 123,
+    "repo_name": "test/repo",
+    "source_branch": "feature",
+    "target_branch": "main",
+    "conflicts": [
+      "file1.py"
+    ],
+    "conflict_severity": "low",
+    "auto_resolvable": false,
+    "requires_manual_review": true,
+    "resolution_strategy": "require_manual",
+    "estimated_resolution_time": 30,
+    "dependencies": []
+  }
+}

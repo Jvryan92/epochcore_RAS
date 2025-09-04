@@ -203,6 +203,11 @@ def main():
     subparsers.add_parser("epochmastery-status", help="Get EPOCHMASTERY sync system status")
     subparsers.add_parser("epochmastery-discover", help="Discover all agents and modules")
     
+    # Add workflow conflict resolution commands
+    subparsers.add_parser("workflow-analyze", help="Analyze workflow conflicts and PRs")
+    subparsers.add_parser("workflow-process", help="Process merge queue and execute merges")
+    subparsers.add_parser("workflow-status", help="Get workflow conflict resolver status")
+    
     args = parser.parse_args()
     
     if args.command == "setup-demo":
@@ -234,6 +239,15 @@ def main():
         return 0 if result.get("status") == "operational" else 1
     elif args.command == "epochmastery-discover":
         result = discover_epochmastery_agents()
+        return 0 if result.get("status") == "success" else 1
+    elif args.command == "workflow-analyze":
+        result = run_workflow_conflict_analysis()
+        return 0 if result.get("status") == "success" else 1
+    elif args.command == "workflow-process":
+        result = process_merge_queue()
+        return 0 if result.get("status") == "success" else 1
+    elif args.command == "workflow-status":
+        result = get_workflow_status()
         return 0 if result.get("status") == "success" else 1
     else:
         parser.print_help()
@@ -456,6 +470,149 @@ def discover_epochmastery_agents():
         
     except Exception as e:
         print(f"❌ Agent discovery failed: {e}")
+        return {"status": "error", "error": str(e)}
+
+
+def run_workflow_conflict_analysis():
+    """Run comprehensive workflow conflict analysis and resolution."""
+    try:
+        from workflow_conflict_resolver import WorkflowConflictResolver
+        import asyncio
+        
+        print("🔄 WORKFLOW CONFLICT ANALYSIS & RESOLUTION")
+        print("=" * 45)
+        
+        resolver = WorkflowConflictResolver()
+        
+        async def run_analysis():
+            # Run comprehensive analysis
+            analysis = await resolver.run_comprehensive_analysis()
+            
+            # Display results
+            print(f"📊 Analysis Results:")
+            print(f"   • Discovered PRs: {analysis.get('discovered_prs', 0)}")
+            print(f"   • Analyzed Conflicts: {analysis.get('analyzed_conflicts', 0)}")
+            print(f"   • Queue Additions: {analysis.get('queue_additions', 0)}")
+            print(f"   • Auto-resolvable: {analysis.get('auto_resolvable', 0)}")
+            print(f"   • Manual Review Required: {analysis.get('manual_review_required', 0)}")
+            print(f"   • High Priority: {analysis.get('high_priority', 0)}")
+            print(f"   • Repositories: {analysis.get('repositories_analyzed', 0)}")
+            
+            # Show recommendations
+            recommendations = analysis.get('recommendations', [])
+            if recommendations:
+                print(f"\n💡 Recommendations:")
+                for rec in recommendations:
+                    print(f"   • {rec}")
+            
+            # Show queue status
+            queue_status = analysis.get('queue_status', {})
+            if queue_status:
+                print(f"\n📋 Merge Queue Status:")
+                print(f"   • Queue Size: {queue_status.get('queue_size', 0)}")
+                print(f"   • Estimated Completion: {queue_status.get('estimated_completion_minutes', 0)} min")
+                
+                breakdown = queue_status.get('breakdown', {})
+                if breakdown.get('by_status'):
+                    print(f"   • By Status: {breakdown['by_status']}")
+            
+            return analysis
+        
+        # Run the async analysis
+        result = asyncio.run(run_analysis())
+        
+        print(f"\n✅ Workflow conflict analysis completed!")
+        return {"status": "success", "details": result}
+        
+    except Exception as e:
+        print(f"❌ Workflow conflict analysis failed: {e}")
+        return {"status": "error", "error": str(e)}
+
+
+def process_merge_queue():
+    """Process the merge queue and execute automated merges."""
+    try:
+        from workflow_conflict_resolver import WorkflowConflictResolver
+        import asyncio
+        
+        print("🚀 PROCESSING MERGE QUEUE")
+        print("=" * 30)
+        
+        resolver = WorkflowConflictResolver()
+        
+        async def run_processing():
+            # Process merge queue
+            result = await resolver.process_merge_queue()
+            
+            # Display results
+            print(f"📊 Processing Results:")
+            print(f"   • Processed: {result.get('processed', 0)}")
+            print(f"   • Successful: {result.get('successful', 0)}")
+            print(f"   • Failed: {result.get('failed', 0)}")
+            print(f"   • Skipped: {result.get('skipped', 0)}")
+            print(f"   • Queue Size: {result.get('queue_size', 0)}")
+            
+            # Show processing details
+            details = result.get('processing_details', [])
+            if details:
+                print(f"\n📝 Processing Details:")
+                for detail in details:
+                    status_icon = "✅" if detail['result'] == 'success' else "❌" if detail['result'] == 'failed' else "⏭️"
+                    print(f"   {status_icon} {detail['pr']}: {detail['result']}")
+                    if detail.get('details'):
+                        print(f"      {detail['details']}")
+            
+            return result
+        
+        # Run the async processing
+        result = asyncio.run(run_processing())
+        
+        print(f"\n✅ Merge queue processing completed!")
+        return {"status": "success", "details": result}
+        
+    except Exception as e:
+        print(f"❌ Merge queue processing failed: {e}")
+        return {"status": "error", "error": str(e)}
+
+
+def get_workflow_status():
+    """Get workflow conflict resolver status."""
+    try:
+        from workflow_conflict_resolver import WorkflowConflictResolver
+        
+        print("📊 WORKFLOW STATUS")
+        print("=" * 20)
+        
+        resolver = WorkflowConflictResolver()
+        status = resolver.get_queue_status()
+        
+        # Display status
+        print(f"📋 Merge Queue:")
+        print(f"   • Size: {status.get('queue_size', 0)}")
+        print(f"   • Estimated Completion: {status.get('estimated_completion_minutes', 0)} min")
+        print(f"   • Next Merge Window: {status.get('next_merge_window', 'unknown')}")
+        
+        breakdown = status.get('breakdown', {})
+        if breakdown:
+            print(f"\n📊 Breakdown:")
+            if breakdown.get('by_status'):
+                print(f"   • By Status: {breakdown['by_status']}")
+            if breakdown.get('by_priority'):
+                print(f"   • By Priority: {breakdown['by_priority']}")
+            if breakdown.get('by_repository'):
+                print(f"   • By Repository: {breakdown['by_repository']}")
+        
+        cache_info = status.get('cache_info', {})
+        if cache_info:
+            print(f"\n💾 Cache Info:")
+            print(f"   • Cached Conflicts: {cache_info.get('cached_conflicts', 0)}")
+            print(f"   • Last Updated: {cache_info.get('last_updated', 'unknown')}")
+        
+        print(f"\n✅ Workflow status retrieved!")
+        return {"status": "success", "details": status}
+        
+    except Exception as e:
+        print(f"❌ Failed to get workflow status: {e}")
         return {"status": "error", "error": str(e)}
 
 if __name__ == "__main__":

@@ -36,6 +36,10 @@ class GitHubAPIClient:
             
         self.logger = logging.getLogger(__name__)
         
+        # Rate limiting
+        self.rate_limit_remaining = 5000
+        self.rate_limit_reset = None
+        
     def create_pull_request(self, title: str, body: str, head_branch: str, 
                           base_branch: str = "main", labels: List[str] = None) -> Dict[str, Any]:
         """Create a pull request on GitHub."""
@@ -321,6 +325,166 @@ The agent will:
             formatted.append(f"- {status_icon} {check.get('name', 'Unknown Check')}")
             
         return "\n".join(formatted)
+
+
+    async def get_open_prs(self, owner: str, repo: str) -> List[Dict[str, Any]]:
+        """Get all open pull requests for a repository."""
+        try:
+            url = f"{self.base_url}/repos/{owner}/{repo}/pulls"
+            params = {"state": "open", "per_page": 100}
+            
+            response = self.session.get(url, params=params)
+            self._update_rate_limits(response)
+            
+            if response.status_code == 200:
+                return response.json()
+            else:
+                self.logger.error(f"Failed to get PRs: {response.status_code} - {response.text}")
+                return []
+                
+        except Exception as e:
+            self.logger.error(f"Error getting open PRs: {e}")
+            return []
+    
+    async def get_pr_files(self, owner: str, repo: str, pr_number: int) -> List[Dict[str, Any]]:
+        """Get files changed in a pull request."""
+        try:
+            url = f"{self.base_url}/repos/{owner}/{repo}/pulls/{pr_number}/files"
+            
+            response = self.session.get(url)
+            self._update_rate_limits(response)
+            
+            if response.status_code == 200:
+                return response.json()
+            else:
+                self.logger.error(f"Failed to get PR files: {response.status_code} - {response.text}")
+                return []
+                
+        except Exception as e:
+            self.logger.error(f"Error getting PR files: {e}")
+            return []
+    
+    async def get_pr_reviews(self, owner: str, repo: str, pr_number: int) -> List[Dict[str, Any]]:
+        """Get reviews for a pull request."""
+        try:
+            url = f"{self.base_url}/repos/{owner}/{repo}/pulls/{pr_number}/reviews"
+            
+            response = self.session.get(url)
+            self._update_rate_limits(response)
+            
+            if response.status_code == 200:
+                return response.json()
+            else:
+                self.logger.error(f"Failed to get PR reviews: {response.status_code} - {response.text}")
+                return []
+                
+        except Exception as e:
+            self.logger.error(f"Error getting PR reviews: {e}")
+            return []
+    
+    async def get_pr_status(self, owner: str, repo: str, pr_number: int) -> Dict[str, Any]:
+        """Get status checks for a pull request."""
+        try:
+            url = f"{self.base_url}/repos/{owner}/{repo}/pulls/{pr_number}"
+            
+            response = self.session.get(url)
+            self._update_rate_limits(response)
+            
+            if response.status_code == 200:
+                pr_data = response.json()
+                return {
+                    "mergeable": pr_data.get("mergeable"),
+                    "mergeable_state": pr_data.get("mergeable_state"),
+                    "draft": pr_data.get("draft", False),
+                    "state": pr_data.get("state"),
+                    "head_sha": pr_data["head"]["sha"]
+                }
+            else:
+                self.logger.error(f"Failed to get PR status: {response.status_code} - {response.text}")
+                return {}
+                
+        except Exception as e:
+            self.logger.error(f"Error getting PR status: {e}")
+            return {}
+    
+    async def merge_pull_request(self, owner: str, repo: str, pr_number: int, 
+                               merge_method: str = "merge", commit_title: str = None) -> Dict[str, Any]:
+        """Merge a pull request."""
+        try:
+            url = f"{self.base_url}/repos/{owner}/{repo}/pulls/{pr_number}/merge"
+            
+            data = {
+                "merge_method": merge_method  # merge, squash, or rebase
+            }
+            
+            if commit_title:
+                data["commit_title"] = commit_title
+            
+            response = self.session.put(url, json=data)
+            self._update_rate_limits(response)
+            
+            if response.status_code == 200:
+                return {"status": "success", "data": response.json()}
+            else:
+                return {"status": "failed", "error": response.text}
+                
+        except Exception as e:
+            self.logger.error(f"Error merging PR: {e}")
+            return {"status": "error", "error": str(e)}
+    
+    async def get_repository_info(self, owner: str, repo: str) -> Dict[str, Any]:
+        """Get repository information."""
+        try:
+            url = f"{self.base_url}/repos/{owner}/{repo}"
+            
+            response = self.session.get(url)
+            self._update_rate_limits(response)
+            
+            if response.status_code == 200:
+                return response.json()
+            else:
+                self.logger.error(f"Failed to get repo info: {response.status_code} - {response.text}")
+                return {}
+                
+        except Exception as e:
+            self.logger.error(f"Error getting repository info: {e}")
+            return {}
+    
+    async def create_issue_comment(self, owner: str, repo: str, issue_number: int, body: str) -> Dict[str, Any]:
+        """Create a comment on an issue or PR."""
+        try:
+            url = f"{self.base_url}/repos/{owner}/{repo}/issues/{issue_number}/comments"
+            
+            data = {"body": body}
+            response = self.session.post(url, json=data)
+            self._update_rate_limits(response)
+            
+            if response.status_code == 201:
+                return {"status": "success", "data": response.json()}
+            else:
+                return {"status": "failed", "error": response.text}
+                
+        except Exception as e:
+            self.logger.error(f"Error creating comment: {e}")
+            return {"status": "error", "error": str(e)}
+    
+    def _update_rate_limits(self, response: requests.Response) -> None:
+        """Update rate limit information from response headers."""
+        try:
+            self.rate_limit_remaining = int(response.headers.get('X-RateLimit-Remaining', 0))
+            reset_timestamp = response.headers.get('X-RateLimit-Reset')
+            if reset_timestamp:
+                self.rate_limit_reset = datetime.fromtimestamp(int(reset_timestamp))
+        except (ValueError, TypeError):
+            pass
+    
+    def get_rate_limit_status(self) -> Dict[str, Any]:
+        """Get current rate limit status."""
+        return {
+            "remaining": self.rate_limit_remaining,
+            "reset_time": self.rate_limit_reset.isoformat() if self.rate_limit_reset else None,
+            "has_token": bool(self.token)
+        }
 
 
 def create_github_client(token: Optional[str] = None) -> GitHubAPIClient:
