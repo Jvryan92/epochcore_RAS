@@ -1,0 +1,56 @@
+{
+  "timestamp": "2025-09-04T05:12:12.831Z",
+  "run_id": 1756962732325,
+  "mode": "dry_run",
+  "triggers_discovered": 7,
+  "triggers_processed": 5,
+  "triggers_successful": 4,
+  "triggers_failed": 1,
+  "results": [
+    {
+      "trigger_id": "system_health_check",
+      "type": "monitoring",
+      "priority": "high",
+      "success": true,
+      "timestamp": "2025-09-04T05:12:12.427Z",
+      "execution_time_ms": 955,
+      "message": "Executed successfully"
+    },
+    {
+      "trigger_id": "agent_performance_review",
+      "type": "optimization",
+      "priority": "medium",
+      "success": true,
+      "timestamp": "2025-09-04T05:12:12.528Z",
+      "execution_time_ms": 941,
+      "message": "Executed successfully"
+    },
+    {
+      "trigger_id": "capsule_integrity_scan",
+      "type": "maintenance",
+      "priority": "high",
+      "success": false,
+      "timestamp": "2025-09-04T05:12:12.629Z",
+      "execution_time_ms": 1059,
+      "message": "Execution failed - simulated error"
+    },
+    {
+      "trigger_id": "dag_workflow_validation",
+      "type": "validation",
+      "priority": "medium",
+      "success": true,
+      "timestamp": "2025-09-04T05:12:12.730Z",
+      "execution_time_ms": 227,
+      "message": "Executed successfully"
+    },
+    {
+      "trigger_id": "policy_compliance_audit",
+      "type": "security",
+      "priority": "high",
+      "success": true,
+      "timestamp": "2025-09-04T05:12:12.830Z",
+      "execution_time_ms": 188,
+      "message": "Executed successfully"
+    }
+  ]
+}
