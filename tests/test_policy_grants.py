@@ -166,5 +166,5 @@ class TestPolicyManager:
         result = policy_manager.evaluate_policy(policy["policy_id"], context)
 
         assert isinstance(result, bool)
-        # Should return True since agent_reliability (0.9) exceeds min_reliability threshold (0.8)
+        # Should pass when reliability exceeds threshold
         assert result is True
