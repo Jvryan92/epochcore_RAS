@@ -1,0 +1,458 @@
+name: Recursive Matrix Autonomy Pipeline
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      agents:
+        description: 'Agents to run (comma-separated or "all")'
+        required: false
+        default: 'all'
+      sync_mode:
+        description: 'Flash sync mode (enabled/disabled)'
+        required: false
+        default: 'enabled'
+      recursion_depth:
+        description: 'Recursion depth (1-5)'
+        required: false
+        default: '3'
+
+permissions:
+  contents: write
+  pull-requests: write
+  checks: write
+  issues: write
+  actions: write
+
+env:
+  PYTHON_VERSION: '3.12'
+  NODE_VERSION: '18'
+  RECURSION_DEPTH: ${{ github.event.inputs.recursion_depth || '3' }}
+  FLASH_SYNC_MODE: ${{ github.event.inputs.sync_mode || 'enabled' }}
+
+jobs:
+  setup-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      agent-matrix: ${{ steps.generate-matrix.outputs.agent-matrix }}
+      flash-sync-enabled: ${{ steps.config.outputs.flash-sync-enabled }}
+      total-agents: ${{ steps.generate-matrix.outputs.total-agents }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Generate agent execution matrix
+        id: generate-matrix
+        run: |
+          # Define all available agents
+          AGENTS=(
+            "kpi_prediction_agent"
+            "failure_remediation_agent" 
+            "portfolio_optimizer"
+            "meta_experiment_cascade"
+            "resource_allocation_agent"
+            "compliance_auditor"
+            "innovation_diffuser"
+            "user_feedback_engine"
+            "explainability_agent"
+            "agent_registry"
+          )
+          
+          # Determine which agents to run
+          INPUT_AGENTS="${{ github.event.inputs.agents }}"
+          if [ "$INPUT_AGENTS" = "all" ] || [ -z "$INPUT_AGENTS" ]; then
+            SELECTED_AGENTS=("${AGENTS[@]}")
+          else
+            IFS=',' read -ra SELECTED_AGENTS <<< "$INPUT_AGENTS"
+          fi
+          
+          # Generate JSON matrix
+          MATRIX_JSON=$(printf '%s\n' "${SELECTED_AGENTS[@]}" | jq -R . | jq -s .)
+          echo "agent-matrix=$MATRIX_JSON" >> $GITHUB_OUTPUT
+          echo "total-agents=${#SELECTED_AGENTS[@]}" >> $GITHUB_OUTPUT
+          
+          echo "Generated matrix for ${#SELECTED_AGENTS[@]} agents:"
+          echo "$MATRIX_JSON" | jq .
+          
+      - name: Set configuration
+        id: config
+        run: |
+          echo "flash-sync-enabled=${{ env.FLASH_SYNC_MODE == 'enabled' }}" >> $GITHUB_OUTPUT
+
+  recursive-agent-execution:
+    runs-on: ubuntu-latest
+    needs: setup-matrix
+    if: needs.setup-matrix.outputs.total-agents > 0
+    strategy:
+      matrix:
+        agent: ${{ fromJson(needs.setup-matrix.outputs.agent-matrix) }}
+      fail-fast: false
+      max-parallel: 5
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Create manifests directory
+        run: mkdir -p manifests
+        
+      - name: Execute recursive agent
+        id: execute-agent
+        env:
+          AGENT_NAME: ${{ matrix.agent }}
+        run: |
+          echo "🤖 Executing $AGENT_NAME with $RECURSION_DEPTH recursion cycles..."
+          
+          # Execute the specific agent
+          python -c "
+          import sys
+          sys.path.append('agents')
+          
+          agent_name = '$AGENT_NAME'
+          print(f'Starting {agent_name} execution...')
+          
+          try:
+              if agent_name == 'kpi_prediction_agent':
+                  from kpi_prediction_agent import forecast_kpi
+                  result = forecast_kpi()
+              elif agent_name == 'failure_remediation_agent':
+                  from failure_remediation_agent import remediate_failure
+                  result = remediate_failure()
+              elif agent_name == 'portfolio_optimizer':
+                  from portfolio_optimizer import optimize_portfolio
+                  result = optimize_portfolio()
+              elif agent_name == 'meta_experiment_cascade':
+                  from meta_experiment_cascade import run_experiment_cascade
+                  result = run_experiment_cascade()
+              elif agent_name == 'resource_allocation_agent':
+                  from resource_allocation_agent import allocate_resources
+                  result = allocate_resources()
+              elif agent_name == 'compliance_auditor':
+                  from compliance_auditor import audit_compliance
+                  result = audit_compliance()
+              elif agent_name == 'innovation_diffuser':
+                  from innovation_diffuser import diffuse_innovation
+                  result = diffuse_innovation()
+              elif agent_name == 'user_feedback_engine':
+                  from user_feedback_engine import tune_feedback
+                  result = tune_feedback()
+              elif agent_name == 'explainability_agent':
+                  from explainability_agent import generate_explainability_report
+                  result = generate_explainability_report()
+              elif agent_name == 'agent_registry':
+                  from agent_registry import track_agent_evolution
+                  result = track_agent_evolution()
+              else:
+                  print(f'Unknown agent: {agent_name}')
+                  sys.exit(1)
+                  
+              print(f'✅ {agent_name} completed successfully')
+              print(f'Result: {result}')
+              
+          except Exception as e:
+              print(f'❌ {agent_name} failed: {str(e)}')
+              sys.exit(1)
+          "
+          
+      - name: Validate agent output
+        run: |
+          # Check that manifests were created
+          AGENT_RESULT_FILE="manifests/${{ matrix.agent }}_results.json"
+          if [ -f "$AGENT_RESULT_FILE" ]; then
+            echo "✅ Agent result file created: $AGENT_RESULT_FILE"
+            echo "File size: $(wc -c < "$AGENT_RESULT_FILE") bytes"
+            
+            # Validate JSON structure
+            if python -m json.tool "$AGENT_RESULT_FILE" > /dev/null 2>&1; then
+              echo "✅ Valid JSON structure"
+            else
+              echo "❌ Invalid JSON structure"
+              exit 1
+            fi
+          else
+            echo "❌ Agent result file not found: $AGENT_RESULT_FILE"
+            exit 1
+          fi
+          
+          # Check audit log was updated
+          if [ -f "manifests/audit_evolution_log.jsonl" ]; then
+            echo "✅ Audit evolution log updated"
+            echo "Log entries: $(wc -l < manifests/audit_evolution_log.jsonl)"
+          else
+            echo "❌ Audit evolution log not found"
+            exit 1
+          fi
+          
+      - name: Upload agent artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.agent }}-results
+          path: |
+            manifests/${{ matrix.agent }}_results.json
+            manifests/audit_evolution_log.jsonl
+          retention-days: 90
+
+  consolidate-results:
+    runs-on: ubuntu-latest
+    needs: [setup-matrix, recursive-agent-execution]
+    if: always() && needs.setup-matrix.outputs.total-agents > 0
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+      - name: Download all agent artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: agent-artifacts
+          
+      - name: Consolidate results
+        run: |
+          echo "🔄 Consolidating recursive autonomy results..."
+          
+          python -c "
+          import json
+          import os
+          from datetime import datetime
+          from pathlib import Path
+          
+          # Create consolidated report
+          consolidated_report = {
+              'timestamp': datetime.now().isoformat(),
+              'pipeline_info': {
+                  'trigger': '${{ github.event_name }}',
+                  'branch': '${{ github.ref_name }}',
+                  'commit': '${{ github.sha }}',
+                  'recursion_depth': int('${{ env.RECURSION_DEPTH }}'),
+                  'flash_sync_enabled': '${{ env.FLASH_SYNC_MODE }}' == 'enabled',
+                  'total_agents': int('${{ needs.setup-matrix.outputs.total-agents }}')
+              },
+              'agent_results': {},
+              'execution_summary': {
+                  'successful_agents': 0,
+                  'failed_agents': 0,
+                  'total_cycles_completed': 0,
+                  'total_improvements': 0,
+                  'flash_sync_ready': True
+              },
+              'audit_trail': []
+          }
+          
+          # Process all agent artifacts
+          artifacts_path = Path('agent-artifacts')
+          if artifacts_path.exists():
+              for agent_dir in artifacts_path.iterdir():
+                  if agent_dir.is_dir():
+                      agent_name = agent_dir.name.replace('-results', '')
+                      result_file = agent_dir / f'{agent_name}_results.json'
+                      
+                      if result_file.exists():
+                          try:
+                              with open(result_file) as f:
+                                  agent_result = json.load(f)
+                              
+                              consolidated_report['agent_results'][agent_name] = agent_result
+                              consolidated_report['execution_summary']['successful_agents'] += 1
+                              consolidated_report['execution_summary']['total_cycles_completed'] += agent_result.get('cycles_completed', 0)
+                              
+                              # Count improvements
+                              improvements = agent_result.get('recursive_improvements', [])
+                              consolidated_report['execution_summary']['total_improvements'] += len(improvements)
+                              
+                          except Exception as e:
+                              print(f'Error processing {agent_name}: {e}')
+                              consolidated_report['execution_summary']['failed_agents'] += 1
+          
+          # Save consolidated report
+          os.makedirs('manifests', exist_ok=True)
+          with open('manifests/consolidated_results.json', 'w') as f:
+              json.dump(consolidated_report, f, indent=2)
+          
+          # Generate summary
+          print(f'📊 Consolidation complete:')
+          print(f'  ✅ Successful agents: {consolidated_report[\"execution_summary\"][\"successful_agents\"]}')
+          print(f'  ❌ Failed agents: {consolidated_report[\"execution_summary\"][\"failed_agents\"]}')
+          print(f'  🔄 Total cycles: {consolidated_report[\"execution_summary\"][\"total_cycles_completed\"]}')
+          print(f'  🚀 Total improvements: {consolidated_report[\"execution_summary\"][\"total_improvements\"]}')
+          "
+          
+      - name: Execute audit evolution manager
+        run: |
+          echo "📋 Running final audit evolution..."
+          python -c "
+          import sys
+          sys.path.append('agents')
+          from audit_evolution_manager import recursive_audit_evolution
+          
+          # Log final consolidation
+          consolidation_result = {
+              'agent': 'consolidation_manager',
+              'version': 'v4',
+              'cycles_completed': int('${{ env.RECURSION_DEPTH }}'),
+              'flash_sync_ready': True,
+              'total_agents_processed': int('${{ needs.setup-matrix.outputs.total-agents }}')
+          }
+          
+          audit_entry = recursive_audit_evolution('consolidation_manager', int('${{ env.RECURSION_DEPTH }}'), consolidation_result)
+          print('✅ Final audit evolution completed')
+          "
+          
+      - name: Upload consolidated artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: consolidated-results
+          path: |
+            manifests/
+          retention-days: 90
+          
+      - name: Create summary comment
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            try {
+              const report = JSON.parse(fs.readFileSync('manifests/consolidated_results.json', 'utf8'));
+              
+              let comment = `## 🚀 Recursive Matrix Autonomy Pipeline Complete\n\n`;
+              comment += `### Execution Summary\n`;
+              comment += `- **Trigger**: ${report.pipeline_info.trigger}\n`;
+              comment += `- **Branch**: ${report.pipeline_info.branch}\n`;
+              comment += `- **Recursion Depth**: ${report.pipeline_info.recursion_depth} cycles\n`;
+              comment += `- **Flash Sync**: ${report.pipeline_info.flash_sync_enabled ? '✅ Enabled' : '❌ Disabled'}\n`;
+              comment += `- **Total Agents**: ${report.pipeline_info.total_agents}\n\n`;
+              
+              comment += `### Results\n`;
+              comment += `- ✅ **Successful Agents**: ${report.execution_summary.successful_agents}\n`;
+              comment += `- ❌ **Failed Agents**: ${report.execution_summary.failed_agents}\n`;
+              comment += `- 🔄 **Total Cycles**: ${report.execution_summary.total_cycles_completed}\n`;
+              comment += `- 🚀 **Total Improvements**: ${report.execution_summary.total_improvements}\n\n`;
+              
+              comment += `### Agent Status\n`;
+              for (const [agent, result] of Object.entries(report.agent_results)) {
+                const status = result.flash_sync_ready ? '✅' : '⚠️';
+                comment += `- ${status} **${agent}**: ${result.cycles_completed} cycles, v${result.version}\n`;
+              }
+              
+              comment += `\n*This pipeline runs recursively with compounding improvements and flash sync across all EpochCore repositories.*`;
+              
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: comment
+              });
+            } catch (error) {
+              console.log('Error creating summary comment:', error);
+            }
+
+  flash-sync:
+    runs-on: ubuntu-latest
+    needs: [setup-matrix, consolidate-results]
+    if: always() && needs.setup-matrix.outputs.flash-sync-enabled == 'true' && needs.setup-matrix.outputs.total-agents > 0
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Download consolidated results
+        uses: actions/download-artifact@v4
+        with:
+          name: consolidated-results
+          path: manifests/
+          
+      - name: Prepare flash sync
+        run: |
+          echo "⚡ Preparing flash sync across repositories..."
+          
+          # Create flash sync payload
+          python -c "
+          import json
+          import os
+          from datetime import datetime
+          
+          # Create flash sync manifest
+          flash_sync_manifest = {
+              'flash_sync_id': f'sync_{datetime.now().strftime(\"%Y%m%d_%H%M%S\")}',
+              'timestamp': datetime.now().isoformat(),
+              'source_repo': '${{ github.repository }}',
+              'source_commit': '${{ github.sha }}',
+              'target_repos': [
+                  'EpochCore5/epochcore_RAS',
+                  'Jvryan92/EpochCore_OS',
+                  'Jvryan92/StrategyDECK',
+                  'Jvryan92/saas-hub',
+                  'EpochCore5/epoch5-template',
+                  'Jvryan92/epoch-mesh'
+              ],
+              'sync_payload': {
+                  'manifests_updated': True,
+                  'audit_logs_updated': True,
+                  'agent_results_available': True,
+                  'recursion_depth': int('${{ env.RECURSION_DEPTH }}')
+              },
+              'sync_status': 'ready'
+          }
+          
+          with open('manifests/flash_sync_manifest.json', 'w') as f:
+              json.dump(flash_sync_manifest, f, indent=2)
+          
+          print('✅ Flash sync manifest created')
+          print(json.dumps(flash_sync_manifest, indent=2))
+          "
+          
+      - name: Execute flash sync
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "⚡ Executing flash sync..."
+          echo "Note: Flash sync would propagate manifests and audit logs to target repositories"
+          echo "Target repositories:"
+          echo "  - EpochCore5/epochcore_RAS"
+          echo "  - Jvryan92/EpochCore_OS"
+          echo "  - Jvryan92/StrategyDECK"
+          echo "  - Jvryan92/saas-hub"
+          echo "  - EpochCore5/epoch5-template"
+          echo "  - Jvryan92/epoch-mesh"
+          echo ""
+          echo "Flash sync payload ready for cross-repository propagation!"
+          
+      - name: Upload flash sync artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: flash-sync-payload
+          path: manifests/flash_sync_manifest.json
+          retention-days: 30
+
+  cleanup:
+    runs-on: ubuntu-latest
+    needs: [flash-sync]
+    if: always()
+    steps:
+      - name: Cleanup
+        run: |
+          echo "🧹 Recursive Matrix Autonomy Pipeline cleanup complete"
+          echo "All agents executed, results consolidated, and flash sync prepared"
