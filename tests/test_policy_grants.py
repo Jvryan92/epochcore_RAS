@@ -98,9 +98,7 @@ class TestPolicyManager:
         assert isinstance(grant, dict)
         assert grant["grant_id"] == grant_id
         assert grant["grantee_did"] == grantee_did
-        # The PolicyManager stores granted permissions under the 'actions' field to maintain consistency
-        # with its internal data model. This test verifies that the input 'permissions' are correctly
-        # transformed and stored as 'actions' in the grant record.
+        # PolicyManager stores permissions as 'actions' internally
         assert grant["actions"] == permissions
         assert "created_at" in grant
         assert "active" in grant
