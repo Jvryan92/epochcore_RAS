@@ -1,0 +1,67 @@
+{
+  "mesh_config": {
+    "version": "1.0",
+    "description": "EpochCore RAS Organization Mesh Configuration",
+    "last_updated": "2025-09-05T01:40:23Z"
+  },
+  "repositories": [
+    {
+      "repo": "Jvryan92/epochcore_RAS",
+      "type": "core",
+      "priority": "high",
+      "propagation_modules": ["core", "workflows", "governance", "bootstrap"]
+    },
+    {
+      "repo": "EpochCore5/epoch5-template", 
+      "type": "template",
+      "priority": "high",
+      "propagation_modules": ["core", "workflows", "templates"]
+    },
+    {
+      "repo": "Jvryan92/EpochCore_OS",
+      "type": "main",
+      "priority": "critical",
+      "propagation_modules": ["core", "workflows", "governance", "bootstrap", "automation"]
+    }
+  ],
+  "propagation_settings": {
+    "default_target_branch": "main",
+    "create_pr_on_changes": true,
+    "auto_merge_threshold": 0.8,
+    "backup_before_propagation": true
+  },
+  "mesh_modules": {
+    "core": {
+      "files": [
+        "integration.py",
+        "recursive_improvement/",
+        "requirements.txt"
+      ]
+    },
+    "workflows": {
+      "files": [
+        ".github/workflows/recursive-autonomy.yml",
+        ".github/workflows/org-mesh-sync.yml"
+      ]
+    },
+    "governance": {
+      "files": [
+        "reports/governance.json",
+        "reports/manifest.json"
+      ]
+    },
+    "bootstrap": {
+      "files": [
+        "README.md",
+        "AUTONOMOUS_MANIFEST.md"
+      ]
+    },
+    "automation": {
+      "files": [
+        "cross_repo_propagator.py",
+        "epochmastery_sync.py",
+        "ops/mesh/"
+      ]
+    }
+  }
+}
