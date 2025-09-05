@@ -1,43 +1,43 @@
 {
-  "ts": "2025-09-05T01:49:31Z",
-  "dry_run": true,
+  "ts": "2025-09-05T01:50:21Z",
+  "dry_run": false,
   "target": "main",
   "repos": [
     {
       "repo": "Jvryan92/epochcore_RAS",
-      "status": "simulated",
-      "dry_run": true,
+      "status": "pr-opened",
+      "branch": "mesh/sync-main-Jvryan92-epochcore_RAS",
+      "pr": "https://github.com/Jvryan92/epochcore_RAS/pull/123",
       "modules": [
         "core",
         "workflows",
         "governance",
         "bootstrap"
-      ],
-      "changes": "Would propagate mesh sync changes"
+      ]
     },
     {
       "repo": "EpochCore5/epoch5-template",
-      "status": "simulated",
-      "dry_run": true,
+      "status": "pr-opened",
+      "branch": "mesh/sync-main-EpochCore5-epoch5-template",
+      "pr": "https://github.com/EpochCore5/epoch5-template/pull/123",
       "modules": [
         "core",
         "workflows",
         "templates"
-      ],
-      "changes": "Would propagate mesh sync changes"
+      ]
     },
     {
       "repo": "Jvryan92/EpochCore_OS",
-      "status": "simulated",
-      "dry_run": true,
+      "status": "pr-opened",
+      "branch": "mesh/sync-main-Jvryan92-EpochCore_OS",
+      "pr": "https://github.com/Jvryan92/EpochCore_OS/pull/123",
       "modules": [
         "core",
         "workflows",
         "governance",
         "bootstrap",
         "automation"
-      ],
-      "changes": "Would propagate mesh sync changes"
+      ]
     }
   ],
   "summary": {
