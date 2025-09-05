@@ -1,0 +1,48 @@
+{
+  "ts": "2025-09-05T01:49:31Z",
+  "dry_run": true,
+  "target": "main",
+  "repos": [
+    {
+      "repo": "Jvryan92/epochcore_RAS",
+      "status": "simulated",
+      "dry_run": true,
+      "modules": [
+        "core",
+        "workflows",
+        "governance",
+        "bootstrap"
+      ],
+      "changes": "Would propagate mesh sync changes"
+    },
+    {
+      "repo": "EpochCore5/epoch5-template",
+      "status": "simulated",
+      "dry_run": true,
+      "modules": [
+        "core",
+        "workflows",
+        "templates"
+      ],
+      "changes": "Would propagate mesh sync changes"
+    },
+    {
+      "repo": "Jvryan92/EpochCore_OS",
+      "status": "simulated",
+      "dry_run": true,
+      "modules": [
+        "core",
+        "workflows",
+        "governance",
+        "bootstrap",
+        "automation"
+      ],
+      "changes": "Would propagate mesh sync changes"
+    }
+  ],
+  "summary": {
+    "total_repos": 3,
+    "processed": 3,
+    "success_rate": 1.0
+  }
+}
